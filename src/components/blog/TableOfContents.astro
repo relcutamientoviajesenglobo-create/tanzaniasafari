@@ -1,0 +1,28 @@
+---
+import { t } from '../../i18n/utils';
+import type { Lang } from '../../i18n/config';
+
+export interface Props {
+  headings: { depth: number; slug: string; text: string }[];
+  lang?: Lang;
+}
+
+const lang: Lang = Astro.props.lang || 'es';
+const { headings } = Astro.props;
+const tocItems = headings.filter(h => h.depth === 2);
+const tocLabel = lang === 'en' ? 'Table of contents' : 'Tabla de contenidos';
+const tocTitle = lang === 'en' ? 'In this article' : 'En este artículo';
+---
+
+{tocItems.length > 1 && (
+  <nav class="toc" aria-label={tocLabel}>
+    <p class="toc__title">{tocTitle}</p>
+    <ol class="toc__list">
+      {tocItems.map(item => (
+        <li>
+          <a href={`#${item.slug}`} class="toc__link">{item.text}</a>
+        </li>
+      ))}
+    </ol>
+  </nav>
+)}

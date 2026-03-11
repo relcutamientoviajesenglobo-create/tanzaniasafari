@@ -1,0 +1,158 @@
+export const ui = {
+  es: {
+    // BaseLayout
+    'skip-link': 'Ir al contenido principal',
+    'whatsapp.label': '¿Necesitas ayuda?',
+    'whatsapp.aria': 'Contactar por WhatsApp',
+    'whatsapp.msg': 'Hola%2C%20quiero%20informes%20sobre%20Safari%20Tanzania',
+    'back-to-top': 'Volver arriba',
+    'breadcrumb.home': '🏠 Inicio',
+
+    // Header
+    'nav.aria': 'Navegación principal',
+    'nav.mobile.aria': 'Navegación móvil',
+    'nav.burger.open': 'Abrir menú',
+    'nav.burger.close': 'Cerrar menú',
+    'nav.cta': 'Reservar',
+    'nav.cta.mobile': '🦁 Reservar Safari',
+    'nav.expand': 'Expandir',
+
+    // Footer
+    'footer.cta.title': 'Planea tu safari en Tanzania',
+    'footer.cta.desc': 'Consulta precios, revisa cómo llegar y reserva tu safari. La aventura africana de tu vida te espera.',
+    'footer.cta.prices': 'Ver precios 2026',
+    'footer.cta.directions': 'Cómo llegar',
+    'footer.share': 'Comparte esta página',
+    'footer.brand.desc': 'Safaris de vida salvaje, el Serengeti, el Cráter del Ngorongoro y experiencias únicas en Tanzania, África Oriental.',
+    'footer.brand.contact': 'Contacto',
+    'footer.col1.title': 'Safaris',
+    'footer.col1.grutas': 'Safari Clásico',
+    'footer.col1.albercas': 'Safari Fotográfico',
+    'footer.col1.rio': 'Safari Nocturno',
+    'footer.col1.canon': 'Parques Nacionales',
+    'footer.col1.actividades': 'Actividades',
+    'footer.col2.title': 'Planea tu visita',
+    'footer.col2.precios': 'Precios y Paquetes',
+    'footer.col2.como': 'Cómo Llegar',
+    'footer.col2.hospedaje': 'Hospedaje',
+    'footer.col2.blog': 'Blog y Guías',
+    'footer.col2.contacto': 'Contacto',
+    'footer.legal': '©2026 Safari Tanzania — Arusha, Tanzania, África Oriental',
+    'footer.privacy': 'Privacidad',
+    'footer.terms': 'Términos',
+
+    // Price banner
+    'price.open': 'Todo el año',
+    'price.everyday': 'safaris diarios',
+    'price.adult': 'Safari día',
+    'price.child': 'Niño (5‑11)',
+    'price.free': 'Menores de 5',
+    'price.free.label': 'Gratis',
+    'price.cta': 'Ver todos los precios',
+
+    // Blog
+    'blog.related': 'Artículos relacionados',
+    'blog.reading': 'min lectura',
+    'blog.updated': 'actualizado',
+    'blog.faq.title': 'Preguntas frecuentes',
+    'blog.articles': 'artículos publicados',
+    'blog.toc': 'Contenido',
+    'blog.cta.title': '¿Listo para tu safari en Tanzania?',
+    'blog.cta.desc': 'Consulta precios actualizados, revisa cómo llegar y planea tu aventura en el Serengeti y más.',
+    'blog.cta.primary': 'Ver precios 2026',
+    'blog.cta.secondary': 'Cómo llegar',
+
+    // Categories
+    'cat.guias': 'Guía de Viaje',
+    'cat.naturaleza': 'Naturaleza',
+    'cat.actividades': 'Actividades',
+    'cat.hospedaje': 'Hospedaje',
+    'cat.cultura': 'Cultura',
+    'cat.consejos': 'Consejos',
+
+    // Silos
+    'silo.safaris-tanzania': 'Safaris en Tanzania',
+    'silo.actividades-aventura': 'Actividades y Aventura',
+    'silo.hospedaje-lodges': 'Hospedaje y Lodges',
+    'silo.guias-viaje': 'Guías de Viaje',
+    'silo.cultura-masai': 'Cultura Masái',
+  },
+  en: {
+    // BaseLayout
+    'skip-link': 'Skip to main content',
+    'whatsapp.label': 'Need help?',
+    'whatsapp.aria': 'Contact via WhatsApp',
+    'whatsapp.msg': 'Hello%2C%20I%20want%20information%20about%20Safari%20Tanzania',
+    'back-to-top': 'Back to top',
+    'breadcrumb.home': '🏠 Home',
+
+    // Header
+    'nav.aria': 'Main navigation',
+    'nav.mobile.aria': 'Mobile navigation',
+    'nav.burger.open': 'Open menu',
+    'nav.burger.close': 'Close menu',
+    'nav.cta': 'Book Now',
+    'nav.cta.mobile': '🦁 Book Safari',
+    'nav.expand': 'Expand',
+
+    // Footer
+    'footer.cta.title': 'Plan your Tanzania safari',
+    'footer.cta.desc': 'Check prices, get directions and book your safari. The African adventure of a lifetime awaits you.',
+    'footer.cta.prices': 'See 2026 prices',
+    'footer.cta.directions': 'How to get here',
+    'footer.share': 'Share this page',
+    'footer.brand.desc': 'Wildlife safaris, the Serengeti, Ngorongoro Crater and unique experiences in Tanzania, East Africa.',
+    'footer.brand.contact': 'Contact',
+    'footer.col1.title': 'Safaris',
+    'footer.col1.grutas': 'Classic Safari',
+    'footer.col1.albercas': 'Photo Safari',
+    'footer.col1.rio': 'Night Safari',
+    'footer.col1.canon': 'National Parks',
+    'footer.col1.actividades': 'Activities',
+    'footer.col2.title': 'Plan your visit',
+    'footer.col2.precios': 'Prices & Packages',
+    'footer.col2.como': 'How to Get Here',
+    'footer.col2.hospedaje': 'Lodging',
+    'footer.col2.blog': 'Blog & Guides',
+    'footer.col2.contacto': 'Contact',
+    'footer.legal': '©2026 Safari Tanzania — Arusha, Tanzania, East Africa',
+    'footer.privacy': 'Privacy',
+    'footer.terms': 'Terms',
+
+    // Price banner
+    'price.open': 'Year-round',
+    'price.everyday': 'daily safaris',
+    'price.adult': 'Day safari',
+    'price.child': 'Child (5‑11)',
+    'price.free': 'Under 5',
+    'price.free.label': 'Free',
+    'price.cta': 'See all prices',
+
+    // Blog
+    'blog.related': 'Related articles',
+    'blog.reading': 'min read',
+    'blog.updated': 'updated',
+    'blog.faq.title': 'Frequently asked questions',
+    'blog.articles': 'articles published',
+    'blog.toc': 'Contents',
+    'blog.cta.title': 'Ready for your Tanzania safari?',
+    'blog.cta.desc': 'Check updated prices, get directions and plan your adventure in the Serengeti and beyond.',
+    'blog.cta.primary': 'See 2026 prices',
+    'blog.cta.secondary': 'How to get here',
+
+    // Categories
+    'cat.guias': 'Travel Guide',
+    'cat.naturaleza': 'Nature',
+    'cat.actividades': 'Activities',
+    'cat.hospedaje': 'Lodging',
+    'cat.cultura': 'Culture',
+    'cat.consejos': 'Tips',
+
+    // Silos
+    'silo.safaris-tanzania': 'Tanzania Safaris',
+    'silo.actividades-aventura': 'Adventure Activities',
+    'silo.hospedaje-lodges': 'Lodging & Lodges',
+    'silo.guias-viaje': 'Travel Guides',
+    'silo.cultura-masai': 'Masai Culture',
+  },
+} as const;

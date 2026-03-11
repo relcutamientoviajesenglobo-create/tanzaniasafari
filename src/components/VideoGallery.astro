@@ -1,0 +1,70 @@
+---
+/**
+ * VideoGallery — Grid of videos for a specific page or category.
+ * Usage:
+ *   <VideoGallery videoIds={['pozas-panoramica','albercas-drone']} lang="es" />
+ *   <VideoGallery pagePath="/grutas/" lang="es" />
+ */
+import type { Lang } from '../i18n/config';
+import { getVideo, getVideosForPage } from '../i18n/videos';
+import type { VideoMeta } from '../i18n/videos';
+
+interface Props {
+  videoIds?: string[];
+  pagePath?: string;
+  lang?: Lang;
+  title?: string;
+  columns?: 2 | 3;
+}
+
+const { videoIds, pagePath, lang = 'es', title, columns = 2 } = Astro.props;
+
+let videoList: VideoMeta[] = [];
+
+if (videoIds) {
+  videoList = videoIds.map(id => getVideo(id)).filter(Boolean) as VideoMeta[];
+} else if (pagePath) {
+  videoList = getVideosForPage(pagePath);
+}
+
+const sectionTitle = title || (lang === 'es' ? 'Videos del destino' : 'Destination videos');
+const gridClass = columns === 3 ? 'video-gallery--3' : 'video-gallery--2';
+---
+
+{videoList.length > 0 && (
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2>{sectionTitle}</h2>
+      </div>
+      <div class={`video-gallery ${gridClass} animate-on-scroll delay-1`}>
+        {videoList.map(video => {
+          const src = video.src[lang];
+          const alt = video.alt[lang];
+          const vtitle = video.title[lang];
+          const isVertical = video.height > video.width;
+          return (
+            <figure class={`video-gallery__item ${isVertical ? 'video-gallery__item--vertical' : ''}`}>
+              <video
+                src={src}
+                title={vtitle}
+                width={video.width}
+                height={video.height}
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                controls
+                loading="lazy"
+              >
+                <p>{alt}</p>
+              </video>
+              <figcaption class="video-gallery__caption">{alt}</figcaption>
+            </figure>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+)}

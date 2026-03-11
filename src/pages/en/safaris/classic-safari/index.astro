@@ -1,0 +1,248 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import { touristAttraction, faqPage } from '../../../../i18n/schema';
+
+const lang = 'en';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const faqItems = [
+  { question: 'What is a classic safari in Tanzania?', answer: 'A classic safari is the traditional African game drive experience. You travel in a custom 4x4 vehicle (usually a Toyota Land Cruiser) with a pop-up roof through national parks and game reserves. Your expert guide spots wildlife, explains animal behavior and navigates to the best viewing locations. Classic safaris in Tanzania typically visit the <strong>Serengeti</strong> and <strong>Ngorongoro Crater</strong>.' },
+  { question: 'How many days do I need for a classic safari?', answer: 'While we offer <strong>day safaris from Arusha</strong>, we recommend a minimum of 3 days to experience the Serengeti properly. A <strong>5-day safari</strong> allows you to explore both the Serengeti and Ngorongoro at a comfortable pace. For the ultimate experience, a <strong>7-day expedition</strong> adds Lake Manyara and Tarangire. Check our <a href="/en/prices/" style="color:#3D6B2E;font-weight:700">prices page</a> for multi-day packages.' },
+  { question: 'What animals will I see on a classic safari?', answer: 'The Serengeti and Ngorongoro are home to the <strong>Big Five</strong>: lion, leopard, elephant, buffalo and rhinoceros. You will also commonly see giraffes, zebras, wildebeest, hippos, hyenas, cheetahs, warthogs, baboons and hundreds of bird species. During <a href="/en/activities/wildlife-watching/" style="color:#3D6B2E;font-weight:700">migration season</a> (July-September), you may witness millions of wildebeest and zebras crossing the Serengeti.' },
+  { question: 'What is included in a classic safari package?', answer: 'All our classic safari packages include: hotel/airport pickup and drop-off, a certified English-speaking guide, a custom 4x4 vehicle with pop-up roof, all national park fees, packed lunch and snacks, unlimited bottled water and binoculars. Multi-day safaris also include full-board accommodation at quality lodges or tented camps. See full details on our <a href="/en/prices/" style="color:#3D6B2E;font-weight:700">prices page</a>.' },
+  { question: 'Is the classic safari suitable for families with children?', answer: 'Yes! Classic safaris are perfect for families. Children under 5 enter <strong>free</strong> and ages 5-11 receive discounted rates. We provide child-friendly vehicles with booster seats, plan shorter driving routes for younger children and our guides are experienced at making safaris fun and educational for kids of all ages.' },
+  { question: 'What time do classic safaris start?', answer: 'Game drives typically begin at <strong>dawn (around 6:00 AM)</strong> when animals are most active. After a morning drive, you enjoy lunch at a scenic spot or lodge. An afternoon drive from 3:30-6:30 PM captures the golden hour light and evening animal activity. Early mornings can be cool (around 15-20 celsius), so bring a light jacket.' },
+];
+
+const schema = [
+  touristAttraction({
+    name: 'Classic Safari in Tanzania',
+    description: 'Experience the quintessential African safari with game drives in 4x4 vehicles through the Serengeti and Ngorongoro Crater. Spot the Big Five with expert guides.',
+    url: 'https://safaritanzania.info/en/safaris/classic-safari/',
+  }),
+  faqPage(faqItems),
+];
+---
+
+<BaseLayout
+  title="Classic Safari in Tanzania — Game Drives in the Serengeti & Ngorongoro"
+  description="Experience the quintessential African safari adventure. Game drives in custom 4x4 vehicles through the Serengeti and Ngorongoro Crater with expert local guides. Spot the Big Five."
+  lang={lang}
+  schema={schema}
+  breadcrumbs={[
+    { label: 'Safaris', href: '/en/safaris/' },
+    { label: 'Classic Safari' },
+  ]}
+>
+  <Header slot="header" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--green">Most Popular Safari</span>
+          <h1 class="hero__title">Classic Safari in Tanzania</h1>
+          <p class="hero__desc">The quintessential African safari experience. Traverse the Serengeti plains and descend into the Ngorongoro Crater in custom 4x4 vehicles with expert local guides who know every trail and animal.</p>
+          <div class="hero__actions">
+            <a href="/en/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
+            <a href="/en/contact/" class="btn btn--outline btn--lg">Book this safari</a>
+          </div>
+          <div class="stats-row">
+            <div class="stat"><strong>Big Five</strong><span>All viewable</span></div>
+            <div class="stat"><strong>6 pax</strong><span>Max per vehicle</span></div>
+            <div class="stat"><strong>1-7 days</strong><span>Flexible trips</span></div>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <img
+              src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=800&h=640&fit=crop&auto=format"
+              alt="Safari vehicle with tourists on a classic game drive through the Serengeti"
+              width="800" height="640" loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT TO EXPECT -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">The Experience</span>
+        <h2>What to expect on a classic safari</h2>
+        <p>A classic Tanzanian safari is a journey through some of the most biodiverse landscapes on Earth, guided by experts who bring the bush to life.</p>
+      </div>
+      <div class="card-grid card-grid--2 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=450&fit=crop&auto=format" alt="Serengeti golden savanna with scattered acacia trees at sunrise" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Dawn Game Drives</h3>
+            <p>Set out at first light when the savanna awakens. Lions return from their nightly hunts, elephants emerge from the bush and the Serengeti transforms under the golden morning sun. Your guide reads the landscape like a book, tracking fresh prints and listening for alarm calls.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1621414050345-53db43f7e7ab?w=600&h=450&fit=crop&auto=format" alt="Ngorongoro Crater floor with wildlife and lush vegetation" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Ngorongoro Crater Descent</h3>
+            <p>Descend 600 meters into the world's largest intact volcanic caldera, a natural amphitheater teeming with approximately 25,000 animals. The crater floor offers the highest density of wildlife in Africa, including the endangered black rhino in its natural habitat.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WILDLIFE -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">Wildlife</span>
+        <h2>Animals you will encounter</h2>
+        <p>Tanzania's national parks shelter an extraordinary diversity of wildlife. Here are some of the iconic species you can expect to see.</p>
+      </div>
+      <div class="card-grid card-grid--3 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=450&fit=crop&auto=format" alt="Male lion with mane resting in the Serengeti grasslands" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Lions</h3>
+            <p>The Serengeti hosts over 3,000 lions, one of the largest populations in Africa. Watch pride dynamics, hunting behavior and playful cubs in the golden grass.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=450&fit=crop&auto=format" alt="Elephant herd crossing the Serengeti plains" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Elephants</h3>
+            <p>Massive herds of African elephants roam freely through Tarangire and the Serengeti. Witness mothers protecting calves, dust-bathing rituals and these gentle giants at watering holes.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=450&fit=crop&auto=format" alt="Giraffe silhouette against the African sunset" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Giraffes</h3>
+            <p>Towering above the acacia woodland, Masai giraffes are a constant presence on the Tanzanian plains. Their elegant movements against sunset skies create unforgettable moments.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SAMPLE ITINERARY -->
+  <section class="section section--green bg-green" style="position:relative;overflow:hidden">
+    <div style="position:absolute;top:20px;right:-30px;opacity:.08;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Sample Itinerary</span>
+        <h2>A typical 3-day classic safari</h2>
+        <p>Here is what a classic multi-day safari looks like, from Arusha to the Serengeti and back.</p>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1">
+        <div class="service-card">
+          <h3 class="service-card__title">Day 1: Arusha to Serengeti</h3>
+          <p class="service-card__desc">Early morning pickup from your hotel. Drive through the Great Rift Valley with stops at viewpoints. Enter the Serengeti via the Naabi Hill Gate. Afternoon game drive spotting lions, elephants and giraffes. Sunset at camp.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Day 2: Full Day Serengeti</h3>
+          <p class="service-card__desc">Dawn game drive in the central Serengeti. Visit the Seronera Valley, famous for leopard sightings. Picnic lunch by the Grumeti River. Afternoon drive to the kopjes, granite outcrops where lions rest.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Day 3: Ngorongoro Crater</h3>
+          <p class="service-card__desc">Drive to the Ngorongoro Conservation Area. Descend into the crater for a half-day game drive. Spot black rhinos, flamingos and hippo pools. Ascend and return to Arusha by evening.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon" style="color:var(--mc-green)">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-2 30l-10-10 2.83-2.83L22 28.34l13.17-13.17L38 18 22 34z"/></svg>
+          </div>
+          <h3 class="service-card__title">Customizable</h3>
+          <p class="service-card__desc">Every itinerary can be extended or modified. Add Lake Manyara, Tarangire or extra Serengeti days. Contact us for a personalized plan.</p>
+          <a href="/en/contact/" class="btn">Plan my safari</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Gallery</span>
+        <h2>Classic safari moments</h2>
+      </div>
+      <div class="photo-gallery animate-on-scroll delay-1">
+        <div class="photo-gallery__item photo-gallery__item--tall">
+          <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=500&h=700&fit=crop&auto=format" alt="Giraffe walking through acacia woodland in the Serengeti" width="500" height="700" loading="lazy" />
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=500&h=375&fit=crop&auto=format" alt="Zebras in formation on the Serengeti plains" width="500" height="375" loading="lazy" />
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1574068468547-40d0e2fba56c?w=500&h=375&fit=crop&auto=format" alt="Wildebeest migration crossing the Serengeti river" width="500" height="375" loading="lazy" />
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=500&h=375&fit=crop&auto=format" alt="Lion portrait in the golden Serengeti light" width="500" height="375" loading="lazy" />
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=500&h=375&fit=crop&auto=format" alt="Elephants crossing the savanna at dusk" width="500" height="375" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">FAQ</span>
+        <h2>Classic safari questions</h2>
+        <p>Everything you need to know about our classic game drive safaris in Tanzania.</p>
+      </div>
+      <div class="faq-list animate-on-scroll delay-1">
+        {faqItems.map(item => (
+          <details>
+            <summary>{item.question}</summary>
+            <div class="faq-answer" set:html={item.answer} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2>Book your classic safari</h2>
+        <p>The Serengeti awaits. Let our expert guides show you the best of Tanzania's wildlife on an unforgettable classic safari.</p>
+      </div>
+      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/en/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
+        <a href="/en/contact/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Contact us</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>

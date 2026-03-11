@@ -1,0 +1,79 @@
+---
+interface Crumb {
+  label: string;
+  href?: string;
+}
+interface Props {
+  crumbs: Crumb[];
+}
+const { crumbs } = Astro.props;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": crumbs.map((c, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "name": c.label,
+    ...(c.href ? { "item": `https://tolantongo.com.mx${c.href}` } : {})
+  }))
+};
+---
+<nav aria-label="Ruta de navegación" class="breadcrumbs">
+  <ol class="breadcrumbs__list" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a href="/" itemprop="item">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
+          <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+        </svg>
+        <span itemprop="name">Inicio</span>
+      </a>
+      <meta itemprop="position" content="1" />
+    </li>
+    {crumbs.map((crumb, i) => (
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span class="breadcrumbs__sep" aria-hidden="true">›</span>
+        {crumb.href ? (
+          <a href={crumb.href} itemprop="item">
+            <span itemprop="name">{crumb.label}</span>
+          </a>
+        ) : (
+          <span itemprop="name" aria-current="page">{crumb.label}</span>
+        )}
+        <meta itemprop="position" content={String(i + 2)} />
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+<style>
+.breadcrumbs { padding: var(--space-4) 0; }
+.breadcrumbs__list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+.breadcrumbs__list li {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+.breadcrumbs__list a {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--color-text-muted);
+  transition: color var(--transition-fast);
+}
+.breadcrumbs__list a:hover { color: var(--color-primary); }
+.breadcrumbs__list [aria-current="page"] {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+.breadcrumbs__sep { color: var(--color-border); }
+</style>

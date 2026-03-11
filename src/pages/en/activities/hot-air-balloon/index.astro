@@ -1,0 +1,270 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import { touristAttraction, faqPage } from '../../../../i18n/schema';
+
+const lang = 'en';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const faqItems = [
+  { question: 'When do balloon flights take off?', answer: 'Balloon flights launch <strong>just before dawn</strong>, typically around 5:30-6:00 AM, to catch the calm morning air and the spectacular sunrise over the Serengeti. You are picked up from your lodge or camp at approximately 4:30 AM. The early start is essential for safety (wind conditions) and produces the most breathtaking lighting for photography.' },
+  { question: 'How long does the balloon flight last?', answer: 'The flight itself lasts approximately <strong>one hour</strong>, floating at altitudes between 30 and 300 meters depending on wind conditions and wildlife sightings. The entire experience (from pickup to return) takes about 4-5 hours, including the pre-flight briefing, the flight, landing, and a champagne bush breakfast served on the savanna after landing.' },
+  { question: 'How much does a balloon safari cost?', answer: 'Balloon flights in the Serengeti typically cost between <strong>$500 and $600 USD per person</strong>, which includes hotel pickup, the flight, a champagne bush breakfast and a certificate. This is a premium experience that is widely considered one of the highlights of any Tanzania safari. Check our <a href="/en/prices/" style="color:#3D6B2E;font-weight:700">prices page</a> for current rates and package options.' },
+  { question: 'Is a balloon safari safe?', answer: 'Yes, balloon safaris in Tanzania have an <strong>excellent safety record</strong>. Flights are operated by licensed pilots with thousands of hours of experience. All balloons undergo daily inspections and meet international aviation standards. Flights are cancelled if wind conditions exceed safety thresholds. The pilot briefs all passengers on safety procedures and landing positions before takeoff.' },
+  { question: 'What should I wear for a balloon safari?', answer: 'Wear <strong>layered clothing</strong> as early mornings can be cool (around 15 celsius) but the balloon burners generate significant heat. Long trousers and closed-toe shoes are required. Bring a warm jacket, sunglasses and a hat. Cameras with secure straps are welcome but avoid loose items. The basket is spacious but sturdy shoes help with the landing.' },
+  { question: 'How many people fit in the balloon basket?', answer: 'Standard baskets carry <strong>12-16 passengers</strong> divided into compartments, each with excellent viewing positions. Private flights for couples or small groups (2-4 people) are available at a premium. All passengers have unobstructed views and photography opportunities. The pilot positions the balloon to optimize wildlife viewing throughout the flight.' },
+  { question: 'What happens if the flight is cancelled due to weather?', answer: 'Safety is the top priority, and flights may be cancelled if wind speeds exceed safe limits. If your flight is cancelled, you receive a <strong>full refund</strong> or the option to reschedule for another morning (subject to availability). Weather cancellations are uncommon during the dry season (June-October) but slightly more frequent during the green season.' },
+];
+
+const schema = [
+  touristAttraction({
+    name: 'Hot Air Balloon Safari in the Serengeti',
+    description: 'Float over the Serengeti at dawn on a hot air balloon safari. Aerial views of wildlife, champagne bush breakfast and unforgettable sunrise photography.',
+    url: 'https://safaritanzania.info/en/activities/hot-air-balloon/',
+  }),
+  faqPage(faqItems),
+];
+---
+
+<BaseLayout
+  title="Hot Air Balloon Safari in the Serengeti — Fly Over the Savanna"
+  description="Float over the Serengeti at dawn on a hot air balloon safari. Aerial views of herds, the Great Migration, champagne bush breakfast and unforgettable sunrise photography over the African savanna."
+  lang={lang}
+  schema={schema}
+  breadcrumbs={[
+    { label: 'Activities', href: '/en/activities/' },
+    { label: 'Hot Air Balloon' },
+  ]}
+>
+  <Header slot="header" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--green">Aerial Safari</span>
+          <h1 class="hero__title">Hot Air Balloon over the Serengeti</h1>
+          <p class="hero__desc">Float silently over the Serengeti plains at dawn. Watch the sunrise paint the savanna gold as herds of wildlife move below you, followed by a champagne bush breakfast in the heart of the wilderness.</p>
+          <div class="hero__actions">
+            <a href="/en/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
+            <a href="/en/contact/" class="btn btn--outline btn--lg">Book balloon flight</a>
+          </div>
+          <div class="stats-row">
+            <div class="stat"><strong>1 hour</strong><span>Flight time</span></div>
+            <div class="stat"><strong>Dawn</strong><span>Sunrise launch</span></div>
+            <div class="stat"><strong>7+</strong><span>Minimum age</span></div>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <img
+              src="https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=800&h=640&fit=crop&auto=format"
+              alt="Hot air balloon floating over the Serengeti savanna at golden sunrise"
+              width="800" height="640" loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE EXPERIENCE -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">The Experience</span>
+        <h2>A morning above the Serengeti</h2>
+        <p>From the pre-dawn pickup to the champagne toast on the savanna, every moment of a balloon safari is designed to be extraordinary.</p>
+      </div>
+      <div class="card-grid card-grid--2 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=450&fit=crop&auto=format" alt="Hot air balloon being inflated in the pre-dawn light on the Serengeti" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">The Dawn Launch</h3>
+            <p>Picked up from your lodge before first light, you arrive at the launch site as the balloon is being inflated. Watch the enormous envelope fill with hot air under a canopy of stars. As the pilot calls "all aboard," you climb into the basket and gently lift off the ground into the Serengeti dawn.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=450&fit=crop&auto=format" alt="Serengeti plains viewed from a hot air balloon at sunrise" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">The Flight</h3>
+            <p>For approximately one hour, you float between 30 and 300 meters above the plains. The silence is profound, broken only by occasional burner blasts. Below, herds of wildebeest and zebra begin their morning movements, elephants head to water and the sunrise transforms the landscape into a canvas of gold and amber.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT TO EXPECT TIMELINE -->
+  <section class="section section--green bg-green" style="position:relative;overflow:hidden">
+    <div style="position:absolute;top:20px;right:-30px;opacity:.08;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Your Morning</span>
+        <h2>The balloon safari timeline</h2>
+        <p>Here is exactly what your hot air balloon morning looks like, from pickup to return.</p>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1">
+        <div class="service-card">
+          <h3 class="service-card__title">4:30 AM — Pickup</h3>
+          <p class="service-card__desc">Our driver collects you from your lodge or camp and drives to the launch site. Hot coffee and tea are served while the crew prepares the balloon under the starlit sky.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">5:30 AM — Launch</h3>
+          <p class="service-card__desc">After a safety briefing, you board the basket. The pilot fires the burners and you gently ascend into the Serengeti dawn. The sunrise unfolds in spectacular fashion as you gain altitude.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">6:30 AM — Landing</h3>
+          <p class="service-card__desc">After approximately one hour of flight, the pilot selects a landing site on the open plains. The crew meets you with a champagne toast and a certificate commemorating your flight.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">7:00 AM — Bush Breakfast</h3>
+          <p class="service-card__desc">A full English bush breakfast is served on the savanna with white tablecloths, champagne and fresh juices. Surrounded by the morning Serengeti, it is the most memorable breakfast of your life.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTOGRAPHY -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">Photography</span>
+        <h2>Capturing the flight from above</h2>
+        <p>A balloon safari offers photography opportunities that are impossible from any other vantage point. Here are tips for the best aerial images.</p>
+      </div>
+      <div class="card-grid card-grid--3 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Camera Settings</h3>
+            <p>Use a fast shutter speed (1/500+) as the balloon does move gently. A wide-angle lens (16-35mm) captures the vast landscape, while a medium zoom (70-200mm) is ideal for wildlife from above. Shoot in RAW for maximum editing flexibility in the dramatic lighting.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Best Moments</h3>
+            <p>The most dramatic shots come during the first 10 minutes of sunrise when the sky blazes with color. Shadow play on the plains, the balloon's own shadow on the ground and aerial views of animal herds create unique compositions you cannot get elsewhere.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Safety Tips</h3>
+            <p>Use a camera strap at all times since a dropped camera is lost forever. Avoid changing lenses mid-flight. Smartphones with telephoto capability work surprisingly well. The pilot accommodates photography requests when safe to do so.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Gallery</span>
+        <h2>Views from above</h2>
+        <p>The Serengeti from a hot air balloon is a perspective few people ever experience. Here is a glimpse of what awaits.</p>
+      </div>
+      <div class="photo-gallery animate-on-scroll delay-1">
+        <div class="photo-gallery__item photo-gallery__item--tall">
+          <img src="https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=500&h=700&fit=crop&auto=format" alt="Hot air balloon ascending over the Serengeti at golden sunrise" width="500" height="700" loading="lazy" />
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=500&h=375&fit=crop&auto=format" alt="Aerial view of the Serengeti plains from a balloon" width="500" height="375" loading="lazy" />
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1574068468547-40d0e2fba56c?w=500&h=375&fit=crop&auto=format" alt="Wildebeest herds seen from a hot air balloon during migration" width="500" height="375" loading="lazy" />
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=500&h=375&fit=crop&auto=format" alt="Giraffe viewed from above during a balloon flight" width="500" height="375" loading="lazy" />
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=500&h=375&fit=crop&auto=format" alt="Zebra patterns from aerial perspective over the savanna" width="500" height="375" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMBINE -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">Perfect Addition</span>
+        <h2>Add a balloon flight to your safari</h2>
+        <p>A balloon flight pairs perfectly with any multi-day safari itinerary. Here are our recommended combinations.</p>
+      </div>
+      <div class="card-grid card-grid--2 animate-on-scroll delay-1">
+        <a href="/en/safaris/classic-safari/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=450&fit=crop&auto=format" alt="Classic safari vehicle on a Serengeti game drive" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Classic Safari + Balloon</h3>
+            <p>The most popular combination. Enjoy game drives by day and add a balloon flight on one morning for the ultimate Serengeti experience from every angle.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+        <a href="/en/safaris/photo-safari/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=450&fit=crop&auto=format" alt="Lion in golden light for photo safari" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Photo Safari + Balloon</h3>
+            <p>Capture aerial landscape images from the balloon and ground-level wildlife portraits on the photo safari. A photographer's dream combination.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">FAQ</span>
+        <h2>Balloon safari questions</h2>
+        <p>Everything you need to know about hot air balloon flights over the Serengeti.</p>
+      </div>
+      <div class="faq-list animate-on-scroll delay-1">
+        {faqItems.map(item => (
+          <details>
+            <summary>{item.question}</summary>
+            <div class="faq-answer" set:html={item.answer} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2>Fly over the Serengeti</h2>
+        <p>Book your hot air balloon safari for an unforgettable sunrise over Africa's most iconic landscape.</p>
+      </div>
+      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/en/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
+        <a href="/en/contact/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Book balloon flight</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>

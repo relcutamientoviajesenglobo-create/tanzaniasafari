@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Astro cache
+.astro/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Source media (originals already in public/media/)
+/media/
+
+# Claude AI local config
+.claude/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.*
+
+# Logs
+npm-debug.log*

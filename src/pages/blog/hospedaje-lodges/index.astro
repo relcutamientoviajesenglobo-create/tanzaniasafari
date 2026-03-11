@@ -1,0 +1,84 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import BlogCard from '../../../components/blog/BlogCard.astro';
+import { webPage } from '../../../i18n/schema';
+
+const title = 'Hospedaje y Lodges en Tanzania — Articulos y Guias';
+const description = 'Todo sobre alojamiento en Tanzania: mejores lodges de safari, campamentos de lujo, comparativas, consejos de reserva y experiencias de hospedaje en la sabana.';
+
+const allPosts = await getCollection('blog');
+const posts = allPosts
+  .filter(post => !post.slug.startsWith('en-') && post.data.silo === 'hospedaje-lodges')
+  .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+
+const breadcrumbs = [
+  { label: 'Blog', href: '/blog/' },
+  { label: 'Hospedaje y Lodges' },
+];
+
+const schema = [
+  webPage({
+    name: title,
+    description,
+    url: 'https://safaritanzania.info/blog/hospedaje-lodges/',
+  }),
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="/blog/hospedaje-lodges/"
+  schema={schema}
+  breadcrumbs={breadcrumbs}
+>
+  <Header slot="header" />
+  <Footer slot="footer" />
+
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <span class="chip chip--green">Blog</span>
+        <h1>Hospedaje y Lodges</h1>
+        <p>Guias y articulos sobre las mejores opciones de alojamiento en Tanzania: desde lodges de lujo hasta campamentos autenticos en plena sabana.</p>
+      </div>
+
+      {posts.length > 0 ? (
+        <div class="card-grid card-grid--3">
+          {posts.map(post => (
+            <BlogCard
+              title={post.data.title}
+              description={post.data.description}
+              slug={post.slug}
+              image={post.data.image}
+              imageAlt={post.data.imageAlt}
+              author={post.data.author}
+              publishDate={post.data.publishDate}
+              readingTime={post.data.readingTime}
+              category={post.data.category}
+            />
+          ))}
+        </div>
+      ) : (
+        <div style="text-align:center;padding:3rem 0">
+          <p style="font-size:1.1rem;color:#5A6B52">Estamos preparando articulos sobre hospedaje en Tanzania. Vuelve pronto.</p>
+          <a href="/blog/" class="btn btn--outline" style="margin-top:1.5rem">Ver todo el Blog</a>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <section class="section section--green">
+    <div class="container" style="text-align:center">
+      <h2 style="color:white;margin-bottom:.75rem">Encuentra tu Alojamiento Ideal</h2>
+      <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:500px;margin-left:auto;margin-right:auto">Te ayudamos a elegir el lodge o campamento perfecto para tu aventura africana.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/hospedaje/" class="btn btn--amber btn--lg">Ver Hospedaje</a>
+        <a href="/contacto/" class="btn btn--outline-white btn--lg">Contactar</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

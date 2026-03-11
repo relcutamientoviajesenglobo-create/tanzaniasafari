@@ -1,0 +1,240 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import { touristAttraction, faqPage } from '../../../../i18n/schema';
+
+const lang = 'en';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const faqItems = [
+  { question: 'What is the Big Five and can I see them all in Tanzania?', answer: 'The <strong>Big Five</strong> refers to the five most iconic African animals: <strong>lion, leopard, elephant, buffalo and rhinoceros</strong>. Yes, all five can be seen in Tanzania. The Serengeti and Ngorongoro Crater are among the best places on Earth to spot all five species, with the Ngorongoro offering particularly good chances of seeing the endangered black rhino.' },
+  { question: 'What is the Great Migration and when does it happen?', answer: 'The Great Migration is the annual movement of over <strong>2 million wildebeest, zebras and gazelles</strong> through the Serengeti-Mara ecosystem. It is a year-round event, but the most dramatic scenes occur from <strong>July to September</strong> when vast herds cross the Mara and Grumeti rivers. The calving season in January-February in the southern Serengeti is equally spectacular.' },
+  { question: 'What is the best time of year for wildlife watching?', answer: 'Tanzania offers excellent wildlife viewing year-round. The <strong>dry season (June-October)</strong> concentrates animals at water sources, making them easier to spot. The <strong>green season (November-May)</strong> offers lush landscapes, bird migrations and the wildebeest calving season. Each period has unique advantages for wildlife watching.' },
+  { question: 'How close can we get to the animals?', answer: 'Our guides follow strict park regulations that protect both wildlife and visitors. Vehicles typically approach to within <strong>20-30 meters</strong> of most animals, which is close enough for excellent viewing and photography. Some animals, like elephants and giraffes, may approach even closer on their own. Our guides read animal body language to ensure comfortable distances.' },
+  { question: 'Do I need binoculars for wildlife watching?', answer: 'While our guides spot animals with exceptional eyesight, <strong>binoculars are highly recommended</strong> for detailed viewing, especially for birds and distant herds. We provide quality binoculars on all our safaris, but you are welcome to bring your own. A <strong>10x42</strong> magnification is ideal for safari use, offering a good balance of power and field of view.' },
+  { question: 'What birds can I see in Tanzania?', answer: 'Tanzania is a paradise for birders with over <strong>1,100 species recorded</strong>. Highlights include flamingos at Lake Natron, martial eagles, secretary birds, lilac-breasted rollers (Tanzania\'s unofficial national bird), hornbills, kingfishers, ostriches and many rare endemic species. Our guides are skilled bird identifiers who can spot species most visitors would miss.' },
+];
+
+const schema = [
+  touristAttraction({
+    name: 'Wildlife Watching in Tanzania — Big Five & Great Migration',
+    description: 'Track the Big Five and witness the Great Migration in the Serengeti. Expert wildlife guides, optimal viewing and unforgettable encounters with Africa\'s iconic animals.',
+    url: 'https://safaritanzania.info/en/activities/wildlife-watching/',
+  }),
+  faqPage(faqItems),
+];
+---
+
+<BaseLayout
+  title="Wildlife Watching in Tanzania — Big Five & Great Migration"
+  description="Track the Big Five and witness the Great Migration in the Serengeti and Ngorongoro. Expert guides, optimal viewing positions and unforgettable encounters with lions, elephants, leopards and more."
+  lang={lang}
+  schema={schema}
+  breadcrumbs={[
+    { label: 'Activities', href: '/en/activities/' },
+    { label: 'Wildlife Watching' },
+  ]}
+>
+  <Header slot="header" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--green">Big Five &amp; Great Migration</span>
+          <h1 class="hero__title">Wildlife Watching in Tanzania</h1>
+          <p class="hero__desc">Track the Big Five across the Serengeti plains and witness the Great Migration, one of nature's most awe-inspiring spectacles. Over 2 million animals, 1,100 bird species and expert guides who bring it all to life.</p>
+          <div class="hero__actions">
+            <a href="/en/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
+            <a href="/en/contact/" class="btn btn--outline btn--lg">Plan wildlife trip</a>
+          </div>
+          <div class="stats-row">
+            <div class="stat"><strong>Big Five</strong><span>All species present</span></div>
+            <div class="stat"><strong>2M+</strong><span>Migration animals</span></div>
+            <div class="stat"><strong>1,100+</strong><span>Bird species</span></div>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <img
+              src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=800&h=640&fit=crop&auto=format"
+              alt="Elephant herd walking across the vast Serengeti plains in Tanzania"
+              width="800" height="640" loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE BIG FIVE -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">The Big Five</span>
+        <h2>Africa's most iconic animals</h2>
+        <p>Tanzania is one of the few places on Earth where all five of Africa's legendary animals roam free. Our expert guides maximize your chances of seeing each one.</p>
+      </div>
+      <div class="card-grid card-grid--3 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=450&fit=crop&auto=format" alt="Male African lion with golden mane resting in the Serengeti grasslands" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">African Lion</h3>
+            <p>The Serengeti hosts over 3,000 lions, one of Africa's largest populations. Watch pride dynamics, territorial displays and, if fortunate, a hunt in action.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&h=450&fit=crop&auto=format" alt="Leopard draped over a branch in the Serengeti" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Leopard</h3>
+            <p>The most elusive of the Big Five. Our guides know the favorite trees and territories of the Serengeti's leopards, giving you the best chance of a sighting.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=450&fit=crop&auto=format" alt="Elephant herd with calves in the Tanzanian bush" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Elephant</h3>
+            <p>Massive herds of African elephants roam through Tarangire and the Serengeti. Witness their complex social bonds, dust bathing and protective family behavior.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GREAT MIGRATION -->
+  <section class="section section--green bg-green" style="position:relative;overflow:hidden">
+    <div style="position:absolute;bottom:0;left:-30px;opacity:.08;pointer-events:none;color:#D4A017;transform:rotate(180deg)">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Natural Wonder</span>
+        <h2>The Great Migration</h2>
+        <p>The largest terrestrial animal movement on Earth. Over 2 million wildebeest, zebras and gazelles traverse the Serengeti in a continuous cycle of life, death and renewal.</p>
+      </div>
+      <div class="card-grid card-grid--2 animate-on-scroll delay-1">
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1574068468547-40d0e2fba56c?w=600&h=450&fit=crop&auto=format" alt="Wildebeest crossing the Mara River during the Great Migration" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">River Crossings (Jul-Sep)</h3>
+            <p>The most dramatic moments of the migration occur when massive herds plunge into the crocodile-infested Mara and Grumeti rivers. Thousands of wildebeest jostle, leap and swim in a spectacle of raw nature that defies description.</p>
+          </div>
+        </div>
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=600&h=450&fit=crop&auto=format" alt="Zebra herd grazing in the Serengeti during migration season" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Calving Season (Jan-Feb)</h3>
+            <p>In the southern Serengeti, approximately 500,000 calves are born within a few weeks. The grassy plains become a nursery of new life, attracting predators and offering intimate views of motherhood in the wild.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEASONAL CALENDAR -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">Seasonal Guide</span>
+        <h2>When to visit for the best viewing</h2>
+        <p>Tanzania offers excellent wildlife watching year-round, but each season brings unique highlights.</p>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1" style="grid-template-columns:repeat(2,1fr)">
+        <div class="service-card">
+          <h3 class="service-card__title">Dry Season (Jun-Oct)</h3>
+          <p class="service-card__desc">Animals concentrate at water sources, vegetation thins and visibility is excellent. The Great Migration crossings occur. This is peak safari season with the highest density of wildlife sightings. Morning temperatures are cool and comfortable.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Green Season (Nov-May)</h3>
+          <p class="service-card__desc">Lush green landscapes, dramatic skies and the calving season (January-February). Fewer tourists, lower prices and exceptional birdwatching as migratory species arrive. Afternoon showers rarely disrupt game drives.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHERE TO WATCH -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Best Locations</span>
+        <h2>Where to watch wildlife</h2>
+        <p>Each park and reserve in Tanzania offers distinct wildlife experiences and ecosystems.</p>
+      </div>
+      <div class="card-grid card-grid--2 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=450&fit=crop&auto=format" alt="Serengeti National Park landscape with dramatic clouds" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Serengeti National Park</h3>
+            <p>The largest and most famous wildlife area in Tanzania. Home to the Great Migration, massive lion prides, cheetahs on the open plains and over 500 bird species across 30,000 square kilometers.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1621414050345-53db43f7e7ab?w=600&h=450&fit=crop&auto=format" alt="Ngorongoro Crater panoramic view from the rim" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Ngorongoro Crater</h3>
+            <p>The world's largest intact caldera with the highest wildlife density in Africa. Excellent for black rhino sightings, flamingo-lined lakes, hippo pools and large elephant bulls in a stunning natural amphitheater.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">FAQ</span>
+        <h2>Wildlife watching questions</h2>
+        <p>Common questions about wildlife viewing, the Big Five and the Great Migration.</p>
+      </div>
+      <div class="faq-list animate-on-scroll delay-1">
+        {faqItems.map(item => (
+          <details>
+            <summary>{item.question}</summary>
+            <div class="faq-answer" set:html={item.answer} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2>Witness Tanzania's wildlife</h2>
+        <p>Track the Big Five and the Great Migration with our expert guides. Book your wildlife watching safari today.</p>
+      </div>
+      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/en/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
+        <a href="/en/contact/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Plan my trip</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>

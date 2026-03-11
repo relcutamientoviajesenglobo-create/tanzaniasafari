@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+
+const lang = 'en';
+const title = 'Safari Lodges in Tanzania — Luxury Accommodation in the Savanna';
+const description = 'Discover the best safari lodges in Tanzania. Luxury accommodation in the Serengeti, Ngorongoro, and Tarangire with premium amenities, gourmet dining, and direct wildlife access.';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const breadcrumbs = [
+  { label: 'Lodging', href: '/en/lodging/' },
+  { label: 'Safari Lodges' },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  description: description,
+  url: 'https://safaritanzania.info/en/lodging/lodges/',
+};
+---
+
+<BaseLayout title={title} description={description} schema={schema} breadcrumbs={breadcrumbs} lang={lang}>
+  <Header slot="header" lang={lang} />
+  <Footer slot="footer" lang={lang} />
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <span class="chip chip--green">Luxury Lodging</span>
+        <h1>Safari Lodges in Tanzania</h1>
+        <p>Experience the African wilderness without sacrificing comfort. Tanzania's safari lodges combine stunning architecture with the raw beauty of the savanna, offering premium amenities, gourmet cuisine, and front-row seats to nature's greatest spectacle.</p>
+        <div class="hero__actions">
+          <a href="/en/prices/" class="btn btn--primary btn--lg">See 2026 Prices</a>
+          <a href="/en/lodging/camps/" class="btn btn--outline btn--lg">View Safari Camps</a>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__photo-frame">
+          <div class="hero__deco hero__deco--tr"></div>
+          <div class="hero__deco hero__deco--bl"></div>
+          <img
+            src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=600&h=400&fit=crop"
+            alt="Luxury safari lodge suite with panoramic views over the Serengeti plains"
+            width="600"
+            height="400"
+            loading="eager"
+            style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:inherit"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Lodges -->
+  <section class="section section--gray">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:.75rem">Our Partner Lodges</h2>
+      <p style="text-align:center;max-width:620px;margin:0 auto 3rem">Carefully selected lodges across Tanzania's premier wildlife destinations. Each property offers exceptional service, stunning locations, and sustainable tourism practices.</p>
+
+      <div class="card-grid card-grid--3" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=400&h=300&fit=crop" alt="Serengeti luxury lodge with stone and thatch architecture" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Serengeti</span>
+            <p class="photo-card__title">Serengeti Savanna Lodge</p>
+            <p style="font-size:.9rem;color:var(--mc-text-muted)">Perched on a kopje overlooking the endless plains. Infinity pool, spa, and private balconies for watching the Great Migration pass below your room.</p>
+          </div>
+        </div>
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&h=300&fit=crop" alt="Ngorongoro Crater rim lodge with misty morning views" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Ngorongoro</span>
+            <p class="photo-card__title">Ngorongoro Crater Lodge</p>
+            <p style="font-size:.9rem;color:var(--mc-text-muted)">Situated on the rim of the world's largest intact caldera. Fireside dining, floor-to-ceiling windows, and unmatched sunrise views over the crater floor.</p>
+          </div>
+        </div>
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=300&fit=crop" alt="Tarangire tree-top lodge surrounded by baobab trees" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Tarangire</span>
+            <p class="photo-card__title">Tarangire Treetop Lodge</p>
+            <p style="font-size:.9rem;color:var(--mc-text-muted)">Elevated rooms built among ancient baobabs. Massive elephant herds visit the waterhole below, and leopards frequent the surrounding woodland.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lodge Amenities -->
+  <section class="section">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:.75rem">What Lodge Stays Include</h2>
+      <p style="text-align:center;max-width:620px;margin:0 auto 3rem">Every lodge stay comes with a comprehensive package designed for a seamless safari experience from arrival to departure.</p>
+
+      <div class="service-cards" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+        <div class="service-card">
+          <span style="font-size:2.2rem">🛏️</span>
+          <h3 style="color:var(--mc-green)">En-Suite Rooms</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">Spacious rooms with private bathrooms, hot water, quality linens, mosquito nets, and in-room safes. Many lodges offer private terraces with bush views.</p>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">🍷</span>
+          <h3 style="color:var(--mc-green)">Gourmet Dining</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">Full-board meals prepared by trained chefs. International cuisine blended with Tanzanian flavors, plus bush breakfasts and sundowner cocktails in the wild.</p>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">🏊</span>
+          <h3 style="color:var(--mc-green)">Swimming Pools</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">Most lodges feature infinity or plunge pools overlooking the savanna. The perfect way to cool off between game drives while watching wildlife nearby.</p>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">📶</span>
+          <h3 style="color:var(--mc-green)">Modern Connectivity</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">Wi-Fi in common areas, charging stations in rooms, and cellular connectivity at most lodges for staying in touch while in the bush.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green">
+    <div class="container" style="text-align:center;position:relative">
+      <div style="position:absolute;top:-30px;right:0;opacity:.12;pointer-events:none;color:#D4A017">
+        <Fragment set:html={ACACIA_LARGE} />
+      </div>
+      <h2 style="color:white;margin-bottom:.75rem">Book Your Lodge Stay</h2>
+      <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:520px;margin-left:auto;margin-right:auto">Contact us to reserve your preferred lodge and safari itinerary. We handle all logistics so you can focus on the adventure.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/en/prices/" class="btn btn--primary btn--lg">See 2026 Prices</a>
+        <a href="/en/contact/" class="btn btn--outline-white btn--lg" style="border-color:white;color:white">Contact Us</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

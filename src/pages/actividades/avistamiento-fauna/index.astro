@@ -1,0 +1,207 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { touristAttraction, faqPage } from '../../../i18n/schema';
+
+const schema = [
+  touristAttraction({
+    name: 'Avistamiento de Fauna en Tanzania',
+    url: 'https://safaritanzania.info/actividades/avistamiento-fauna/',
+    description: 'Avistamiento de fauna en Tanzania: Big Five, Gran Migración, más de 1,100 especies de aves y fauna endémica en el Serengeti, Ngorongoro, Tarangire y Lago Manyara.',
+  }),
+  faqPage([
+    { question: '¿Dónde se pueden ver los Big Five en Tanzania?', answer: 'El Cráter del Ngorongoro ofrece la mayor probabilidad de ver los cinco (león, leopardo, elefante, rinoceronte negro, búfalo) en un solo día. El Serengeti tiene los cinco pero el rinoceronte es más difícil de encontrar. Tarangire es famoso por sus enormes manadas de elefantes (hasta 300 individuos).' },
+    { question: '¿Cuándo ocurre la Gran Migración?', answer: 'La Gran Migración es un ciclo anual continuo. De diciembre a marzo las manadas están en el sur del Serengeti (época de crías). De abril a junio migran hacia el oeste y norte. De julio a septiembre cruzan el río Mara (los cruces más dramáticos). De octubre a noviembre regresan al sur.' },
+    { question: '¿Se pueden avistar aves en Tanzania?', answer: 'Tanzania alberga más de 1,100 especies de aves registradas, incluyendo el avestruz, el águila marcial, el secretario, flamencos rosados en los lagos alcalinos, el turaco de Fischer, el tejedor y más de 40 especies de rapaces. El Lago Manyara y el Ngorongoro son los mejores puntos para birding.' },
+    { question: '¿Qué probabilidad hay de ver un leopardo?', answer: 'En el Serengeti, la probabilidad de avistar un leopardo en un safari de 4+ días es superior al 70%. Los mejores puntos son las riberas del río Seronera y los kopjes rocosos del Serengeti central. Los guías conocen los territorios de los leopardos residentes y sus árboles favoritos.' },
+  ]),
+];
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+---
+
+<BaseLayout
+  title="Avistamiento de Fauna en Tanzania — Big Five y Gran Migración"
+  description="Avistamiento de fauna en Tanzania: Big Five en el Ngorongoro, Gran Migración en el Serengeti, más de 1,100 especies de aves. Guía completa de wildlife watching en los parques nacionales."
+  canonical="/actividades/avistamiento-fauna/"
+  schema={schema}
+  breadcrumbs={[{label: 'Actividades', href: '/actividades/'}, {label: 'Avistamiento de Fauna'}]}
+>
+  <Header slot="header" />
+  <Footer slot="footer" />
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Avistamiento de Fauna en Tanzania">
+    <div class="hero__daff hero__daff--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <span class="chip chip--green">Big Five · Migración · Aves</span>
+        <h1 class="hero__title">Avistamiento de Fauna en Tanzania</h1>
+        <p class="hero__desc">Tanzania alberga la mayor concentración de grandes mamíferos del planeta. Desde los Big Five hasta la Gran Migración de 1.5 millones de ñus, cada game drive es un espectáculo de vida salvaje sin igual en el mundo.</p>
+        <div class="hero__actions">
+          <a href="/precios/" class="btn btn--primary btn--lg">Ver precios 2026</a>
+          <a href="/contacto/" class="btn btn--outline btn--lg">Reservar experiencia</a>
+        </div>
+        <div class="stats-row">
+          <div class="stat"><strong>Big 5</strong><span>Especies icónicas</span></div>
+          <div class="stat"><strong>1.5 M</strong><span>Ñus migrando</span></div>
+          <div class="stat"><strong>1,100+</strong><span>Especies de aves</span></div>
+          <div class="stat"><strong>16 parques</strong><span>Áreas protegidas</span></div>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__photo-frame">
+          <div class="hero__deco hero__deco--tr"></div>
+          <div class="hero__deco hero__deco--bl"></div>
+          <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=800&h=640&fit=crop&auto=format" alt="Elefante africano caminando majestuosamente entre acacias en el Parque Nacional Tarangire" width="800" height="640" loading="eager">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIG FIVE SECTION -->
+  <section class="section" aria-labelledby="bigfive-title">
+    <div class="container animate-on-scroll" style="max-width:860px">
+      <h2 id="bigfive-title" style="margin-bottom:1.25rem">Los Big Five de Tanzania</h2>
+      <p style="font-size:1.05rem;margin-bottom:1rem">Los Big Five es el nombre que reciben las cinco especies de grandes mamíferos africanos más buscadas en un safari: el león, el leopardo, el elefante africano, el rinoceronte negro y el búfalo cafre. El término se originó en la caza deportiva del siglo XIX, pero hoy se refiere exclusivamente a la observación fotográfica de estas especies emblemáticas.</p>
+      <p style="font-size:1.05rem;margin-bottom:1rem">Tanzania es uno de los pocos países donde los cinco se pueden avistar en estado completamente salvaje. El Cráter del Ngorongoro concentra la mayor densidad de grandes depredadores de África en sus 260 km², con más de 25,000 animales incluyendo una población estable de rinocerontes negros protegidos las 24 horas por rangers. El Serengeti, con 14,763 km², alberga las poblaciones más grandes de leones del continente (más de 3,000 individuos) y es uno de los últimos refugios del guepardo africano.</p>
+      <p style="font-size:1.05rem;margin-bottom:2rem">El Parque Nacional Tarangire se distingue por sus inmensas manadas de elefantes (hasta 300 individuos en un solo grupo durante la temporada seca) que recorren paisajes dominados por baobabs milenarios. El Lago Manyara, aunque más pequeño, ofrece el fenómeno único de los leones trepadores de árboles que descansan en las ramas de los mahogany durante el calor del mediodía.</p>
+    </div>
+  </section>
+
+  <!-- SPECIES CARDS -->
+  <section class="section section--gray" aria-labelledby="especies-title">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2 id="especies-title">Las especies que podrás avistar</h2>
+        <p>Cada parque nacional de Tanzania ofrece avistamientos únicos según la temporada</p>
+      </div>
+      <div class="card-grid card-grid--4 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=480&fit=crop&auto=format" alt="León macho descansando en la sabana del Serengeti" width="600" height="480" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Big Five</span>
+            <p class="photo-card__title">León africano</p>
+            <p style="color:#5A6B52;font-size:.9rem">El Serengeti tiene +3,000 leones. Los machos con melena dorada dominan las llanuras mientras las hembras cazan en equipo al amanecer.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=480&fit=crop&auto=format" alt="Elefante africano en el Parque Nacional Tarangire" width="600" height="480" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Big Five</span>
+            <p class="photo-card__title">Elefante africano</p>
+            <p style="color:#5A6B52;font-size:.9rem">Tarangire alberga las manadas más grandes de África. Grupos de hasta 300 individuos recorren los bosques de baobabs durante la temporada seca.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=600&h=480&fit=crop&auto=format" alt="Manada de cebras en las llanuras del Serengeti" width="600" height="480" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Migración</span>
+            <p class="photo-card__title">Cebras del Serengeti</p>
+            <p style="color:#5A6B52;font-size:.9rem">200,000 cebras migran junto a los ñus en un espectáculo de rayas blancas y negras que se extiende hasta el horizonte.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=480&fit=crop&auto=format" alt="Jirafa masái caminando en la sabana de Tanzania" width="600" height="480" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Endémica</span>
+            <p class="photo-card__title">Jirafa masái</p>
+            <p style="color:#5A6B52;font-size:.9rem">La subespecie más grande de jirafa, endémica de Tanzania y Kenia. Sus manchas irregulares color marrón oscuro la distinguen de otras jirafas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GREAT MIGRATION -->
+  <section class="section" aria-labelledby="migracion-title">
+    <div class="container animate-on-scroll" style="max-width:860px">
+      <h2 id="migracion-title" style="margin-bottom:1.25rem">La Gran Migración: el espectáculo natural más grande del mundo</h2>
+      <p style="font-size:1.05rem;margin-bottom:1rem">La Gran Migración del ñu es un ciclo anual continuo donde aproximadamente 1.5 millones de ñus, acompañados por 200,000 cebras y 300,000 gacelas de Thomson, recorren un circuito de 800 kilómetros entre el Serengeti en Tanzania y el Masai Mara en Kenia, siguiendo las lluvias y los pastos frescos.</p>
+      <p style="font-size:1.05rem;margin-bottom:1rem">Los meses de julio a septiembre ofrecen el momento más dramático: los cruces del río Mara, donde miles de ñus se lanzan al agua turbia mientras cocodrilos del Nilo de hasta 5 metros aguardan sumergidos. Los depredadores terrestres (leones, leopardos, hienas) se posicionan en ambas orillas esperando a los animales más débiles. Es el espectáculo de depredación más intenso que se puede presenciar en la naturaleza.</p>
+      <p style="font-size:1.05rem;margin-bottom:2rem">De enero a marzo, el sur del Serengeti se convierte en la zona de partos: medio millón de crías de ñu nacen en un período de apenas tres semanas, una estrategia evolutiva que satura a los depredadores y garantiza la supervivencia de la mayoría. Esta temporada es ideal para fotografiar escenas de madres con crías y las primeras cacerías de guepardos sobre ñus recién nacidos.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap">
+        <a href="/safaris/safari-clasico/" class="btn btn--primary">Safari para ver la Migración</a>
+        <a href="/safaris/safari-fotografico/" class="btn btn--outline">Safari fotográfico</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO GALLERY -->
+  <section class="section section--gray" aria-labelledby="galeria-fauna">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2 id="galeria-fauna">La fauna de Tanzania en imágenes</h2>
+      </div>
+      <div class="photo-gallery animate-on-scroll delay-1">
+        <div class="photo-gallery__item photo-gallery__item--wide">
+          <img src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=800&h=450&fit=crop&auto=format" alt="Gran manada de cebras y ñus durante la migración en el Serengeti" width="800" height="450" loading="lazy">
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=450&fit=crop&auto=format" alt="León macho con melena espectacular al amanecer" width="600" height="450" loading="lazy">
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=450&fit=crop&auto=format" alt="Jirafa masái contra cielo dorado del atardecer" width="600" height="450" loading="lazy">
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=450&fit=crop&auto=format" alt="Elefante africano de frente con colmillos en Tarangire" width="600" height="450" loading="lazy">
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1621414050345-53db43f7e7ab?w=600&h=450&fit=crop&auto=format" alt="Panorámica del Cráter del Ngorongoro con fauna visible" width="600" height="450" loading="lazy">
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=450&fit=crop&auto=format" alt="Llanuras del Serengeti con acacias al atardecer" width="600" height="450" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2 id="faq-title">Preguntas frecuentes sobre avistamiento de fauna</h2>
+      </div>
+      <div class="faq-list animate-on-scroll delay-1">
+        <details>
+          <summary>¿Dónde se pueden ver los Big Five en Tanzania?</summary>
+          <div class="faq-answer">
+            El Cráter del Ngorongoro ofrece la mayor probabilidad de ver los cinco (león, leopardo, elefante, rinoceronte negro, búfalo) en un solo día gracias a su ecosistema cerrado de 260 km². El Serengeti alberga las cinco especies en un territorio de 14,763 km². Tarangire destaca por sus manadas de elefantes de hasta 300 individuos. Consulta nuestros <a href="/safaris/safari-clasico/" style="color:#3D6B2E;font-weight:700">itinerarios de safari clásico</a>.
+          </div>
+        </details>
+        <details>
+          <summary>¿Cuándo ocurre la Gran Migración?</summary>
+          <div class="faq-answer">
+            La Gran Migración es un ciclo anual continuo. De diciembre a marzo las manadas están en el sur del Serengeti (temporada de crías). De abril a junio migran al oeste y norte. De julio a septiembre cruzan el río Mara con los cruces más dramáticos. De octubre a noviembre regresan al sur cerrando el ciclo.
+          </div>
+        </details>
+        <details>
+          <summary>¿Se pueden avistar aves en Tanzania?</summary>
+          <div class="faq-answer">
+            Tanzania alberga más de 1,100 especies de aves registradas, desde el avestruz hasta el diminuto nectarinia. El Lago Manyara concentra colonias de flamencos rosados, el Ngorongoro tiene más de 40 especies de rapaces y el Serengeti ofrece avistamientos de avestruces, secretarios y águilas marciales. Ofrecemos safaris especializados en birding.
+          </div>
+        </details>
+        <details>
+          <summary>¿Qué probabilidad hay de ver un leopardo?</summary>
+          <div class="faq-answer">
+            En el Serengeti, la probabilidad de avistar un leopardo en un safari de 4+ días supera el 70%. Los mejores puntos son las riberas del río Seronera y los kopjes rocosos del Serengeti central, donde los leopardos descansan con sus presas en las ramas de las acacias. Nuestros guías conocen los territorios de los leopardos residentes.
+          </div>
+        </details>
+      </div>
+      <p style="text-align:center;margin-top:2rem;color:#5A6B52;font-size:.95rem">
+        ¿Quieres un safari enfocado en avistamiento? <a href="/contacto/" style="color:#3D6B2E;font-weight:700">Diseñamos tu itinerario a medida</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

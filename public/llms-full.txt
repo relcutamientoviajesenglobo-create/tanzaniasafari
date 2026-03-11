@@ -1,0 +1,36 @@
+# Safari Tanzania — safaritanzania.info (Full)
+
+## About
+Safari Tanzania is a bilingual (Spanish/English) tourism website dedicated to safari experiences in Tanzania, East Africa. Located in the Arusha region, Tanzania is home to some of the world's most spectacular wildlife and natural landscapes, including the Serengeti National Park, Ngorongoro Crater, and Mount Kilimanjaro.
+
+## Site Structure
+
+### Safaris (/safaris/)
+- Safari Clasico (/safaris/safari-clasico/) — Classic game drives through national parks
+- Safari Fotografico (/safaris/safari-fotografico/) — Specialized photography safaris
+- Safari Nocturno (/safaris/safari-nocturno/) — Night safari experiences
+
+### Activities (/actividades/)
+- Avistamiento de Fauna (/actividades/avistamiento-fauna/) — Wildlife watching
+- Caminatas Bush (/actividades/caminatas-bush/) — Guided bush walks
+- Globo Aerostatico (/actividades/globo-aerostatico/) — Hot air balloon rides over Serengeti
+- Fotografia Safari (/actividades/fotografia-safari/) — Safari photography tips and tours
+
+### Lodging (/hospedaje/)
+- Lodges (/hospedaje/lodges/) — Safari lodges from luxury to budget
+- Campamentos (/hospedaje/campamentos/) — Tented camps, mobile and permanent
+
+### Other Pages
+- Prices (/precios/) — Safari packages, park fees, lodging costs
+- How to Get There (/como-llegar/) — Flights, visas, land routes
+- Contact (/contacto/) — Phone, WhatsApp, email
+- National Parks (/parques-nacionales/) — Park overviews
+- Blog (/blog/) — Travel guides, tips, culture articles
+
+### English Pages (/en/)
+Complete English mirror of all Spanish pages.
+
+## Contact
+- Website: https://safaritanzania.info
+- Email: info@safaritanzania.info
+- Location: Arusha, Tanzania

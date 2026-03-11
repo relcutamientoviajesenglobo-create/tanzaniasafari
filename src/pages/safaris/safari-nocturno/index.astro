@@ -1,0 +1,172 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { touristAttraction, faqPage } from '../../../i18n/schema';
+
+const schema = [
+  touristAttraction({
+    name: 'Safari Nocturno en Tanzania',
+    url: 'https://safaritanzania.info/safaris/safari-nocturno/',
+    description: 'Safari nocturno en Tanzania con spotlight para avistamiento de fauna crepuscular y nocturna: leopardos, hienas, búhos, genetas y galagos en el Serengeti y Tarangire.',
+  }),
+  faqPage([
+    { question: '¿Qué animales se ven en un safari nocturno?', answer: 'En los safaris nocturnos se avistan leopardos cazando, hienas manchadas en manada, búhos orejudos, genetas, galagos (primates nocturnos), cerdos hormigueros, pangolines, liebres de matorral, aves nocturnas como chotacabras y serpientes activas por la noche.' },
+    { question: '¿Es seguro un safari nocturno?', answer: 'Sí. Los safaris nocturnos se realizan en los mismos vehículos 4x4 reforzados con guías armados certificados y equipo de comunicación por radio. Los focos spotlight tienen filtros especiales que no dañan la vista de los animales. Nunca se desciende del vehículo durante el recorrido nocturno.' },
+    { question: '¿Cuánto dura un safari nocturno?', answer: 'El safari nocturno dura entre 3 y 4 horas, comenzando al atardecer (6:00 PM) y regresando al lodge o campamento entre 9:00 y 10:00 PM. Algunos safaris nocturnos especiales incluyen una parada para observación astronómica de la Vía Láctea.' },
+  ]),
+];
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+---
+
+<BaseLayout
+  title="Safari Nocturno en Tanzania — Fauna Nocturna del Serengeti"
+  description="Safari nocturno en Tanzania: avistamiento de leopardos, hienas, búhos y fauna crepuscular con spotlight en el Serengeti y Tarangire. Expediciones de 3-4 horas con guías nocturnos."
+  canonical="/safaris/safari-nocturno/"
+  schema={schema}
+  breadcrumbs={[{label: 'Safaris', href: '/safaris/'}, {label: 'Safari Nocturno'}]}
+>
+  <Header slot="header" />
+  <Footer slot="footer" />
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Safari Nocturno en Tanzania">
+    <div class="hero__daff hero__daff--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <span class="chip chip--green">Nocturno · Spotlight · Serengeti</span>
+        <h1 class="hero__title">Safari Nocturno en Tanzania</h1>
+        <p class="hero__desc">Cuando cae el sol sobre la sabana, un mundo completamente diferente cobra vida. Leopardos en cacería silenciosa, manadas de hienas, búhos orejudos y los escurridizos pangolines emergen bajo el manto de estrellas africanas.</p>
+        <div class="hero__actions">
+          <a href="/precios/" class="btn btn--primary btn--lg">Ver precios 2026</a>
+          <a href="/contacto/" class="btn btn--outline btn--lg">Reservar safari</a>
+        </div>
+        <div class="stats-row">
+          <div class="stat"><strong>3-4 hrs</strong><span>Duración</span></div>
+          <div class="stat"><strong>Leopardos</strong><span>Depredadores</span></div>
+          <div class="stat"><strong>Búhos</strong><span>Aves nocturnas</span></div>
+          <div class="stat"><strong>Hienas</strong><span>Fauna crepuscular</span></div>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__photo-frame">
+          <div class="hero__deco hero__deco--tr"></div>
+          <div class="hero__deco hero__deco--bl"></div>
+          <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=800&h=640&fit=crop&auto=format" alt="Silueta de jirafa contra el cielo crepuscular en Tanzania durante un safari nocturno" width="800" height="640" loading="eager">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT — About night safari -->
+  <section class="section" aria-labelledby="nocturno-title">
+    <div class="container animate-on-scroll" style="max-width:860px">
+      <h2 id="nocturno-title" style="margin-bottom:1.25rem">La sabana cobra vida cuando cae la noche</h2>
+      <p style="font-size:1.05rem;margin-bottom:1rem">El safari nocturno revela un ecosistema completamente diferente al que se experimenta durante el día. Aproximadamente el 40% de los mamíferos africanos son nocturnos o crepusculares, lo que significa que un safari diurno solo muestra la mitad de la vida salvaje de Tanzania. Al anochecer, los grandes depredadores activan sus instintos de caza: el leopardo emerge de su escondite arbóreo, las hienas manchadas se organizan en clanes de cacería y los leones inician sus rugidos territoriales que resuenan a kilómetros de distancia.</p>
+      <p style="font-size:1.05rem;margin-bottom:1rem">Los recorridos nocturnos se realizan en los mismos vehículos Toyota Land Cruiser 4x4 equipados con focos spotlight de largo alcance. Estos focos utilizan filtros de luz roja que permiten observar a los animales sin afectar su comportamiento ni su visión. El guía nocturno especializado maneja el spotlight mientras un segundo guía conduce el vehículo, rastreando sonidos, huellas frescas y señales de actividad predatoria.</p>
+      <p style="font-size:1.05rem;margin-bottom:1rem">Entre las especies exclusivamente nocturnas que se avistan están los galagos (también llamados bush babies), pequeños primates de enormes ojos que saltan entre las acacias; las genetas, felinos elegantes con pelaje moteado; los cerdos hormigueros (aardvarks) excavando termiteros; y con suerte extraordinaria, el pangolín, uno de los mamíferos más esquivos del planeta.</p>
+      <p style="font-size:1.05rem;margin-bottom:2rem">Una parte especial del safari nocturno es la observación astronómica. Lejos de cualquier contaminación lumínica, la sabana del Serengeti ofrece uno de los cielos más oscuros del planeta. Durante una pausa en el recorrido, el guía señala las constelaciones del hemisferio sur, la Vía Láctea visible a simple vista y los planetas que orbitan sobre el horizonte africano.</p>
+    </div>
+  </section>
+
+  <!-- NOCTURNAL SPECIES CARDS -->
+  <section class="section section--gray" aria-labelledby="especies-title">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2 id="especies-title">Fauna nocturna que podrás avistar</h2>
+        <p>Cada especie nocturna tiene su momento: desde el crepúsculo hasta la madrugada</p>
+      </div>
+      <div class="card-grid card-grid--4 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Depredador</span>
+            <p class="photo-card__title">Leopardo en cacería</p>
+            <p style="color:#5A6B52;font-size:.9rem">El cazador solitario más eficiente de África. Caza emboscando a sus presas en la oscuridad total, usando su visión nocturna seis veces superior a la humana.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Manada</span>
+            <p class="photo-card__title">Hienas manchadas</p>
+            <p style="color:#5A6B52;font-size:.9rem">Contrario al mito, son depredadores formidables que cazan en clan organizado. Sus vocalizaciones nocturnas son inconfundibles en la sabana.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Primate</span>
+            <p class="photo-card__title">Galagos (Bush babies)</p>
+            <p style="color:#5A6B52;font-size:.9rem">Pequeños primates nocturnos con enormes ojos reflectantes que saltan entre las ramas de las acacias. Su llanto característico suena como un bebé humano.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Ave rapaz</span>
+            <p class="photo-card__title">Búho orejudo africano</p>
+            <p style="color:#5A6B52;font-size:.9rem">Rapaz nocturna silenciosa que caza roedores y pequeños mamíferos. Sus ojos enormes brillan cuando el spotlight los encuentra posados en ramas bajas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO GALLERY -->
+  <section class="section" aria-labelledby="galeria-nocturno">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2 id="galeria-nocturno">El crepúsculo africano en imágenes</h2>
+      </div>
+      <div class="photo-gallery animate-on-scroll delay-1">
+        <div class="photo-gallery__item photo-gallery__item--wide">
+          <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&h=450&fit=crop&auto=format" alt="Sabana del Serengeti durante el crepúsculo con cielo anaranjado" width="800" height="450" loading="lazy">
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=450&fit=crop&auto=format" alt="Silueta de jirafa contra el cielo nocturno de Tanzania" width="600" height="450" loading="lazy">
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=450&fit=crop&auto=format" alt="León preparándose para la caza crepuscular" width="600" height="450" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--gray" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2 id="faq-title">Preguntas frecuentes sobre el safari nocturno</h2>
+      </div>
+      <div class="faq-list animate-on-scroll delay-1">
+        <details>
+          <summary>¿Qué animales se ven en un safari nocturno?</summary>
+          <div class="faq-answer">
+            En los safaris nocturnos se avistan leopardos en cacería activa, hienas manchadas organizadas en clanes, búhos orejudos africanos, genetas, galagos (primates nocturnos de ojos enormes), cerdos hormigueros, pangolines (con mucha suerte), chotacabras, liebres de matorral y diversas serpientes activas por la noche. El <a href="/safaris/safari-clasico/" style="color:#3D6B2E;font-weight:700">safari clásico diurno</a> complementa perfectamente esta experiencia nocturna.
+          </div>
+        </details>
+        <details>
+          <summary>¿Es seguro un safari nocturno?</summary>
+          <div class="faq-answer">
+            Absolutamente. Los safaris nocturnos se realizan en vehículos Toyota Land Cruiser 4x4 reforzados, con guías armados certificados por TANAPA y equipo de comunicación por radio satelital. Los focos spotlight tienen filtros especiales de luz roja que no afectan a los animales. En ningún momento se desciende del vehículo durante el recorrido nocturno.
+          </div>
+        </details>
+        <details>
+          <summary>¿Cuánto dura un safari nocturno?</summary>
+          <div class="faq-answer">
+            El safari nocturno dura entre 3 y 4 horas. Comienza al atardecer (aproximadamente 6:00 PM) cuando los depredadores se activan, y regresa al lodge o campamento entre 9:00 y 10:00 PM. Algunos safaris especiales incluyen una parada para observación astronómica de la Vía Láctea sin contaminación lumínica.
+          </div>
+        </details>
+        <details>
+          <summary>¿Se puede combinar con un safari diurno?</summary>
+          <div class="faq-answer">
+            Sí, y es altamente recomendable. El safari nocturno funciona como actividad complementaria dentro de un <a href="/safaris/safari-clasico/" style="color:#3D6B2E;font-weight:700">safari clásico</a> o <a href="/safaris/safari-fotografico/" style="color:#3D6B2E;font-weight:700">fotográfico</a> de varios días. Típicamente se programa una o dos noches del itinerario para el recorrido nocturno, aprovechando las noches en los parques donde está permitido.
+          </div>
+        </details>
+      </div>
+      <p style="text-align:center;margin-top:2rem;color:#5A6B52;font-size:.95rem">
+        ¿Quieres añadir un safari nocturno a tu itinerario? <a href="/contacto/" style="color:#3D6B2E;font-weight:700">Contáctanos para personalizar tu experiencia</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

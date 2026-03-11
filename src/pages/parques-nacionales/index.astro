@@ -1,0 +1,194 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { touristAttraction } from '../../i18n/schema';
+
+const title = 'Parques Nacionales de Tanzania — Serengeti, Ngorongoro, Tarangire y Mas';
+const description = 'Conoce los principales parques nacionales de Tanzania para safari: Serengeti, Ngorongoro, Tarangire, Lago Manyara, Selous y mas. Guia completa con informacion de cada parque.';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const breadcrumbs = [
+  { label: 'Parques Nacionales' },
+];
+
+const schema = [
+  touristAttraction({
+    name: 'Parques Nacionales de Tanzania',
+    description,
+    url: 'https://safaritanzania.info/parques-nacionales/',
+  }),
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="/parques-nacionales/"
+  schema={schema}
+  breadcrumbs={breadcrumbs}
+>
+  <Header slot="header" />
+  <Footer slot="footer" />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <span class="chip chip--green">Tanzania</span>
+        <h1 class="hero__title">Parques Nacionales de Tanzania</h1>
+        <p class="hero__desc">Tanzania alberga algunos de los ecosistemas mas ricos del planeta. Desde las llanuras infinitas del Serengeti hasta el crater del Ngorongoro, cada parque es un mundo por descubrir.</p>
+        <div class="hero__actions">
+          <a href="/precios/" class="btn btn--primary btn--lg">Ver Safaris</a>
+          <a href="/contacto/" class="btn btn--outline btn--lg">Consultar</a>
+        </div>
+        <div class="stats-row">
+          <div class="stat">
+            <strong>22</strong>
+            <span style="font-size:.8rem;color:#2D4A22;opacity:.7">Parques Nacionales</span>
+          </div>
+          <div class="stat">
+            <strong>38%</strong>
+            <span style="font-size:.8rem;color:#2D4A22;opacity:.7">Territorio protegido</span>
+          </div>
+          <div class="stat">
+            <strong>Big Five</strong>
+            <span style="font-size:.8rem;color:#2D4A22;opacity:.7">Presentes</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__photo-frame">
+          <div class="hero__deco hero__deco--tr"></div>
+          <div class="hero__deco hero__deco--bl"></div>
+          <img
+            src="https://images.unsplash.com/photo-1535338454528-1b5c57e4fa28?w=800&h=600&fit=crop&auto=format"
+            alt="Panoramica del Serengeti con manada de nus migrando"
+            width="600"
+            height="480"
+            loading="eager"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARQUES PRINCIPALES -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <span class="chip chip--amber">Imprescindibles</span>
+        <h2>Parques del Circuito Norte</h2>
+        <p>El circuito norte es el mas popular y accesible desde Arusha, con los parques mas iconicos de Africa.</p>
+      </div>
+
+      <div class="card-grid card-grid--2">
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1535338454528-1b5c57e4fa28?w=800&h=600&fit=crop&auto=format" alt="Llanuras del Serengeti con manada de nus" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Patrimonio UNESCO</span>
+            <p class="photo-card__title">Parque Nacional Serengeti</p>
+            <p style="font-size:.9rem;color:#5A6B52">El parque mas famoso de Africa. 14,763 km2 de llanuras infinitas. Hogar de la Gran Migracion con 1.5 millones de nus. Los Big Five presentes durante todo el ano.</p>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1621252179027-94459d278660?w=800&h=600&fit=crop&auto=format" alt="Crater del Ngorongoro con animales" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Patrimonio UNESCO</span>
+            <p class="photo-card__title">Area de Conservacion Ngorongoro</p>
+            <p style="font-size:.9rem;color:#5A6B52">El crater volcanico mas grande del mundo (19 km de diametro). La mayor densidad de depredadores de Africa. Rinocerontes negros, flamencos y mas de 25,000 animales.</p>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800&h=600&fit=crop&auto=format" alt="Elefantes y baobabs en Tarangire" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Elefantes</span>
+            <p class="photo-card__title">Parque Nacional Tarangire</p>
+            <p style="font-size:.9rem;color:#5A6B52">Famoso por las mayores concentraciones de elefantes de Tanzania y sus iconicos baobabs milenarios. El rio Tarangire atrae a miles de animales en temporada seca.</p>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=800&h=600&fit=crop&auto=format" alt="Flamencos rosados en el Lago Manyara" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Aves</span>
+            <p class="photo-card__title">Parque Nacional Lago Manyara</p>
+            <p style="font-size:.9rem;color:#5A6B52">Un paraiso ornitologico con mas de 400 especies de aves, incluidos miles de flamencos rosados. Conocido por sus leones trepadores de arboles, un fenomeno raro.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARQUES DEL SUR -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header">
+        <span class="chip chip--green">Exploracion</span>
+        <h2>Otros Parques Destacados</h2>
+        <p>Para viajeros que buscan experiencias menos masificadas y naturaleza virgen.</p>
+      </div>
+
+      <div class="card-grid card-grid--3">
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&h=600&fit=crop&auto=format" alt="Reserva de Selous Tanzania" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Reserva</span>
+            <p class="photo-card__title">Nyerere (ex-Selous)</p>
+            <p style="font-size:.9rem;color:#5A6B52">La reserva de caza mas grande de Africa. Safari en bote por el rio Rufiji, caminatas guiadas y avistamiento de perros salvajes africanos.</p>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1609198092458-38a293c7ac4b?w=800&h=600&fit=crop&auto=format" alt="Parque Nacional Ruaha Tanzania" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Remoto</span>
+            <p class="photo-card__title">Parque Nacional Ruaha</p>
+            <p style="font-size:.9rem;color:#5A6B52">El parque mas grande de Tanzania y uno de los menos visitados. Enormes manadas de elefantes y la mayor poblacion de leones del pais.</p>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=800&h=600&fit=crop&auto=format" alt="Monte Kilimanjaro Tanzania" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Montana</span>
+            <p class="photo-card__title">Parque Nacional Kilimanjaro</p>
+            <p style="font-size:.9rem;color:#5A6B52">La montana mas alta de Africa (5,895 m). Ascenso por 5 zonas climaticas distintas, desde selva tropical hasta glaciares. Un desafio epico.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green">
+    <div class="container" style="text-align:center">
+      <h2 style="color:white;margin-bottom:.75rem">Explora los Parques de Tanzania</h2>
+      <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:500px;margin-left:auto;margin-right:auto">Disenaremos un itinerario a medida incluyendo los parques que mas te interesen.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/precios/" class="btn btn--amber btn--lg">Ver Paquetes</a>
+        <a href="/contacto/" class="btn btn--outline-white btn--lg">Contactar</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

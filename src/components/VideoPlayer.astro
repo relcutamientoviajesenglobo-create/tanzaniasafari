@@ -1,0 +1,75 @@
+---
+/**
+ * VideoPlayer — Responsive video component with lazy loading and SEO schema.
+ * Supports vertical (9:16) and horizontal (16:9) videos.
+ * Usage:
+ *   <VideoPlayer videoId="pozas-panoramica" lang="es" />
+ *   <VideoPlayer videoId="albercas-drone" lang="en" variant="hero" />
+ */
+import type { Lang } from '../i18n/config';
+import { getVideo } from '../i18n/videos';
+
+interface Props {
+  videoId: string;
+  lang?: Lang;
+  variant?: 'default' | 'hero' | 'inline' | 'background';
+  autoplay?: boolean;
+  muted?: boolean;
+  loop?: boolean;
+  controls?: boolean;
+  class?: string;
+}
+
+const {
+  videoId,
+  lang = 'es',
+  variant = 'default',
+  autoplay = true,
+  muted = true,
+  loop = true,
+  controls = true,
+  class: className = '',
+} = Astro.props;
+
+const video = getVideo(videoId);
+if (!video) throw new Error(`Video "${videoId}" not found in registry`);
+
+const src = video.src[lang];
+const alt = video.alt[lang];
+const title = video.title[lang];
+const isVertical = video.height > video.width;
+const aspectClass = isVertical ? 'video-player--vertical' : 'video-player--horizontal';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: title,
+  description: alt,
+  contentUrl: `https://tolantongo.com.mx${src}`,
+  duration: `PT${video.duration}S`,
+  thumbnailUrl: `https://tolantongo.com.mx${src.replace('.mp4', '.webp')}`,
+  uploadDate: '2026-01-01',
+};
+---
+
+<figure class={`video-player ${aspectClass} video-player--${variant} ${className}`.trim()}>
+  <video
+    src={src}
+    title={title}
+    width={video.width}
+    height={video.height}
+    autoplay={autoplay}
+    muted={muted}
+    loop={loop}
+    controls={controls}
+    playsinline
+    preload="metadata"
+    loading="lazy"
+  >
+    <p>{alt}</p>
+  </video>
+  {variant !== 'background' && (
+    <figcaption class="video-player__caption">{alt}</figcaption>
+  )}
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+</figure>

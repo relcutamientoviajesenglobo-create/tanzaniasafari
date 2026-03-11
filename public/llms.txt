@@ -1,0 +1,20 @@
+# Safari Tanzania — safaritanzania.info
+
+## About
+Safari Tanzania is a comprehensive tourism website about safari experiences in Tanzania, East Africa. The site covers safari types (classic, photography, night), activities (wildlife watching, bush walks, hot air balloon, safari photography), lodging (safari lodges, tented camps), national parks (Serengeti, Ngorongoro, Tarangire), and practical travel information.
+
+## Content
+- Safari types: Classic game drives, photography safaris, night safaris
+- Activities: Wildlife watching, bush walks, hot air balloon rides, safari photography
+- Lodging: Safari lodges, tented camps
+- National parks: Serengeti, Ngorongoro Crater, Tarangire, Lake Manyara
+- Practical info: Prices, how to get there, contact, travel guides
+- Blog: Travel guides, safari tips, Masai culture, adventure activities
+
+## Languages
+- Spanish (default): safaritanzania.info
+- English: safaritanzania.info/en/
+
+## Contact
+- Website: https://safaritanzania.info
+- Email: info@safaritanzania.info

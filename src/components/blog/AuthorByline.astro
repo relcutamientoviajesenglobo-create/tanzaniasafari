@@ -1,0 +1,64 @@
+---
+import { t } from '../../i18n/utils';
+import { languages } from '../../i18n/config';
+import type { Lang } from '../../i18n/config';
+
+export interface Props {
+  name: string;
+  slug: string;
+  avatar: string;
+  role?: string;
+  publishDate: Date;
+  updatedDate?: Date;
+  readingTime?: number;
+  lang?: Lang;
+}
+
+const { name, slug, avatar, role, publishDate, updatedDate, readingTime } = Astro.props;
+const lang: Lang = Astro.props.lang || 'es';
+
+const dateLocale = languages[lang].dateLocale;
+const formattedDate = publishDate.toLocaleDateString(dateLocale, {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const formattedUpdate = updatedDate?.toLocaleDateString(dateLocale, {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const authorBase = lang === 'en' ? '/en/blog/authors' : '/blog/autores';
+const altText = lang === 'en' ? `Photo of ${name}` : `Foto de ${name}`;
+---
+
+<div class="author-byline">
+  <a href={`${authorBase}/${slug}/`} class="author-byline__avatar-link">
+    <img src={avatar} alt={altText} width="44" height="44" class="author-byline__avatar" loading="lazy">
+  </a>
+  <div class="author-byline__info">
+    <div class="author-byline__name-row">
+      <a href={`${authorBase}/${slug}/`} class="author-byline__name">{name}</a>
+      {role && <span class="author-byline__role">{role}</span>}
+    </div>
+    <div class="author-byline__meta">
+      <time datetime={publishDate.toISOString().split('T')[0]}>
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        {formattedDate}
+      </time>
+      {formattedUpdate && (
+        <span class="author-byline__updated">
+          ({t('blog.updated', lang)}: {formattedUpdate})
+        </span>
+      )}
+      {readingTime && (
+        <span class="author-byline__reading">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          {readingTime} {t('blog.reading', lang)}
+        </span>
+      )}
+    </div>
+  </div>
+</div>

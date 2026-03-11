@@ -1,0 +1,11 @@
+{
+  "name": "Safari Tanzania Team",
+  "role": "Editorial team",
+  "bio": "Our editorial team is made up of certified safari guides, wildlife experts and passionate nature lovers with over 15 years of experience in Tanzania.",
+  "avatar": "/media/authors/equipo-safari.jpg",
+  "expertise": ["safaris", "wildlife", "photography", "Masai culture", "national parks"],
+  "social": {
+    "instagram": "https://www.instagram.com/safaritanzaniainfo",
+    "facebook": "https://www.facebook.com/safaritanzaniainfo"
+  }
+}

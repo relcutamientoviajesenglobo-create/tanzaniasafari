@@ -1,0 +1,67 @@
+---
+import BlogCard from './BlogCard.astro';
+import { getCollection } from 'astro:content';
+import { t } from '../../i18n/utils';
+import type { Lang } from '../../i18n/config';
+
+export interface Props {
+  currentSlug: string;
+  silo: string;
+  relatedSlugs?: string[];
+  limit?: number;
+  lang?: Lang;
+}
+
+const { currentSlug, silo, relatedSlugs, limit = 3 } = Astro.props;
+const lang: Lang = Astro.props.lang || 'es';
+
+const allPosts = await getCollection('blog');
+
+// Filter by language if posts have lang field
+const langPosts = allPosts.filter(p => (p.data as any).lang === lang || (!('lang' in p.data) && lang === 'es'));
+
+let related: typeof langPosts = [];
+
+// First try explicitly related posts
+if (relatedSlugs && relatedSlugs.length > 0) {
+  related = langPosts.filter(p => relatedSlugs.includes(p.slug) && p.slug !== currentSlug);
+}
+
+// Fill remaining slots with same-silo posts
+if (related.length < limit) {
+  const sameSilo = langPosts
+    .filter(p => p.data.silo === silo && p.slug !== currentSlug && !related.find(r => r.slug === p.slug))
+    .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
+  related = [...related, ...sameSilo].slice(0, limit);
+}
+
+// If still not enough, fill with latest from any silo
+if (related.length < limit) {
+  const others = langPosts
+    .filter(p => p.slug !== currentSlug && !related.find(r => r.slug === p.slug))
+    .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
+  related = [...related, ...others].slice(0, limit);
+}
+---
+
+{related.length > 0 && (
+  <section class="related-posts">
+    <h2>{t('blog.related', lang)}</h2>
+    <div class="card-grid card-grid--3">
+      {related.map(post => (
+        <BlogCard
+          title={post.data.title}
+          description={post.data.description}
+          slug={post.slug}
+          image={post.data.image}
+          imageAlt={post.data.imageAlt}
+          author={post.data.author}
+          publishDate={post.data.publishDate}
+          readingTime={post.data.readingTime}
+          category={post.data.category}
+          lang={lang}
+        />
+      ))}
+    </div>
+  </section>
+)}

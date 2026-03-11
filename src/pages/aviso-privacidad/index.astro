@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { webPage } from '../../i18n/schema';
+
+const title = 'Aviso de Privacidad — Safari Tanzania';
+const description = 'Politica de privacidad de Safari Tanzania. Conoce como recopilamos, usamos y protegemos tu informacion personal al utilizar nuestros servicios de safari.';
+
+const breadcrumbs = [
+  { label: 'Aviso de Privacidad' },
+];
+
+const schema = [
+  webPage({
+    name: title,
+    description,
+    url: 'https://safaritanzania.info/aviso-privacidad/',
+  }),
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="/aviso-privacidad/"
+  schema={schema}
+  breadcrumbs={breadcrumbs}
+>
+  <Header slot="header" />
+  <Footer slot="footer" />
+
+  <section class="section">
+    <div class="container" style="max-width:800px">
+      <h1 style="margin-bottom:2rem">Aviso de Privacidad</h1>
+      <p style="font-size:.85rem;color:#5A6B52;margin-bottom:2rem"><strong>Ultima actualizacion:</strong> 10 de marzo de 2026</p>
+
+      <div style="display:flex;flex-direction:column;gap:2rem">
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:.75rem">1. Responsable del tratamiento</h2>
+          <p>Safari Tanzania, con domicilio en Sokoine Road, Arusha, Tanzania, es responsable del tratamiento de sus datos personales. Puede contactarnos en <a href="mailto:info@safaritanzania.info" style="color:#3D6B2E;font-weight:700">info@safaritanzania.info</a> o al telefono <a href="tel:+255753000000" style="color:#3D6B2E;font-weight:700">+255 753 000 000</a>.</p>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:.75rem">2. Datos que recopilamos</h2>
+          <p>Recopilamos los siguientes datos personales cuando usted nos contacta o realiza una reserva:</p>
+          <ul style="margin-top:.75rem;padding-left:1.5rem;list-style:disc;display:flex;flex-direction:column;gap:.4rem;color:#5A6B52">
+            <li>Nombre completo</li>
+            <li>Direccion de correo electronico</li>
+            <li>Numero de telefono</li>
+            <li>Nacionalidad y datos de pasaporte (para tramites de visa y parques)</li>
+            <li>Preferencias de viaje y requisitos dieteticos</li>
+            <li>Informacion de pago (procesada por pasarelas seguras de terceros)</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:.75rem">3. Finalidad del tratamiento</h2>
+          <p>Utilizamos sus datos para:</p>
+          <ul style="margin-top:.75rem;padding-left:1.5rem;list-style:disc;display:flex;flex-direction:column;gap:.4rem;color:#5A6B52">
+            <li>Gestionar y confirmar reservas de safari</li>
+            <li>Comunicarnos sobre su viaje (itinerario, cambios, actualizaciones)</li>
+            <li>Procesar pagos y emitir facturas</li>
+            <li>Cumplir con requisitos legales de parques nacionales y autoridades de Tanzania</li>
+            <li>Enviar informacion promocional (solo con su consentimiento previo)</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:.75rem">4. Comparticion de datos</h2>
+          <p>Compartimos sus datos unicamente con:</p>
+          <ul style="margin-top:.75rem;padding-left:1.5rem;list-style:disc;display:flex;flex-direction:column;gap:.4rem;color:#5A6B52">
+            <li>Autoridades de parques nacionales de Tanzania (requerido para entrada)</li>
+            <li>Proveedores de alojamiento (lodges y campamentos)</li>
+            <li>Procesadores de pago seguros</li>
+            <li>Autoridades gubernamentales cuando sea legalmente requerido</li>
+          </ul>
+          <p style="margin-top:.75rem">No vendemos ni compartimos sus datos con terceros para fines publicitarios.</p>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:.75rem">5. Seguridad de los datos</h2>
+          <p>Implementamos medidas tecnicas y organizativas adecuadas para proteger sus datos personales contra acceso no autorizado, perdida o alteracion. Los pagos se procesan mediante pasarelas seguras con encriptacion SSL.</p>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:.75rem">6. Sus derechos</h2>
+          <p>Usted tiene derecho a:</p>
+          <ul style="margin-top:.75rem;padding-left:1.5rem;list-style:disc;display:flex;flex-direction:column;gap:.4rem;color:#5A6B52">
+            <li>Acceder a sus datos personales</li>
+            <li>Rectificar datos inexactos</li>
+            <li>Solicitar la eliminacion de sus datos</li>
+            <li>Oponerse al tratamiento de sus datos</li>
+            <li>Retirar su consentimiento en cualquier momento</li>
+          </ul>
+          <p style="margin-top:.75rem">Para ejercer estos derechos, contactenos en <a href="mailto:info@safaritanzania.info" style="color:#3D6B2E;font-weight:700">info@safaritanzania.info</a>.</p>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:.75rem">7. Cookies</h2>
+          <p>Este sitio web utiliza cookies esenciales para su funcionamiento. No utilizamos cookies de seguimiento ni publicidad. Las cookies analiticas se usan unicamente para mejorar la experiencia del usuario y pueden ser desactivadas en la configuracion de su navegador.</p>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:.75rem">8. Cambios a este aviso</h2>
+          <p>Nos reservamos el derecho de actualizar este aviso de privacidad. Los cambios se publicaran en esta pagina con la fecha de actualizacion correspondiente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

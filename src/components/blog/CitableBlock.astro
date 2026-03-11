@@ -1,0 +1,19 @@
+---
+export interface Props {
+  source?: string;
+}
+
+const { source } = Astro.props;
+---
+
+<blockquote class="citable-block">
+  <div class="citable-block__content">
+    <svg class="citable-block__icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+      <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+    </svg>
+    <slot />
+  </div>
+  {source && (
+    <cite class="citable-block__source">— {source}</cite>
+  )}
+</blockquote>

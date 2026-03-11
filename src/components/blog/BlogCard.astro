@@ -1,0 +1,66 @@
+---
+import { t } from '../../i18n/utils';
+import { languages } from '../../i18n/config';
+import type { Lang } from '../../i18n/config';
+
+export interface Props {
+  title: string;
+  description: string;
+  slug: string;
+  image: string;
+  imageAlt: string;
+  author: string;
+  publishDate: Date;
+  readingTime?: number;
+  category: string;
+  tag?: string;
+  lang?: Lang;
+}
+
+const { title, description, slug, image, imageAlt, author, publishDate, readingTime, category, tag } = Astro.props;
+const lang: Lang = Astro.props.lang || 'es';
+
+const formattedDate = publishDate.toLocaleDateString(languages[lang].dateLocale, {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const categoryLabels: Record<string, string> = {
+  guias: t('cat.guias', lang),
+  naturaleza: t('cat.naturaleza', lang),
+  actividades: t('cat.actividades', lang),
+  hospedaje: t('cat.hospedaje', lang),
+  cultura: t('cat.cultura', lang),
+  consejos: t('cat.consejos', lang),
+};
+
+const blogBase = lang === 'en' ? '/en/blog' : '/blog';
+---
+
+<a href={`${blogBase}/${slug}/`} class="photo-card blog-card">
+  <div class="photo-card__img">
+    <img src={image} alt={imageAlt} width="400" height="260" loading="lazy">
+  </div>
+  <div class="photo-card__body">
+    <span class="photo-card__tag">{tag || categoryLabels[category] || category}</span>
+    <p class="photo-card__title">{title}</p>
+    <p class="blog-card__excerpt">{description}</p>
+    <div class="blog-card__meta">
+      <span class="blog-card__author">{author}</span>
+      <span class="blog-card__sep">·</span>
+      <time datetime={publishDate.toISOString().split('T')[0]}>{formattedDate}</time>
+      {readingTime && (
+        <>
+          <span class="blog-card__sep">·</span>
+          <span>{readingTime} {t('blog.reading', lang)}</span>
+        </>
+      )}
+    </div>
+    <div class="photo-card__arrow">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </div>
+  </div>
+</a>

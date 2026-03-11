@@ -1,0 +1,15 @@
+---
+export interface Props {
+  value: string;
+  label: string;
+  icon?: string;
+}
+
+const { value, label, icon } = Astro.props;
+---
+
+<div class="stat-box">
+  {icon && <span class="stat-box__icon">{icon}</span>}
+  <span class="stat-box__value">{value}</span>
+  <span class="stat-box__label">{label}</span>
+</div>

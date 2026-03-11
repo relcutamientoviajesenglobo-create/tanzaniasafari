@@ -1,0 +1,205 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { touristAttraction, faqPage } from '../../i18n/schema';
+
+const schema = [
+  touristAttraction({
+    name: 'Actividades en Tanzania',
+    url: 'https://safaritanzania.info/actividades/',
+    description: 'Actividades de aventura en Tanzania: avistamiento de fauna, caminatas bush con guías Masái, vuelos en globo aerostático sobre el Serengeti y visitas culturales a comunidades locales.',
+  }),
+  faqPage([
+    { question: '¿Qué actividades se pueden hacer en un safari en Tanzania?', answer: 'Además del game drive en 4x4, Tanzania ofrece avistamiento especializado de fauna (Big Five y aves), caminatas bush guiadas por Masáis, vuelos en globo aerostático sobre el Serengeti, visitas culturales a bomas Masái, snorkel en Zanzíbar, senderismo en el Monte Meru y observación astronómica nocturna.' },
+    { question: '¿Las actividades están incluidas en el precio del safari?', answer: 'El game drive diario y las caminatas cortas están incluidas en todos los paquetes de safari. Las actividades adicionales como globo aerostático ($500-600 USD), visitas culturales ($30-50 USD) y extensiones a Zanzíbar tienen costo separado.' },
+    { question: '¿Se necesita condición física especial para las caminatas bush?', answer: 'Las caminatas bush estándar son de dificultad moderada (2-3 horas, terreno llano). No requieren condición física excepcional. Para caminatas extendidas o senderismo en el Monte Meru, se recomienda estar en buena forma física. Siempre se adapta el ritmo al grupo.' },
+    { question: '¿Los niños pueden participar en todas las actividades?', answer: 'Los safaris en 4x4 aceptan niños desde los 5 años. Las caminatas bush tienen un mínimo de 12 años por motivos de seguridad. El globo aerostático acepta niños desde 7 años. Las visitas culturales no tienen restricción de edad.' },
+  ]),
+];
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+---
+
+<BaseLayout
+  title="Actividades en Tanzania — Avistamiento, Caminatas, Globo y Más"
+  description="Actividades en Tanzania: avistamiento de Big Five, caminatas bush con Masáis, globo aerostático sobre el Serengeti, visitas culturales. Experiencias únicas en la sabana africana."
+  canonical="/actividades/"
+  schema={schema}
+  breadcrumbs={[{label: 'Actividades'}]}
+>
+  <Header slot="header" />
+  <Footer slot="footer" />
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Actividades en Tanzania">
+    <div class="hero__daff hero__daff--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <span class="chip chip--green">Aventura · Naturaleza · Cultura</span>
+        <h1 class="hero__title">Actividades en Tanzania</h1>
+        <p class="hero__desc">Más allá del game drive: caminatas bush con guías Masái, vuelos en globo aerostático al amanecer sobre el Serengeti, avistamiento especializado de los Big Five y encuentros culturales con las comunidades locales.</p>
+        <div class="hero__actions">
+          <a href="/precios/" class="btn btn--primary btn--lg">Ver precios 2026</a>
+          <a href="/contacto/" class="btn btn--outline btn--lg">Personalizar actividades</a>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__photo-frame">
+          <div class="hero__deco hero__deco--tr"></div>
+          <div class="hero__deco hero__deco--bl"></div>
+          <img src="https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=800&h=640&fit=crop&auto=format" alt="Globo aerostático sobrevolando la sabana del Serengeti al amanecer con manadas de animales" width="800" height="640" loading="eager">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 ACTIVITY PHOTO CARDS -->
+  <section class="section section--gray" aria-labelledby="actividades-title">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2 id="actividades-title">Experiencias que van más allá del <em style="font-style:normal;color:#3D6B2E">safari tradicional</em></h2>
+        <p>Cada actividad te conecta de manera diferente con la naturaleza, la fauna y la cultura de Tanzania.</p>
+      </div>
+
+      <div class="card-grid card-grid--4 animate-on-scroll">
+        <a href="/actividades/avistamiento-fauna/" class="photo-card" aria-label="Avistamiento de Fauna">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=480&fit=crop&auto=format" alt="Elefante africano de cerca en el Parque Nacional Tarangire" width="600" height="480" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Big Five</span>
+            <p class="photo-card__title">Avistamiento de Fauna</p>
+            <div class="photo-card__arrow">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </a>
+        <a href="/actividades/caminatas-bush/" class="photo-card" aria-label="Caminatas Bush">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&h=480&fit=crop&auto=format" alt="Guía Masái liderando una caminata en la sabana de Tanzania" width="600" height="480" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Senderismo</span>
+            <p class="photo-card__title">Caminatas Bush con Masáis</p>
+            <div class="photo-card__arrow">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </a>
+        <a href="/actividades/globo-aerostatico/" class="photo-card" aria-label="Globo Aerostático">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=480&fit=crop&auto=format" alt="Globo aerostático inflándose al amanecer en el Serengeti" width="600" height="480" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Vuelo</span>
+            <p class="photo-card__title">Globo Aerostático en el Serengeti</p>
+            <div class="photo-card__arrow">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </a>
+        <a href="/safaris/" class="photo-card" aria-label="Safaris en 4x4">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=480&fit=crop&auto=format" alt="Vehículo 4x4 de safari recorriendo el Serengeti" width="600" height="480" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Game Drive</span>
+            <p class="photo-card__title">Safaris en 4x4 por los Parques</p>
+            <div class="photo-card__arrow">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT BLOCK -->
+  <section class="section" aria-labelledby="mas-title">
+    <div class="container animate-on-scroll" style="max-width:860px">
+      <h2 id="mas-title" style="margin-bottom:1.25rem">Tanzania: un destino de experiencias múltiples</h2>
+      <p style="font-size:1.05rem;margin-bottom:1rem">Tanzania ofrece una diversidad de experiencias que va mucho más allá del game drive convencional. Mientras que el safari en vehículo 4x4 sigue siendo el corazón de cualquier expedición, las actividades complementarias añaden dimensiones sensoriales que transforman un viaje en una experiencia completa de inmersión en la naturaleza y la cultura africana.</p>
+      <p style="font-size:1.05rem;margin-bottom:1rem">Las caminatas bush permiten experimentar la sabana a pie, escuchando los sonidos de la naturaleza que el motor del vehículo normalmente enmascara: el canto de los tejedores, el crujido de las ramas bajo las patas de un dik-dik, el zumbido de los insectos polinizadores. Los guías Masái comparten conocimientos ancestrales sobre plantas medicinales, rastreo de huellas y señales de la naturaleza que han acumulado durante generaciones.</p>
+      <p style="font-size:1.05rem;margin-bottom:2rem">El vuelo en globo aerostático sobre el Serengeti ofrece una perspectiva aérea única: al amanecer, cuando la sabana se baña de tonos dorados, se pueden ver las manadas de ñus y cebras moviéndose como ríos vivientes a través de las llanuras. El aterrizaje incluye un desayuno tipo champagne servido bajo una acacia, una tradición que celebra cada vuelo completado con éxito.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap">
+        <a href="/actividades/avistamiento-fauna/" class="btn btn--primary">Avistamiento de fauna</a>
+        <a href="/actividades/globo-aerostatico/" class="btn btn--outline">Globo aerostático</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE CARDS -->
+  <section class="section section--green bg-green" aria-labelledby="reserva-title" style="position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.2;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll" style="margin-bottom:2.5rem">
+        <h2 id="reserva-title" style="color:#D4A017">Reserva tus actividades</h2>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1">
+        <div class="service-card">
+          <svg class="service-card__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          <p class="service-card__title">Todo incluido</p>
+          <p class="service-card__desc">Las actividades se integran en tu paquete de safari. Un solo precio, sin sorpresas ni costos ocultos.</p>
+        </div>
+        <div class="service-card">
+          <svg class="service-card__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          <p class="service-card__title">Grupos reducidos</p>
+          <p class="service-card__desc">Máximo 6 personas por actividad para garantizar una experiencia personalizada e íntima con la naturaleza.</p>
+        </div>
+        <div class="service-card">
+          <svg class="service-card__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11V11.99z"/></svg>
+          <p class="service-card__title">Guías certificados</p>
+          <p class="service-card__desc">Todos nuestros guías tienen certificación TANAPA y hablan español, inglés y swahili.</p>
+        </div>
+        <div class="service-card">
+          <svg class="service-card__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+          <p class="service-card__title">Horarios flexibles</p>
+          <p class="service-card__desc">Adaptamos los horarios de cada actividad para maximizar las oportunidades de avistamiento y fotografía.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2 id="faq-title">Preguntas frecuentes sobre actividades</h2>
+      </div>
+      <div class="faq-list animate-on-scroll delay-1">
+        <details>
+          <summary>¿Qué actividades se pueden hacer en un safari en Tanzania?</summary>
+          <div class="faq-answer">
+            Además del game drive en 4x4, Tanzania ofrece <a href="/actividades/avistamiento-fauna/" style="color:#3D6B2E;font-weight:700">avistamiento especializado de fauna</a> (Big Five y más de 1,100 especies de aves), <a href="/actividades/caminatas-bush/" style="color:#3D6B2E;font-weight:700">caminatas bush guiadas por Masáis</a>, <a href="/actividades/globo-aerostatico/" style="color:#3D6B2E;font-weight:700">vuelos en globo aerostático</a> sobre el Serengeti, visitas culturales a bomas Masái y observación astronómica nocturna.
+          </div>
+        </details>
+        <details>
+          <summary>¿Las actividades están incluidas en el precio del safari?</summary>
+          <div class="faq-answer">
+            El game drive diario y las caminatas cortas están incluidas en todos los paquetes. Las actividades adicionales como el globo aerostático ($500-600 USD), visitas culturales extendidas ($30-50 USD) y extensiones a Zanzíbar tienen costo separado. Consulta <a href="/precios/" style="color:#3D6B2E;font-weight:700">todos los precios aquí</a>.
+          </div>
+        </details>
+        <details>
+          <summary>¿Se necesita condición física especial para las caminatas bush?</summary>
+          <div class="faq-answer">
+            Las caminatas bush estándar son de dificultad moderada (2-3 horas, terreno mayormente llano) y no requieren condición física excepcional. Se adapta el ritmo al grupo. Para senderismo extendido o ascenso al Monte Meru, sí se recomienda estar en buena forma física.
+          </div>
+        </details>
+        <details>
+          <summary>¿Los niños pueden participar en todas las actividades?</summary>
+          <div class="faq-answer">
+            Los safaris en 4x4 aceptan niños desde los 5 años. Las caminatas bush tienen un mínimo de 12 años por motivos de seguridad (presencia de fauna salvaje). El globo aerostático acepta niños desde 7 años. Las visitas culturales a comunidades Masái no tienen restricción de edad y son especialmente educativas para los más pequeños.
+          </div>
+        </details>
+      </div>
+      <p style="text-align:center;margin-top:2rem;color:#5A6B52;font-size:.95rem">
+        ¿Quieres personalizar tus actividades? <a href="/contacto/" style="color:#3D6B2E;font-weight:700">Contáctanos para diseñar tu itinerario ideal</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

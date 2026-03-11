@@ -1,0 +1,267 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { touristAttraction, faqPage } from '../../../i18n/schema';
+
+const title = 'Fotografia de Safari en Tanzania — Guia Completa para Fotografos';
+const description = 'Aprende a fotografiar la vida salvaje africana: equipo recomendado, mejores ubicaciones, consejos de expertos y horarios ideales para capturar el Serengeti y Ngorongoro.';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const breadcrumbs = [
+  { label: 'Actividades', href: '/actividades/' },
+  { label: 'Fotografia de Safari' },
+];
+
+const faqs = [
+  { question: 'Cual es el mejor lente para fotografia de safari?', answer: 'Un teleobjetivo de 100-400mm o 200-600mm es ideal para capturar animales a distancia. Un 70-200mm f/2.8 es excelente para retratos de animales cercanos y escenas con poca luz.' },
+  { question: 'Cual es la mejor hora del dia para fotografiar animales?', answer: 'La hora dorada (amanecer y atardecer) ofrece la mejor luz. Los game drives matutinos (6:00-9:00 AM) y vespertinos (4:00-6:30 PM) son los momentos ideales.' },
+  { question: 'Necesito un tripode para safari?', answer: 'Un tripode completo no es practico en un vehiculo de safari. Se recomienda un bean bag o un monopie. Muchos vehiculos tienen soportes especiales para camaras.' },
+  { question: 'Que camara es mejor para safari, DSLR o mirrorless?', answer: 'Ambas son excelentes. Las mirrorless modernas (Sony A7RV, Canon R5, Nikon Z8) ofrecen ventajas en enfoque automatico y peso. Las DSLR tienen mayor duracion de bateria.' },
+];
+
+const schema = [
+  touristAttraction({
+    name: 'Fotografia de Safari en Tanzania',
+    description,
+    url: 'https://safaritanzania.info/actividades/fotografia-safari/',
+  }),
+  faqPage(faqs),
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="/actividades/fotografia-safari/"
+  schema={schema}
+  breadcrumbs={breadcrumbs}
+>
+  <Header slot="header" />
+  <Footer slot="footer" />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <span class="chip chip--green">Fotografia</span>
+        <h1 class="hero__title">Fotografia de Safari en Tanzania</h1>
+        <p class="hero__desc">Captura la majestuosidad de la vida salvaje africana con nuestra guia completa de fotografia de safari. Consejos profesionales, equipo recomendado y los mejores momentos para disparar.</p>
+        <div class="hero__actions">
+          <a href="/precios/" class="btn btn--primary btn--lg">Ver Paquetes Fotograficos</a>
+          <a href="/contacto/" class="btn btn--outline btn--lg">Consultar</a>
+        </div>
+        <div class="stats-row">
+          <div class="stat">
+            <strong>Big Five</strong>
+            <span style="font-size:.8rem;color:#2D4A22;opacity:.7">Todos fotografiables</span>
+          </div>
+          <div class="stat">
+            <strong>1,000+</strong>
+            <span style="font-size:.8rem;color:#2D4A22;opacity:.7">Especies de aves</span>
+          </div>
+          <div class="stat">
+            <strong>6:00 AM</strong>
+            <span style="font-size:.8rem;color:#2D4A22;opacity:.7">Hora dorada ideal</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__photo-frame">
+          <div class="hero__deco hero__deco--tr"></div>
+          <div class="hero__deco hero__deco--bl"></div>
+          <img
+            src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&h=600&fit=crop&auto=format"
+            alt="Fotografo capturando un leopardo en safari en Tanzania"
+            width="600"
+            height="480"
+            loading="eager"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EQUIPO RECOMENDADO -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <span class="chip chip--amber">Equipo</span>
+        <h2>Equipo Fotografico Recomendado</h2>
+        <p>El equipo adecuado marca la diferencia entre una buena foto y una imagen extraordinaria. Aqui te compartimos nuestras recomendaciones probadas en el campo.</p>
+      </div>
+
+      <div class="card-grid card-grid--3">
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=800&h=600&fit=crop&auto=format" alt="Camaras profesionales para safari" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Camaras</span>
+            <p class="photo-card__title">Cuerpos de Camara</p>
+            <p style="font-size:.9rem;color:#5A6B52">Recomendamos cuerpos con buen ISO alto y enfoque rapido: Sony A7RV, Canon R5 II, Nikon Z8. Un segundo cuerpo es esencial como respaldo.</p>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1606986628253-e2bfc9a39b53?w=800&h=600&fit=crop&auto=format" alt="Teleobjetivos para fotografia de vida salvaje" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Lentes</span>
+            <p class="photo-card__title">Lentes Teleobjetivo</p>
+            <p style="font-size:.9rem;color:#5A6B52">100-400mm f/4.5-5.6 para versatilidad, 200-600mm para animales lejanos, 70-200mm f/2.8 para retratos y poca luz. Un gran angular 16-35mm para paisajes.</p>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=800&h=600&fit=crop&auto=format" alt="Accesorios de fotografia para safari" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Accesorios</span>
+            <p class="photo-card__title">Accesorios Esenciales</p>
+            <p style="font-size:.9rem;color:#5A6B52">Bean bag para estabilidad, baterias extra (minimo 4), tarjetas de memoria de alta velocidad, kit de limpieza y funda anti-polvo para el equipo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEJORES UBICACIONES -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header">
+        <span class="chip chip--green">Ubicaciones</span>
+        <h2>Mejores Parques para Fotografia</h2>
+        <p>Tanzania ofrece escenarios unicos para la fotografia de naturaleza. Cada parque tiene su caracter y sus especies emblematicas.</p>
+      </div>
+
+      <div class="card-grid card-grid--2">
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1535338454528-1b5c57e4fa28?w=800&h=600&fit=crop&auto=format" alt="Manada de nus en la Gran Migracion del Serengeti" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Imprescindible</span>
+            <p class="photo-card__title">Serengeti</p>
+            <p style="font-size:.9rem;color:#5A6B52">El parque mas iconico de Africa. La Gran Migracion (junio-octubre), grandes felinos, y llanuras infinitas. Ideal para fotografiar manadas de nus, leones y guepardos.</p>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1621252179027-94459d278660?w=800&h=600&fit=crop&auto=format" alt="Crater del Ngorongoro con vida salvaje" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Imprescindible</span>
+            <p class="photo-card__title">Ngorongoro</p>
+            <p style="font-size:.9rem;color:#5A6B52">El crater mas grande del mundo con la mayor densidad de animales. Rinocerontes negros, flamencos en el lago Magadi, y paisajes dramaticos de crater.</p>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800&h=600&fit=crop&auto=format" alt="Elefantes junto a baobab en Tarangire" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Recomendado</span>
+            <p class="photo-card__title">Tarangire</p>
+            <p style="font-size:.9rem;color:#5A6B52">Famoso por sus grandes manadas de elefantes y baobabs milenarios. Las composiciones con estos arboles gigantes son unicas en el mundo.</p>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=800&h=600&fit=crop&auto=format" alt="Chimpances en Parque Nacional Mahale" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Especializado</span>
+            <p class="photo-card__title">Lago Manyara</p>
+            <p style="font-size:.9rem;color:#5A6B52">Paraiso para fotografos de aves con mas de 400 especies, incluidos flamencos rosados. Los leones trepadores de arboles son un avistamiento unico.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONSEJOS DE FOTOGRAFIA -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <span class="chip chip--amber">Consejos</span>
+        <h2>Consejos Profesionales de Fotografia</h2>
+        <p>Nuestros guias fotograficos comparten sus secretos para obtener imagenes espectaculares en cada safari.</p>
+      </div>
+
+      <div class="service-cards" style="grid-template-columns: repeat(2, 1fr)">
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><circle cx="24" cy="18" r="14" opacity="0.3"/><path d="M24 4a14 14 0 100 28 14 14 0 000-28zm0 4a2 2 0 110 4 2 2 0 010-4z"/></svg>
+          </div>
+          <p class="service-card__title">Hora Dorada</p>
+          <p class="service-card__desc">Las primeras y ultimas horas de sol ofrecen luz calida y suave, ideal para retratos de animales y paisajes. Los game drives comienzan a las 6:00 AM por esta razon.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><rect x="8" y="14" width="32" height="22" rx="4" opacity="0.3"/><path d="M12 18h24v14H12z"/><circle cx="24" cy="25" r="5"/></svg>
+          </div>
+          <p class="service-card__title">Configuracion de Camara</p>
+          <p class="service-card__desc">Usa modo de prioridad de apertura (Av/A) con ISO automatico. Para animales en movimiento, velocidad minima de 1/1000s. Dispara en RAW para maximo control en edicion.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 4l4 8h8l-6 6 2 8-8-4-8 4 2-8-6-6h8z" opacity="0.3"/><path d="M24 12l2 4h4l-3 3 1 4-4-2-4 2 1-4-3-3h4z"/></svg>
+          </div>
+          <p class="service-card__title">Composicion</p>
+          <p class="service-card__desc">Aplica la regla de los tercios, deja espacio en la direccion de la mirada del animal. Incluye el habitat para contar una historia mas completa.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M8 24c0-8.8 7.2-16 16-16s16 7.2 16 16" opacity="0.3" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="24" cy="24" r="4"/></svg>
+          </div>
+          <p class="service-card__title">Paciencia y Etica</p>
+          <p class="service-card__desc">La mejor fotografia de vida salvaje requiere paciencia. Nunca presiones al conductor para acercarse demasiado. Respeta la distancia con los animales y sigue las reglas del parque.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--gray">
+    <div class="container" style="max-width:800px">
+      <div class="section__header">
+        <h2>Preguntas Frecuentes</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details class="faq-item">
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green">
+    <div class="container" style="text-align:center">
+      <h2 style="color:white;margin-bottom:.75rem">Reserva tu Safari Fotografico</h2>
+      <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:500px;margin-left:auto;margin-right:auto">Viaja con guias expertos que conocen los mejores puntos para fotografia de vida salvaje en Tanzania.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/precios/" class="btn btn--amber btn--lg">Ver Precios</a>
+        <a href="/contacto/" class="btn btn--outline-white btn--lg">Contactar</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

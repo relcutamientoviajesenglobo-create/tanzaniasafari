@@ -1,0 +1,269 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import AuthorByline from '../components/blog/AuthorByline.astro';
+import TableOfContents from '../components/blog/TableOfContents.astro';
+import FaqSection from '../components/blog/FaqSection.astro';
+import RelatedPosts from '../components/blog/RelatedPosts.astro';
+import { getEntry } from 'astro:content';
+import { t } from '../i18n/utils';
+import type { Lang } from '../i18n/config';
+
+export interface Props {
+  frontmatter: {
+    title: string;
+    description: string;
+    publishDate: Date;
+    updatedDate?: Date;
+    author: string;
+    authorSlug: string;
+    category: string;
+    tags: string[];
+    image: string;
+    imageAlt: string;
+    silo: string;
+    relatedPosts?: string[];
+    faqSchema?: { q: string; a: string }[];
+    readingTime?: number;
+  };
+  headings: { depth: number; slug: string; text: string }[];
+  slug: string;
+  lang?: Lang;
+}
+
+const { frontmatter, headings, slug } = Astro.props;
+const lang: Lang = Astro.props.lang || 'es';
+const {
+  title,
+  description,
+  publishDate,
+  updatedDate,
+  author,
+  authorSlug,
+  category,
+  tags,
+  image,
+  imageAlt,
+  silo,
+  relatedPosts,
+  faqSchema,
+  readingTime,
+} = frontmatter;
+
+// Get author data
+const authorData = await getEntry('authors', authorSlug);
+
+const siteUrl = 'https://safaritanzania.info';
+const blogBase = lang === 'en' ? '/en/blog' : '/blog';
+const authorBase = lang === 'en' ? '/en/blog/authors' : '/blog/autores';
+
+// Build Schema.org BlogPosting
+const blogPostingSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description: description,
+  image: `${siteUrl}${image}`,
+  datePublished: publishDate instanceof Date ? publishDate.toISOString() : publishDate,
+  ...(updatedDate && {
+    dateModified: updatedDate instanceof Date ? updatedDate.toISOString() : updatedDate,
+  }),
+  author: {
+    '@type': 'Person',
+    name: authorData?.data.name || author,
+    url: `${siteUrl}${authorBase}/${authorSlug}/`,
+    ...(authorData?.data.role && { jobTitle: authorData.data.role }),
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Safari Tanzania',
+    url: siteUrl,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${siteUrl}/favicon.svg`,
+    },
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': `${siteUrl}${blogBase}/${slug}/`,
+  },
+  ...(readingTime && { timeRequired: `PT${readingTime}M` }),
+  about: {
+    '@type': 'TouristAttraction',
+    name: 'Safari Tanzania',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Arusha',
+      addressRegion: 'Arusha Region',
+      addressCountry: 'TZ',
+    },
+  },
+};
+
+// Build FAQPage schema if FAQs exist
+const faqPageSchema = faqSchema && faqSchema.length > 0
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqSchema.map(faq => ({
+        '@type': 'Question',
+        name: faq.q,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.a,
+        },
+      })),
+    }
+  : null;
+
+const schemaArr = [blogPostingSchema, ...(faqPageSchema ? [faqPageSchema] : [])];
+
+// Silo labels for breadcrumbs — localized
+const siloLabels: Record<string, string> = {
+  'safaris-tanzania': t('silo.safaris-tanzania', lang),
+  'actividades-aventura': t('silo.actividades-aventura', lang),
+  'hospedaje-lodges': t('silo.hospedaje-lodges', lang),
+  'guias-viaje': t('silo.guias-viaje', lang),
+  'cultura-masai': t('silo.cultura-masai', lang),
+};
+
+// Silo slug mapping for English URLs
+const siloSlugsEn: Record<string, string> = {
+  'safaris-tanzania': 'tanzania-safaris',
+  'actividades-aventura': 'adventure-activities',
+  'hospedaje-lodges': 'lodges-camps',
+  'guias-viaje': 'travel-guides',
+  'cultura-masai': 'masai-culture',
+};
+
+const siloHref = lang === 'en'
+  ? `/en/blog/${siloSlugsEn[silo] || silo}/`
+  : `/blog/${silo}/`;
+
+const breadcrumbs = [
+  { label: 'Blog', href: `${blogBase}/` },
+  { label: siloLabels[silo] || silo, href: siloHref },
+  { label: title },
+];
+
+const categoryLabels: Record<string, string> = {
+  guias: t('cat.guias', lang),
+  naturaleza: t('cat.naturaleza', lang),
+  actividades: t('cat.actividades', lang),
+  hospedaje: t('cat.hospedaje', lang),
+  cultura: t('cat.cultura', lang),
+  consejos: t('cat.consejos', lang),
+};
+
+const pricesHref = lang === 'en' ? '/en/prices/' : '/precios/';
+const directionsHref = lang === 'en' ? '/en/how-to-get-here/' : '/como-llegar/';
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={`${blogBase}/${slug}/`}
+  ogImage={image}
+  schema={schemaArr}
+  breadcrumbs={breadcrumbs}
+  lang={lang}
+>
+  <Header slot="header" lang={lang} />
+  <Footer slot="footer" lang={lang} />
+
+  <article class="blog-article" itemscope itemtype="https://schema.org/BlogPosting">
+    <meta itemprop="headline" content={title}>
+    <meta itemprop="datePublished" content={publishDate instanceof Date ? publishDate.toISOString().split('T')[0] : String(publishDate)}>
+    {updatedDate && <meta itemprop="dateModified" content={updatedDate instanceof Date ? updatedDate.toISOString().split('T')[0] : String(updatedDate)}>}
+
+    <!-- Hero -->
+    <section class="blog-hero">
+      <div class="container blog-hero__inner">
+        <div class="blog-hero__text">
+          <span class="chip chip--green">{categoryLabels[category] || category}</span>
+          <h1 class="blog-hero__title" itemprop="name">{title}</h1>
+          <p class="blog-hero__desc">{description}</p>
+          <AuthorByline
+            name={authorData?.data.name || author}
+            slug={authorSlug}
+            avatar={authorData?.data.avatar || '/media/authors/default.jpg'}
+            role={authorData?.data.role}
+            publishDate={publishDate}
+            updatedDate={updatedDate}
+            readingTime={readingTime}
+            lang={lang}
+          />
+        </div>
+        <div class="blog-hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <div class="hero__deco hero__deco--bl"></div>
+            <img
+              src={image}
+              alt={imageAlt}
+              width="600"
+              height="400"
+              loading="eager"
+              itemprop="image"
+              style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:inherit"
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Article body with TOC sidebar -->
+    <section class="section">
+      <div class="container blog-content-grid">
+
+        <!-- TOC sidebar (desktop) -->
+        <aside class="blog-sidebar">
+          <TableOfContents headings={headings} lang={lang} />
+        </aside>
+
+        <!-- Prose content -->
+        <div class="blog-prose" itemprop="articleBody">
+          <slot />
+
+          {faqSchema && faqSchema.length > 0 && (
+            <FaqSection faqs={faqSchema} lang={lang} />
+          )}
+        </div>
+      </div>
+    </section>
+
+    <!-- Tags -->
+    {tags.length > 0 && (
+      <div class="container blog-tags">
+        {tags.map(tag => (
+          <span class="blog-tag">{tag}</span>
+        ))}
+      </div>
+    )}
+
+    <!-- CTA -->
+    <section class="section section--green blog-cta">
+      <div class="container" style="text-align:center">
+        <h2 style="color:white;margin-bottom:.75rem">{t('blog.cta.title', lang)}</h2>
+        <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:500px;margin-left:auto;margin-right:auto">{t('blog.cta.desc', lang)}</p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+          <a href={pricesHref} class="btn btn--amber btn--lg">{t('blog.cta.primary', lang)}</a>
+          <a href={directionsHref} class="btn btn--outline-white btn--lg">{t('blog.cta.secondary', lang)}</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Posts -->
+    <section class="section section--gray">
+      <div class="container">
+        <RelatedPosts
+          currentSlug={slug}
+          silo={silo}
+          relatedSlugs={relatedPosts}
+          lang={lang}
+        />
+      </div>
+    </section>
+  </article>
+</BaseLayout>
