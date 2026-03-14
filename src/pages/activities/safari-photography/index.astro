@@ -1,0 +1,190 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+
+const lang = 'en';
+const title = 'Safari Photography in Tanzania — Complete Guide for Photographers';
+const description = 'Master safari photography in Tanzania with our complete guide. Learn the best camera gear, techniques, optimal lighting conditions and top wildlife photography locations in the Serengeti and Ngorongoro.';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const breadcrumbs = [
+  { label: 'Activities', href: '/en/activities/' },
+  { label: 'Safari Photography' },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'TouristAttraction',
+  name: 'Safari Photography in Tanzania',
+  description: description,
+  url: 'https://safaritanzania.info/en/activities/safari-photography/',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Arusha',
+    addressRegion: 'Arusha Region',
+    addressCountry: 'TZ',
+  },
+};
+---
+
+<BaseLayout title={title} description={description} schema={schema} breadcrumbs={breadcrumbs} lang={lang}>
+  <Header slot="header" lang={lang} />
+  <Footer slot="footer" lang={lang} />
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <span class="chip chip--green">Photography</span>
+        <h1>Safari Photography in Tanzania</h1>
+        <p>Capture the raw beauty of Africa's most iconic wildlife. From the great wildebeest migration to a leopard resting in an acacia tree, Tanzania offers world-class photography opportunities in every corner of its national parks.</p>
+        <div class="hero__actions">
+          <a href="/en/prices/" class="btn btn--primary btn--lg">See 2026 Prices</a>
+          <a href="/en/contact/" class="btn btn--outline btn--lg">Inquire Now</a>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__photo-frame">
+          <div class="hero__deco hero__deco--tr"></div>
+          <div class="hero__deco hero__deco--bl"></div>
+          <img
+            src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop"
+            alt="Photographer capturing a lion in the Serengeti savanna at golden hour"
+            width="600"
+            height="400"
+            loading="eager"
+            style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:inherit"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Essential Gear -->
+  <section class="section section--gray">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:.75rem">Essential Camera Gear for Safari</h2>
+      <p style="text-align:center;max-width:620px;margin:0 auto 3rem">Packing the right equipment is the difference between snapshots and stunning wildlife images. Here is what professional safari photographers recommend.</p>
+
+      <div class="service-cards" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+        <div class="service-card">
+          <span style="font-size:2.2rem">📷</span>
+          <h3 style="color:var(--mc-green)">Camera Bodies</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">A full-frame DSLR or mirrorless camera with fast autofocus and high ISO performance. Bring a backup body for emergencies and dual-card reliability.</p>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">🔭</span>
+          <h3 style="color:var(--mc-green)">Telephoto Lenses</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">A 100-400mm or 200-600mm zoom is essential. For close-range encounters, a 70-200mm f/2.8 doubles as a portrait lens for Masai cultural shots.</p>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">💾</span>
+          <h3 style="color:var(--mc-green)">Storage & Power</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">Bring plenty of high-speed memory cards (128GB minimum per day) and a portable hard drive. Solar chargers and extra batteries are a must in the bush.</p>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">🎒</span>
+          <h3 style="color:var(--mc-green)">Accessories</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">A beanbag for vehicle stabilization, lens cleaning kit for dusty conditions, a rain cover, and a lightweight monopod for walking safaris.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Best Locations -->
+  <section class="section">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:.75rem">Best Photography Locations</h2>
+      <p style="text-align:center;max-width:620px;margin:0 auto 3rem">Tanzania's diverse landscapes offer unparalleled backdrops for wildlife photography. Each park presents unique subjects and lighting conditions.</p>
+
+      <div class="card-grid card-grid--3" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+        <a href="/en/national-parks/" class="photo-card" style="text-decoration:none">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1535338454528-1b5c8e9b0d64?w=400&h=300&fit=crop" alt="Wildebeest migration crossing the Mara River in Serengeti" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">National Park</span>
+            <p class="photo-card__title">Serengeti National Park</p>
+            <p style="font-size:.9rem;color:var(--mc-text-muted)">Iconic landscapes, the Great Migration, big cats, and endless golden-hour opportunities across 14,750 km&sup2; of savanna.</p>
+          </div>
+        </a>
+        <a href="/en/national-parks/" class="photo-card" style="text-decoration:none">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1621414050946-1b936a78491d?w=400&h=300&fit=crop" alt="Flamingos in the Ngorongoro Crater with misty backdrop" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">UNESCO World Heritage</span>
+            <p class="photo-card__title">Ngorongoro Crater</p>
+            <p style="font-size:.9rem;color:var(--mc-text-muted)">Dense wildlife in a contained caldera creates close encounters. Dramatic fog and crater-rim perspectives make stunning shots.</p>
+          </div>
+        </a>
+        <a href="/en/national-parks/" class="photo-card" style="text-decoration:none">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=400&h=300&fit=crop" alt="Elephant herd walking past baobab trees in Tarangire" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Hidden Gem</span>
+            <p class="photo-card__title">Tarangire National Park</p>
+            <p style="font-size:.9rem;color:var(--mc-text-muted)">Huge elephant herds, ancient baobab trees, and minimal crowds provide intimate photographic moments year-round.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photography Tips -->
+  <section class="section section--gray">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:.75rem">Pro Photography Tips</h2>
+      <p style="text-align:center;max-width:620px;margin:0 auto 3rem">Techniques that separate great safari photographers from the rest. Apply these principles for images that tell a story.</p>
+
+      <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem">
+        <div style="display:flex;gap:1rem;align-items:flex-start">
+          <span style="font-size:1.8rem;flex-shrink:0">🌅</span>
+          <div>
+            <h3 style="font-size:1.1rem;margin-bottom:.35rem">Golden Hour Timing</h3>
+            <p style="font-size:.92rem">The best light in Tanzania is between 6:00-8:30 AM and 4:30-6:30 PM. Schedule game drives around these windows for warm, directional light that adds depth to your subjects.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;align-items:flex-start">
+          <span style="font-size:1.8rem;flex-shrink:0">👁️</span>
+          <div>
+            <h3 style="font-size:1.1rem;margin-bottom:.35rem">Eye-Level Perspective</h3>
+            <p style="font-size:.92rem">Shoot at the animal's eye level whenever possible. This creates an intimate connection with the viewer. Use beanbags on the vehicle window frame to stabilize low-angle shots.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;align-items:flex-start">
+          <span style="font-size:1.8rem;flex-shrink:0">🎯</span>
+          <div>
+            <h3 style="font-size:1.1rem;margin-bottom:.35rem">Focus on Behavior</h3>
+            <p style="font-size:.92rem">Portraits are great, but behavioral shots tell richer stories. Wait for a yawn, a hunt, grooming, or playful interactions rather than rushing to the next sighting.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;align-items:flex-start">
+          <span style="font-size:1.8rem;flex-shrink:0">🌍</span>
+          <div>
+            <h3 style="font-size:1.1rem;margin-bottom:.35rem">Environmental Storytelling</h3>
+            <p style="font-size:.92rem">Include the landscape in your frame. A lone elephant against a vast Serengeti sky tells a much bigger story than a tight crop. Use wide-angle lenses for dramatic context.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Safaris CTA -->
+  <section class="section section--green">
+    <div class="container" style="text-align:center;position:relative">
+      <div style="position:absolute;top:-30px;right:0;opacity:.12;pointer-events:none;color:#D4A017">
+        <Fragment set:html={ACACIA_LARGE} />
+      </div>
+      <h2 style="color:white;margin-bottom:.75rem">Ready to Capture the Wild?</h2>
+      <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:520px;margin-left:auto;margin-right:auto">Our specialized photography safaris include open-roof vehicles, expert guides who understand animal behavior, and optimal positioning for the best shots.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/en/prices/" class="btn btn--primary btn--lg">See 2026 Prices</a>
+        <a href="/en/contact/" class="btn btn--outline-white btn--lg" style="border-color:white;color:white">Contact Us</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

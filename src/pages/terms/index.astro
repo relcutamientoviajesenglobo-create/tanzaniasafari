@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const lang = 'en';
+const title = 'Terms & Conditions — Safari Tanzania';
+const description = 'Terms and conditions for Safari Tanzania services. Booking policies, cancellation terms, liability limitations, and general conditions for safari packages.';
+
+const breadcrumbs = [
+  { label: 'Terms & Conditions' },
+];
+---
+
+<BaseLayout title={title} description={description} schema={[]} breadcrumbs={breadcrumbs} lang={lang}>
+  <Header slot="header" lang={lang} />
+  <Footer slot="footer" lang={lang} />
+
+  <section class="section">
+    <div class="container" style="max-width:800px">
+      <h1 style="margin-bottom:2rem">Terms & Conditions</h1>
+      <p style="margin-bottom:.5rem"><strong>Last updated:</strong> March 10, 2026</p>
+      <p style="margin-bottom:2rem">Please read these Terms and Conditions ("Terms") carefully before using the Safari Tanzania website and booking our safari services. By accessing our website or booking a safari, you agree to be bound by these Terms.</p>
+
+      <h2 style="font-size:1.4rem;margin-bottom:1rem;margin-top:2.5rem">1. Booking & Reservations</h2>
+      <p style="margin-bottom:.5rem">A booking is confirmed once we receive a 30% deposit of the total package price. The remaining balance is due 60 days before the safari departure date. For bookings made within 60 days of departure, full payment is required at the time of booking.</p>
+      <p style="margin-bottom:1rem">All prices are quoted in US Dollars (USD) and are per person, based on double occupancy unless otherwise stated. Single supplement charges may apply for solo travelers.</p>
+
+      <h2 style="font-size:1.4rem;margin-bottom:1rem;margin-top:2.5rem">2. Cancellation Policy</h2>
+      <ul style="list-style:disc;padding-left:1.5rem;margin-bottom:1rem;display:flex;flex-direction:column;gap:.4rem">
+        <li><p style="margin:0"><strong>90+ days before departure:</strong> Full refund minus a $100 administration fee</p></li>
+        <li><p style="margin:0"><strong>60-89 days before departure:</strong> 50% refund of total amount paid</p></li>
+        <li><p style="margin:0"><strong>30-59 days before departure:</strong> 25% refund of total amount paid</p></li>
+        <li><p style="margin:0"><strong>Less than 30 days:</strong> No refund</p></li>
+      </ul>
+      <p style="margin-bottom:1rem">We strongly recommend purchasing comprehensive travel insurance that includes trip cancellation coverage.</p>
+
+      <h2 style="font-size:1.4rem;margin-bottom:1rem;margin-top:2.5rem">3. Changes to Itineraries</h2>
+      <p style="margin-bottom:1rem">Safari itineraries may be modified due to weather conditions, park closures, road conditions, or wildlife movements. We will make every effort to provide a comparable alternative if any element of your itinerary needs to change. Such modifications do not entitle a refund.</p>
+
+      <h2 style="font-size:1.4rem;margin-bottom:1rem;margin-top:2.5rem">4. Travel Insurance</h2>
+      <p style="margin-bottom:1rem">All travelers are required to have comprehensive travel insurance that covers medical emergencies, evacuation, trip cancellation, and personal belongings. Proof of insurance may be requested before departure. Safari Tanzania is not liable for any losses incurred due to lack of insurance.</p>
+
+      <h2 style="font-size:1.4rem;margin-bottom:1rem;margin-top:2.5rem">5. Health & Safety</h2>
+      <p style="margin-bottom:.5rem">Travelers are responsible for ensuring they meet all health requirements for travel to Tanzania, including vaccinations and malaria prophylaxis. You must inform us of any medical conditions, allergies, or dietary requirements at the time of booking.</p>
+      <p style="margin-bottom:1rem">Safari activities involve inherent risks associated with wildlife and remote environments. By booking with us, you acknowledge these risks and agree to follow all safety instructions provided by guides and lodge staff.</p>
+
+      <h2 style="font-size:1.4rem;margin-bottom:1rem;margin-top:2.5rem">6. Liability</h2>
+      <p style="margin-bottom:1rem">Safari Tanzania acts as an intermediary between travelers and service providers (lodges, camps, transport operators). While we carefully select our partners, we cannot be held liable for their acts or omissions. Our liability is limited to the total amount paid for the safari package.</p>
+
+      <h2 style="font-size:1.4rem;margin-bottom:1rem;margin-top:2.5rem">7. Wildlife & Photography</h2>
+      <p style="margin-bottom:1rem">While Tanzania's national parks are home to abundant wildlife, sightings cannot be guaranteed. Animals are wild and free-roaming. Our experienced guides will do their best to locate wildlife, but nature is unpredictable. No refunds will be given for specific animals not seen.</p>
+
+      <h2 style="font-size:1.4rem;margin-bottom:1rem;margin-top:2.5rem">8. Park Regulations</h2>
+      <p>All visitors must comply with Tanzania National Parks Authority (TANAPA) rules:</p>
+      <ul style="list-style:disc;padding-left:1.5rem;margin-top:.75rem;margin-bottom:1rem;display:flex;flex-direction:column;gap:.4rem">
+        <li><p style="margin:0">Vehicles must stay on designated roads and tracks</p></li>
+        <li><p style="margin:0">No littering, feeding animals, or disturbing wildlife</p></li>
+        <li><p style="margin:0">Maximum speed limits must be observed</p></li>
+        <li><p style="margin:0">Exiting vehicles is only permitted at designated areas</p></li>
+        <li><p style="margin:0">Park hours must be respected (6:00 AM - 6:30 PM)</p></li>
+      </ul>
+
+      <h2 style="font-size:1.4rem;margin-bottom:1rem;margin-top:2.5rem">9. Intellectual Property</h2>
+      <p style="margin-bottom:1rem">All content on the Safari Tanzania website, including text, images, logos, and design, is the property of Safari Tanzania and is protected by copyright laws. You may not reproduce, distribute, or use any content without our prior written consent.</p>
+
+      <h2 style="font-size:1.4rem;margin-bottom:1rem;margin-top:2.5rem">10. Governing Law</h2>
+      <p style="margin-bottom:1rem">These Terms are governed by and construed in accordance with the laws of the United Republic of Tanzania. Any disputes arising from these Terms shall be subject to the exclusive jurisdiction of the courts of Tanzania.</p>
+
+      <h2 style="font-size:1.4rem;margin-bottom:1rem;margin-top:2.5rem">11. Contact</h2>
+      <p style="margin-bottom:.5rem">For questions about these Terms, contact us:</p>
+      <ul style="list-style:none;padding:0;margin-top:.75rem;display:flex;flex-direction:column;gap:.4rem">
+        <li><p style="margin:0"><strong>Email:</strong> <a href="mailto:info@safaritanzania.info" style="color:#3D6B2E;font-weight:700">info@safaritanzania.info</a></p></li>
+        <li><p style="margin:0"><strong>Phone:</strong> <a href="tel:+255753000000" style="color:#3D6B2E;font-weight:700">+255 753 000 000</a></p></li>
+        <li><p style="margin:0"><strong>Address:</strong> Arusha, Tanzania</p></li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

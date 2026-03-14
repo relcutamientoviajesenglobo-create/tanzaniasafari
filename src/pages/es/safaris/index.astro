@@ -1,0 +1,200 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { touristAttraction, faqPage } from '../../../i18n/schema';
+
+const schema = [
+  touristAttraction({
+    name: 'Tipos de Safari en Tanzania',
+    url: 'https://safaritanzania.info/safaris/',
+    description: 'Descubre los diferentes tipos de safari en Tanzania: clásico en 4x4, fotográfico profesional y nocturno. Expediciones en el Serengeti, Ngorongoro y Tarangire.',
+  }),
+  faqPage([
+    { question: '¿Qué tipos de safari se ofrecen en Tanzania?', answer: 'En Tanzania se ofrecen safaris clásicos en vehículo 4x4 (game drive), safaris fotográficos con guías especializados, safaris nocturnos para fauna crepuscular, caminatas bush con guías Masái y vuelos en globo aerostático sobre la sabana.' },
+    { question: '¿Cuántos días dura un safari típico?', answer: 'Un safari clásico dura entre 4 y 7 días. Los safaris fotográficos requieren entre 5 y 10 días para cubrir múltiples parques. Los safaris nocturnos duran 3 a 4 horas como actividad complementaria.' },
+    { question: '¿Cuál es la diferencia entre un safari clásico y uno fotográfico?', answer: 'El safari clásico prioriza cubrir más territorio y avistar la mayor variedad de animales. El fotográfico dedica más tiempo en cada avistamiento, utiliza vehículos con soportes especiales para cámaras y los guías conocen los mejores ángulos de luz.' },
+  ]),
+];
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+---
+
+<BaseLayout
+  title="Tipos de Safari en Tanzania — Clásico, Fotográfico y Nocturno"
+  description="Descubre los tipos de safari en Tanzania: clásico en 4x4 por el Serengeti, fotográfico con guías expertos, nocturno para fauna crepuscular y caminatas bush con Masáis."
+  canonical="/safaris/"
+  schema={schema}
+  breadcrumbs={[{label: 'Safaris'}]}
+>
+  <Header slot="header" />
+  <Footer slot="footer" />
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Tipos de Safari en Tanzania">
+    <div class="hero__daff hero__daff--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <span class="chip chip--green">Serengeti · Ngorongoro · Tarangire</span>
+        <h1 class="hero__title">Tipos de safari en Tanzania</h1>
+        <p class="hero__desc">Desde game drives clásicos en el Serengeti hasta safaris fotográficos especializados y expediciones nocturnas: cada modalidad ofrece una experiencia distinta de la vida salvaje africana.</p>
+        <div class="hero__actions">
+          <a href="/precios/" class="btn btn--primary btn--lg">Ver precios 2026</a>
+          <a href="/contacto/" class="btn btn--outline btn--lg">Reservar safari</a>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__photo-frame">
+          <div class="hero__deco hero__deco--tr"></div>
+          <div class="hero__deco hero__deco--bl"></div>
+          <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=800&h=640&fit=crop&auto=format" alt="Vehículo de safari 4x4 recorriendo las llanuras del Serengeti con animales al fondo" width="800" height="640" loading="eager">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION — 3 SAFARI TYPES + 1 NATIONAL PARKS -->
+  <section class="section section--gray" aria-labelledby="tipos-title">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2 id="tipos-title">Elige la experiencia de safari que <em style="font-style:normal;color:#3D6B2E">mejor se adapte a ti</em></h2>
+        <p>Cada tipo de safari revela una faceta diferente de la naturaleza tanzana. Desde la adrenalina del game drive hasta la contemplación silenciosa del safari fotográfico.</p>
+      </div>
+
+      <div class="card-grid card-grid--4 animate-on-scroll">
+        <a href="/safaris/safari-clasico/" class="photo-card" aria-label="Safari Clásico">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=480&fit=crop&auto=format" alt="Atardecer dorado sobre la sabana del Serengeti con acacias" width="600" height="480" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Game Drive</span>
+            <p class="photo-card__title">Safari Clásico en 4x4</p>
+            <div class="photo-card__arrow">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </a>
+        <a href="/safaris/safari-fotografico/" class="photo-card" aria-label="Safari Fotográfico">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=480&fit=crop&auto=format" alt="León macho posando en la sabana ideal para fotografía" width="600" height="480" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Fotografía</span>
+            <p class="photo-card__title">Safari Fotográfico Profesional</p>
+            <div class="photo-card__arrow">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </a>
+        <a href="/safaris/safari-nocturno/" class="photo-card" aria-label="Safari Nocturno">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=480&fit=crop&auto=format" alt="Jirafa silueteada contra el cielo del crepúsculo en Tanzania" width="600" height="480" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Nocturno</span>
+            <p class="photo-card__title">Safari Nocturno con Spotlight</p>
+            <div class="photo-card__arrow">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </a>
+        <a href="/parques-nacionales/" class="photo-card" aria-label="Parques Nacionales">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1745885979468-44a855f8a5fa?w=600&h=480&fit=crop&auto=format" alt="Vista panorámica del Cráter del Ngorongoro" width="600" height="480" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Destinos</span>
+            <p class="photo-card__title">Parques Nacionales de Tanzania</p>
+            <div class="photo-card__arrow">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT — What makes Tanzania safaris unique -->
+  <section class="section" aria-labelledby="unico-title">
+    <div class="container animate-on-scroll" style="max-width:860px">
+      <h2 id="unico-title" style="margin-bottom:1.25rem">¿Qué hace únicos a los safaris en Tanzania?</h2>
+      <p style="font-size:1.05rem;margin-bottom:1rem">Tanzania concentra la mayor densidad de vida salvaje del continente africano en un territorio de parques y reservas que suman más de 42,000 km² de ecosistemas protegidos. El Serengeti, por sí solo, alberga poblaciones de más de 1.5 millones de ñus, 200,000 cebras y 300,000 gacelas de Thomson que protagonizan la Gran Migración anual.</p>
+      <p style="font-size:1.05rem;margin-bottom:1rem">A diferencia de otros destinos de safari como Kenia o Sudáfrica, Tanzania mantiene una política de baja densidad turística: los vehículos por avistamiento están regulados y vastas zonas de los parques permanecen sin caminos pavimentados, preservando la experiencia salvaje auténtica. El Cráter del Ngorongoro, una caldera volcánica de 19 km de diámetro, funciona como un ecosistema cerrado donde los Big Five coexisten en 260 km².</p>
+      <p style="font-size:1.05rem;margin-bottom:2rem">Los guías de Safari Tanzania son profesionales certificados por TANAPA con un mínimo de 5 años de experiencia en campo. Hablan español, inglés y swahili, y combinan conocimiento científico de etología con saberes tradicionales Masái sobre rastreo animal y lectura del paisaje.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap">
+        <a href="/safaris/safari-clasico/" class="btn btn--primary">Safari clásico</a>
+        <a href="/safaris/safari-fotografico/" class="btn btn--outline">Safari fotográfico</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE CARDS -->
+  <section class="section section--green bg-green" aria-labelledby="ayuda-title" style="position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.2;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll" style="margin-bottom:2.5rem">
+        <h2 id="ayuda-title" style="color:#D4A017">Planifica tu safari perfecto</h2>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1">
+        <div class="service-card">
+          <svg class="service-card__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <p class="service-card__title">Itinerario personalizado</p>
+          <p class="service-card__desc">Diseñamos rutas a medida según tus intereses: Big Five, migración, aves, cultura Masái o combinaciones.</p>
+        </div>
+        <div class="service-card">
+          <svg class="service-card__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+          <p class="service-card__title">Precios transparentes</p>
+          <p class="service-card__desc">Sin costos ocultos. Nuestros paquetes incluyen alojamiento, comidas, transporte, guía y entradas a parques.</p>
+          <a href="/precios/" class="btn">Ver tarifas</a>
+        </div>
+        <div class="service-card">
+          <svg class="service-card__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02L6.62 10.79z"/></svg>
+          <p class="service-card__title">Asesoría gratuita</p>
+          <p class="service-card__desc">Llámanos o escríbenos por WhatsApp. Nuestros expertos te orientan sin compromiso.</p>
+          <p style="font-size:1.2rem;font-weight:900;color:#2D4A22">+255 753 000 000</p>
+        </div>
+        <div class="service-card">
+          <svg class="service-card__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11V11.99z"/></svg>
+          <p class="service-card__title">Seguridad garantizada</p>
+          <p class="service-card__desc">Guías certificados TANAPA, vehículos con GPS y radio, seguro de viaje y protocolos de emergencia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2 id="faq-title">Preguntas frecuentes sobre safaris</h2>
+      </div>
+      <div class="faq-list animate-on-scroll delay-1">
+        <details>
+          <summary>¿Qué tipos de safari se ofrecen en Tanzania?</summary>
+          <div class="faq-answer">
+            En Tanzania ofrecemos safaris clásicos en vehículo 4x4 (game drive) por los principales parques, safaris fotográficos con guías especializados y equipo de soporte, safaris nocturnos con spotlight para fauna crepuscular, <a href="/actividades/caminatas-bush/" style="color:#3D6B2E;font-weight:700">caminatas bush con guías Masái</a> y <a href="/actividades/globo-aerostatico/" style="color:#3D6B2E;font-weight:700">vuelos en globo aerostático</a> sobre el Serengeti.
+          </div>
+        </details>
+        <details>
+          <summary>¿Cuántos días dura un safari típico?</summary>
+          <div class="faq-answer">
+            Un <a href="/safaris/safari-clasico/" style="color:#3D6B2E;font-weight:700">safari clásico</a> dura entre 4 y 7 días y cubre 2 o 3 parques nacionales. Los <a href="/safaris/safari-fotografico/" style="color:#3D6B2E;font-weight:700">safaris fotográficos</a> requieren entre 5 y 10 días para maximizar oportunidades de luz y comportamiento animal. Los <a href="/safaris/safari-nocturno/" style="color:#3D6B2E;font-weight:700">safaris nocturnos</a> duran 3 a 4 horas como experiencia complementaria.
+          </div>
+        </details>
+        <details>
+          <summary>¿Cuál es la diferencia entre un safari clásico y uno fotográfico?</summary>
+          <div class="faq-answer">
+            El safari clásico prioriza cubrir el mayor territorio posible y avistar la mayor variedad de especies. El fotográfico dedica más tiempo a cada avistamiento, los vehículos cuentan con soportes para cámaras y teleobjetivos, y los guías conocen los mejores puntos para luz dorada y comportamiento animal predecible.
+          </div>
+        </details>
+      </div>
+      <p style="text-align:center;margin-top:2rem;color:#5A6B52;font-size:.95rem">
+        ¿Más dudas? Consulta <a href="/precios/" style="color:#3D6B2E;font-weight:700">precios y paquetes</a> o <a href="/contacto/" style="color:#3D6B2E;font-weight:700">contáctanos directamente</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

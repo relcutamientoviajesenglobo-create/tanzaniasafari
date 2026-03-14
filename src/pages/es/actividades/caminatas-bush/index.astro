@@ -1,0 +1,182 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import { touristAttraction, faqPage } from '../../../../i18n/schema';
+
+const schema = [
+  touristAttraction({
+    name: 'Caminatas Bush en Tanzania',
+    url: 'https://safaritanzania.info/actividades/caminatas-bush/',
+    description: 'Caminatas bush en Tanzania con guías Masái certificados. Senderismo en la sabana para rastreo de fauna, identificación de plantas medicinales y experiencia cultural auténtica.',
+  }),
+  faqPage([
+    { question: '¿Qué es una caminata bush en Tanzania?', answer: 'Una caminata bush (bushwalk) es una excursión a pie por la sabana africana acompañada por un guía Masái armado y un ranger de TANAPA. A diferencia del game drive en vehículo, la caminata permite experimentar la naturaleza a nivel del suelo: escuchar los sonidos de la sabana, rastrear huellas de animales e identificar plantas medicinales.' },
+    { question: '¿Es peligroso caminar por la sabana?', answer: 'Las caminatas bush están supervisadas por guías armados con licencia y rangers de TANAPA con experiencia en manejo de fauna peligrosa. Se evitan zonas con presencia confirmada de grandes depredadores. Los guías leen las señales del entorno constantemente y mantienen comunicación por radio con los vehículos de apoyo cercanos.' },
+    { question: '¿Cuánto dura una caminata bush?', answer: 'Las caminatas estándar duran entre 2 y 3 horas y cubren entre 3 y 6 kilómetros de terreno mayormente llano. Para caminantes experimentados, ofrecemos recorridos extendidos de medio día (5-6 horas) que cubren hasta 12 kilómetros e incluyen un almuerzo tipo picnic en la sabana.' },
+    { question: '¿Qué edad mínima se requiere para las caminatas bush?', answer: 'La edad mínima es de 12 años por motivos de seguridad. Los participantes deben poder caminar durante 2-3 horas a un ritmo moderado. No se requiere experiencia previa en senderismo ni condición física excepcional.' },
+  ]),
+];
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+---
+
+<BaseLayout
+  title="Caminatas Bush en Tanzania — Senderismo con Guías Masái"
+  description="Caminatas bush en Tanzania con guías Masái: senderismo en la sabana para rastreo de fauna, identificación de plantas y experiencia cultural. Excursiones de 2-6 horas."
+  canonical="/actividades/caminatas-bush/"
+  schema={schema}
+  breadcrumbs={[{label: 'Actividades', href: '/actividades/'}, {label: 'Caminatas Bush'}]}
+>
+  <Header slot="header" />
+  <Footer slot="footer" />
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Caminatas Bush en Tanzania">
+    <div class="hero__daff hero__daff--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <span class="chip chip--green">Senderismo · Masái · Rastreo</span>
+        <h1 class="hero__title">Caminatas Bush en Tanzania</h1>
+        <p class="hero__desc">Experimenta la sabana africana a pie con guías Masái que comparten conocimientos ancestrales sobre rastreo animal, plantas medicinales y lectura del paisaje. Una inmersión sensorial que ningún vehículo puede ofrecer.</p>
+        <div class="hero__actions">
+          <a href="/precios/" class="btn btn--primary btn--lg">Ver precios 2026</a>
+          <a href="/contacto/" class="btn btn--outline btn--lg">Reservar caminata</a>
+        </div>
+        <div class="stats-row">
+          <div class="stat"><strong>2-6 hrs</strong><span>Duración</span></div>
+          <div class="stat"><strong>Masái</strong><span>Guía cultural</span></div>
+          <div class="stat"><strong>3-12 km</strong><span>Recorrido</span></div>
+          <div class="stat"><strong>+12 años</strong><span>Edad mínima</span></div>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__photo-frame">
+          <div class="hero__deco hero__deco--tr"></div>
+          <div class="hero__deco hero__deco--bl"></div>
+          <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=800&h=640&fit=crop&auto=format" alt="Guía Masái con vestimenta tradicional roja liderando una caminata en la sabana de Tanzania" width="800" height="640" loading="eager">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="section" aria-labelledby="bush-title">
+    <div class="container animate-on-scroll" style="max-width:860px">
+      <h2 id="bush-title" style="margin-bottom:1.25rem">La sabana a nivel del suelo</h2>
+      <p style="font-size:1.05rem;margin-bottom:1rem">La caminata bush transforma completamente la experiencia de safari. Desde el vehículo 4x4 se observa la fauna a distancia, pero a pie se descubre un mundo invisible desde el asiento: huellas de leopardo en el barro, escarabajos peloteros rodando su esfera de estiércol, las hormigas guerreras formando columnas de millones de individuos, el nido tejido con maestría de los pájaros tejedores y el perfume de la salvia silvestre que impregna la sabana al amanecer.</p>
+      <p style="font-size:1.05rem;margin-bottom:1rem">Los guías Masái que lideran las caminatas bush son miembros de comunidades que han coexistido con la fauna salvaje durante siglos. Su conocimiento del terreno es enciclopédico: identifican más de 200 plantas por su nombre en maa (la lengua Masái), conocen las propiedades medicinales de docenas de especies herbáceas, leen las huellas de los animales como un libro abierto y detectan la presencia de depredadores por el comportamiento de las aves centinela.</p>
+      <p style="font-size:1.05rem;margin-bottom:1rem">Cada caminata comienza con una introducción sobre seguridad: el guía explica las señales de mano silenciosas que se usarán durante el recorrido, el protocolo en caso de encuentro cercano con fauna grande (elefantes, búfalos) y la formación en fila india que se mantiene durante todo el trayecto. Un ranger armado de TANAPA acompaña al grupo como medida de seguridad adicional.</p>
+      <p style="font-size:1.05rem;margin-bottom:2rem">Los mejores puntos para caminatas bush en Tanzania son el Parque Nacional de Arusha (con vistas al Monte Meru), las zonas periféricas del Serengeti occidental, el Área de Conservación del Ngorongoro y las reservas comunitarias Masái adyacentes a los parques nacionales. Cada zona ofrece un ecosistema diferente: bosque montano, sabana abierta, riberas fluviales o llanuras volcánicas.</p>
+    </div>
+  </section>
+
+  <!-- WHAT YOU'LL LEARN -->
+  <section class="section section--gray" aria-labelledby="aprende-title">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2 id="aprende-title">Lo que aprenderás en la caminata</h2>
+        <p>Cada guía Masái comparte conocimientos acumulados durante generaciones</p>
+      </div>
+      <div class="card-grid card-grid--4 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Rastreo</span>
+            <p class="photo-card__title">Lectura de huellas animales</p>
+            <p style="color:#5A6B52;font-size:.9rem">Identificación de huellas de más de 30 especies: distinguir un leopardo de un guepardo, estimar la antigüedad de una pisada y determinar la dirección de movimiento del animal.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Botánica</span>
+            <p class="photo-card__title">Plantas medicinales Masái</p>
+            <p style="color:#5A6B52;font-size:.9rem">El guía identifica plantas usadas en la medicina tradicional Masái: cortezas antimaláricas, raíces analgésicas, hojas antisépticas y frutos con propiedades digestivas.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Ecología</span>
+            <p class="photo-card__title">Señales de la naturaleza</p>
+            <p style="color:#5A6B52;font-size:.9rem">Aprender a leer el comportamiento de las aves centinela que alertan sobre depredadores, interpretar las marcas territoriales de los animales y entender las cadenas alimentarias de la sabana.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Cultura</span>
+            <p class="photo-card__title">Tradiciones Masái</p>
+            <p style="color:#5A6B52;font-size:.9rem">El guía comparte la historia oral, las técnicas de supervivencia y la relación espiritual que los Masái mantienen con la tierra y los animales desde hace siglos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO GALLERY -->
+  <section class="section" aria-labelledby="galeria-bush">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2 id="galeria-bush">Caminatas bush en imágenes</h2>
+      </div>
+      <div class="photo-gallery animate-on-scroll delay-1">
+        <div class="photo-gallery__item photo-gallery__item--wide">
+          <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=800&h=450&fit=crop&auto=format" alt="Guerreros Masái con vestimenta tradicional en la sabana" width="800" height="450" loading="lazy">
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=450&fit=crop&auto=format" alt="Paisaje de la sabana con acacias durante una caminata" width="600" height="450" loading="lazy">
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=450&fit=crop&auto=format" alt="Jirafa vista durante una caminata bush en Tanzania" width="600" height="450" loading="lazy">
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=450&fit=crop&auto=format" alt="Elefante avistado a distancia segura durante senderismo" width="600" height="450" loading="lazy">
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=600&h=450&fit=crop&auto=format" alt="Cebras observadas durante una caminata en la sabana" width="600" height="450" loading="lazy">
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1745885979468-44a855f8a5fa?w=600&h=450&fit=crop&auto=format" alt="Vista del borde del Cráter del Ngorongoro desde un sendero" width="600" height="450" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--gray" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2 id="faq-title">Preguntas frecuentes sobre caminatas bush</h2>
+      </div>
+      <div class="faq-list animate-on-scroll delay-1">
+        <details>
+          <summary>¿Qué es una caminata bush en Tanzania?</summary>
+          <div class="faq-answer">
+            Una caminata bush (bushwalk) es una excursión a pie por la sabana africana acompañada por un guía Masái certificado y un ranger armado de TANAPA. Permite experimentar la naturaleza a nivel del suelo: escuchar los sonidos de la sabana, rastrear huellas de animales, identificar plantas medicinales y aprender técnicas de supervivencia Masái. Es el complemento perfecto al <a href="/safaris/safari-clasico/" style="color:#3D6B2E;font-weight:700">safari clásico en vehículo</a>.
+          </div>
+        </details>
+        <details>
+          <summary>¿Es peligroso caminar por la sabana?</summary>
+          <div class="faq-answer">
+            Las caminatas bush están supervisadas por guías con licencia de armas y rangers de TANAPA con décadas de experiencia. Se evitan zonas con presencia confirmada de grandes depredadores. Los guías leen las señales del entorno constantemente (huellas frescas, comportamiento de aves centinela) y mantienen comunicación por radio con los vehículos de apoyo cercanos.
+          </div>
+        </details>
+        <details>
+          <summary>¿Cuánto dura una caminata bush?</summary>
+          <div class="faq-answer">
+            Las caminatas estándar duran entre 2 y 3 horas (3-6 km de terreno llano). Para caminantes experimentados, ofrecemos recorridos extendidos de medio día (5-6 horas, hasta 12 km) que incluyen almuerzo tipo picnic bajo una acacia en la sabana. El ritmo siempre se adapta al grupo.
+          </div>
+        </details>
+        <details>
+          <summary>¿Qué edad mínima se requiere?</summary>
+          <div class="faq-answer">
+            La edad mínima es de 12 años por motivos de seguridad (presencia potencial de fauna salvaje). Los participantes deben poder caminar durante 2-3 horas a ritmo moderado. No se requiere experiencia previa en senderismo ni condición física excepcional. Para familias con niños menores, recomendamos el <a href="/safaris/safari-clasico/" style="color:#3D6B2E;font-weight:700">safari clásico en 4x4</a> que acepta desde los 5 años.
+          </div>
+        </details>
+      </div>
+      <p style="text-align:center;margin-top:2rem;color:#5A6B52;font-size:.95rem">
+        ¿Quieres incluir una caminata bush en tu safari? <a href="/contacto/" style="color:#3D6B2E;font-weight:700">Contáctanos para personalizar tu itinerario</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,238 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { touristAttraction, faqPage } from '../../../i18n/schema';
+
+const lang = 'en';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const faqItems = [
+  { question: 'What makes a photo safari different from a regular safari?', answer: 'A photo safari prioritizes <strong>optimal shooting conditions</strong> over quantity of sightings. Your guide positions the vehicle for the best light and angles, allows extended time at each sighting (30-60 minutes vs. 5-10 on regular safaris), uses specialized vehicles with bean bags and camera mounts, and plans routes around <strong>golden hour lighting</strong>. Our photography guides understand animal behavior and can predict action moments.' },
+  { question: 'What camera equipment should I bring?', answer: 'We recommend a camera with a <strong>zoom lens of at least 200mm</strong> (ideally 100-400mm or 200-600mm). A wide-angle lens (16-35mm) is useful for landscapes and vehicle shots. Bring extra batteries, memory cards and a dust-proof camera bag. We provide bean bag supports and vehicle mounts. Smartphones with telephoto lenses can also capture excellent shots with our guides\' positioning expertise.' },
+  { question: 'What is the best time of day for wildlife photography?', answer: 'The <strong>golden hours</strong> (sunrise 6:00-8:00 AM and sunset 4:00-6:30 PM) provide the most dramatic lighting. However, overcast midday conditions are excellent for close-up portraits without harsh shadows. Our guides plan the day to maximize these windows, positioning you for <strong>backlit silhouettes at dawn</strong> and warm-toned portraits in the afternoon.' },
+  { question: 'Can beginners join a photo safari?', answer: 'Absolutely! Photo safaris are perfect for all skill levels. Our guides offer on-the-spot tips for composition, exposure and focusing techniques. Beginners often find that the structured approach and expert positioning help them capture far better images than they would on a regular safari. We even assist with basic <a href="/en/activities/wildlife-watching/" style="color:#3D6B2E;font-weight:700">wildlife watching</a> identification.' },
+  { question: 'How many people are on a photo safari vehicle?', answer: 'To ensure everyone has <strong>unobstructed shooting angles</strong>, photo safari vehicles carry a maximum of <strong>4 photographers</strong> (compared to 6 on classic safaris). Each passenger gets a window position with pop-top access. For serious photographers, we offer private vehicle options for 1-2 people.' },
+];
+
+const schema = [
+  touristAttraction({
+    name: 'Photography Safari in Tanzania',
+    description: 'Specialized photography tours for wildlife photographers. Expert positioning, golden hour drives and professional guidance in the Serengeti and Ngorongoro.',
+    url: 'https://safaritanzania.info/en/safaris/photo-safari/',
+  }),
+  faqPage(faqItems),
+];
+---
+
+<BaseLayout
+  title="Photography Safari in Tanzania — Wildlife Photography Tours"
+  description="Specialized photography safari tours in Tanzania. Expert vehicle positioning, golden hour game drives, camera mounts and professional guidance for stunning wildlife images in the Serengeti."
+  lang={lang}
+  schema={schema}
+  breadcrumbs={[
+    { label: 'Safaris', href: '/en/safaris/' },
+    { label: 'Photo Safari' },
+  ]}
+>
+  <Header slot="header" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--green">For Photographers</span>
+          <h1 class="hero__title">Photography Safari in Tanzania</h1>
+          <p class="hero__desc">Capture magazine-worthy wildlife images with expert positioning, golden hour game drives and professional guidance. Every detail is designed for the perfect shot.</p>
+          <div class="hero__actions">
+            <a href="/en/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
+            <a href="/en/contact/" class="btn btn--outline btn--lg">Book photo safari</a>
+          </div>
+          <div class="stats-row">
+            <div class="stat"><strong>4 max</strong><span>Per vehicle</span></div>
+            <div class="stat"><strong>Golden Hour</strong><span>Priority drives</span></div>
+            <div class="stat"><strong>All levels</strong><span>Beginner to pro</span></div>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <img
+              src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=800&h=640&fit=crop&auto=format"
+              alt="Lion in golden morning light, ideal for wildlife photography in the Serengeti"
+              width="800" height="640" loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT MAKES IT SPECIAL -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">The Difference</span>
+        <h2>Why choose a photo safari</h2>
+        <p>Regular safaris show you wildlife. Photo safaris help you capture it in breathtaking detail. Here is what sets our photography tours apart.</p>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1" style="grid-template-columns:repeat(3,1fr)">
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M36 6H12L2 16l22 28 22-28L36 6zM24 37.3L7.2 18h33.6L24 37.3zM14.1 16l3.6-8h12.6l3.6 8H14.1z"/></svg>
+          </div>
+          <h3 class="service-card__title">Expert Positioning</h3>
+          <p class="service-card__desc">Guides position vehicles with the sun at your back, animals in frame and backgrounds uncluttered. Every stop is calculated for the best possible image.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm0 36c-8.82 0-16-7.18-16-16S15.18 8 24 8s16 7.18 16 16-7.18 16-16 16zm1-26h-3v12l10.5 6.3 1.5-2.46-9-5.34V14z"/></svg>
+          </div>
+          <h3 class="service-card__title">Extended Sightings</h3>
+          <p class="service-card__desc">Spend 30-60 minutes at each sighting instead of 5-10 minutes. Wait for the perfect moment: a yawn, a stretch, eye contact or interaction between animals.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M16 6l2.29 2.29-4.88 4.88-2.83-2.83L16 6zM2 22v-4h6v4H2zm14-5c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zm20-11h6v4h-6v-4z"/></svg>
+          </div>
+          <h3 class="service-card__title">Golden Hour Priority</h3>
+          <p class="service-card__desc">Game drives are planned around sunrise and sunset when warm light creates dramatic images. Silhouettes, rim-lighting and soft golden tones transform every frame.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EQUIPMENT & TIPS -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">Gear & Tips</span>
+        <h2>Photography equipment and guidance</h2>
+        <p>Our vehicles and guides are equipped to help you get the most from your camera, whether you shoot with a professional DSLR or a smartphone.</p>
+      </div>
+      <div class="card-grid card-grid--2 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=450&fit=crop&auto=format" alt="Photography safari vehicle equipped with camera mounts in the Serengeti" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Vehicle Equipment</h3>
+            <p>Our photo safari vehicles feature bean bag supports, removable camera mounts, dust covers for gear bags, USB charging ports and pop-top roofs for 360-degree shooting access. Each photographer gets a guaranteed window position.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&h=450&fit=crop&auto=format" alt="Leopard portrait showcasing perfect wildlife photography composition" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">On-Location Guidance</h3>
+            <p>Your guide offers real-time tips on composition, exposure settings and focusing techniques. Learn to anticipate animal behavior for action shots, master backlit silhouettes and capture intimate portraits with soft backgrounds.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEST SUBJECTS -->
+  <section class="section section--green bg-green" style="position:relative;overflow:hidden">
+    <div style="position:absolute;bottom:0;left:-30px;opacity:.08;pointer-events:none;color:#D4A017;transform:rotate(180deg)">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Top Subjects</span>
+        <h2>Most photographed wildlife</h2>
+        <p>Tanzania offers some of the most photogenic wildlife on the planet. These are the subjects our photographers capture most.</p>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1">
+        <div class="service-card">
+          <h3 class="service-card__title">African Lion</h3>
+          <p class="service-card__desc">Golden manes, intense eyes and dramatic poses. The Serengeti's 3,000+ lions provide endless opportunities for powerful portraits and action shots.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Leopard</h3>
+          <p class="service-card__desc">The most elusive of the Big Five. Photographing a leopard draped over an acacia branch is a bucket-list moment for any wildlife photographer.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Great Migration</h3>
+          <p class="service-card__desc">Millions of wildebeest and zebras crossing the Mara River. Dramatic crossings, dusty stampedes and aerial perspectives create once-in-a-lifetime images.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Birds of Prey</h3>
+          <p class="service-card__desc">Over 500 bird species including martial eagles, secretary birds, lilac-breasted rollers and flamingos. Tanzania is a paradise for bird photography.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Gallery</span>
+        <h2>Photo safari portfolio</h2>
+        <p>A selection of images captured by our guests on photography safaris in Tanzania.</p>
+      </div>
+      <div class="photo-gallery animate-on-scroll delay-1">
+        <div class="photo-gallery__item photo-gallery__item--tall">
+          <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=500&h=700&fit=crop&auto=format" alt="Male lion close-up portrait in golden Serengeti light" width="500" height="700" loading="lazy" />
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=500&h=375&fit=crop&auto=format" alt="Leopard resting in an acacia tree, Serengeti" width="500" height="375" loading="lazy" />
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=500&h=375&fit=crop&auto=format" alt="Zebra herd creating a striking pattern in the grasslands" width="500" height="375" loading="lazy" />
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=500&h=375&fit=crop&auto=format" alt="Elephant herd walking through the bush at golden hour" width="500" height="375" loading="lazy" />
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=500&h=375&fit=crop&auto=format" alt="Giraffe silhouette against an orange African sunset" width="500" height="375" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">FAQ</span>
+        <h2>Photo safari questions</h2>
+        <p>Common questions about our photography-focused safari experiences.</p>
+      </div>
+      <div class="faq-list animate-on-scroll delay-1">
+        {faqItems.map(item => (
+          <details>
+            <summary>{item.question}</summary>
+            <div class="faq-answer" set:html={item.answer} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2>Capture Tanzania's wildlife</h2>
+        <p>Join our photography safari and return home with images that tell the story of Africa's most iconic wilderness.</p>
+      </div>
+      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/en/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
+        <a href="/en/contact/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Book photo safari</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>

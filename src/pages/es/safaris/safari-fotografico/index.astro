@@ -1,0 +1,174 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import { touristAttraction, faqPage } from '../../../../i18n/schema';
+
+const schema = [
+  touristAttraction({
+    name: 'Safari Fotográfico en Tanzania',
+    url: 'https://safaritanzania.info/safaris/safari-fotografico/',
+    description: 'Safari fotográfico profesional en Tanzania. Guías especializados en fotografía de vida salvaje, vehículos adaptados con soportes para teleobjetivos y sesiones en golden hour.',
+  }),
+  faqPage([
+    { question: '¿Qué equipo fotográfico necesito para un safari fotográfico?', answer: 'Recomendamos un teleobjetivo de 200-600mm para fauna lejana, un 70-200mm para animales cercanos y un gran angular 16-35mm para paisajes. Los vehículos tienen soportes beanbag para estabilización. Llevamos baterías extra y tarjetas de memoria de respaldo.' },
+    { question: '¿Los guías del safari fotográfico conocen de fotografía?', answer: 'Sí. Los guías de nuestros safaris fotográficos son profesionales certificados tanto en guía de fauna como en fotografía de naturaleza. Conocen los mejores ángulos de luz según la hora del día, los puntos de comportamiento predecible de los animales y las técnicas de aproximación que permiten tomas más cercanas sin disturbar a la fauna.' },
+    { question: '¿Cuál es la mejor época para un safari fotográfico?', answer: 'De enero a marzo para crías recién nacidas y cielos dramáticos de temporada de lluvias cortas. De julio a septiembre para la Gran Migración y cruces del río Mara. La golden hour (amanecer/atardecer) es espectacular durante todo el año en el Serengeti.' },
+  ]),
+];
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+---
+
+<BaseLayout
+  title="Safari Fotográfico en Tanzania — Fotografía de Vida Salvaje"
+  description="Safari fotográfico profesional en Tanzania. Guías especializados en wildlife photography, vehículos con soportes para teleobjetivos, sesiones golden hour en el Serengeti y Ngorongoro."
+  canonical="/safaris/safari-fotografico/"
+  schema={schema}
+  breadcrumbs={[{label: 'Safaris', href: '/safaris/'}, {label: 'Safari Fotográfico'}]}
+>
+  <Header slot="header" />
+  <Footer slot="footer" />
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Safari Fotográfico en Tanzania">
+    <div class="hero__daff hero__daff--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <span class="chip chip--green">Wildlife Photography · Serengeti</span>
+        <h1 class="hero__title">Safari Fotográfico en Tanzania</h1>
+        <p class="hero__desc">Expediciones diseñadas para fotógrafos de naturaleza: vehículos adaptados con soportes beanbag, guías especializados en comportamiento animal, sesiones de golden hour al amanecer y atardecer, y posicionamiento estratégico en puntos de migración.</p>
+        <div class="hero__actions">
+          <a href="/precios/" class="btn btn--primary btn--lg">Ver precios 2026</a>
+          <a href="/contacto/" class="btn btn--outline btn--lg">Reservar safari foto</a>
+        </div>
+        <div class="stats-row">
+          <div class="stat"><strong>5-10 días</strong><span>Duración</span></div>
+          <div class="stat"><strong>Golden hour</strong><span>Sesiones diarias</span></div>
+          <div class="stat"><strong>Teleobjetivo</strong><span>Soporte incluido</span></div>
+          <div class="stat"><strong>Hides</strong><span>Puntos fijos</span></div>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__photo-frame">
+          <div class="hero__deco hero__deco--tr"></div>
+          <div class="hero__deco hero__deco--bl"></div>
+          <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=800&h=640&fit=crop&auto=format" alt="León macho con melena dorada en la sabana del Serengeti, ideal para fotografía de vida salvaje" width="800" height="640" loading="eager">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT — About photo safari -->
+  <section class="section" aria-labelledby="foto-title">
+    <div class="container animate-on-scroll" style="max-width:860px">
+      <h2 id="foto-title" style="margin-bottom:1.25rem">Fotografía de vida salvaje en su hábitat natural</h2>
+      <p style="font-size:1.05rem;margin-bottom:1rem">El safari fotográfico en Tanzania es una experiencia diseñada para capturar imágenes profesionales de la fauna africana en condiciones óptimas de luz y proximidad. A diferencia del safari clásico, el fotográfico prioriza la calidad sobre la cantidad: dedicamos más tiempo a cada avistamiento, esperando el momento perfecto de comportamiento animal, la luz dorada del amanecer o la composición ideal con el paisaje de fondo.</p>
+      <p style="font-size:1.05rem;margin-bottom:1rem">Los vehículos del safari fotográfico están especialmente adaptados: soportes beanbag en cada ventana para estabilización de teleobjetivos pesados, lonas laterales removibles para eliminar reflejos en los cristales, enchufes de carga para baterías y un máximo de 4 fotógrafos por vehículo para garantizar que cada uno tenga acceso a ambos lados del vehículo.</p>
+      <p style="font-size:1.05rem;margin-bottom:1rem">Nuestros guías fotográficos combinan certificación TANAPA con formación en fotografía de naturaleza. Conocen los puntos exactos donde los leones cazan al amanecer, los árboles donde los leopardos descansan con sus presas, las zonas donde las manadas de elefantes cruzan los ríos y los kopjes rocosos donde los guepardos vigilan a sus presas. Cada día del safari se planifica alrededor de las dos golden hours: la primera hora después del amanecer y la última antes del atardecer.</p>
+      <p style="font-size:1.05rem;margin-bottom:2rem">Para fotógrafos que buscan tomas únicas, ofrecemos acceso a hides (escondites fotográficos) fijos a nivel del agua en abrevaderos, donde se pueden capturar imágenes a la altura de los ojos de los animales cuando se acercan a beber. Estos hides están disponibles en ubicaciones seleccionadas del Serengeti y Tarangire.</p>
+    </div>
+  </section>
+
+  <!-- PHOTO GALLERY -->
+  <section class="section section--gray" aria-labelledby="galeria-foto">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2 id="galeria-foto">Momentos capturados en safari fotográfico</h2>
+        <p>Cada sesión de golden hour revela la magia de la sabana africana</p>
+      </div>
+      <div class="photo-gallery animate-on-scroll delay-1">
+        <div class="photo-gallery__item photo-gallery__item--wide">
+          <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=800&h=450&fit=crop&auto=format" alt="Jirafa silueteada contra el atardecer dorado en el Serengeti" width="800" height="450" loading="lazy">
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=450&fit=crop&auto=format" alt="Elefante africano en primer plano entre acacias de Tarangire" width="600" height="450" loading="lazy">
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=600&h=450&fit=crop&auto=format" alt="Cebras en formación con composición fotográfica perfecta" width="600" height="450" loading="lazy">
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=450&fit=crop&auto=format" alt="Retrato cercano de león macho con melena dorada al amanecer" width="600" height="450" loading="lazy">
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=450&fit=crop&auto=format" alt="Paisaje del Serengeti con acacias y luz dorada al atardecer" width="600" height="450" loading="lazy">
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&h=450&fit=crop&auto=format" alt="Guerrero Masái con vestimenta tradicional colorida" width="600" height="450" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EQUIPMENT TIPS -->
+  <section class="section" aria-labelledby="equipo-title">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2 id="equipo-title">Equipo fotográfico recomendado</h2>
+      </div>
+      <div class="card-grid card-grid--3 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Esencial</span>
+            <p class="photo-card__title">Teleobjetivo 200-600mm</p>
+            <p style="color:#5A6B52;font-size:.9rem">Indispensable para fauna a distancia. Los soportes beanbag del vehículo estabilizan estos objetivos pesados perfectamente. Zoom o focal fija, ambos funcionan bien.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Versatil</span>
+            <p class="photo-card__title">Zoom 70-200mm f/2.8</p>
+            <p style="color:#5A6B52;font-size:.9rem">Ideal para animales cercanos al vehículo, retratos de fauna y escenas de comportamiento animal. La apertura f/2.8 permite disparar en condiciones de luz baja al amanecer.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Paisaje</span>
+            <p class="photo-card__title">Gran angular 16-35mm</p>
+            <p style="color:#5A6B52;font-size:.9rem">Para capturar las llanuras infinitas del Serengeti, cielos dramáticos al atardecer y composiciones amplias con acacias y fauna en contexto.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--gray" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2 id="faq-title">Preguntas frecuentes sobre el safari fotográfico</h2>
+      </div>
+      <div class="faq-list animate-on-scroll delay-1">
+        <details>
+          <summary>¿Qué equipo fotográfico necesito para un safari fotográfico?</summary>
+          <div class="faq-answer">
+            Recomendamos un teleobjetivo de 200-600mm para fauna a distancia, un 70-200mm f/2.8 para animales cercanos y un gran angular 16-35mm para paisajes. Los vehículos cuentan con soportes beanbag para estabilización. Traemos baterías extra, tarjetas de memoria de respaldo y discos duros portátiles para backup diario de imágenes.
+          </div>
+        </details>
+        <details>
+          <summary>¿Los guías del safari fotográfico conocen de fotografía?</summary>
+          <div class="faq-answer">
+            Sí. Nuestros guías de safari fotográfico son profesionales certificados por TANAPA con formación adicional en fotografía de naturaleza. Conocen los mejores ángulos de luz según la hora, los puntos de comportamiento predecible de los animales y las técnicas de aproximación silenciosa. También ofrecen sesiones de revisión de imágenes al final del día.
+          </div>
+        </details>
+        <details>
+          <summary>¿Cuál es la mejor época para un safari fotográfico?</summary>
+          <div class="faq-answer">
+            De enero a marzo hay crías recién nacidas y cielos dramáticos con nubes de tormenta que crean luz espectacular. De julio a septiembre la Gran Migración cruza el río Mara con escenas intensas de depredación. La golden hour es excepcional todo el año en el Serengeti gracias a su ubicación cerca del ecuador. Más información en <a href="/safaris/" style="color:#3D6B2E;font-weight:700">nuestra guía de safaris</a>.
+          </div>
+        </details>
+        <details>
+          <summary>¿Cuántos fotógrafos van en cada vehículo?</summary>
+          <div class="faq-answer">
+            Máximo 4 fotógrafos por vehículo, lo que garantiza que cada persona tenga acceso a ventanas en ambos lados y suficiente espacio para maniobrar con equipo grande. Para grupos más reducidos o experiencias exclusivas, ofrecemos vehículos privados para 1-2 fotógrafos.
+          </div>
+        </details>
+      </div>
+      <p style="text-align:center;margin-top:2rem;color:#5A6B52;font-size:.95rem">
+        ¿Quieres planificar tu safari fotográfico? <a href="/contacto/" style="color:#3D6B2E;font-weight:700">Contáctanos para un itinerario a medida</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

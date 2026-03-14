@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { touristAttraction } from '../../../i18n/schema';
+
+const title = 'Hospedaje en Tanzania — Lodges de Lujo y Campamentos Safari';
+const description = 'Descubre las mejores opciones de alojamiento en Tanzania: lodges de lujo con vistas al Serengeti y campamentos safari autenticos en plena sabana africana.';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const breadcrumbs = [
+  { label: 'Hospedaje' },
+];
+
+const schema = [
+  touristAttraction({
+    name: 'Hospedaje Safari Tanzania',
+    description,
+    url: 'https://safaritanzania.info/hospedaje/',
+  }),
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="/hospedaje/"
+  schema={schema}
+  breadcrumbs={breadcrumbs}
+>
+  <Header slot="header" />
+  <Footer slot="footer" />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <span class="chip chip--green">Alojamiento</span>
+        <h1 class="hero__title">Hospedaje en Tanzania</h1>
+        <p class="hero__desc">Desde lodges de lujo con piscinas infinitas hasta campamentos safari bajo las estrellas africanas. Encuentra tu estilo de alojamiento ideal para vivir la sabana.</p>
+        <div class="hero__actions">
+          <a href="/precios/" class="btn btn--primary btn--lg">Ver Precios</a>
+          <a href="/contacto/" class="btn btn--outline btn--lg">Consultar Disponibilidad</a>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__photo-frame">
+          <div class="hero__deco hero__deco--tr"></div>
+          <div class="hero__deco hero__deco--bl"></div>
+          <img
+            src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800&h=600&fit=crop&auto=format"
+            alt="Lodge de lujo con vista a la sabana de Tanzania"
+            width="600"
+            height="480"
+            loading="eager"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPCIONES DE HOSPEDAJE -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <h2>Elige tu Experiencia</h2>
+        <p>Tanzania ofrece dos estilos de alojamiento excepcionales, cada uno con su encanto unico. Ambos te sumergen en la naturaleza africana.</p>
+      </div>
+
+      <div class="card-grid card-grid--2">
+        <a href="/hospedaje/lodges/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=800&h=600&fit=crop&auto=format" alt="Lodge de safari de lujo en Tanzania con piscina infinita" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Lujo</span>
+            <p class="photo-card__title">Lodges de Safari</p>
+            <p style="font-size:.9rem;color:#5A6B52">Alojamiento de lujo con todas las comodidades: habitaciones amplias, piscinas, restaurantes gourmet y vistas espectaculares a la sabana. Desde $350 USD/noche.</p>
+            <div class="photo-card__arrow">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </a>
+
+        <a href="/hospedaje/campamentos/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1631049552057-403cdb8f0658?w=800&h=600&fit=crop&auto=format" alt="Campamento safari con tiendas de lona en la sabana" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Autentico</span>
+            <p class="photo-card__title">Campamentos Safari</p>
+            <p style="font-size:.9rem;color:#5A6B52">Tiendas de lona de lujo en plena sabana. Escucha los sonidos de la naturaleza africana mientras duermes bajo las estrellas. Desde $200 USD/noche.</p>
+            <div class="photo-card__arrow">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUE INCLUYE -->
+  <section class="section section--green">
+    <div class="container" style="text-align:center">
+      <h2 style="color:white;margin-bottom:.75rem">Todos los Alojamientos Incluyen</h2>
+      <p style="color:rgba(255,255,255,.85);margin-bottom:2rem;max-width:600px;margin-left:auto;margin-right:auto">Sin importar tu eleccion, cada opcion de hospedaje ofrece una experiencia excepcional en el corazon de la vida salvaje.</p>
+      <div class="service-cards" style="grid-template-columns: repeat(4, 1fr)">
+        <div class="service-card">
+          <p class="service-card__title">Pension Completa</p>
+          <p class="service-card__desc">Desayuno, almuerzo y cena con cocina internacional y sabores locales.</p>
+        </div>
+        <div class="service-card">
+          <p class="service-card__title">Game Drives</p>
+          <p class="service-card__desc">Safari matutino y vespertino con guias expertos certificados.</p>
+        </div>
+        <div class="service-card">
+          <p class="service-card__title">Transporte</p>
+          <p class="service-card__desc">Traslados en 4x4 Toyota Land Cruiser con techo abatible.</p>
+        </div>
+        <div class="service-card">
+          <p class="service-card__title">Guia Experto</p>
+          <p class="service-card__desc">Guia profesional bilingue con conocimiento profundo de la fauna.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--gray">
+    <div class="container" style="text-align:center">
+      <h2 style="margin-bottom:.75rem">Reserva tu Alojamiento</h2>
+      <p style="color:#5A6B52;margin-bottom:1.5rem;max-width:500px;margin-left:auto;margin-right:auto">Contactanos para encontrar el hospedaje perfecto segun tu presupuesto y preferencias.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/precios/" class="btn btn--primary btn--lg">Ver Paquetes</a>
+        <a href="/contacto/" class="btn btn--outline btn--lg">Contactar</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

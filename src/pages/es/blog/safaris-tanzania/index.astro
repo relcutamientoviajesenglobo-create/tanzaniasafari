@@ -1,0 +1,84 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import BlogCard from '../../../../components/blog/BlogCard.astro';
+import { webPage } from '../../../../i18n/schema';
+
+const title = 'Safaris en Tanzania — Articulos y Guias de Safari';
+const description = 'Todo sobre safaris en Tanzania: mejores parques, temporadas ideales, tipos de safari, la Gran Migracion y consejos para tu primera aventura africana.';
+
+const allPosts = await getCollection('blog');
+const posts = allPosts
+  .filter(post => !post.slug.startsWith('en-') && post.data.silo === 'safaris-tanzania')
+  .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+
+const breadcrumbs = [
+  { label: 'Blog', href: '/blog/' },
+  { label: 'Safaris Tanzania' },
+];
+
+const schema = [
+  webPage({
+    name: title,
+    description,
+    url: 'https://safaritanzania.info/blog/safaris-tanzania/',
+  }),
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="/blog/safaris-tanzania/"
+  schema={schema}
+  breadcrumbs={breadcrumbs}
+>
+  <Header slot="header" />
+  <Footer slot="footer" />
+
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <span class="chip chip--green">Blog</span>
+        <h1>Safaris en Tanzania</h1>
+        <p>Articulos sobre los mejores safaris de Tanzania: parques nacionales, la Gran Migracion, tipos de safari y todo lo que necesitas para planificar tu aventura.</p>
+      </div>
+
+      {posts.length > 0 ? (
+        <div class="card-grid card-grid--3">
+          {posts.map(post => (
+            <BlogCard
+              title={post.data.title}
+              description={post.data.description}
+              slug={post.slug}
+              image={post.data.image}
+              imageAlt={post.data.imageAlt}
+              author={post.data.author}
+              publishDate={post.data.publishDate}
+              readingTime={post.data.readingTime}
+              category={post.data.category}
+            />
+          ))}
+        </div>
+      ) : (
+        <div style="text-align:center;padding:3rem 0">
+          <p style="font-size:1.1rem;color:#5A6B52">Estamos preparando articulos increibles sobre safaris en Tanzania. Vuelve pronto.</p>
+          <a href="/blog/" class="btn btn--outline" style="margin-top:1.5rem">Ver todo el Blog</a>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <section class="section section--green">
+    <div class="container" style="text-align:center">
+      <h2 style="color:white;margin-bottom:.75rem">Vive tu Safari</h2>
+      <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:500px;margin-left:auto;margin-right:auto">Convierte lo que lees en una aventura real. Contactanos para disenar tu safari perfecto.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/precios/" class="btn btn--amber btn--lg">Ver Precios</a>
+        <a href="/contacto/" class="btn btn--outline-white btn--lg">Contactar</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

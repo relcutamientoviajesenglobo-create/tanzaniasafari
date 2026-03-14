@@ -1,0 +1,174 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import { touristAttraction, faqPage } from '../../../../i18n/schema';
+
+const schema = [
+  touristAttraction({
+    name: 'Safari Clásico en Tanzania',
+    url: 'https://safaritanzania.info/safaris/safari-clasico/',
+    description: 'Safari clásico en vehículo 4x4 por el Serengeti y Ngorongoro. Game drives diarios para avistamiento de los Big Five, la Gran Migración y vida salvaje africana.',
+  }),
+  faqPage([
+    { question: '¿Qué incluye un safari clásico en Tanzania?', answer: 'Incluye transporte en Toyota Land Cruiser 4x4 con techo elevable, guía profesional bilingüe certificado por TANAPA, alojamiento en lodge o campamento, comidas completas (desayuno, almuerzo tipo picnic y cena), entradas a todos los parques nacionales, agua potable ilimitada y traslados desde Arusha.' },
+    { question: '¿Cuántos días necesito para un safari clásico?', answer: 'Lo mínimo recomendado son 4 días para cubrir Serengeti y Ngorongoro. Con 5 a 7 días puedes añadir Tarangire, Lago Manyara o el Parque Nacional de Arusha para una experiencia más completa.' },
+    { question: '¿Cuál es la mejor ruta para un safari clásico?', answer: 'La ruta más popular es el Circuito Norte: Arusha → Tarangire → Lago Manyara → Serengeti → Ngorongoro → Arusha. Esta ruta de 5-7 días cubre los ecosistemas más diversos y maximiza el avistamiento de los Big Five.' },
+    { question: '¿Puedo ver los Big Five en un safari clásico?', answer: 'Sí. El safari clásico está diseñado para maximizar el avistamiento de león, leopardo, elefante, rinoceronte negro y búfalo cafre. El Ngorongoro tiene la mayor densidad de depredadores de África y es el mejor lugar para verlos todos en un día.' },
+  ]),
+];
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+---
+
+<BaseLayout
+  title="Safari Clásico en Tanzania — Game Drive en el Serengeti y Ngorongoro"
+  description="Safari clásico en 4x4 por el Serengeti y Ngorongoro. Avistamiento de Big Five, Gran Migración y vida salvaje africana. Itinerarios de 4 a 7 días con guía profesional."
+  canonical="/safaris/safari-clasico/"
+  schema={schema}
+  breadcrumbs={[{label: 'Safaris', href: '/safaris/'}, {label: 'Safari Clásico'}]}
+>
+  <Header slot="header" />
+  <Footer slot="footer" />
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Safari Clásico en Tanzania">
+    <div class="hero__daff hero__daff--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <span class="chip chip--green">Game Drive · Serengeti · Ngorongoro</span>
+        <h1 class="hero__title">Safari Clásico en Tanzania</h1>
+        <p class="hero__desc">La experiencia definitiva de vida salvaje africana: game drives diarios en vehículo 4x4 por las llanuras del Serengeti y el cráter del Ngorongoro, con avistamiento garantizado de los Big Five.</p>
+        <div class="hero__actions">
+          <a href="/precios/" class="btn btn--primary btn--lg">Ver precios 2026</a>
+          <a href="/contacto/" class="btn btn--outline btn--lg">Reservar safari</a>
+        </div>
+        <div class="stats-row">
+          <div class="stat"><strong>4-7 días</strong><span>Duración</span></div>
+          <div class="stat"><strong>Big 5</strong><span>Avistamiento</span></div>
+          <div class="stat"><strong>3 parques</strong><span>Circuito Norte</span></div>
+          <div class="stat"><strong>Todo el año</strong><span>Disponibilidad</span></div>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__photo-frame">
+          <div class="hero__deco hero__deco--tr"></div>
+          <div class="hero__deco hero__deco--bl"></div>
+          <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&h=640&fit=crop&auto=format" alt="Llanura del Serengeti al atardecer con acacias y cielo dorado durante un safari clásico" width="800" height="640" loading="eager">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT — About classic safari -->
+  <section class="section" aria-labelledby="clasico-title">
+    <div class="container animate-on-scroll" style="max-width:860px">
+      <h2 id="clasico-title" style="margin-bottom:1.25rem">La esencia del safari africano</h2>
+      <p style="font-size:1.05rem;margin-bottom:1rem">El safari clásico es la modalidad más emblemática de exploración de la vida salvaje en Tanzania. Se realiza en vehículos Toyota Land Cruiser 4x4 con techo elevable que permite observación y fotografía a 360 grados. Cada vehículo tiene capacidad máxima de 6 pasajeros (recomendamos 4 para mayor comodidad) y cuenta con enchufes de carga, refrigerador y botiquín de primeros auxilios.</p>
+      <p style="font-size:1.05rem;margin-bottom:1rem">Los game drives comienzan al amanecer (6:00 AM) cuando los depredadores están más activos. El guía rastrea leones, leopardos, guepardos y hienas en sus rutinas de caza matutina. Al mediodía se hace una pausa para almuerzo tipo picnic bajo una acacia, y por la tarde (3:30-6:30 PM) se retoma el recorrido para capturar la actividad vespertina en los abrevaderos.</p>
+      <p style="font-size:1.05rem;margin-bottom:2rem">La ruta más popular es el Circuito Norte de Tanzania: Arusha como base de operaciones, Parque Nacional Tarangire (famoso por sus manadas de elefantes y baobabs centenarios), Lago Manyara (flamencos rosados y leones trepadores), las llanuras infinitas del Serengeti y el Cráter del Ngorongoro, la mayor caldera volcánica intacta del mundo con una densidad de fauna sin paralelo.</p>
+    </div>
+  </section>
+
+  <!-- PHOTO GALLERY -->
+  <section class="section section--gray" aria-labelledby="galeria-clasico">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2 id="galeria-clasico">El safari clásico en imágenes</h2>
+        <p>Cada game drive ofrece encuentros irrepetibles con la vida salvaje del Serengeti</p>
+      </div>
+      <div class="photo-gallery animate-on-scroll delay-1">
+        <div class="photo-gallery__item photo-gallery__item--wide">
+          <img src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=800&h=450&fit=crop&auto=format" alt="Gran manada de cebras cruzando las llanuras del Serengeti" width="800" height="450" loading="lazy">
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=450&fit=crop&auto=format" alt="León macho vigilando su territorio en la sabana" width="600" height="450" loading="lazy">
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=450&fit=crop&auto=format" alt="Elefante africano alimentándose entre acacias en Tarangire" width="600" height="450" loading="lazy">
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=450&fit=crop&auto=format" alt="Jirafa masái al atardecer contra cielo naranja" width="600" height="450" loading="lazy">
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1745885979468-44a855f8a5fa?w=600&h=450&fit=crop&auto=format" alt="Vista aérea del Cráter del Ngorongoro con lago alcalino" width="600" height="450" loading="lazy">
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=450&fit=crop&auto=format" alt="Vehículo safari 4x4 en pista de tierra del Serengeti" width="600" height="450" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INCLUDED -->
+  <section class="section" aria-labelledby="incluye-title">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2 id="incluye-title">¿Qué incluye el safari clásico?</h2>
+      </div>
+      <div class="card-grid card-grid--3 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Transporte</span>
+            <p class="photo-card__title">Toyota Land Cruiser 4x4</p>
+            <p style="color:#5A6B52;font-size:.9rem">Vehículo con techo elevable, enchufes de carga, refrigerador y asientos reclinables. Máximo 6 pasajeros por unidad.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Guía</span>
+            <p class="photo-card__title">Guía profesional certificado</p>
+            <p style="color:#5A6B52;font-size:.9rem">Profesional bilingüe (español-inglés) certificado por TANAPA con mínimo 5 años de experiencia en los parques nacionales.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Alojamiento</span>
+            <p class="photo-card__title">Lodge o campamento tented</p>
+            <p style="color:#5A6B52;font-size:.9rem">Opciones desde campamentos básicos hasta lodges de lujo con piscina. Todas las comidas incluidas (desayuno, almuerzo, cena).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--gray" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2 id="faq-title">Preguntas frecuentes sobre el safari clásico</h2>
+      </div>
+      <div class="faq-list animate-on-scroll delay-1">
+        <details>
+          <summary>¿Qué incluye un safari clásico en Tanzania?</summary>
+          <div class="faq-answer">
+            Incluye transporte en Toyota Land Cruiser 4x4 con techo elevable, guía profesional bilingüe certificado por TANAPA, alojamiento en lodge o campamento, comidas completas, entradas a todos los parques nacionales del itinerario, agua potable ilimitada y traslados desde Arusha. No incluye vuelos internacionales, visado ni propinas. Consulta los <a href="/precios/" style="color:#3D6B2E;font-weight:700">precios detallados aquí</a>.
+          </div>
+        </details>
+        <details>
+          <summary>¿Cuántos días necesito para un safari clásico?</summary>
+          <div class="faq-answer">
+            Lo mínimo recomendado son 4 días para cubrir Serengeti y Ngorongoro. Con 5 a 7 días puedes añadir Tarangire y Lago Manyara para una experiencia más completa. Si dispones de más tiempo, un itinerario de 10 días permite visitar también el sur del Serengeti y la zona de Olduvai Gorge.
+          </div>
+        </details>
+        <details>
+          <summary>¿Cuál es la mejor ruta para un safari clásico?</summary>
+          <div class="faq-answer">
+            La ruta más popular es el Circuito Norte: Arusha, Tarangire, Lago Manyara, Serengeti y Ngorongoro. Esta ruta maximiza la diversidad de ecosistemas y el avistamiento de los Big Five. Para la Gran Migración (julio-septiembre), se recomienda concentrar más días en el norte del Serengeti cerca del río Mara.
+          </div>
+        </details>
+        <details>
+          <summary>¿Puedo ver los Big Five en un safari clásico?</summary>
+          <div class="faq-answer">
+            Sí. El safari clásico está diseñado para maximizar el avistamiento de león, leopardo, elefante, rinoceronte negro y búfalo cafre. El Cráter del Ngorongoro tiene la mayor densidad de depredadores de África y ofrece la mejor probabilidad de ver las cinco especies en un solo día. En itinerarios de 5+ días, la probabilidad de avistar los Big Five supera el 95%.
+          </div>
+        </details>
+      </div>
+      <p style="text-align:center;margin-top:2rem;color:#5A6B52;font-size:.95rem">
+        ¿Listo para tu safari? <a href="/contacto/" style="color:#3D6B2E;font-weight:700">Solicita tu itinerario personalizado</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

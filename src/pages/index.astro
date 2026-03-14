@@ -3,428 +3,314 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import VideoGallery from '../components/VideoGallery.astro';
+import { touristAttraction, faqPage } from '../i18n/schema';
+import { t } from '../i18n/utils';
 
-const schema = [
-  {
-    "@context": "https://schema.org",
-    "@type": ["TouristAttraction", "LocalBusiness"],
-    "name": "Safari Tanzania",
-    "description": "Safari Tanzania ofrece expediciones de vida salvaje en el Serengeti, Ngorongoro y Tarangire. Avistamiento de los Big Five, Gran Migración, globo aerostático y caminatas bush con guías Masái.",
-    "url": "https://safaritanzania.info",
-    "telephone": "+255753000000",
-    "email": "info@safaritanzania.info",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Sokoine Road",
-      "addressLocality": "Arusha",
-      "addressRegion": "Arusha Region",
-      "addressCountry": "TZ"
-    },
-    "geo": { "@type": "GeoCoordinates", "latitude": -3.3869, "longitude": 36.6830 },
-    "openingHoursSpecification": [{
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-      "opens": "06:00", "closes": "18:00"
-    }],
-    "priceRange": "$$$",
-    "sameAs": ["https://www.facebook.com/safaritanzaniainfo", "https://www.instagram.com/safaritanzaniainfo", "https://www.tiktok.com/@safaritanzaniainfo", "https://www.pinterest.com/safaritanzaniainfo"]
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "¿Cuánto cuesta un safari en Tanzania?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Un safari de 4 días en Tanzania cuesta desde $1,800 USD por persona en temporada baja, incluyendo alojamiento en lodge, transporte en 4x4, guía profesional y comidas completas. Los precios varían según la temporada y el tipo de alojamiento elegido." }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Cuál es la mejor época para un safari en Tanzania?",
-        "acceptedAnswer": { "@type": "Answer", "text": "La mejor época depende de lo que busques. De junio a octubre es temporada seca ideal para avistamiento general. De enero a marzo hay crías recién nacidas en el Serengeti. La Gran Migración cruza el río Mara entre julio y septiembre." }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Se pueden ver los Big Five en Tanzania?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Sí. Tanzania es uno de los mejores destinos del mundo para ver los Big Five: león, leopardo, elefante, rinoceronte y búfalo. El Cráter del Ngorongoro es el lugar con mayor probabilidad de verlos todos en un solo día." }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Qué vacunas necesito para ir a Tanzania?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Se requiere vacuna de fiebre amarilla para ingresar a Tanzania. Se recomiendan también hepatitis A y B, fiebre tifoidea y profilaxis antimalárica. Consulta con tu médico al menos 6 semanas antes del viaje." }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Tanzania es un destino seguro para turistas?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Sí. Tanzania es considerado uno de los países más seguros de África oriental para turismo. Los parques nacionales cuentan con rangers y guías certificados. Se recomienda viajar con operadores registrados como Safari Tanzania." }
-      }
-    ]
-  }
-];
+const lang = 'en';
 
 const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const faqItems = [
+  { question: 'When is the best time for a safari in Tanzania?', answer: 'The best time for safaris in Tanzania is during the dry season from June to October, when animals gather at water sources and are easier to spot. The Great Migration in the Serengeti typically occurs between July and September. However, the green season (November to May) offers lush landscapes, fewer crowds and lower prices.' },
+  { question: 'How much does a safari in Tanzania cost?', answer: 'A day safari starts from <strong>$150 USD per person</strong>. Multi-day safaris including accommodation start from <strong>$800 USD</strong>. Children under 5 enter <strong>free</strong>. Check our <a href="/en/prices/" style="color:#3D6B2E;font-weight:700">prices and packages page</a> for detailed information.' },
+  { question: 'Is Tanzania safe for tourists?', answer: 'Tanzania is one of the safest countries in East Africa for tourism. Safari operators follow strict safety guidelines. Our guides are experienced professionals who know the terrain and wildlife behavior. We recommend standard travel precautions such as staying hydrated, using sunscreen and following your guide\'s instructions at all times.' },
+  { question: 'What animals will I see on a Tanzania safari?', answer: 'Tanzania is home to the <strong>Big Five</strong> (lion, leopard, elephant, buffalo and rhino). You can also see giraffes, zebras, wildebeest, hippos, crocodiles, cheetahs and over 500 bird species. The Serengeti hosts the famous <a href="/en/activities/wildlife-watching/" style="color:#3D6B2E;font-weight:700">Great Migration</a> with over 2 million animals.' },
+  { question: 'How do I get to Tanzania for a safari?', answer: 'Most international visitors fly into Kilimanjaro International Airport (JRO) or Julius Nyerere International Airport in Dar es Salaam. From Arusha, safaris depart daily to the Serengeti, Ngorongoro and other parks. See our <a href="/en/how-to-get-here/" style="color:#3D6B2E;font-weight:700">how to get here guide</a> for detailed directions and transport options.' },
+  { question: 'What should I pack for a Tanzania safari?', answer: 'Essential items include lightweight clothing in neutral colors (khaki, olive, brown), a wide-brimmed hat, sunglasses, sunscreen (SPF 50+), binoculars, a camera with a zoom lens, comfortable walking shoes and a light jacket for early morning game drives. Avoid bright colors and blue clothing as they attract tsetse flies.' },
+];
+
+const schema = [
+  touristAttraction({
+    name: 'Safari Tanzania — Wildlife Safaris',
+    description: 'Experience the most spectacular safari adventure in Africa. Game drives in the Serengeti, Ngorongoro Crater and Tanzania national parks.',
+    url: 'https://safaritanzania.info/en/',
+  }),
+  faqPage(faqItems),
+];
 ---
 
 <BaseLayout
-  title="Safari Tanzania — Safaris de Vida Salvaje en el Serengeti y Ngorongoro 2026"
-  description="Safari Tanzania: expediciones de vida salvaje en el Serengeti, Ngorongoro y Tarangire. Big Five, Gran Migración, globo aerostático y caminatas bush. Precios y reservas 2026."
-  canonical="/"
+  title="Safari Tanzania — Wildlife Safaris in the Serengeti & Ngorongoro 2026"
+  description="Experience the most spectacular safari adventure in Africa. Game drives in the Serengeti, Ngorongoro Crater, Big Five wildlife and the Great Migration. Book your 2026 Tanzania safari."
+  lang={lang}
   schema={schema}
 >
-  <Header slot="header" />
-  <Footer slot="footer" />
+  <Header slot="header" lang={lang} />
 
-  <!-- ============================================================
-       PRICE BANNER — Barra informativa debajo del header
-  ============================================================ -->
-  <div class="price-banner" aria-label="Información de safaris 2026">
-    <div class="container price-banner__inner">
-      <div class="price-banner__items">
-        <span class="price-banner__item">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M15 1H9v2h6V1zm-4 13h2V8h-2v6zm8.03-6.61l1.42-1.42c-.43-.51-.9-.99-1.41-1.41l-1.42 1.42A8.962 8.962 0 0012 4c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-2.12-.74-4.07-1.97-5.61zM12 20c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>
-          Safaris <strong>todo el año</strong>
-        </span>
-        <span class="price-banner__divider" aria-hidden="true"></span>
-        <span class="price-banner__item">
-          Desde <strong class="price-banner__price">$1,800 USD</strong>
-        </span>
-        <span class="price-banner__divider" aria-hidden="true"></span>
-        <span class="price-banner__item">
-          Big Five <strong class="price-banner__price">garantizado</strong>
-        </span>
-        <span class="price-banner__divider" aria-hidden="true"></span>
-        <span class="price-banner__item">
-          Guías <strong class="price-banner__price">certificados</strong>
-        </span>
+  <!-- PRICE BANNER -->
+  <div class="price-banner">
+    <div class="container">
+      <div class="price-banner__inner">
+        <div class="price-banner__items">
+          <span class="price-banner__item">
+            <svg viewBox="0 0 20 20" width="14" height="14" fill="currentColor" aria-hidden="true"><circle cx="10" cy="10" r="8"/></svg>
+            <strong>{t('price.open', lang)}</strong> — {t('price.everyday', lang)}
+          </span>
+          <span class="price-banner__divider"></span>
+          <span class="price-banner__item">
+            {t('price.adult', lang)} <strong class="price-banner__price">from $150</strong>
+          </span>
+          <span class="price-banner__divider"></span>
+          <span class="price-banner__item">
+            Multi-day <strong class="price-banner__price">from $800</strong>
+          </span>
+          <span class="price-banner__divider"></span>
+          <span class="price-banner__item">
+            {t('price.free', lang)} <strong class="price-banner__price">{t('price.free.label', lang)}</strong>
+          </span>
+        </div>
+        <a href="/en/prices/" class="price-banner__cta">
+          {t('price.cta', lang)}
+          <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5 3 10 8 5 13"/></svg>
+        </a>
       </div>
-      <a href="/precios/" class="price-banner__cta">
-        Ver todos los precios
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
     </div>
   </div>
 
-  <!-- ============================================================
-       HERO — FONDO ÁMBAR (adaptación safari del patrón MC)
-  ============================================================ -->
-  <section class="hero" aria-label="Bienvenida a Safari Tanzania">
-    <!-- Acacia deco top-right -->
-    <div class="hero__daff hero__daff--tr" style="color:#2D4A22">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
       <Fragment set:html={ACACIA_LARGE} />
     </div>
-
-    <div class="container hero__inner">
-      <!-- TEXT LEFT -->
-      <div class="hero__text">
-        <span class="chip chip--green">Serengeti · Ngorongoro · Tarangire</span>
-        <h1 class="hero__title">La aventura de safari más espectacular de África</h1>
-        <p class="hero__desc">Expediciones de vida salvaje en los parques nacionales de Tanzania: avistamiento de los Big Five, la Gran Migración del ñu, vuelos en globo aerostático sobre la sabana y caminatas bush con guías Masái.</p>
-        <div class="hero__actions">
-          <a href="/precios/" class="btn btn--primary btn--lg">Ver precios 2026</a>
-          <a href="/como-llegar/" class="btn btn--outline btn--lg">Cómo llegar</a>
-        </div>
-        <div class="stats-row">
-          <div class="stat"><strong>Big 5</strong><span>Animales icónicos</span></div>
-          <div class="stat"><strong>16</strong><span>Parques nacionales</span></div>
-          <div class="stat"><strong>365 días</strong><span>Safaris todo el año</span></div>
-          <div class="stat"><strong>14,763 km²</strong><span>Serengeti</span></div>
-        </div>
-      </div>
-      <!-- PHOTO RIGHT — MC style rounded + corner cutouts -->
-      <div class="hero__visual">
-        <div class="hero__photo-frame">
-          <div class="hero__deco hero__deco--tr"></div>
-          <div class="hero__deco hero__deco--bl"></div>
-          <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&h=640&fit=crop&auto=format" alt="Paisaje del Serengeti al atardecer con acacias y cielo dorado en Tanzania" width="800" height="640" loading="eager">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SECTION 1 — "Qué encontrarás en Safari Tanzania" — 4 PHOTO CARDS
-  ============================================================ -->
-  <section class="section section--gray" aria-labelledby="atracciones-title">
-    <div class="container">
-      <div class="section__header animate-on-scroll">
-        <h2 id="atracciones-title">Safari Tanzania es la puerta a la vida salvaje <em style="font-style:normal;color:#3D6B2E">más diversa del planeta</em></h2>
-        <p>Desde las llanuras infinitas del Serengeti hasta el cráter del Ngorongoro, cada safari es una expedición única donde la naturaleza dicta el guion.</p>
-      </div>
-
-      <!-- 4 photo cards -->
-      <div class="card-grid card-grid--4 animate-on-scroll">
-        <a href="/safaris/" class="photo-card" aria-label="Tipos de Safari">
-          <div class="photo-card__img">
-            <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=480&fit=crop&auto=format" alt="Vehículo de safari 4x4 en la sabana del Serengeti" width="600" height="480" loading="lazy">
-          </div>
-          <div class="photo-card__body">
-            <p class="photo-card__title">Quiero explorar los tipos de safari</p>
-            <div class="photo-card__arrow">
-              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </div>
-          </div>
-        </a>
-        <a href="/actividades/" class="photo-card" aria-label="Actividades en Tanzania">
-          <div class="photo-card__img">
-            <img src="https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=480&fit=crop&auto=format" alt="Globo aerostático sobre la sabana del Serengeti al amanecer" width="600" height="480" loading="lazy">
-          </div>
-          <div class="photo-card__body">
-            <p class="photo-card__title">Quiero conocer todas las actividades</p>
-            <div class="photo-card__arrow">
-              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </div>
-          </div>
-        </a>
-        <a href="/hospedaje/" class="photo-card" aria-label="Hospedaje en Tanzania">
-          <div class="photo-card__img">
-            <img src="https://images.unsplash.com/photo-1621414050345-53db43f7e7ab?w=600&h=480&fit=crop&auto=format" alt="Vista del Cráter del Ngorongoro desde el borde" width="600" height="480" loading="lazy">
-          </div>
-          <div class="photo-card__body">
-            <p class="photo-card__title">Me quiero hospedar en un lodge de safari</p>
-            <div class="photo-card__arrow">
-              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </div>
-          </div>
-        </a>
-        <a href="/como-llegar/" class="photo-card" aria-label="Cómo llegar a Tanzania">
-          <div class="photo-card__img">
-            <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&h=480&fit=crop&auto=format" alt="Pueblo Masái con montañas al fondo en Tanzania" width="600" height="480" loading="lazy">
-          </div>
-          <div class="photo-card__body">
-            <p class="photo-card__title">Necesito planear mi viaje a Tanzania</p>
-            <div class="photo-card__arrow">
-              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SECTION 2 — INFO LIBRARY — 4 cards con preguntas frecuentes
-  ============================================================ -->
-  <section class="section section--gray" aria-labelledby="info-title" style="padding-top:0">
-    <div class="container">
-      <div class="section__header animate-on-scroll">
-        <h2 id="info-title">Sea cual sea tu duda sobre safaris, aquí tienes la respuesta</h2>
-      </div>
-      <div class="card-grid card-grid--4 animate-on-scroll delay-1">
-        <a href="/safaris/" class="photo-card">
-          <div class="photo-card__img photo-card__img--tall">
-            <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=480&fit=crop&auto=format" alt="León macho descansando en la sabana del Serengeti" width="600" height="480" loading="lazy">
-          </div>
-          <div class="photo-card__body">
-            <span class="photo-card__tag">Vida salvaje</span>
-            <p class="photo-card__title">¿Qué es un safari en Tanzania?</p>
-            <div class="photo-card__arrow">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </div>
-          </div>
-        </a>
-        <a href="/precios/" class="photo-card">
-          <div class="photo-card__img photo-card__img--tall">
-            <img src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=600&h=480&fit=crop&auto=format" alt="Manada de cebras en las llanuras del Serengeti" width="600" height="480" loading="lazy">
-          </div>
-          <div class="photo-card__body">
-            <span class="photo-card__tag">Precios 2026</span>
-            <p class="photo-card__title">¿Cuánto cuesta un safari?</p>
-            <div class="photo-card__arrow">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </div>
-          </div>
-        </a>
-        <a href="/como-llegar/" class="photo-card">
-          <div class="photo-card__img photo-card__img--tall">
-            <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=480&fit=crop&auto=format" alt="Jirafa caminando al atardecer en Tanzania" width="600" height="480" loading="lazy">
-          </div>
-          <div class="photo-card__body">
-            <span class="photo-card__tag">Acceso</span>
-            <p class="photo-card__title">¿Cómo llegar a Tanzania?</p>
-            <div class="photo-card__arrow">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </div>
-          </div>
-        </a>
-        <a href="/hospedaje/" class="photo-card">
-          <div class="photo-card__img photo-card__img--tall">
-            <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=480&fit=crop&auto=format" alt="Elefante africano en el Parque Nacional Tarangire" width="600" height="480" loading="lazy">
-          </div>
-          <div class="photo-card__body">
-            <span class="photo-card__tag">Hospedaje</span>
-            <p class="photo-card__title">¿Hay lodges dentro de los parques?</p>
-            <div class="photo-card__arrow">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SECTION 3 — BLOQUE DEFINITORIAL
-  ============================================================ -->
-  <section class="section" aria-labelledby="geo-title">
-    <div class="container animate-on-scroll" style="max-width:860px">
-      <h2 id="geo-title" style="margin-bottom:1.25rem">¿Qué es Safari Tanzania?</h2>
-      <p style="font-size:1.05rem;margin-bottom:1rem">Safari Tanzania es un operador de expediciones de vida salvaje con sede en Arusha, la puerta de entrada a los parques nacionales más emblemáticos de África oriental. Organizamos safaris en el Serengeti (14,763 km²), el Cráter del Ngorongoro (Patrimonio de la Humanidad), el Parque Nacional Tarangire y el Lago Manyara, entre otros 16 parques y reservas del país.</p>
-      <p style="font-size:1.05rem;margin-bottom:1rem">Nuestras expediciones incluyen avistamiento de los Big Five (león, leopardo, elefante, rinoceronte negro y búfalo cafre), la Gran Migración anual de 1.5 millones de ñus, vuelos en globo aerostático sobre la sabana y caminatas bush guiadas por miembros de comunidades Masái. Todos los safaris se realizan en vehículos Toyota Land Cruiser 4x4 con techo elevable para observación y fotografía.</p>
-      <p style="font-size:1.05rem;margin-bottom:2rem">Tanzania alberga el 20% de la biomasa de grandes mamíferos de África en sus ecosistemas protegidos. A diferencia de otros destinos de safari, Tanzania mantiene vastas extensiones de territorio sin vallado artificial, permitiendo que los animales sigan sus rutas migratorias ancestrales a través de la sabana, los bosques de baobabs y las planicies alcalinas de los lagos del Valle del Rift.</p>
-      <div style="display:flex;gap:1rem;flex-wrap:wrap">
-        <a href="/precios/" class="btn btn--primary">Ver precios y paquetes</a>
-        <a href="/como-llegar/" class="btn btn--outline">Cómo llegar a Tanzania</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SECTION 3B — PHOTO GALLERY
-  ============================================================ -->
-  <section class="section section--gray" style="padding-top:0">
-    <div class="container">
-      <div class="section__header animate-on-scroll">
-        <h2>Galería fotográfica</h2>
-        <p>Las imágenes más impresionantes de la vida salvaje de Tanzania</p>
-      </div>
-      <div class="photo-gallery animate-on-scroll delay-1">
-        <div class="photo-gallery__item photo-gallery__item--wide">
-          <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&h=450&fit=crop&auto=format" alt="Paisaje panorámico del Serengeti con acacias al atardecer" width="800" height="450" loading="lazy">
-        </div>
-        <div class="photo-gallery__item">
-          <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=450&fit=crop&auto=format" alt="León macho con melena dorada en la sabana" width="600" height="450" loading="lazy">
-        </div>
-        <div class="photo-gallery__item">
-          <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=450&fit=crop&auto=format" alt="Elefante africano caminando entre acacias en Tarangire" width="600" height="450" loading="lazy">
-        </div>
-        <div class="photo-gallery__item">
-          <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=450&fit=crop&auto=format" alt="Vehículo safari 4x4 recorriendo la sabana del Serengeti" width="600" height="450" loading="lazy">
-        </div>
-        <div class="photo-gallery__item">
-          <img src="https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=450&fit=crop&auto=format" alt="Globo aerostático sobrevolando el Serengeti al amanecer" width="600" height="450" loading="lazy">
-        </div>
-        <div class="photo-gallery__item">
-          <img src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=600&h=450&fit=crop&auto=format" alt="Manada de cebras en las llanuras del Serengeti" width="600" height="450" loading="lazy">
-        </div>
-        <div class="photo-gallery__item photo-gallery__item--wide">
-          <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=800&h=450&fit=crop&auto=format" alt="Jirafa solitaria al atardecer con cielo naranja en Tanzania" width="800" height="450" loading="lazy">
-        </div>
-        <div class="photo-gallery__item">
-          <img src="https://images.unsplash.com/photo-1621414050345-53db43f7e7ab?w=600&h=450&fit=crop&auto=format" alt="Vista aérea del Cráter del Ngorongoro" width="600" height="450" loading="lazy">
-        </div>
-        <div class="photo-gallery__item">
-          <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&h=450&fit=crop&auto=format" alt="Guerreros Masái con vestimenta tradicional en Tanzania" width="600" height="450" loading="lazy">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SECTION 4 — "ESTAMOS AQUÍ PARA TI"
-       AMBER CARDS ON DARK GREEN (MC: "We're here for you")
-  ============================================================ -->
-  <section class="section section--green bg-green" aria-labelledby="servicios-title" style="position:relative;overflow:hidden">
-    <!-- Acacia decorations -->
-    <div style="position:absolute;top:0;right:0;opacity:.2;pointer-events:none;color:#D4A017">
+    <div class="hero__acacia hero__acacia--bl" style="color:#2D4A22">
       <Fragment set:html={ACACIA_LARGE} />
     </div>
-    <div style="position:absolute;bottom:0;left:-20px;opacity:.15;pointer-events:none;color:#D4A017;transform:rotate(180deg)">
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--green">Serengeti &amp; Ngorongoro 2026</span>
+          <h1 class="hero__title">The most spectacular safari adventure in Africa</h1>
+          <p class="hero__desc">Discover the Serengeti plains, the Ngorongoro Crater and Tanzania's iconic wildlife. Expert guides, unforgettable sunsets and the Big Five await you.</p>
+          <div class="hero__actions">
+            <a href="/en/safaris/" class="btn btn--primary btn--lg">Explore safaris</a>
+            <a href="/en/prices/" class="btn btn--outline btn--lg">See prices 2026</a>
+          </div>
+          <div class="stats-row">
+            <div class="stat"><strong>16+</strong><span>National Parks</span></div>
+            <div class="stat"><strong>Big Five</strong><span>Lion, Leopard, Elephant</span></div>
+            <div class="stat"><strong>365</strong><span>Days Open</span></div>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <img
+              src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&h=640&fit=crop&auto=format"
+              alt="Serengeti savanna landscape with acacia trees and golden sunset in Tanzania"
+              width="800" height="640" loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT AWAITS YOU -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Unforgettable Experiences</span>
+        <h2>What awaits you in Tanzania</h2>
+        <p>From the endless Serengeti plains to the world's largest volcanic caldera, Tanzania offers wildlife experiences found nowhere else on Earth.</p>
+      </div>
+      <div class="card-grid card-grid--3 animate-on-scroll delay-1">
+        <a href="/en/safaris/classic-safari/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=450&fit=crop&auto=format" alt="Safari vehicle on game drive in the Serengeti, Tanzania" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Most Popular</span>
+            <h3 class="photo-card__title">Classic Safari</h3>
+            <p>Game drives through the Serengeti and Ngorongoro Crater with expert guides. Spot the Big Five in their natural habitat.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+        <a href="/en/safaris/photo-safari/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=450&fit=crop&auto=format" alt="Lion resting on a rock in the Serengeti, Tanzania" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">For Photographers</span>
+            <h3 class="photo-card__title">Photo Safari</h3>
+            <p>Specialized photography tours with optimal lighting, expert positioning and professional guidance for stunning wildlife shots.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+        <a href="/en/safaris/night-safari/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&h=450&fit=crop&auto=format" alt="Leopard spotted during night safari in Tanzania" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Unique Experience</span>
+            <h3 class="photo-card__title">Night Safari</h3>
+            <p>Witness the savanna come alive after dark. Spot nocturnal predators, hear the calls of the wild and stargaze under African skies.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US — service cards on green bg -->
+  <section class="section section--green bg-green" style="position:relative;overflow:hidden">
+    <div style="position:absolute;top:20px;right:-30px;opacity:.1;pointer-events:none;color:#D4A017">
       <Fragment set:html={ACACIA_LARGE} />
     </div>
-
     <div class="container">
-      <div class="section__header animate-on-scroll" style="margin-bottom:2.5rem">
-        <h2 id="servicios-title" style="color:#D4A017">Estamos aquí para tu aventura</h2>
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Why Choose Us</span>
+        <h2>Your safari, our expertise</h2>
+        <p>With decades of experience in Tanzanian wildlife tourism, we craft safaris that exceed expectations.</p>
       </div>
       <div class="service-cards animate-on-scroll delay-1">
         <div class="service-card">
-          <svg class="service-card__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02L6.62 10.79z"/>
-          </svg>
-          <p class="service-card__title">Información y reservas</p>
-          <p class="service-card__desc">Consulta disponibilidad de safaris, paquetes y fechas directamente con nuestro equipo en Arusha.</p>
-          <p style="font-size:1.3rem;font-weight:900;color:#2D4A22;margin-bottom:.25rem">+255 753 000 000</p>
-          <span class="chip chip--green" style="font-size:.75rem">Atención de 6:00 a 18:00</span>
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-2 30l-10-10 2.83-2.83L22 28.34l13.17-13.17L38 18 22 34z"/></svg>
+          </div>
+          <h3 class="service-card__title">Expert Local Guides</h3>
+          <p class="service-card__desc">Certified Tanzanian guides with deep knowledge of wildlife behavior, ecosystems and the best viewing spots.</p>
+          <a href="/en/safaris/" class="btn">Explore safaris</a>
         </div>
-
         <div class="service-card">
-          <svg class="service-card__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
-          </svg>
-          <p class="service-card__title">WhatsApp directo</p>
-          <p class="service-card__desc">Escríbenos por WhatsApp para resolver dudas rápidas sobre itinerarios, precios y disponibilidad de lodges.</p>
-          <a href="https://wa.me/255753000000" class="btn" target="_blank" rel="noopener">Escribir ahora</a>
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm0 36c-8.82 0-16-7.18-16-16S15.18 8 24 8s16 7.18 16 16-7.18 16-16 16zm1-26h-3v12l10.5 6.3 1.5-2.46-9-5.34V14z"/></svg>
+          </div>
+          <h3 class="service-card__title">Flexible Schedules</h3>
+          <p class="service-card__desc">Day trips, multi-day expeditions and custom itineraries tailored to your interests, pace and budget.</p>
+          <a href="/en/prices/" class="btn">See prices</a>
         </div>
-
         <div class="service-card">
-          <svg class="service-card__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-          </svg>
-          <p class="service-card__title">Cómo llegar a Tanzania</p>
-          <p class="service-card__desc">Vuelos internacionales a Kilimanjaro (JRO) o Dar es Salaam (DAR). Traslados desde el aeropuerto incluidos.</p>
-          <a href="/como-llegar/" class="service-card__cta">Ver instrucciones completas &rarr;</a>
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 2C13.51 2 5 10.51 5 21c0 14.28 17.2 24.26 17.93 24.67.31.18.69.18 1 0C24.8 45.26 43 35.28 43 21 43 10.51 34.49 2 24 2zm0 27c-4.97 0-9-4.03-9-9s4.03-9 9-9 9 4.03 9 9-4.03 9-9 9z"/></svg>
+          </div>
+          <h3 class="service-card__title">Premium Locations</h3>
+          <p class="service-card__desc">Access to the Serengeti, Ngorongoro, Tarangire, Lake Manyara and other world-renowned parks and reserves.</p>
+          <a href="/en/activities/" class="btn">View activities</a>
         </div>
-
         <div class="service-card">
-          <svg class="service-card__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
-          </svg>
-          <p class="service-card__title">Precios y paquetes 2026</p>
-          <p class="service-card__desc">Conoce las tarifas actualizadas de safaris clásicos, fotográficos, nocturnos y experiencias en globo.</p>
-          <a href="/precios/" class="btn">Ver tarifas</a>
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm2 34h-4v-4h4v4zm4.13-15.49l-1.79 1.84C26.9 25.79 26 27 26 30h-4v-1c0-2.21.9-4.21 2.34-5.66l2.49-2.52C27.55 20.1 28 19.1 28 18c0-2.21-1.79-4-4-4s-4 1.79-4 4h-4c0-4.42 3.58-8 8-8s8 3.58 8 8c0 1.76-.71 3.35-1.87 4.51z"/></svg>
+          </div>
+          <h3 class="service-card__title">Safety First</h3>
+          <p class="service-card__desc">Licensed vehicles, satellite communication, first aid training and comprehensive insurance for complete peace of mind.</p>
+          <a href="/en/contact/" class="btn">Contact us</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============================================================
-       SECTION 5 — VIDEOS (empty for now)
-  ============================================================ -->
-  <VideoGallery videoIds={[]} lang="es" title="Videos de Safari Tanzania" columns={3} />
-
-  <!-- ============================================================
-       SECTION 6 — FAQ
-  ============================================================ -->
-  <section class="section" aria-labelledby="faq-title">
+  <!-- ACTIVITIES SECTION -->
+  <section class="section section--gray">
     <div class="container">
       <div class="section__header animate-on-scroll">
-        <h2 id="faq-title">Preguntas frecuentes</h2>
+        <span class="chip chip--green">Beyond the Safari</span>
+        <h2>Activities &amp; experiences</h2>
+        <p>Tanzania offers far more than traditional game drives. Walk with Masai warriors, float over the Serengeti in a hot air balloon or track the Great Migration on foot.</p>
       </div>
-      <div class="faq-list animate-on-scroll delay-1">
-        <details>
-          <summary>¿Cuánto cuesta un safari en Tanzania?</summary>
-          <div class="faq-answer">
-            Un safari de 4 días en Tanzania cuesta desde $1,800 USD por persona en temporada baja, incluyendo alojamiento en lodge, transporte en 4x4, guía profesional bilingüe y comidas completas. Los safaris de lujo en campamentos privados pueden superar los $5,000 USD. Consulta los <a href="/precios/" style="color:#3D6B2E;font-weight:700">precios actualizados 2026 aquí</a>.
+      <div class="card-grid card-grid--3 animate-on-scroll delay-1">
+        <a href="/en/activities/wildlife-watching/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=450&fit=crop&auto=format" alt="Elephant herd walking across the Serengeti plains" width="600" height="450" loading="lazy" />
           </div>
-        </details>
-        <details>
-          <summary>¿Cuál es la mejor época para un safari en Tanzania?</summary>
-          <div class="faq-answer">
-            Tanzania ofrece experiencias diferentes según la temporada. De junio a octubre (temporada seca) es ideal para avistamiento general porque los animales se concentran en las fuentes de agua. De enero a marzo hay crías recién nacidas en el sur del Serengeti. La Gran Migración cruza el río Mara entre julio y septiembre. Más detalles en <a href="/safaris/" style="color:#3D6B2E;font-weight:700">nuestra guía de safaris</a>.
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Wildlife</span>
+            <h3 class="photo-card__title">Wildlife Watching</h3>
+            <p>Track the Big Five and witness the Great Migration across the Serengeti ecosystem.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
           </div>
-        </details>
-        <details>
-          <summary>¿Se pueden ver los Big Five en Tanzania?</summary>
-          <div class="faq-answer">
-            Sí. Tanzania es uno de los mejores destinos del mundo para ver los Big Five: león, leopardo, elefante, rinoceronte negro y búfalo cafre. El Cráter del Ngorongoro ofrece la mayor probabilidad de verlos todos en un solo día gracias a su ecosistema cerrado de 260 km². El Serengeti también alberga las cinco especies en sus 14,763 km².
+        </a>
+        <a href="/en/activities/bush-walks/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&h=450&fit=crop&auto=format" alt="Masai guide leading a bush walk through the savanna" width="600" height="450" loading="lazy" />
           </div>
-        </details>
-        <details>
-          <summary>¿Qué vacunas necesito para ir a Tanzania?</summary>
-          <div class="faq-answer">
-            Se requiere certificado de vacunación contra fiebre amarilla para ingresar a Tanzania. Se recomiendan también vacunas contra hepatitis A y B, fiebre tifoidea y profilaxis antimalárica. Consulta con tu médico especialista en medicina del viajero al menos 6 semanas antes de tu partida.
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Adventure</span>
+            <h3 class="photo-card__title">Bush Walks</h3>
+            <p>Walking safaris guided by Masai warriors through pristine wilderness and open savanna.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
           </div>
-        </details>
-        <details>
-          <summary>¿Tanzania es un destino seguro para turistas?</summary>
-          <div class="faq-answer">
-            Sí. Tanzania es considerado uno de los países más seguros de África oriental para turismo de safari. Los parques nacionales cuentan con rangers armados, los guías están certificados por TANAPA (Tanzania National Parks Authority) y los lodges mantienen protocolos estrictos de seguridad. Se recomienda viajar siempre con operadores registrados. <a href="/contacto/" style="color:#3D6B2E;font-weight:700">Contáctanos para más información</a>.
+        </a>
+        <a href="/en/activities/hot-air-balloon/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=450&fit=crop&auto=format" alt="Hot air balloon floating over the Serengeti at sunrise" width="600" height="450" loading="lazy" />
           </div>
-        </details>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Aerial</span>
+            <h3 class="photo-card__title">Hot Air Balloon</h3>
+            <p>Soar over the Serengeti at dawn and witness the savanna from a breathtaking aerial perspective.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
       </div>
-      <p style="text-align:center;margin-top:2rem;color:#5A6B52;font-size:.95rem">
-        ¿Más dudas? Consulta <a href="/precios/" style="color:#3D6B2E;font-weight:700">precios y paquetes</a> o <a href="/contacto/" style="color:#3D6B2E;font-weight:700">contáctanos directamente</a>.
-      </p>
     </div>
   </section>
+
+  <!-- PHOTO GALLERY -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Gallery</span>
+        <h2>Tanzania in pictures</h2>
+        <p>A glimpse of the unforgettable landscapes and wildlife encounters that await you on your Tanzanian safari.</p>
+      </div>
+      <div class="photo-gallery animate-on-scroll delay-1">
+        <div class="photo-gallery__item photo-gallery__item--tall">
+          <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=500&h=700&fit=crop&auto=format" alt="Giraffe walking through the African savanna at sunset" width="500" height="700" loading="lazy" />
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=500&h=375&fit=crop&auto=format" alt="Zebras grazing in the Serengeti National Park" width="500" height="375" loading="lazy" />
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=500&h=375&fit=crop&auto=format" alt="Wildebeest crossing during the Great Migration in the Serengeti" width="500" height="375" loading="lazy" />
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1745885979468-44a855f8a5fa?w=500&h=375&fit=crop&auto=format" alt="Ngorongoro Crater panoramic view with wildlife" width="500" height="375" loading="lazy" />
+        </div>
+        <div class="photo-gallery__item">
+          <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=500&h=375&fit=crop&auto=format" alt="Majestic lion in the golden grasslands of Tanzania" width="500" height="375" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO GALLERY -->
+  <VideoGallery videoIds={['elefantes-caminando','leon-retrato','jirafa-comiendo','jirafa-cebras-estampida','guepardos-bebedero','rinoceronte-pastando']} lang={lang} title="Safari Tanzania Videos" columns={3} />
+
+  <!-- FAQ -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">FAQ</span>
+        <h2>Frequently asked questions</h2>
+        <p>Everything you need to know before booking your Tanzania safari adventure.</p>
+      </div>
+      <div class="faq-list animate-on-scroll delay-1">
+        {faqItems.map(item => (
+          <details>
+            <summary>{item.question}</summary>
+            <div class="faq-answer" set:html={item.answer} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section section--green bg-green" style="position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container" style="text-align:center">
+      <div class="section__header animate-on-scroll">
+        <h2>Ready for your African adventure?</h2>
+        <p>Book your 2026 Tanzania safari today. Expert guides, incredible wildlife and memories that last a lifetime.</p>
+      </div>
+      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/en/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
+        <a href="/en/contact/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Contact us</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
 </BaseLayout>

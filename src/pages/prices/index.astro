@@ -1,0 +1,211 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const lang = 'en';
+const title = 'Safari Tanzania Prices 2026 — Rates, Packages & Bookings';
+const description = 'Updated 2026 prices for Tanzania safaris. Compare packages for the Serengeti, Ngorongoro Crater, and Tarangire. Transparent USD pricing with no hidden fees.';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const breadcrumbs = [
+  { label: 'Prices' },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'PriceSpecification',
+  name: 'Safari Tanzania Prices 2026',
+  description: description,
+  url: 'https://safaritanzania.info/en/prices/',
+  priceCurrency: 'USD',
+};
+---
+
+<BaseLayout title={title} description={description} schema={schema} breadcrumbs={breadcrumbs} lang={lang}>
+  <Header slot="header" lang={lang} />
+  <Footer slot="footer" lang={lang} />
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <span class="chip chip--green">2026 Prices</span>
+        <h1>Safari Tanzania Prices</h1>
+        <p>Transparent pricing for your African adventure. All packages include expert guides, park fees, full-board accommodation, and game-drive transportation. No hidden costs, no surprises.</p>
+        <div class="hero__actions">
+          <a href="/en/contact/" class="btn btn--primary btn--lg">Request a Quote</a>
+          <a href="#packages" class="btn btn--outline btn--lg">View Packages</a>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__photo-frame">
+          <div class="hero__deco hero__deco--tr"></div>
+          <div class="hero__deco hero__deco--bl"></div>
+          <img
+            src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop"
+            alt="Safari vehicle observing elephants in the Serengeti savanna"
+            width="600"
+            height="400"
+            loading="eager"
+            style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:inherit"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Packages -->
+  <section class="section section--gray" id="packages">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:.75rem">Safari Packages</h2>
+      <p style="text-align:center;max-width:620px;margin:0 auto 3rem">Choose from our curated packages or request a custom itinerary. All prices are per person based on double occupancy and include park fees.</p>
+
+      <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem">
+        <!-- Package 1 -->
+        <div class="photo-card" style="border:3px solid var(--mc-border)">
+          <div style="padding:2rem 1.75rem;text-align:center;background:var(--mc-sand)">
+            <span class="chip chip--green" style="margin-bottom:.75rem">Most Popular</span>
+            <h3 style="font-size:1.3rem;margin-bottom:.25rem">Classic Safari</h3>
+            <p style="font-size:.85rem;color:var(--mc-text-muted);margin-bottom:1rem">5 Days / 4 Nights</p>
+            <p style="font-size:2.5rem;font-family:var(--font-head);font-weight:800;color:var(--mc-green)">$2,450<span style="font-size:.9rem;font-weight:400;color:var(--mc-text-muted)"> /person</span></p>
+          </div>
+          <div class="photo-card__body">
+            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.6rem;font-size:.92rem">
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green-mid);font-weight:700;flex-shrink:0">&#10003;</span> Serengeti National Park (2 nights)</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green-mid);font-weight:700;flex-shrink:0">&#10003;</span> Ngorongoro Crater (1 day)</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green-mid);font-weight:700;flex-shrink:0">&#10003;</span> Tarangire National Park (1 day)</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green-mid);font-weight:700;flex-shrink:0">&#10003;</span> Full-board lodge accommodation</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green-mid);font-weight:700;flex-shrink:0">&#10003;</span> English-speaking guide</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green-mid);font-weight:700;flex-shrink:0">&#10003;</span> All park fees included</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green-mid);font-weight:700;flex-shrink:0">&#10003;</span> Airport transfers</li>
+            </ul>
+            <div style="margin-top:1.5rem;text-align:center">
+              <a href="/en/contact/" class="btn btn--primary" style="width:100%;justify-content:center">Book This Package</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Package 2 -->
+        <div class="photo-card" style="border:3px solid var(--mc-amber)">
+          <div style="padding:2rem 1.75rem;text-align:center;background:var(--mc-amber)">
+            <span class="chip chip--green" style="margin-bottom:.75rem">Best Value</span>
+            <h3 style="font-size:1.3rem;margin-bottom:.25rem;color:var(--mc-green)">Premium Safari</h3>
+            <p style="font-size:.85rem;color:var(--mc-green);opacity:.75;margin-bottom:1rem">7 Days / 6 Nights</p>
+            <p style="font-size:2.5rem;font-family:var(--font-head);font-weight:800;color:var(--mc-green)">$3,800<span style="font-size:.9rem;font-weight:400;color:var(--mc-green);opacity:.75"> /person</span></p>
+          </div>
+          <div class="photo-card__body">
+            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.6rem;font-size:.92rem">
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green-mid);font-weight:700;flex-shrink:0">&#10003;</span> Serengeti National Park (3 nights)</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green-mid);font-weight:700;flex-shrink:0">&#10003;</span> Ngorongoro Crater (2 days)</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green-mid);font-weight:700;flex-shrink:0">&#10003;</span> Tarangire National Park (1 day)</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green-mid);font-weight:700;flex-shrink:0">&#10003;</span> Lake Manyara (1 day)</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green-mid);font-weight:700;flex-shrink:0">&#10003;</span> Luxury lodge accommodation</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green-mid);font-weight:700;flex-shrink:0">&#10003;</span> Hot air balloon ride included</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green-mid);font-weight:700;flex-shrink:0">&#10003;</span> All park fees &amp; airport transfers</li>
+            </ul>
+            <div style="margin-top:1.5rem;text-align:center">
+              <a href="/en/contact/" class="btn btn--primary" style="width:100%;justify-content:center">Book This Package</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Package 3 -->
+        <div class="photo-card" style="border:3px solid var(--mc-border)">
+          <div style="padding:2rem 1.75rem;text-align:center;background:var(--mc-sand)">
+            <span class="chip chip--green" style="margin-bottom:.75rem">Ultimate</span>
+            <h3 style="font-size:1.3rem;margin-bottom:.25rem">Grand Safari</h3>
+            <p style="font-size:.85rem;color:var(--mc-text-muted);margin-bottom:1rem">10 Days / 9 Nights</p>
+            <p style="font-size:2.5rem;font-family:var(--font-head);font-weight:800;color:var(--mc-green)">$5,200<span style="font-size:.9rem;font-weight:400;color:var(--mc-text-muted)"> /person</span></p>
+          </div>
+          <div class="photo-card__body">
+            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.6rem;font-size:.92rem">
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green-mid);font-weight:700;flex-shrink:0">&#10003;</span> Serengeti National Park (4 nights)</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green-mid);font-weight:700;flex-shrink:0">&#10003;</span> Ngorongoro Crater (2 days)</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green-mid);font-weight:700;flex-shrink:0">&#10003;</span> Tarangire &amp; Lake Manyara</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green-mid);font-weight:700;flex-shrink:0">&#10003;</span> Masai Village cultural visit</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green-mid);font-weight:700;flex-shrink:0">&#10003;</span> Mix of lodges &amp; tented camps</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green-mid);font-weight:700;flex-shrink:0">&#10003;</span> Hot air balloon + walking safari</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green-mid);font-weight:700;flex-shrink:0">&#10003;</span> All-inclusive with premium wine</li>
+            </ul>
+            <div style="margin-top:1.5rem;text-align:center">
+              <a href="/en/contact/" class="btn btn--primary" style="width:100%;justify-content:center">Book This Package</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Included -->
+  <section class="section">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:.75rem">What All Packages Include</h2>
+      <p style="text-align:center;max-width:620px;margin:0 auto 3rem">Every safari package comes with these essentials at no extra charge.</p>
+
+      <div class="service-cards" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+        <div class="service-card">
+          <span style="font-size:2.2rem">🚙</span>
+          <h3 style="color:var(--mc-green)">4x4 Safari Vehicle</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">Customized Toyota Land Cruiser with pop-up roof for optimal wildlife viewing and photography. Maximum 6 guests per vehicle.</p>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">🎫</span>
+          <h3 style="color:var(--mc-green)">Park Fees</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">All national park entrance fees, conservation fees, and crater descent fees are pre-paid and included in your package price.</p>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">🗣️</span>
+          <h3 style="color:var(--mc-green)">Expert Guides</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">Licensed, English-speaking safari guides with extensive knowledge of wildlife behavior, bird identification, and local culture.</p>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">✈️</span>
+          <h3 style="color:var(--mc-green)">Airport Transfers</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">Complimentary pick-up and drop-off at Kilimanjaro International Airport (JRO) or Arusha Airport (ARK) on arrival and departure days.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Important Notes -->
+  <section class="section section--gray">
+    <div class="container" style="max-width:800px">
+      <h2 style="text-align:center;margin-bottom:2rem">Important Pricing Information</h2>
+      <div style="display:flex;flex-direction:column;gap:1.25rem">
+        <div style="background:white;border-radius:var(--radius-md);padding:1.5rem;box-shadow:var(--shadow-card)">
+          <h3 style="font-size:1rem;margin-bottom:.5rem">Children & Family Discounts</h3>
+          <p style="font-size:.92rem">Children 5-11 years receive a 30% discount. Children under 5 are free (must share parents' room). Family packages for 4+ travelers available on request.</p>
+        </div>
+        <div style="background:white;border-radius:var(--radius-md);padding:1.5rem;box-shadow:var(--shadow-card)">
+          <h3 style="font-size:1rem;margin-bottom:.5rem">Seasonal Variations</h3>
+          <p style="font-size:.92rem">Peak season (July-October, December-February) may carry a 10-15% supplement. Green season (April-May) offers discounts of up to 20% with excellent wildlife viewing and fewer crowds.</p>
+        </div>
+        <div style="background:white;border-radius:var(--radius-md);padding:1.5rem;box-shadow:var(--shadow-card)">
+          <h3 style="font-size:1rem;margin-bottom:.5rem">Not Included</h3>
+          <p style="font-size:.92rem">International flights, visa fees ($50 on arrival), travel insurance, tips for guides and camp staff, and personal expenses such as souvenirs and laundry service.</p>
+        </div>
+        <div style="background:white;border-radius:var(--radius-md);padding:1.5rem;box-shadow:var(--shadow-card)">
+          <h3 style="font-size:1rem;margin-bottom:.5rem">Payment & Cancellation</h3>
+          <p style="font-size:.92rem">30% deposit to confirm your booking, balance due 60 days before arrival. Free cancellation up to 90 days before departure. Payments accepted via bank transfer, PayPal, and major credit cards.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green">
+    <div class="container" style="text-align:center;position:relative">
+      <div style="position:absolute;top:-30px;right:0;opacity:.12;pointer-events:none;color:#D4A017">
+        <Fragment set:html={ACACIA_LARGE} />
+      </div>
+      <h2 style="color:white;margin-bottom:.75rem">Ready to Book Your Safari?</h2>
+      <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:520px;margin-left:auto;margin-right:auto">Contact us for a personalized quote or to customize any package. We respond within 24 hours with detailed itineraries.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/en/contact/" class="btn btn--primary btn--lg">Request a Quote</a>
+        <a href="/en/how-to-get-here/" class="btn btn--outline-white btn--lg" style="border-color:white;color:white">How to Get Here</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

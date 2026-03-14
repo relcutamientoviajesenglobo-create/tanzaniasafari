@@ -1,0 +1,163 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const lang = 'en';
+const title = 'Contact Safari Tanzania — Bookings & Inquiries';
+const description = 'Contact Safari Tanzania for bookings, custom itineraries, and safari inquiries. Reach us by phone, WhatsApp, or email. Based in Arusha, Tanzania.';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const breadcrumbs = [
+  { label: 'Contact' },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'TouristInformationCenter',
+  name: 'Safari Tanzania',
+  description: description,
+  url: 'https://safaritanzania.info/en/contact/',
+  telephone: '+255753000000',
+  email: 'info@safaritanzania.info',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Arusha',
+    addressRegion: 'Arusha Region',
+    addressCountry: 'TZ',
+  },
+};
+---
+
+<BaseLayout title={title} description={description} schema={schema} breadcrumbs={breadcrumbs} lang={lang}>
+  <Header slot="header" lang={lang} />
+  <Footer slot="footer" lang={lang} />
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <span class="chip chip--green">Get in Touch</span>
+        <h1>Contact Safari Tanzania</h1>
+        <p>Have questions about our safaris, need help planning your trip, or ready to book? Our team in Arusha is here to help you design the perfect Tanzanian adventure. We respond within 24 hours.</p>
+        <div class="hero__actions">
+          <a href="https://wa.me/255753000000?text=Hello%2C%20I%20want%20information%20about%20Safari%20Tanzania" class="btn btn--primary btn--lg" target="_blank" rel="noopener">WhatsApp Us</a>
+          <a href="tel:+255753000000" class="btn btn--outline btn--lg">Call Now</a>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__photo-frame">
+          <div class="hero__deco hero__deco--tr"></div>
+          <div class="hero__deco hero__deco--bl"></div>
+          <img
+            src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&h=400&fit=crop"
+            alt="Safari guide smiling and welcoming visitors in Arusha Tanzania"
+            width="600"
+            height="400"
+            loading="eager"
+            style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:inherit"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Methods -->
+  <section class="section section--gray">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:.75rem">How to Reach Us</h2>
+      <p style="text-align:center;max-width:620px;margin:0 auto 3rem">Choose the contact method that works best for you. We are available from 7:00 AM to 9:00 PM East Africa Time (UTC+3).</p>
+
+      <div class="service-cards" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+        <div class="service-card">
+          <span style="font-size:2.2rem">💬</span>
+          <h3 style="color:var(--mc-green)">WhatsApp</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">The fastest way to reach us. Send a message anytime and we will respond during business hours.</p>
+          <a href="https://wa.me/255753000000?text=Hello%2C%20I%20want%20information%20about%20Safari%20Tanzania" target="_blank" rel="noopener" style="color:#3D6B2E;font-weight:700;font-size:.92rem;margin-top:.5rem;display:inline-block">+255 753 000 000</a>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">📧</span>
+          <h3 style="color:var(--mc-green)">Email</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">For detailed inquiries, custom itinerary requests, and group bookings. We respond within 24 hours.</p>
+          <a href="mailto:info@safaritanzania.info" style="color:#3D6B2E;font-weight:700;font-size:.92rem;margin-top:.5rem;display:inline-block">info@safaritanzania.info</a>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">📞</span>
+          <h3 style="color:var(--mc-green)">Phone</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">Call us directly for urgent questions or to speak with a safari specialist in English or Swahili.</p>
+          <a href="tel:+255753000000" style="color:#3D6B2E;font-weight:700;font-size:.92rem;margin-top:.5rem;display:inline-block">+255 753 000 000</a>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">📍</span>
+          <h3 style="color:var(--mc-green)">Visit Our Office</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">Located in Arusha, the gateway city to Tanzania's northern safari circuit. Walk-ins welcome during business hours.</p>
+          <span style="color:var(--mc-green);font-weight:700;font-size:.92rem;margin-top:.5rem;display:inline-block">Arusha, Tanzania</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="section">
+    <div class="container" style="max-width:700px">
+      <h2 style="text-align:center;margin-bottom:.75rem">Send Us a Message</h2>
+      <p style="text-align:center;max-width:520px;margin:0 auto 2.5rem">Fill out the form below and we will get back to you within 24 hours with a detailed response and, if requested, a personalized itinerary.</p>
+
+      <form action="https://formsubmit.co/info@safaritanzania.info" method="POST" style="display:flex;flex-direction:column;gap:1.25rem">
+        <input type="hidden" name="_subject" value="New Safari Inquiry from Website (EN)">
+        <input type="hidden" name="_next" value="https://safaritanzania.info/en/contact/">
+        <input type="text" name="_honey" style="display:none">
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+          <div>
+            <label for="name" style="display:block;font-weight:700;font-size:.9rem;margin-bottom:.35rem;color:var(--mc-green)">Full Name *</label>
+            <input type="text" id="name" name="name" required placeholder="Your full name" style="width:100%;padding:.75rem 1rem;border:2px solid var(--mc-border);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:.95rem">
+          </div>
+          <div>
+            <label for="email" style="display:block;font-weight:700;font-size:.9rem;margin-bottom:.35rem;color:var(--mc-green)">Email *</label>
+            <input type="email" id="email" name="email" required placeholder="your@email.com" style="width:100%;padding:.75rem 1rem;border:2px solid var(--mc-border);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:.95rem">
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+          <div>
+            <label for="phone" style="display:block;font-weight:700;font-size:.9rem;margin-bottom:.35rem;color:var(--mc-green)">Phone / WhatsApp</label>
+            <input type="tel" id="phone" name="phone" placeholder="+1 555 123 4567" style="width:100%;padding:.75rem 1rem;border:2px solid var(--mc-border);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:.95rem">
+          </div>
+          <div>
+            <label for="travelers" style="display:block;font-weight:700;font-size:.9rem;margin-bottom:.35rem;color:var(--mc-green)">Number of Travelers</label>
+            <input type="number" id="travelers" name="travelers" min="1" max="30" placeholder="2" style="width:100%;padding:.75rem 1rem;border:2px solid var(--mc-border);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:.95rem">
+          </div>
+        </div>
+
+        <div>
+          <label for="dates" style="display:block;font-weight:700;font-size:.9rem;margin-bottom:.35rem;color:var(--mc-green)">Preferred Travel Dates</label>
+          <input type="text" id="dates" name="dates" placeholder="e.g., July 15-22, 2026" style="width:100%;padding:.75rem 1rem;border:2px solid var(--mc-border);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:.95rem">
+        </div>
+
+        <div>
+          <label for="message" style="display:block;font-weight:700;font-size:.9rem;margin-bottom:.35rem;color:var(--mc-green)">Message *</label>
+          <textarea id="message" name="message" required rows="5" placeholder="Tell us about your ideal safari experience, interests, and any questions you have..." style="width:100%;padding:.75rem 1rem;border:2px solid var(--mc-border);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:.95rem;resize:vertical"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--lg" style="align-self:center;min-width:220px;justify-content:center">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green">
+    <div class="container" style="text-align:center;position:relative">
+      <div style="position:absolute;top:-30px;right:0;opacity:.12;pointer-events:none;color:#D4A017">
+        <Fragment set:html={ACACIA_LARGE} />
+      </div>
+      <h2 style="color:white;margin-bottom:.75rem">Start Planning Your Safari Today</h2>
+      <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:520px;margin-left:auto;margin-right:auto">The sooner you reach out, the more options we can offer. Popular dates and lodges fill up quickly, especially during peak migration season.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/en/prices/" class="btn btn--primary btn--lg">See 2026 Prices</a>
+        <a href="/en/how-to-get-here/" class="btn btn--outline-white btn--lg" style="border-color:white;color:white">How to Get Here</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

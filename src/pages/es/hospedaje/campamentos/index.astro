@@ -1,0 +1,192 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import { lodging, faqPage } from '../../../../i18n/schema';
+
+const title = 'Campamentos Safari en Tanzania — Experiencia Autentica en la Sabana';
+const description = 'Vive la experiencia autentica del safari africano en campamentos de tiendas de lujo en la sabana. Escucha a los leones rugir mientras duermes bajo las estrellas de Tanzania.';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const breadcrumbs = [
+  { label: 'Hospedaje', href: '/hospedaje/' },
+  { label: 'Campamentos' },
+];
+
+const faqs = [
+  { question: 'Son seguros los campamentos en la sabana?', answer: 'Si, los campamentos cuentan con personal de seguridad Masai las 24 horas, cercas naturales y protocolos estrictos. Los guardias patrullan toda la noche para garantizar tu seguridad.' },
+  { question: 'Que tipo de tiendas se usan?', answer: 'Las tiendas son de lona resistente con estructura solida, camas king size con sabanas de algodon, bano privado con ducha caliente y agua corriente, y terraza cubierta.' },
+  { question: 'Hay electricidad en los campamentos?', answer: 'La mayoria de campamentos usan energia solar. Hay puntos de carga para camaras y dispositivos. Algunos campamentos moviles ofrecen electricidad limitada en horarios especificos.' },
+];
+
+const schema = [
+  lodging('Campground', {
+    name: 'Campamentos Safari Tanzania',
+    description,
+    url: 'https://safaritanzania.info/hospedaje/campamentos/',
+  }),
+  faqPage(faqs),
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="/hospedaje/campamentos/"
+  schema={schema}
+  breadcrumbs={breadcrumbs}
+>
+  <Header slot="header" />
+  <Footer slot="footer" />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <span class="chip chip--green">Autentico</span>
+        <h1 class="hero__title">Campamentos Safari en Tanzania</h1>
+        <p class="hero__desc">Duerme en el corazon de la sabana africana. Tiendas de lujo con todas las comodidades rodeadas de vida salvaje para una experiencia que nunca olvidaras.</p>
+        <div class="hero__actions">
+          <a href="/precios/" class="btn btn--primary btn--lg">Ver Tarifas</a>
+          <a href="/contacto/" class="btn btn--outline btn--lg">Reservar</a>
+        </div>
+        <div class="stats-row">
+          <div class="stat">
+            <strong>$200+</strong>
+            <span style="font-size:.8rem;color:#2D4A22;opacity:.7">USD por noche</span>
+          </div>
+          <div class="stat">
+            <strong>100%</strong>
+            <span style="font-size:.8rem;color:#2D4A22;opacity:.7">Inmersion natural</span>
+          </div>
+          <div class="stat">
+            <strong>Masai</strong>
+            <span style="font-size:.8rem;color:#2D4A22;opacity:.7">Seguridad 24h</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__photo-frame">
+          <div class="hero__deco hero__deco--tr"></div>
+          <div class="hero__deco hero__deco--bl"></div>
+          <img
+            src="https://images.unsplash.com/photo-1631049552057-403cdb8f0658?w=800&h=600&fit=crop&auto=format"
+            alt="Campamento safari de tiendas de lujo en la sabana de Tanzania"
+            width="600"
+            height="480"
+            loading="eager"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIPOS DE CAMPAMENTO -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <span class="chip chip--amber">Opciones</span>
+        <h2>Tipos de Campamentos</h2>
+        <p>Ofrecemos diferentes estilos de campamento para adaptarnos a tu nivel de aventura deseado.</p>
+      </div>
+
+      <div class="card-grid card-grid--3">
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800&h=600&fit=crop&auto=format" alt="Campamento de lujo permanente en safari" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Premium</span>
+            <p class="photo-card__title">Campamento de Lujo</p>
+            <p style="font-size:.9rem;color:#5A6B52">Tiendas de lujo con suelo de madera, cama king, bano privado con ducha caliente, terraza y servicio de mayordomo. La maxima comodidad en la sabana.</p>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800&h=600&fit=crop&auto=format" alt="Campamento movil siguiendo la migracion" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Aventura</span>
+            <p class="photo-card__title">Campamento Movil</p>
+            <p style="font-size:.9rem;color:#5A6B52">Campamentos que se mueven siguiendo la Gran Migracion. Una experiencia unica de estar donde esta la accion, con comodidades esenciales bien cuidadas.</p>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1510312305653-8ed496efae75?w=800&h=600&fit=crop&auto=format" alt="Campamento basico de safari en Tanzania" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Clasico</span>
+            <p class="photo-card__title">Campamento Estandar</p>
+            <p style="font-size:.9rem;color:#5A6B52">La opcion clasica del safari africano. Tiendas confortables con camas, bano compartido o privado y comidas preparadas por chef. Relacion calidad-precio excelente.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LA EXPERIENCIA -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header">
+        <h2>La Experiencia del Campamento</h2>
+        <p>Vivir en un campamento safari es mucho mas que dormir en una tienda. Es sumergirse completamente en la naturaleza africana.</p>
+      </div>
+      <div class="service-cards" style="grid-template-columns: repeat(4, 1fr)">
+        <div class="service-card">
+          <p class="service-card__title">Noches Estrelladas</p>
+          <p class="service-card__desc">Cielos sin contaminacion luminica. Observa la Via Lactea desde tu terraza privada.</p>
+        </div>
+        <div class="service-card">
+          <p class="service-card__title">Sonidos Salvajes</p>
+          <p class="service-card__desc">Escucha leones, hienas y aves nocturnas mientras te duermes en la sabana.</p>
+        </div>
+        <div class="service-card">
+          <p class="service-card__title">Fogata Nocturna</p>
+          <p class="service-card__desc">Cada noche los guias comparten historias junto al fuego bajo el cielo africano.</p>
+        </div>
+        <div class="service-card">
+          <p class="service-card__title">Cocina del Bush</p>
+          <p class="service-card__desc">Platos gourmet preparados al aire libre con ingredientes frescos y locales.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container" style="max-width:800px">
+      <div class="section__header">
+        <h2>Preguntas Frecuentes</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details class="faq-item">
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green">
+    <div class="container" style="text-align:center">
+      <h2 style="color:white;margin-bottom:.75rem">Reserva tu Campamento Safari</h2>
+      <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:500px;margin-left:auto;margin-right:auto">Vive la experiencia mas autentica del safari africano. Contactanos para planificar tu aventura.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/precios/" class="btn btn--amber btn--lg">Ver Precios</a>
+        <a href="/contacto/" class="btn btn--outline-white btn--lg">Contactar</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

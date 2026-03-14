@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const lang = 'en';
+const title = 'Lodging in Tanzania — Luxury Lodges & Safari Camps';
+const description = 'Find the best lodging options in Tanzania for your safari. Choose between luxury lodges with premium amenities or authentic tented camps immersed in the African bush.';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const breadcrumbs = [
+  { label: 'Lodging' },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  description: description,
+  url: 'https://safaritanzania.info/en/lodging/',
+};
+---
+
+<BaseLayout title={title} description={description} schema={schema} breadcrumbs={breadcrumbs} lang={lang}>
+  <Header slot="header" lang={lang} />
+  <Footer slot="footer" lang={lang} />
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <span class="chip chip--green">Accommodation</span>
+        <h1>Lodging in Tanzania</h1>
+        <p>From opulent lodges overlooking the Serengeti plains to intimate tented camps where you fall asleep to the sounds of the bush, Tanzania offers a range of accommodation to match every style of safari adventure.</p>
+        <div class="hero__actions">
+          <a href="/en/lodging/lodges/" class="btn btn--primary btn--lg">Safari Lodges</a>
+          <a href="/en/lodging/camps/" class="btn btn--outline btn--lg">Safari Camps</a>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__photo-frame">
+          <div class="hero__deco hero__deco--tr"></div>
+          <div class="hero__deco hero__deco--bl"></div>
+          <img
+            src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=600&h=400&fit=crop"
+            alt="Luxury safari lodge with infinity pool overlooking the Serengeti"
+            width="600"
+            height="400"
+            loading="eager"
+            style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:inherit"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Accommodation Types -->
+  <section class="section section--gray">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:.75rem">Choose Your Safari Experience</h2>
+      <p style="text-align:center;max-width:620px;margin:0 auto 3rem">Each lodging option offers a distinct way to connect with Tanzania's wilderness. Both guarantee unforgettable encounters with Africa's wildlife.</p>
+
+      <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:2rem">
+        <a href="/en/lodging/lodges/" class="photo-card" style="text-decoration:none">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=500&h=350&fit=crop" alt="Elegant safari lodge room with panoramic savanna views" width="500" height="350" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Premium Experience</span>
+            <p class="photo-card__title">Safari Lodges</p>
+            <p style="font-size:.92rem;color:var(--mc-text-muted)">Permanent structures with en-suite bathrooms, swimming pools, gourmet dining, and world-class service. Ideal for travelers who want comfort without compromising on wildlife access.</p>
+            <div class="photo-card__arrow">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </a>
+        <a href="/en/lodging/camps/" class="photo-card" style="text-decoration:none">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500&h=350&fit=crop" alt="Authentic tented camp with canvas tent under acacia trees" width="500" height="350" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Authentic Adventure</span>
+            <p class="photo-card__title">Safari Camps</p>
+            <p style="font-size:.92rem;color:var(--mc-text-muted)">Canvas tents nestled in the wild, offering an immersive bush experience. Wake to birdsong, dine under the stars, and hear lions roar from the comfort of your tent.</p>
+            <div class="photo-card__arrow">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What to Expect -->
+  <section class="section">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:.75rem">What to Expect at Your Accommodation</h2>
+      <p style="text-align:center;max-width:620px;margin:0 auto 3rem">Regardless of which option you choose, all our partner lodges and camps meet high standards of quality, safety, and sustainability.</p>
+
+      <div class="service-cards" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+        <div class="service-card">
+          <span style="font-size:2.2rem">🍽️</span>
+          <h3 style="color:var(--mc-green)">Full-Board Meals</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">All meals included: hearty breakfasts, packed lunches for game drives, and multi-course dinners featuring both international and local Tanzanian cuisine.</p>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">🚐</span>
+          <h3 style="color:var(--mc-green)">Game Drive Access</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">Morning and afternoon game drives included in all stays. Experienced English-speaking guides with intimate knowledge of animal behavior and terrain.</p>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">🌿</span>
+          <h3 style="color:var(--mc-green)">Eco-Friendly Practices</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">Solar power, water conservation, and community partnerships. Our lodges and camps actively support local conservation and Masai community programs.</p>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">🛡️</span>
+          <h3 style="color:var(--mc-green)">Safety & Comfort</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">24/7 security, first-aid facilities, radio communication, and trained staff. Wi-Fi available at most lodges and select camps for staying connected.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green">
+    <div class="container" style="text-align:center;position:relative">
+      <div style="position:absolute;top:-30px;right:0;opacity:.12;pointer-events:none;color:#D4A017">
+        <Fragment set:html={ACACIA_LARGE} />
+      </div>
+      <h2 style="color:white;margin-bottom:.75rem">Find Your Perfect Safari Stay</h2>
+      <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:520px;margin-left:auto;margin-right:auto">Let us help you choose the ideal accommodation for your Tanzania safari. Browse our options or contact us for personalized recommendations.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/en/prices/" class="btn btn--primary btn--lg">See 2026 Prices</a>
+        <a href="/en/contact/" class="btn btn--outline-white btn--lg" style="border-color:white;color:white">Contact Us</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

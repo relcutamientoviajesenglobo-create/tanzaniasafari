@@ -1,0 +1,84 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import BlogCard from '../../../../components/blog/BlogCard.astro';
+import { webPage } from '../../../../i18n/schema';
+
+const title = 'Cultura Masai — Tradiciones, Historia y Visitas a Bomas';
+const description = 'Descubre la fascinante cultura del pueblo Masai: tradiciones ancestrales, ceremonias, artesanias, visitas a bomas (aldeas) y como el turismo responsable apoya a estas comunidades.';
+
+const allPosts = await getCollection('blog');
+const posts = allPosts
+  .filter(post => !post.slug.startsWith('en-') && post.data.silo === 'cultura-masai')
+  .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+
+const breadcrumbs = [
+  { label: 'Blog', href: '/blog/' },
+  { label: 'Cultura Masai' },
+];
+
+const schema = [
+  webPage({
+    name: title,
+    description,
+    url: 'https://safaritanzania.info/blog/cultura-masai/',
+  }),
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="/blog/cultura-masai/"
+  schema={schema}
+  breadcrumbs={breadcrumbs}
+>
+  <Header slot="header" />
+  <Footer slot="footer" />
+
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <span class="chip chip--green">Blog</span>
+        <h1>Cultura Masai</h1>
+        <p>Articulos sobre la rica cultura del pueblo Masai: sus tradiciones milenarias, ceremonias, artesanias, modo de vida y como visitarlos de manera respetuosa y responsable.</p>
+      </div>
+
+      {posts.length > 0 ? (
+        <div class="card-grid card-grid--3">
+          {posts.map(post => (
+            <BlogCard
+              title={post.data.title}
+              description={post.data.description}
+              slug={post.slug}
+              image={post.data.image}
+              imageAlt={post.data.imageAlt}
+              author={post.data.author}
+              publishDate={post.data.publishDate}
+              readingTime={post.data.readingTime}
+              category={post.data.category}
+            />
+          ))}
+        </div>
+      ) : (
+        <div style="text-align:center;padding:3rem 0">
+          <p style="font-size:1.1rem;color:#5A6B52">Estamos preparando articulos sobre la cultura Masai. Vuelve pronto.</p>
+          <a href="/blog/" class="btn btn--outline" style="margin-top:1.5rem">Ver todo el Blog</a>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <section class="section section--green">
+    <div class="container" style="text-align:center">
+      <h2 style="color:white;margin-bottom:.75rem">Visita una Boma Masai</h2>
+      <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:500px;margin-left:auto;margin-right:auto">Incluimos visitas culturales a comunidades Masai en nuestros safaris. Una experiencia enriquecedora y respetuosa.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/precios/" class="btn btn--amber btn--lg">Ver Paquetes</a>
+        <a href="/contacto/" class="btn btn--outline-white btn--lg">Contactar</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

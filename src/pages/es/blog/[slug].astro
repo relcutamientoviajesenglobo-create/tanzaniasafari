@@ -1,13 +1,13 @@
 ---
 import { getCollection } from 'astro:content';
-import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
+import BlogPostLayout from '../../../layouts/BlogPostLayout.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
   return posts
-    .filter(post => post.slug.startsWith('en-'))
+    .filter(post => !post.slug.startsWith('en-'))
     .map(post => ({
-      params: { slug: post.slug.replace('en-', '') },
+      params: { slug: post.slug },
       props: { post },
     }));
 }
@@ -16,6 +16,11 @@ const { post } = Astro.props;
 const { Content, headings } = await post.render();
 ---
 
-<BlogPostLayout frontmatter={post.data} headings={headings} slug={post.slug} lang="en">
+<BlogPostLayout
+  frontmatter={post.data}
+  headings={headings}
+  slug={post.slug}
+  lang="es"
+>
   <Content />
 </BlogPostLayout>

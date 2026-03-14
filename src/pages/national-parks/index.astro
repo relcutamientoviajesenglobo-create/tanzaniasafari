@@ -1,0 +1,175 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const lang = 'en';
+const title = 'Tanzania National Parks — Serengeti, Ngorongoro, Tarangire & More';
+const description = 'Explore Tanzania\'s iconic national parks: Serengeti, Ngorongoro Crater, Tarangire, Lake Manyara, and more. Wildlife highlights, best seasons, and what to expect at each park.';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const breadcrumbs = [
+  { label: 'National Parks' },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  description: description,
+  url: 'https://safaritanzania.info/en/national-parks/',
+};
+---
+
+<BaseLayout title={title} description={description} schema={schema} breadcrumbs={breadcrumbs} lang={lang}>
+  <Header slot="header" lang={lang} />
+  <Footer slot="footer" lang={lang} />
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <span class="chip chip--green">Wildlife Destinations</span>
+        <h1>Tanzania National Parks</h1>
+        <p>Tanzania is home to some of the most extraordinary wildlife areas on Earth. From the endless plains of the Serengeti to the ancient caldera of Ngorongoro, each national park offers a unique window into Africa's natural heritage.</p>
+        <div class="hero__actions">
+          <a href="/en/prices/" class="btn btn--primary btn--lg">See 2026 Prices</a>
+          <a href="/en/contact/" class="btn btn--outline btn--lg">Plan Your Visit</a>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__photo-frame">
+          <div class="hero__deco hero__deco--tr"></div>
+          <div class="hero__deco hero__deco--bl"></div>
+          <img
+            src="https://images.unsplash.com/photo-1535338454528-1b5c8e9b0d64?w=600&h=400&fit=crop"
+            alt="Panoramic view of the Serengeti plains with acacia trees and blue sky"
+            width="600"
+            height="400"
+            loading="eager"
+            style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:inherit"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Parks Grid -->
+  <section class="section section--gray">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:.75rem">Northern Circuit Parks</h2>
+      <p style="text-align:center;max-width:620px;margin:0 auto 3rem">The most popular safari circuit in Tanzania, accessible from Arusha. These parks form the core of most safari itineraries.</p>
+
+      <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem">
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=400&h=300&fit=crop" alt="Wildebeest herd on the Serengeti plains during the Great Migration" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">UNESCO World Heritage</span>
+            <p class="photo-card__title">Serengeti National Park</p>
+            <p style="font-size:.9rem;color:var(--mc-text-muted)">14,750 km&sup2; of iconic savanna hosting the Great Migration, the Big Five, and over 500 bird species. The quintessential African safari destination.</p>
+            <p style="font-size:.82rem;color:var(--mc-text-muted);margin-top:.5rem"><strong style="color:var(--mc-green)">Best time:</strong> June-October (Migration), December-March (calving season)</p>
+          </div>
+        </div>
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1621414050946-1b936a78491d?w=400&h=300&fit=crop" alt="Ngorongoro Crater with lush green floor and steep walls" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">UNESCO World Heritage</span>
+            <p class="photo-card__title">Ngorongoro Conservation Area</p>
+            <p style="font-size:.9rem;color:var(--mc-text-muted)">The world's largest intact volcanic caldera, 19 km wide and 600m deep. Home to approximately 25,000 large animals including black rhino, lions, and flamingos.</p>
+            <p style="font-size:.82rem;color:var(--mc-text-muted);margin-top:.5rem"><strong style="color:var(--mc-green)">Best time:</strong> Year-round, especially June-September for clearer skies</p>
+          </div>
+        </div>
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1585970480901-90d6bb2a48b5?w=400&h=300&fit=crop" alt="Elephant family walking through Tarangire woodland" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Elephant Haven</span>
+            <p class="photo-card__title">Tarangire National Park</p>
+            <p style="font-size:.9rem;color:var(--mc-text-muted)">Famous for its massive elephant herds and ancient baobab trees. The Tarangire River draws incredible concentrations of wildlife during the dry season.</p>
+            <p style="font-size:.82rem;color:var(--mc-text-muted);margin-top:.5rem"><strong style="color:var(--mc-green)">Best time:</strong> June-October (dry season, maximum wildlife concentration)</p>
+          </div>
+        </div>
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=400&h=300&fit=crop" alt="Flamingos on the shores of Lake Manyara" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Birdwatcher's Paradise</span>
+            <p class="photo-card__title">Lake Manyara National Park</p>
+            <p style="font-size:.9rem;color:var(--mc-text-muted)">A compact gem famous for tree-climbing lions, massive flocks of flamingos on the alkaline lake, and diverse habitats from groundwater forest to open grassland.</p>
+            <p style="font-size:.82rem;color:var(--mc-text-muted);margin-top:.5rem"><strong style="color:var(--mc-green)">Best time:</strong> November-February (flamingos), July-October (wildlife)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Southern & Western Parks -->
+  <section class="section">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:.75rem">Southern & Western Circuit</h2>
+      <p style="text-align:center;max-width:620px;margin:0 auto 3rem">Less visited but equally spectacular, these remote parks offer an exclusive safari experience with far fewer tourists.</p>
+
+      <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem">
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1549366021-9f761d450615?w=400&h=300&fit=crop" alt="Wild dogs running through the Nyerere National Park bush" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Largest in Africa</span>
+            <p class="photo-card__title">Nyerere National Park (Selous)</p>
+            <p style="font-size:.9rem;color:var(--mc-text-muted)">Africa's largest game reserve at over 30,000 km&sup2;. Boat safaris on the Rufiji River, walking safaris, and exceptional wild dog viewing in pristine wilderness.</p>
+          </div>
+        </div>
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=400&h=300&fit=crop" alt="Lion resting in tall grass in Ruaha National Park" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Off the Beaten Path</span>
+            <p class="photo-card__title">Ruaha National Park</p>
+            <p style="font-size:.9rem;color:var(--mc-text-muted)">Tanzania's largest national park with a huge lion population, large herds of elephant and buffalo, and dramatic baobab-studded landscapes. Very few tourists.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Best Time to Visit -->
+  <section class="section section--gray">
+    <div class="container" style="max-width:800px">
+      <h2 style="text-align:center;margin-bottom:2rem">When to Visit</h2>
+      <div style="display:flex;flex-direction:column;gap:1.25rem">
+        <div style="background:white;border-radius:var(--radius-md);padding:1.5rem;box-shadow:var(--shadow-card)">
+          <h3 style="font-size:1rem;margin-bottom:.5rem">Dry Season (June - October)</h3>
+          <p style="font-size:.92rem">The best overall safari season. Animals gather around water sources, vegetation is thinner for better visibility, and the Great Migration crosses the Mara River. Peak season with higher prices.</p>
+        </div>
+        <div style="background:white;border-radius:var(--radius-md);padding:1.5rem;box-shadow:var(--shadow-card)">
+          <h3 style="font-size:1rem;margin-bottom:.5rem">Green Season (November - May)</h3>
+          <p style="font-size:.92rem">Lush landscapes, fewer crowds, and lower prices. Calving season (January-March) in the southern Serengeti offers incredible predator-prey drama. Ideal for bird watching and photography.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green">
+    <div class="container" style="text-align:center;position:relative">
+      <div style="position:absolute;top:-30px;right:0;opacity:.12;pointer-events:none;color:#D4A017">
+        <Fragment set:html={ACACIA_LARGE} />
+      </div>
+      <h2 style="color:white;margin-bottom:.75rem">Explore Tanzania's Wild Heart</h2>
+      <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:520px;margin-left:auto;margin-right:auto">Let us help you choose the perfect parks for your safari itinerary. Every journey is tailored to your interests, timeline, and budget.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/en/prices/" class="btn btn--primary btn--lg">See 2026 Prices</a>
+        <a href="/en/contact/" class="btn btn--outline-white btn--lg" style="border-color:white;color:white">Contact Us</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

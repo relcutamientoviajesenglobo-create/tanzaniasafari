@@ -1,0 +1,251 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { touristAttraction, faqPage } from '../../../i18n/schema';
+
+const lang = 'en';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const faqItems = [
+  { question: 'What is a bush walk in Tanzania?', answer: 'A bush walk (or walking safari) is a <strong>guided walking expedition</strong> through the African wilderness with experienced Masai guides and armed rangers. Unlike vehicle-based safaris, bush walks immerse you in the landscape at ground level. You learn animal tracking, identify medicinal plants, read the bush and experience the sights, sounds and smells of Africa in an intimate way that is impossible from a vehicle.' },
+  { question: 'Is a bush walk safe?', answer: 'Yes, safety is our top priority. All bush walks are led by <strong>two guides</strong>: a Masai tracker who reads the landscape and an armed ranger certified by Tanzania National Parks Authority (TANAPA). Guides carry satellite communication, first aid equipment and are trained in wildlife behavior. Routes are planned to avoid high-risk animal encounters, and strict protocols are in place for any wildlife sighting on foot.' },
+  { question: 'How long do bush walks last?', answer: 'Bush walks typically last <strong>2 to 4 hours</strong>, usually conducted in the cooler morning hours (6:00-10:00 AM). Shorter walks of 1-2 hours are available for families and those with limited mobility. Multi-day walking safaris (3-5 days) are available for experienced hikers who want to traverse the wilderness on foot, camping at mobile tented camps.' },
+  { question: 'What will I see on a bush walk?', answer: 'Bush walks focus on the smaller wonders of the bush that are missed from vehicles: <strong>animal tracks and dung</strong> identification, medicinal plants used by Masai healers, insect colonies, bird nests, reptiles and the intricate ecology of the savanna. You may also encounter larger animals like giraffes, zebras, antelopes and even elephants at a safe distance.' },
+  { question: 'What should I wear on a bush walk?', answer: 'Wear <strong>sturdy closed-toe hiking shoes or boots</strong> (broken in before your trip), long trousers, a long-sleeved shirt in neutral colors (khaki, olive, tan), a wide-brimmed hat and sunglasses. Apply insect repellent and sunscreen (SPF 50+). Carry a small backpack with water (we provide bottles), and avoid perfume or cologne as it can attract insects and alert animals.' },
+  { question: 'What is the minimum age for bush walks?', answer: 'The minimum age for standard bush walks is typically <strong>12 years old</strong>, though this can vary by location and guide discretion. Some shorter, gentler walks in low-risk areas may accept children from 8 years old with parental supervision. For families with younger children, we recommend vehicle-based <a href="/en/activities/wildlife-watching/" style="color:#3D6B2E;font-weight:700">wildlife watching</a> which has no age restrictions.' },
+];
+
+const schema = [
+  touristAttraction({
+    name: 'Bush Walks in Tanzania — Walking Safaris with Masai Guides',
+    description: 'Walking safaris with experienced Masai guides through the Tanzanian bush. Learn tracking, discover medicinal plants and experience Africa at ground level.',
+    url: 'https://safaritanzania.info/en/activities/bush-walks/',
+  }),
+  faqPage(faqItems),
+];
+---
+
+<BaseLayout
+  title="Bush Walks in Tanzania — Walking Safaris with Masai Guides"
+  description="Experience walking safaris with experienced Masai guides through the Tanzanian bush. Learn animal tracking, discover medicinal plants and connect with Africa at ground level."
+  lang={lang}
+  schema={schema}
+  breadcrumbs={[
+    { label: 'Activities', href: '/en/activities/' },
+    { label: 'Bush Walks' },
+  ]}
+>
+  <Header slot="header" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--green">Walking Safari</span>
+          <h1 class="hero__title">Bush Walks with Masai Guides</h1>
+          <p class="hero__desc">Step out of the vehicle and into the African wilderness. Walk through the savanna with experienced Masai warriors who share centuries of bush knowledge, tracking skills and cultural wisdom.</p>
+          <div class="hero__actions">
+            <a href="/en/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
+            <a href="/en/contact/" class="btn btn--outline btn--lg">Book bush walk</a>
+          </div>
+          <div class="stats-row">
+            <div class="stat"><strong>2-4 hrs</strong><span>Walk duration</span></div>
+            <div class="stat"><strong>Masai</strong><span>Expert guides</span></div>
+            <div class="stat"><strong>12+</strong><span>Minimum age</span></div>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <img
+              src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=800&h=640&fit=crop&auto=format"
+              alt="Masai guide leading a walking safari through the golden Tanzanian savanna"
+              width="800" height="640" loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE EXPERIENCE -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">The Experience</span>
+        <h2>What makes bush walks special</h2>
+        <p>A bush walk transforms your safari from observation to immersion. Feel the earth beneath your feet, read animal tracks and discover the hidden details of the African bush.</p>
+      </div>
+      <div class="card-grid card-grid--2 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&h=450&fit=crop&auto=format" alt="Masai warriors in traditional dress guiding visitors through the bush" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Masai Cultural Knowledge</h3>
+            <p>Your Masai guide shares generations of bush wisdom: which plants heal, which trees signal water, how to read animal behavior from a distance and the traditional stories woven into the landscape. This knowledge has been passed down for centuries and transforms the walk into a profound cultural exchange.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=450&fit=crop&auto=format" alt="Savanna landscape with animal tracks in the soft earth" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Animal Tracking</h3>
+            <p>Learn to identify animal tracks, dung and territorial markings. Your guide demonstrates how to distinguish lion prints from leopard, gauge the freshness of elephant droppings and read the story of the bush from clues invisible to untrained eyes. This detective work adds a thrilling dimension to your safari.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU'LL DISCOVER -->
+  <section class="section section--green bg-green" style="position:relative;overflow:hidden">
+    <div style="position:absolute;bottom:0;left:-30px;opacity:.08;pointer-events:none;color:#D4A017;transform:rotate(180deg)">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Hidden Wonders</span>
+        <h2>What you will discover on foot</h2>
+        <p>Bush walks reveal an entire world that vehicle safaris miss. Here are some of the highlights our walkers encounter.</p>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1">
+        <div class="service-card">
+          <h3 class="service-card__title">Medicinal Plants</h3>
+          <p class="service-card__desc">Masai guides identify dozens of plants used in traditional medicine: toothbrush trees, fever reducers, pain relievers and antiseptic bark. A living pharmacopeia of the bush.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Insect Ecology</h3>
+          <p class="service-card__desc">From cathedral-like termite mounds to dung beetle highways and weaver ant nests, the micro-world of the savanna reveals complex engineering and social structures.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Bird Life</h3>
+          <p class="service-card__desc">On foot, you hear and see birds that are missed from noisy vehicles: weaverbirds constructing nests, sunbirds feeding on wildflowers and raptors hunting from acacia perches.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Landscape Reading</h3>
+          <p class="service-card__desc">Learn why certain trees grow in specific places, how rivers carve the landscape, why kopjes (granite outcrops) attract predators and how fire shapes the Serengeti ecosystem.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SAFETY -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">Safety</span>
+        <h2>Your safety on the walk</h2>
+        <p>Every bush walk follows strict safety protocols designed by Tanzania's national parks authority and our experienced Masai guides.</p>
+      </div>
+      <div class="card-grid card-grid--3 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Two-Guide System</h3>
+            <p>Every bush walk is led by a Masai tracker at the front and an armed TANAPA-certified ranger at the rear. This formation ensures 360-degree awareness and immediate response capability if needed.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Route Planning</h3>
+            <p>Guides survey routes before each walk, checking for fresh predator signs and planning detour options. Routes prioritize safe terrain with good visibility and natural escape points.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Emergency Equipment</h3>
+            <p>Guides carry satellite phones, first aid kits, snakebite serum and emergency flares. Vehicle backup is always within 15 minutes. All guides are trained in first aid and wildlife emergency protocols.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMBINE -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Perfect Combinations</span>
+        <h2>Pair bush walks with other experiences</h2>
+        <p>Bush walks complement vehicle-based safaris perfectly. Add a morning walk to any multi-day safari itinerary.</p>
+      </div>
+      <div class="card-grid card-grid--3 animate-on-scroll delay-1">
+        <a href="/en/safaris/classic-safari/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=450&fit=crop&auto=format" alt="Classic safari vehicle in the Serengeti" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Classic Safari + Bush Walk</h3>
+            <p>Game drives by day, walking safari by morning. The ultimate combination of vehicle-based viewing and intimate ground-level exploration.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+        <a href="/en/activities/wildlife-watching/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=450&fit=crop&auto=format" alt="Wildebeest herd during the Great Migration" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Wildlife Watching + Walk</h3>
+            <p>Observe the Big Five from a vehicle, then explore tracking and ecology on foot. Two perspectives on the same extraordinary wilderness.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+        <a href="/en/activities/hot-air-balloon/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=450&fit=crop&auto=format" alt="Hot air balloon over the Serengeti at sunrise" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Balloon + Bush Walk</h3>
+            <p>See the savanna from above in a balloon, then explore it at ground level on foot. Two unforgettable perspectives in a single day.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">FAQ</span>
+        <h2>Bush walk questions</h2>
+        <p>Everything you need to know about walking safaris in Tanzania with Masai guides.</p>
+      </div>
+      <div class="faq-list animate-on-scroll delay-1">
+        {faqItems.map(item => (
+          <details>
+            <summary>{item.question}</summary>
+            <div class="faq-answer" set:html={item.answer} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2>Walk the African bush</h2>
+        <p>Experience Tanzania at ground level with our expert Masai guides. An unforgettable connection to the wild.</p>
+      </div>
+      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/en/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
+        <a href="/en/contact/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Book bush walk</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>
