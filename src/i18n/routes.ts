@@ -1,52 +1,61 @@
-/** Bidirectional URL mapping: Spanish path → English path */
-export const routeMap: Record<string, string> = {
-  '/': '/en/',
-  '/safaris/': '/en/safaris/',
-  '/safaris/safari-clasico/': '/en/safaris/classic-safari/',
-  '/safaris/safari-fotografico/': '/en/safaris/photo-safari/',
-  '/safaris/safari-nocturno/': '/en/safaris/night-safari/',
-  '/actividades/': '/en/activities/',
-  '/actividades/avistamiento-fauna/': '/en/activities/wildlife-watching/',
-  '/actividades/caminatas-bush/': '/en/activities/bush-walks/',
-  '/actividades/globo-aerostatico/': '/en/activities/hot-air-balloon/',
-  '/actividades/fotografia-safari/': '/en/activities/safari-photography/',
-  '/hospedaje/': '/en/lodging/',
-  '/hospedaje/lodges/': '/en/lodging/safari-lodges/',
-  '/hospedaje/campamentos/': '/en/lodging/tented-camps/',
-  '/precios/': '/en/prices/',
-  '/como-llegar/': '/en/how-to-get-here/',
-  '/contacto/': '/en/contact/',
-  '/parques-nacionales/': '/en/national-parks/',
-  '/aviso-privacidad/': '/en/privacy-policy/',
-  '/terminos/': '/en/terms/',
-  '/lodges/': '/en/safari-lodges/',
-  '/campamentos/': '/en/tented-camps/',
-  '/blog/': '/en/blog/',
-  '/blog/safaris-tanzania/': '/en/blog/tanzania-safaris/',
-  '/blog/actividades-aventura/': '/en/blog/adventure-activities/',
-  '/blog/hospedaje-lodges/': '/en/blog/lodging-lodges/',
-  '/blog/guias-viaje/': '/en/blog/travel-guides/',
-  '/blog/cultura-masai/': '/en/blog/masai-culture/',
+import type { Lang } from './config';
+
+const routeMap: Record<string, Record<Lang, string>> = {
+  '/': { en: '/', es: '/es/', de: '/de/', fr: '/fr/' },
+  '/safaris/': { en: '/safaris/', es: '/es/safaris/', de: '/de/safaris/', fr: '/fr/safaris/' },
+  '/safaris/classic-safari/': { en: '/safaris/classic-safari/', es: '/es/safaris/safari-clasico/', de: '/de/safaris/klassische-safari/', fr: '/fr/safaris/safari-classique/' },
+  '/safaris/photo-safari/': { en: '/safaris/photo-safari/', es: '/es/safaris/safari-fotografico/', de: '/de/safaris/foto-safari/', fr: '/fr/safaris/safari-photo/' },
+  '/safaris/night-safari/': { en: '/safaris/night-safari/', es: '/es/safaris/safari-nocturno/', de: '/de/safaris/nacht-safari/', fr: '/fr/safaris/safari-nocturne/' },
+  '/activities/': { en: '/activities/', es: '/es/actividades/', de: '/de/aktivitaeten/', fr: '/fr/activites/' },
+  '/activities/wildlife-watching/': { en: '/activities/wildlife-watching/', es: '/es/actividades/avistamiento-fauna/', de: '/de/aktivitaeten/wildtierbeobachtung/', fr: '/fr/activites/observation-faune/' },
+  '/activities/bush-walks/': { en: '/activities/bush-walks/', es: '/es/actividades/caminatas-bush/', de: '/de/aktivitaeten/buschwanderungen/', fr: '/fr/activites/marches-brousse/' },
+  '/activities/safari-photography/': { en: '/activities/safari-photography/', es: '/es/actividades/fotografia-safari/', de: '/de/aktivitaeten/safari-fotografie/', fr: '/fr/activites/photographie-safari/' },
+  '/activities/hot-air-balloon/': { en: '/activities/hot-air-balloon/', es: '/es/actividades/globo-aerostatico/', de: '/de/aktivitaeten/heissluftballon/', fr: '/fr/activites/montgolfiere/' },
+  '/lodging/': { en: '/lodging/', es: '/es/hospedaje/', de: '/de/unterkunft/', fr: '/fr/hebergement/' },
+  '/lodging/lodges/': { en: '/lodging/lodges/', es: '/es/hospedaje/lodges/', de: '/de/unterkunft/lodges/', fr: '/fr/hebergement/lodges/' },
+  '/lodging/camps/': { en: '/lodging/camps/', es: '/es/hospedaje/campamentos/', de: '/de/unterkunft/camps/', fr: '/fr/hebergement/campements/' },
+  '/national-parks/': { en: '/national-parks/', es: '/es/parques-nacionales/', de: '/de/nationalparks/', fr: '/fr/parcs-nationaux/' },
+  '/prices/': { en: '/prices/', es: '/es/precios/', de: '/de/preise/', fr: '/fr/prix/' },
+  '/how-to-get-here/': { en: '/how-to-get-here/', es: '/es/como-llegar/', de: '/de/anreise/', fr: '/fr/comment-venir/' },
+  '/contact/': { en: '/contact/', es: '/es/contacto/', de: '/de/kontakt/', fr: '/fr/contact/' },
+  '/lodges/': { en: '/lodges/', es: '/es/lodges/', de: '/de/lodges/', fr: '/fr/lodges/' },
+  '/camps/': { en: '/camps/', es: '/es/campamentos/', de: '/de/camps/', fr: '/fr/campements/' },
+  '/privacy-policy/': { en: '/privacy-policy/', es: '/es/aviso-privacidad/', de: '/de/datenschutz/', fr: '/fr/politique-confidentialite/' },
+  '/terms/': { en: '/terms/', es: '/es/terminos/', de: '/de/agb/', fr: '/fr/conditions/' },
+  '/blog/': { en: '/blog/', es: '/es/blog/', de: '/de/blog/', fr: '/fr/blog/' },
+  '/blog/tanzania-safaris/': { en: '/blog/tanzania-safaris/', es: '/es/blog/safaris-tanzania/', de: '/de/blog/tansania-safaris/', fr: '/fr/blog/safaris-tanzanie/' },
+  '/blog/adventure-activities/': { en: '/blog/adventure-activities/', es: '/es/blog/actividades-aventura/', de: '/de/blog/abenteuer-aktivitaeten/', fr: '/fr/blog/activites-aventure/' },
+  '/blog/lodges-camps/': { en: '/blog/lodges-camps/', es: '/es/blog/hospedaje-lodges/', de: '/de/blog/lodges-camps/', fr: '/fr/blog/lodges-campements/' },
+  '/blog/travel-guides/': { en: '/blog/travel-guides/', es: '/es/blog/guias-viaje/', de: '/de/blog/reisefuehrer/', fr: '/fr/blog/guides-voyage/' },
+  '/blog/masai-culture/': { en: '/blog/masai-culture/', es: '/es/blog/cultura-masai/', de: '/de/blog/masai-kultur/', fr: '/fr/blog/culture-masai/' },
 };
 
-/** Reverse map: English path → Spanish path */
-const reverseMap: Record<string, string> = Object.fromEntries(
-  Object.entries(routeMap).map(([es, en]) => [en, es])
-);
-
-/** Get the alternate-language path */
-export function getAlternatePath(currentPath: string, currentLang: 'es' | 'en'): string {
-  if (currentLang === 'es') {
-    return routeMap[currentPath] || `/en${currentPath}`;
+export function getAlternatePath(currentPath: string, targetLang: Lang): string {
+  for (const [_key, langs] of Object.entries(routeMap)) {
+    for (const [_lang, path] of Object.entries(langs)) {
+      if (path === currentPath) {
+        return langs[targetLang] || currentPath;
+      }
+    }
   }
-  return reverseMap[currentPath] || currentPath.replace(/^\/en/, '') || '/';
+  const cleanPath = currentPath.replace(/^\/(es|de|fr)\//, '/');
+  if (targetLang === 'en') return cleanPath;
+  return `/${targetLang}${cleanPath === '/' ? '/' : cleanPath}`;
 }
 
-/** Get hreflang URLs for both languages */
-export function getHreflangs(currentPath: string, currentLang: 'es' | 'en') {
-  if (currentLang === 'es') {
-    return { es: currentPath, en: routeMap[currentPath] || `/en${currentPath}` };
+export function getHreflangs(currentPath: string, currentLang: Lang): Record<Lang, string> {
+  for (const [_key, langs] of Object.entries(routeMap)) {
+    for (const [_lang, path] of Object.entries(langs)) {
+      if (path === currentPath) {
+        return langs as Record<Lang, string>;
+      }
+    }
   }
-  const esPath = reverseMap[currentPath] || currentPath.replace(/^\/en/, '') || '/';
-  return { es: esPath, en: currentPath };
+  const cleanPath = currentPath.replace(/^\/(es|de|fr)\//, '/');
+  return {
+    en: cleanPath,
+    es: `/es${cleanPath === '/' ? '/' : cleanPath}`,
+    de: `/de${cleanPath === '/' ? '/' : cleanPath}`,
+    fr: `/fr${cleanPath === '/' ? '/' : cleanPath}`,
+  };
 }
