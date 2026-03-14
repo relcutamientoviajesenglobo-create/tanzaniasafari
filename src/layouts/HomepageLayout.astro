@@ -1,0 +1,80 @@
+---
+import type { Lang } from '../i18n/config';
+import { languages } from '../i18n/config';
+import { getHreflangs } from '../i18n/routes';
+import { t } from '../i18n/utils';
+import Footer from '../components/Footer.astro';
+import HomepageNav from '../components/HomepageNav.astro';
+import '../styles/homepage.css';
+import '../styles/footer-standalone.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  lang?: Lang;
+}
+
+const { title, description } = Astro.props;
+const lang: Lang = Astro.props.lang || 'en';
+const langConfig = languages[lang];
+const siteUrl = 'https://safaritanzania.info';
+const hreflangs = getHreflangs(Astro.url.pathname, lang);
+const canonicalUrl = `${siteUrl}${Astro.url.pathname}`;
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Safari Tanzania",
+    "url": siteUrl,
+    "inLanguage": langConfig.locale,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Safari Tanzania",
+    "url": siteUrl,
+    "telephone": "+255753000000",
+    "email": "info@safaritanzania.info",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Arusha",
+      "addressCountry": "TZ"
+    }
+  }
+];
+---
+<!DOCTYPE html>
+<html lang={langConfig.locale}>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <link rel="canonical" href={canonicalUrl}>
+  <link rel="alternate" hreflang="en" href={`${siteUrl}${hreflangs.en}`} />
+  <link rel="alternate" hreflang="es" href={`${siteUrl}${hreflangs.es}`} />
+  <link rel="alternate" hreflang="de" href={`${siteUrl}${hreflangs.de}`} />
+  <link rel="alternate" hreflang="fr" href={`${siteUrl}${hreflangs.fr}`} />
+  <link rel="alternate" hreflang="x-default" href={`${siteUrl}${hreflangs.en}`} />
+  <meta property="og:type" content="website">
+  <meta property="og:url" content={canonicalUrl}>
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:locale" content={langConfig.ogLocale}>
+  <meta property="og:site_name" content="Safari Tanzania">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preload" href="/fonts/african.ttf" as="font" type="font/truetype" crossorigin>
+  <link rel="preload" href="/fonts/montserrat-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <meta name="theme-color" content="#ffaa00">
+</head>
+<body>
+  <HomepageNav lang={lang} />
+  <slot />
+  <Footer lang={lang} />
+</body>
+</html>
