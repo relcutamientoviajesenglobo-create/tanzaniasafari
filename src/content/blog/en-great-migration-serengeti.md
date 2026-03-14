@@ -6,7 +6,7 @@ author: "Joseph Mollel"
 authorSlug: "en-local-guide"
 category: "naturaleza"
 tags: ["great migration", "Serengeti", "wildebeest", "Mara River", "wildebeest migration", "wildlife"]
-image: "https://images.unsplash.com/photo-1574068468547-40d0e2fba56c?w=800&h=600&fit=crop&auto=format"
+image: "https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=800&h=600&fit=crop&auto=format"
 imageAlt: "Wildebeest herd during the Great Migration in the Serengeti"
 silo: "safaris-tanzania"
 relatedPosts: ["en-what-is-tanzania-safari", "en-best-time-safari", "en-safari-prices-2026"]

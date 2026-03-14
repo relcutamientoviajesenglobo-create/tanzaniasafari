@@ -6,7 +6,7 @@ author: "Joseph Mollel"
 authorSlug: "guia-local"
 category: "naturaleza"
 tags: ["gran migración", "Serengeti", "ñu", "río Mara", "migración ñu", "vida salvaje"]
-image: "https://images.unsplash.com/photo-1574068468547-40d0e2fba56c?w=800&h=600&fit=crop&auto=format"
+image: "https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=800&h=600&fit=crop&auto=format"
 imageAlt: "Manada de ñus durante la Gran Migración en el Serengeti"
 silo: "safaris-tanzania"
 relatedPosts: ["que-es-safari-tanzania", "mejor-epoca-safari-tanzania", "precios-safari-2026"]

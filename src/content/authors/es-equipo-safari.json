@@ -1,0 +1,11 @@
+{
+  "name": "Equipo Safari Tanzania",
+  "role": "Equipo editorial",
+  "bio": "Nuestro equipo editorial está formado por guías de safari certificados, expertos en vida salvaje y apasionados de la naturaleza africana con más de 15 años de experiencia en Tanzania.",
+  "avatar": "/media/authors/equipo-safari.jpg",
+  "expertise": ["safaris", "vida salvaje", "fotografía", "cultura masái", "parques nacionales"],
+  "social": {
+    "instagram": "https://www.instagram.com/safaritanzaniainfo",
+    "facebook": "https://www.facebook.com/safaritanzaniainfo"
+  }
+}
