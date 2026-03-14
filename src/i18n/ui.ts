@@ -1,4 +1,4 @@
-export const ui = {
+export const ui: Record<string, Record<string, string>> = {
   es: {
     // BaseLayout
     'skip-link': 'Ir al contenido principal',
@@ -16,6 +16,9 @@ export const ui = {
     'nav.cta': 'Reservar',
     'nav.cta.mobile': '🦁 Reservar Safari',
     'nav.expand': 'Expandir',
+    'nav.safaris': 'Safaris',
+    'nav.prices': 'Precios',
+    'nav.contact': 'Contacto',
 
     // Footer
     'footer.cta.title': 'Planea tu safari en Tanzania',
@@ -94,6 +97,9 @@ export const ui = {
     'nav.cta': 'Book Now',
     'nav.cta.mobile': '🦁 Book Safari',
     'nav.expand': 'Expand',
+    'nav.safaris': 'Safaris',
+    'nav.prices': 'Prices',
+    'nav.contact': 'Contact',
 
     // Footer
     'footer.cta.title': 'Plan your Tanzania safari',
@@ -155,4 +161,166 @@ export const ui = {
     'silo.guias-viaje': 'Travel Guides',
     'silo.cultura-masai': 'Masai Culture',
   },
-} as const;
+  de: {
+    // BaseLayout
+    'skip-link': 'Zum Hauptinhalt springen',
+    'whatsapp.label': 'Brauchen Sie Hilfe?',
+    'whatsapp.aria': 'Kontakt über WhatsApp',
+    'whatsapp.msg': 'Hallo%2C%20ich%20möchte%20Informationen%20über%20Safari%20Tanzania',
+    'back-to-top': 'Nach oben',
+    'breadcrumb.home': '🏠 Startseite',
+
+    // Header
+    'nav.aria': 'Hauptnavigation',
+    'nav.mobile.aria': 'Mobile Navigation',
+    'nav.burger.open': 'Menü öffnen',
+    'nav.burger.close': 'Menü schließen',
+    'nav.cta': 'Jetzt buchen',
+    'nav.cta.mobile': '🦁 Safari buchen',
+    'nav.expand': 'Erweitern',
+    'nav.safaris': 'Safaris',
+    'nav.prices': 'Preise',
+    'nav.contact': 'Kontakt',
+
+    // Footer
+    'footer.cta.title': 'Planen Sie Ihre Tansania-Safari',
+    'footer.cta.desc': 'Preise prüfen, Anreise planen und Ihre Safari buchen. Das afrikanische Abenteuer Ihres Lebens erwartet Sie.',
+    'footer.cta.prices': 'Preise 2026 ansehen',
+    'footer.cta.directions': 'Anreise',
+    'footer.share': 'Diese Seite teilen',
+    'footer.brand.desc': 'Wildtier-Safaris, die Serengeti, der Ngorongoro-Krater und einzigartige Erlebnisse in Tansania, Ostafrika.',
+    'footer.brand.contact': 'Kontakt',
+    'footer.col1.title': 'Safaris',
+    'footer.col1.grutas': 'Klassische Safari',
+    'footer.col1.albercas': 'Foto-Safari',
+    'footer.col1.rio': 'Nacht-Safari',
+    'footer.col1.canon': 'Nationalparks',
+    'footer.col1.actividades': 'Aktivitäten',
+    'footer.col2.title': 'Besuch planen',
+    'footer.col2.precios': 'Preise & Pakete',
+    'footer.col2.como': 'Anreise',
+    'footer.col2.hospedaje': 'Unterkunft',
+    'footer.col2.blog': 'Blog & Reiseführer',
+    'footer.col2.contacto': 'Kontakt',
+    'footer.legal': '©2026 Safari Tanzania — Arusha, Tansania, Ostafrika',
+    'footer.privacy': 'Datenschutz',
+    'footer.terms': 'AGB',
+
+    // Price banner
+    'price.open': 'Ganzjährig',
+    'price.everyday': 'tägliche Safaris',
+    'price.adult': 'Tages-Safari',
+    'price.child': 'Kind (5‑11)',
+    'price.free': 'Unter 5',
+    'price.free.label': 'Kostenlos',
+    'price.cta': 'Alle Preise ansehen',
+
+    // Blog
+    'blog.related': 'Verwandte Artikel',
+    'blog.reading': 'Min. Lesezeit',
+    'blog.updated': 'aktualisiert',
+    'blog.faq.title': 'Häufig gestellte Fragen',
+    'blog.articles': 'veröffentlichte Artikel',
+    'blog.toc': 'Inhalt',
+    'blog.cta.title': 'Bereit für Ihre Tansania-Safari?',
+    'blog.cta.desc': 'Aktuelle Preise prüfen, Anreise planen und Ihr Abenteuer in der Serengeti und darüber hinaus organisieren.',
+    'blog.cta.primary': 'Preise 2026 ansehen',
+    'blog.cta.secondary': 'Anreise',
+
+    // Categories
+    'cat.guias': 'Reiseführer',
+    'cat.naturaleza': 'Natur',
+    'cat.actividades': 'Aktivitäten',
+    'cat.hospedaje': 'Unterkunft',
+    'cat.cultura': 'Kultur',
+    'cat.consejos': 'Tipps',
+
+    // Silos
+    'silo.safaris-tanzania': 'Tansania-Safaris',
+    'silo.actividades-aventura': 'Abenteueraktivitäten',
+    'silo.hospedaje-lodges': 'Unterkunft & Lodges',
+    'silo.guias-viaje': 'Reiseführer',
+    'silo.cultura-masai': 'Massai-Kultur',
+  },
+  fr: {
+    // BaseLayout
+    'skip-link': 'Aller au contenu principal',
+    'whatsapp.label': 'Besoin d\'aide ?',
+    'whatsapp.aria': 'Contacter par WhatsApp',
+    'whatsapp.msg': 'Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20Safari%20Tanzania',
+    'back-to-top': 'Retour en haut',
+    'breadcrumb.home': '🏠 Accueil',
+
+    // Header
+    'nav.aria': 'Navigation principale',
+    'nav.mobile.aria': 'Navigation mobile',
+    'nav.burger.open': 'Ouvrir le menu',
+    'nav.burger.close': 'Fermer le menu',
+    'nav.cta': 'Réserver',
+    'nav.cta.mobile': '🦁 Réserver un safari',
+    'nav.expand': 'Développer',
+    'nav.safaris': 'Safaris',
+    'nav.prices': 'Prix',
+    'nav.contact': 'Contact',
+
+    // Footer
+    'footer.cta.title': 'Planifiez votre safari en Tanzanie',
+    'footer.cta.desc': 'Consultez les prix, trouvez comment venir et réservez votre safari. L\'aventure africaine de votre vie vous attend.',
+    'footer.cta.prices': 'Voir les prix 2026',
+    'footer.cta.directions': 'Comment venir',
+    'footer.share': 'Partager cette page',
+    'footer.brand.desc': 'Safaris animaliers, le Serengeti, le cratère du Ngorongoro et des expériences uniques en Tanzanie, Afrique de l\'Est.',
+    'footer.brand.contact': 'Contact',
+    'footer.col1.title': 'Safaris',
+    'footer.col1.grutas': 'Safari Classique',
+    'footer.col1.albercas': 'Safari Photo',
+    'footer.col1.rio': 'Safari Nocturne',
+    'footer.col1.canon': 'Parcs Nationaux',
+    'footer.col1.actividades': 'Activités',
+    'footer.col2.title': 'Planifier votre visite',
+    'footer.col2.precios': 'Prix & Forfaits',
+    'footer.col2.como': 'Comment Venir',
+    'footer.col2.hospedaje': 'Hébergement',
+    'footer.col2.blog': 'Blog & Guides',
+    'footer.col2.contacto': 'Contact',
+    'footer.legal': '©2026 Safari Tanzania — Arusha, Tanzanie, Afrique de l\'Est',
+    'footer.privacy': 'Confidentialité',
+    'footer.terms': 'Conditions',
+
+    // Price banner
+    'price.open': 'Toute l\'année',
+    'price.everyday': 'safaris quotidiens',
+    'price.adult': 'Safari journée',
+    'price.child': 'Enfant (5‑11)',
+    'price.free': 'Moins de 5 ans',
+    'price.free.label': 'Gratuit',
+    'price.cta': 'Voir tous les prix',
+
+    // Blog
+    'blog.related': 'Articles associés',
+    'blog.reading': 'min de lecture',
+    'blog.updated': 'mis à jour',
+    'blog.faq.title': 'Questions fréquentes',
+    'blog.articles': 'articles publiés',
+    'blog.toc': 'Sommaire',
+    'blog.cta.title': 'Prêt pour votre safari en Tanzanie ?',
+    'blog.cta.desc': 'Consultez les prix actualisés, trouvez comment venir et planifiez votre aventure dans le Serengeti et au-delà.',
+    'blog.cta.primary': 'Voir les prix 2026',
+    'blog.cta.secondary': 'Comment venir',
+
+    // Categories
+    'cat.guias': 'Guide de Voyage',
+    'cat.naturaleza': 'Nature',
+    'cat.actividades': 'Activités',
+    'cat.hospedaje': 'Hébergement',
+    'cat.cultura': 'Culture',
+    'cat.consejos': 'Conseils',
+
+    // Silos
+    'silo.safaris-tanzania': 'Safaris en Tanzanie',
+    'silo.actividades-aventura': 'Activités Aventure',
+    'silo.hospedaje-lodges': 'Hébergement & Lodges',
+    'silo.guias-viaje': 'Guides de Voyage',
+    'silo.cultura-masai': 'Culture Massaï',
+  },
+};
