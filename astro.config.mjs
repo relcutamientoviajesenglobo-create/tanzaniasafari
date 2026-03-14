@@ -7,7 +7,16 @@ export default defineConfig({
     sitemap({
       changefreq: 'weekly',
       priority: 0.7,
-      lastmod: new Date('2026-03-10'),
+      lastmod: new Date(),
+      i18n: {
+        defaultLocale: 'en',
+        locales: {
+          en: 'en-GB',
+          es: 'es-ES',
+          de: 'de-DE',
+          fr: 'fr-FR',
+        },
+      },
     })
   ],
   build: {
