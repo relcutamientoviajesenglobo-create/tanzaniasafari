@@ -1,7 +1,30 @@
-export const languages = {
-  es: { label: 'Español', locale: 'es-MX', ogLocale: 'es_MX', dateLocale: 'es-MX' },
-  en: { label: 'English', locale: 'en', ogLocale: 'en_US', dateLocale: 'en-US' },
-} as const;
+export type Lang = 'en' | 'es' | 'de' | 'fr';
 
-export type Lang = keyof typeof languages;
-export const defaultLang: Lang = 'es';
+export const defaultLang: Lang = 'en';
+
+export const languages: Record<Lang, { label: string; locale: string; ogLocale: string; dateLocale: string }> = {
+  en: {
+    label: 'English',
+    locale: 'en-GB',
+    ogLocale: 'en_GB',
+    dateLocale: 'en-GB',
+  },
+  es: {
+    label: 'Español',
+    locale: 'es-ES',
+    ogLocale: 'es_ES',
+    dateLocale: 'es-ES',
+  },
+  de: {
+    label: 'Deutsch',
+    locale: 'de-DE',
+    ogLocale: 'de_DE',
+    dateLocale: 'de-DE',
+  },
+  fr: {
+    label: 'Français',
+    locale: 'fr-FR',
+    ogLocale: 'fr_FR',
+    dateLocale: 'fr-FR',
+  },
+};
