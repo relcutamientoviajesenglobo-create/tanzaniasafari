@@ -1,0 +1,556 @@
+/* =============================================
+   SAFARI TANZANIA — 3D Homepage Styles
+   Neon/dark theme with glassmorphism
+   ============================================= */
+
+:root {
+    --bg-dark: #050505;
+    --neon-accent: #ffaa00;
+    --neon-secondary: #00ffaa;
+    --text-main: #f0f0f0;
+    --glass-bg: rgba(10, 10, 10, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/* ── African display font ── */
+@font-face {
+    font-family: 'African';
+    src: url('/fonts/african.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ── Montserrat — self-hosted ── */
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/montserrat-latin-400-normal.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/montserrat-latin-600-normal.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/montserrat-latin-800-normal.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: transparent;
+    color: var(--text-main);
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -3;
+    pointer-events: none;
+}
+
+.video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(5, 5, 5, 0.75);
+    z-index: -2;
+    pointer-events: none;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 204, 0.3);
+    border-radius: 10px;
+}
+
+#webgl-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
+.panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 2rem 5%;
+    position: relative;
+}
+
+.hero {
+    justify-content: center;
+    text-align: center;
+}
+
+.details {
+    justify-content: flex-start;
+}
+
+.immersion {
+    justify-content: flex-end;
+}
+
+.conclusion {
+    justify-content: center;
+    text-align: center;
+}
+
+.glass-box {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 3rem;
+    max-width: 500px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6), inset 0 0 10px rgba(0, 255, 204, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-box:hover {
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(0, 255, 204, 0.2);
+    transform: translateY(-5px);
+}
+
+.hero .glass-box, .conclusion .glass-box {
+    max-width: 650px;
+}
+
+h1.glow-text, h2.glow-text {
+    font-family: 'African', sans-serif;
+    font-size: 3.8rem;
+    font-weight: normal;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #fff;
+    text-shadow: 0 0 10px var(--neon-accent),
+                 0 0 20px var(--neon-accent),
+                 0 0 40px var(--neon-accent);
+}
+
+.conclusion h2.glow-text {
+    text-shadow: 0 0 10px var(--neon-secondary),
+                 0 0 20px var(--neon-secondary),
+                 0 0 40px var(--neon-secondary);
+}
+
+h2.glow-text {
+    font-size: 2.5rem;
+}
+
+p {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.scroll-indicator {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mouse {
+    width: 26px;
+    height: 42px;
+    border: 2px solid var(--neon-accent);
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 0 10px var(--neon-accent);
+}
+
+.mouse::before {
+    content: '';
+    width: 4px;
+    height: 8px;
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--neon-accent);
+    border-radius: 2px;
+    animation: scroll 2s infinite cubic-bezier(0.15, 0.41, 0.69, 0.94);
+    box-shadow: 0 0 5px var(--neon-accent);
+}
+
+@keyframes scroll {
+    0% { opacity: 0; transform: translate(-50%, 0); }
+    10% { transform: translate(-50%, 0); opacity: 1; }
+    100% { transform: translate(-50%, 15px); opacity: 0; }
+}
+
+.init-anim {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.tiktok-section {
+    min-height: auto;
+    padding: 10rem 0;
+    content-visibility: auto;
+    contain-intrinsic-size: 1500px;
+}
+
+.full-width {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.center-text {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.tiktok-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    justify-items: center;
+}
+
+.tiktok-card {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tiktok-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 255, 170, 0.2);
+    border-color: var(--neon-secondary);
+}
+
+.pricing-section {
+    min-height: auto;
+    padding: 10rem 0;
+}
+
+.pricing-cards {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.price-card {
+    flex: 1;
+    min-width: 250px;
+    max-width: 350px;
+    background: rgba(10, 10, 15, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
+}
+
+.price-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--neon-secondary);
+    box-shadow: 0 15px 40px rgba(0, 255, 170, 0.2);
+}
+
+.price-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.price-card.featured .price-img {
+    border-color: var(--neon-accent);
+    box-shadow: 0 5px 20px rgba(255, 170, 0, 0.2);
+}
+
+.price-desc {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 20px;
+    line-height: 1.4;
+    min-height: 60px;
+}
+
+.price-card h3 {
+    font-family: 'African', sans-serif;
+    font-size: 1.8rem;
+    font-weight: normal;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    color: var(--text-main);
+}
+
+.price-card .price {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--neon-accent);
+    margin-bottom: 25px;
+    text-shadow: 0 0 15px rgba(255, 170, 0, 0.5);
+}
+
+.price-card ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+    flex-grow: 1;
+}
+
+.price-card ul li {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 10px;
+}
+
+.price-card.featured {
+    border-color: var(--neon-accent);
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255, 170, 0, 0.15);
+}
+
+.price-card.featured:hover {
+    transform: scale(1.05) translateY(-10px);
+    box-shadow: 0 15px 40px rgba(255, 170, 0, 0.3);
+}
+
+.neon-btn {
+    background: transparent;
+    color: var(--text-main);
+    border: 2px solid var(--neon-accent);
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.neon-btn:hover {
+    background: var(--neon-accent);
+    color: #000;
+    box-shadow: 0 0 20px var(--neon-accent);
+}
+
+.price-card.featured .neon-btn {
+    border-color: var(--neon-secondary);
+    color: var(--neon-secondary);
+}
+
+.price-card.featured .neon-btn:hover {
+    background: var(--neon-secondary);
+    color: #000;
+    box-shadow: 0 0 20px var(--neon-secondary);
+}
+
+.beer-section-white {
+    min-height: auto;
+    padding: 10rem 0;
+    background-color: rgba(255, 255, 255, 0.999);
+    color: #111111;
+    position: relative;
+    z-index: 10;
+}
+
+.beer-content-wrapper {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.dark-text {
+    color: #1a1a1a;
+    font-family: 'African', sans-serif;
+    font-size: 3rem;
+    text-shadow: none;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+p.dark-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    color: #333333;
+}
+
+.beer-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1200px;
+    position: relative;
+    z-index: 20;
+    min-height: 550px;
+}
+
+.native-scrub-video {
+    width: 100%;
+    height: 70vh;
+    max-height: 600px;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+    transform: translateZ(0);
+    will-change: transform;
+    position: relative;
+    z-index: 30;
+    display: block;
+}
+
+.mt-4 {
+    margin-top: 2rem;
+}
+
+@media (max-width: 900px) {
+    .tiktok-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .panel {
+        justify-content: center !important;
+        padding: 4rem 1.5rem;
+    }
+    .glass-box {
+        padding: 2.5rem 1.5rem;
+        text-align: center;
+        max-width: 100%;
+        border-radius: 20px;
+        box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.5), inset 0 0 8px rgba(0, 255, 204, 0.1);
+    }
+    .hero .glass-box, .conclusion .glass-box {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    h1.glow-text {
+        font-size: 2.6rem;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+    }
+    h2.glow-text {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+    p {
+        font-size: 1.1rem;
+        line-height: 1.5;
+    }
+    .pricing-cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+    .price-card {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .tiktok-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 0 1rem;
+    }
+    .tiktok-card {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    .price-card.featured {
+        transform: scale(1);
+        border-color: var(--neon-accent);
+        box-shadow: 0 5px 20px rgba(255, 170, 0, 0.2);
+    }
+    .price-card.featured:hover {
+        transform: translateY(-5px);
+    }
+}
+
+@media (max-width: 480px) {
+    .panel {
+        padding: 3rem 1rem;
+    }
+    .glass-box {
+        padding: 2rem 1rem;
+    }
+    h1.glow-text {
+        font-size: 2.2rem;
+        letter-spacing: 2px;
+    }
+    h2.glow-text {
+        font-size: 1.6rem;
+    }
+    p {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+    .mouse {
+        transform: scale(0.7);
+    }
+    .price-card {
+        padding: 30px 20px;
+    }
+    .price-card .price {
+        font-size: 2.5rem;
+    }
+}
