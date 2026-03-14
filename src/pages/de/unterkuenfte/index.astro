@@ -1,0 +1,190 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import SafariTikTok from '../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../components/PhotoGallery.astro';
+import { lodging } from '../../../i18n/schema';
+
+const lang = 'de';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const schema = lodging('LodgingBusiness', {
+  name: 'Unterkünfte in Tansania — Luxus-Lodges & Safari-Camps',
+  description: 'Entdecken Sie die besten Unterkünfte für Ihre Tansania-Safari: Luxus-Lodges und authentische Safari-Zeltcamps in der Serengeti, Ngorongoro und Tarangire.',
+  url: 'https://safaritanzania.info/de/unterkuenfte/',
+});
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=600&h=400&fit=crop&auto=format', alt: 'Luxus-Safari-Lodge mit Infinitypool und Panoramablick auf die Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=600&h=400&fit=crop&auto=format', alt: 'Elegantes Safari-Lodge-Zimmer mit Holzausstattung und Savannenpanorama' },
+  { src: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop&auto=format', alt: 'Authentisches Zeltcamp mit Leinwandzelten unter Akazienbäumen' },
+  { src: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop&auto=format', alt: 'Baumwipfel-Lodge in Tarangire umgeben von Baobab-Bäumen' },
+  { src: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&h=400&fit=crop&auto=format', alt: 'Ngorongoro-Krater-Lodge am Kraterrand mit morgendlichem Nebelblick' },
+  { src: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600&h=400&fit=crop&auto=format', alt: 'Luxus-Zeltcamp mit offener Veranda und Blick auf die Savanne' },
+];
+---
+
+<BaseLayout
+  title="Unterkünfte in Tansania — Luxus-Lodges & Safari-Camps"
+  description="Finden Sie die perfekte Unterkunft für Ihre Tansania-Safari. Luxus-Lodges mit Swimmingpool und Gourmet-Küche oder authentische Safari-Zeltcamps inmitten der Wildnis."
+  lang={lang}
+  schema={schema}
+  breadcrumbs={[{ label: 'Unterkünfte' }]}
+>
+  <Header slot="header" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero" style="position:relative;overflow:hidden">
+    <div style="position:absolute;top:-20px;right:-40px;opacity:.08;pointer-events:none;color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--green">Ihr Zuhause in der Wildnis</span>
+          <h1 class="hero__title">Unterkünfte in Tansania</h1>
+          <p class="hero__desc">Von opulenten Lodges mit Panoramablick auf die Serengeti bis hin zu intimen Zeltcamps, in denen Sie mit den Geräuschen des Busches einschlafen — Tansania bietet außergewöhnliche Unterkünfte für jeden Safari-Stil und jedes Budget.</p>
+          <div class="hero__actions">
+            <a href="/de/unterkuenfte/lodges/" class="btn btn--primary btn--lg">Safari-Lodges</a>
+            <a href="/de/unterkuenfte/zeltcamps/" class="btn btn--outline btn--lg">Safari-Zeltcamps</a>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <div class="hero__deco hero__deco--bl"></div>
+            <img
+              src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800&h=640&fit=crop&auto=format"
+              alt="Luxus-Safari-Lodge mit Infinitypool und Blick auf die Serengeti"
+              width="800" height="640" loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UNTERKUNFTSTYPEN -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Wählen Sie Ihren Stil</span>
+        <h2>Zwei Wege, die Wildnis zu erleben</h2>
+        <p>Jede Unterkunftsart bietet eine andere Verbindung zu Tansanias Natur. Beide versprechen unvergessliche Begegnungen mit Afrikas Tierwelt.</p>
+      </div>
+      <div class="card-grid animate-on-scroll delay-1" style="grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:2rem">
+        <a href="/de/unterkuenfte/lodges/" class="photo-card" style="text-decoration:none">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=600&h=400&fit=crop&auto=format" alt="Luxus-Safari-Lodge Zimmer mit Panoramablick" width="600" height="400" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Luxus &amp; Komfort</span>
+            <h3 class="photo-card__title">Safari-Lodges</h3>
+            <p style="color:var(--mc-text-muted);font-size:.92rem;margin-bottom:1rem">Feste Gebäude mit En-Suite-Badezimmern, Swimmingpools, Gourmet-Restaurants und erstklassigem Service. Für Reisende, die höchsten Komfort ohne Abstriche beim Wildtierzugang wünschen.</p>
+            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.35rem;font-size:.85rem;color:var(--mc-text-muted);margin-bottom:1rem">
+              <li>✓ Privatbäder mit fließendem Heißwasser</li>
+              <li>✓ Swimmingpool &amp; Spa-Einrichtungen</li>
+              <li>✓ Gourmet-Küche &amp; Weinauswahl</li>
+              <li>✓ WLAN in den meisten Lodges</li>
+            </ul>
+            <div class="photo-card__arrow" style="display:flex;align-items:center;gap:.4rem">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              Lodges entdecken
+            </div>
+          </div>
+        </a>
+        <a href="/de/unterkuenfte/zeltcamps/" class="photo-card" style="text-decoration:none">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop&auto=format" alt="Authentisches Safari-Zeltcamp unter Akazienbäumen" width="600" height="400" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Abenteuer &amp; Authentizität</span>
+            <h3 class="photo-card__title">Safari-Zeltcamps</h3>
+            <p style="color:var(--mc-text-muted);font-size:.92rem;margin-bottom:1rem">Leinwandzelte inmitten der Natur für ein intensives Wildniserlebnis. Wachen Sie mit Vogelgesang auf, speisen Sie unter Sternen und hören Sie Löwen brüllen — direkt von Ihrer Unterkunft aus.</p>
+            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.35rem;font-size:.85rem;color:var(--mc-text-muted);margin-bottom:1rem">
+              <li>✓ Direkt inmitten der Natur aufgestellt</li>
+              <li>✓ Abendessen am Lagerfeuer</li>
+              <li>✓ Naturgeräusche statt Stadtlärm</li>
+              <li>✓ Erfahrene Nachtwächter für Sicherheit</li>
+            </ul>
+            <div class="photo-card__arrow" style="display:flex;align-items:center;gap:.4rem">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              Zeltcamps entdecken
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAS SIE ERWARTET -->
+  <section class="section" style="position:relative;overflow:hidden">
+    <div style="position:absolute;top:20px;left:-30px;opacity:.05;pointer-events:none;color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">Qualitätsversprechen</span>
+        <h2>Was alle unsere Partner-Unterkünfte bieten</h2>
+        <p>Unabhängig von Ihrer Wahl erfüllen alle Partner-Lodges und -Camps hohe Qualitäts-, Sicherheits- und Nachhaltigkeitsstandards.</p>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1">
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M6 14h36v4H6zm0 8h36v4H6zm0 8h36v4H6z"/></svg>
+          </div>
+          <h3 class="service-card__title">Vollpension</h3>
+          <p class="service-card__desc">Alle Mahlzeiten inklusive: herzhafte Frühstücke, Lunchpakete für Pirschfahrten und mehrgängige Abendessen mit internationaler und tansanischer Küche.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M36 18c0-6.63-5.37-12-12-12S12 11.37 12 18c0 8.25 12 22 12 22s12-13.75 12-22zm-12 5a5 5 0 110-10 5 5 0 010 10z"/></svg>
+          </div>
+          <h3 class="service-card__title">Optimale Lage</h3>
+          <p class="service-card__desc">Alle Unterkünfte liegen innerhalb oder in unmittelbarer Nähe der Nationalparks. Minimale Fahrzeit, maximale Zeit für Morgen- und Abendpirschfahrten.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-2 28l-8-8 1.41-1.41L22 29.17l12.59-12.59L36 18l-14 14z"/></svg>
+          </div>
+          <h3 class="service-card__title">Nachhaltig &amp; Naturfreundlich</h3>
+          <p class="service-card__desc">Solarstrom, Wasserschutz und Gemeinschaftspartnerschaften. Unsere Unterkünfte unterstützen aktiv lokale Naturschutz- und Masai-Gemeindeprogramme.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M39 7H9C7.34 7 6 8.34 6 10v28c0 1.66 1.34 3 3 3h30c1.66 0 3-1.34 3-3V10c0-1.66-1.34-3-3-3zm-5 18h-8v8h-4v-8h-8v-4h8v-8h4v8h8v4z"/></svg>
+          </div>
+          <h3 class="service-card__title">Sicherheit &amp; Gesundheit</h3>
+          <p class="service-card__desc">24/7-Sicherheit, Erste-Hilfe-Einrichtungen und geschultes Personal. Notfallkommunikation und medizinische Unterstützung immer erreichbar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <PhotoGallery images={galleryImages} title="Fotogalerie: Unterkünfte in Tansania" />
+
+  <!-- TIKTOK -->
+  <SafariTikTok category="lodges" lang="de" />
+
+  <!-- CTA -->
+  <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2>Finden Sie Ihren perfekten Safari-Aufenthalt</h2>
+        <p>Kontaktieren Sie uns für persönliche Empfehlungen und maßgeschneiderte Angebote für Ihre Tansania-Safari.</p>
+      </div>
+      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/de/preise/" class="btn btn--primary btn--lg">Preise 2026 ansehen</a>
+        <a href="/de/kontakt/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Kontakt aufnehmen</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>

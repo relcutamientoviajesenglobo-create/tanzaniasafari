@@ -1,0 +1,138 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import BlogCard from '../../../components/blog/BlogCard.astro';
+import { webPage } from '../../../i18n/schema';
+
+const lang = 'fr';
+const title = 'Blog Safari Tanzania — Guides, Conseils & Culture Africaine';
+const description = 'Articles sur les safaris en Tanzanie : guides de voyage, conseils de photographie, culture Masaï, meilleurs parcs nationaux et tout ce dont vous avez besoin pour votre aventure africaine.';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const breadcrumbs = [
+  { label: 'Blog' },
+];
+
+const allPosts = await getCollection('blog');
+const posts = allPosts
+  .filter(post => post.slug.startsWith('fr-'))
+  .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+
+const silos = [
+  { slug: 'safaris-tanzanie', label: 'Safaris Tanzanie', href: '/fr/blog/safaris-tanzanie/' },
+  { slug: 'activites-aventure', label: 'Activités & Aventure', href: '/fr/blog/activites-aventure/' },
+  { slug: 'lodges-camps', label: 'Lodges & Camps', href: '/fr/blog/lodges-camps/' },
+  { slug: 'guides-voyage', label: 'Guides de Voyage', href: '/fr/blog/guides-voyage/' },
+  { slug: 'culture-masai', label: 'Culture Masaï', href: '/fr/blog/culture-masai/' },
+];
+
+const schema = [
+  webPage({
+    name: title,
+    description,
+    url: 'https://safaritanzania.info/fr/blog/',
+  }),
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="/fr/blog/"
+  schema={schema}
+  breadcrumbs={breadcrumbs}
+  lang={lang}
+>
+  <Header slot="header" lang={lang} />
+  <Footer slot="footer" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <span class="chip chip--green">Blog</span>
+        <h1 class="hero__title">Blog Safari Tanzania</h1>
+        <p class="hero__desc">Guides de voyage, conseils de safari, photographie animalière, culture Masaï et tout ce que vous devez savoir pour votre aventure en Afrique.</p>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__photo-frame">
+          <div class="hero__deco hero__deco--tr"></div>
+          <div class="hero__deco hero__deco--bl"></div>
+          <img
+            src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&h=600&fit=crop&auto=format"
+            alt="Léopard se reposant dans un arbre dans le Serengeti"
+            width="600"
+            height="480"
+            loading="eager"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATÉGORIES / SILOS -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header">
+        <h2>Explorer par Thème</h2>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center">
+        {silos.map(silo => (
+          <a href={silo.href} class="btn btn--outline btn--sm">{silo.label}</a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TOUS LES ARTICLES -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <h2>Tous les Articles</h2>
+        <p>{posts.length} {posts.length === 1 ? 'article' : 'articles'} publiés</p>
+      </div>
+
+      {posts.length > 0 ? (
+        <div class="card-grid card-grid--3">
+          {posts.map(post => (
+            <BlogCard
+              title={post.data.title}
+              description={post.data.description}
+              slug={post.slug.replace('fr-', '')}
+              image={post.data.image}
+              imageAlt={post.data.imageAlt}
+              author={post.data.author}
+              publishDate={post.data.publishDate}
+              readingTime={post.data.readingTime}
+              category={post.data.category}
+              lang={lang}
+            />
+          ))}
+        </div>
+      ) : (
+        <div style="text-align:center;padding:3rem 0">
+          <p style="font-size:1.1rem;color:#5A6B52">Nous préparons des contenus incroyables. Revenez bientôt pour lire nos articles sur les safaris en Tanzanie.</p>
+          <a href="/fr/contact/" class="btn btn--primary" style="margin-top:1.5rem">Nous contacter</a>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green">
+    <div class="container" style="text-align:center">
+      <h2 style="color:white;margin-bottom:.75rem">Planifiez votre Safari</h2>
+      <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:500px;margin-left:auto;margin-right:auto">Transformez ce que vous lisez en une aventure réelle. Contactez-nous pour concevoir votre safari parfait.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/fr/prix/" class="btn btn--amber btn--lg">Voir les Tarifs 2026</a>
+        <a href="/fr/contact/" class="btn btn--outline-white btn--lg">Nous Contacter</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

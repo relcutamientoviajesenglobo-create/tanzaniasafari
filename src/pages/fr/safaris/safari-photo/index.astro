@@ -1,0 +1,193 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import { touristAttraction, faqPage } from '../../../../i18n/schema';
+import SafariTikTok from '../../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../../components/PhotoGallery.astro';
+
+const lang = 'fr';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=400&fit=crop&auto=format', alt: 'Portrait en gros plan d\'un lion mâle dans la lumière dorée du Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&h=400&fit=crop&auto=format', alt: 'Léopard couché dans un acacia au Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=600&h=400&fit=crop&auto=format', alt: 'Troupeau de zèbres formant un motif saisissant dans les herbes' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'Troupeau d\'éléphants traversant la brousse à l\'heure dorée' },
+  { src: 'https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=400&fit=crop&auto=format', alt: 'Silhouette de girafe contre un coucher de soleil africain orange' },
+  { src: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=400&fit=crop&auto=format', alt: 'Véhicule de safari photo équipé de supports d\'appareils dans le Serengeti' },
+];
+
+const faqItems = [
+  { question: 'En quoi un safari photo diffère-t-il d\'un safari classique ?', answer: 'Un safari photo privilégie les <strong>meilleures conditions de prise de vue</strong> plutôt que la quantité d\'observations. Votre guide positionne le véhicule pour la meilleure lumière et les meilleurs angles, accorde un temps prolongé à chaque site (30 à 60 minutes contre 5 à 10 sur un safari classique), utilise des véhicules spéciaux avec sacs de sable et fixations d\'appareils, et planifie les routes autour de la <strong>lumière de l\'heure dorée</strong>. Nos guides photographes comprennent le comportement animal et peuvent anticiper les moments d\'action.' },
+  { question: 'Quel matériel photo dois-je apporter ?', answer: 'Nous recommandons un appareil photo avec un <strong>téléobjectif d\'au moins 200 mm</strong> (idéalement 100-400 mm ou 200-600 mm). Un grand-angle (16-35 mm) est utile pour les paysages et les plans de véhicule. Emportez des batteries supplémentaires, des cartes mémoire et un sac imperméable à la poussière. Nous fournissons des sacs de sable et des supports de véhicule. Les smartphones avec téléobjectifs peuvent également capturer d\'excellentes photos grâce au positionnement expert de nos guides.' },
+  { question: 'Quel est le meilleur moment de la journée pour la photographie animalière ?', answer: 'Les <strong>heures dorées</strong> (lever du soleil 6h00-8h00 et coucher du soleil 16h00-18h30) offrent l\'éclairage le plus dramatique. Toutefois, un ciel couvert en milieu de journée est excellent pour les portraits rapprochés sans ombres dures. Nos guides planifient la journée pour maximiser ces créneaux, vous positionnant pour des <strong>silhouettes en contre-jour à l\'aube</strong> et des portraits aux tons chauds l\'après-midi.' },
+  { question: 'Les débutants peuvent-ils participer à un safari photo ?', answer: 'Absolument ! Les safaris photo conviennent à tous les niveaux. Nos guides offrent des conseils en temps réel sur la composition, l\'exposition et les techniques de mise au point. Les débutants constatent souvent que l\'approche structurée et le positionnement expert leur permettent de capturer des images bien meilleures que sur un safari classique. Nous aidons également à l\'identification de base de la <a href="/fr/activites/observation-faune/" style="color:#3D6B2E;font-weight:700">faune sauvage</a>.' },
+  { question: 'Combien de personnes y a-t-il dans un véhicule de safari photo ?', answer: 'Pour que chacun ait des <strong>angles de prise de vue dégagés</strong>, les véhicules de safari photo accueillent au maximum <strong>4 photographes</strong> (contre 6 sur les safaris classiques). Chaque passager bénéficie d\'une place côté fenêtre avec accès au toit ouvrant. Pour les photographes sérieux, nous proposons des options de véhicule privé pour 1 à 2 personnes.' },
+];
+
+const schema = [
+  touristAttraction({
+    name: 'Safari Photo en Tanzanie',
+    description: 'Circuits de photographie spécialisés pour les photographes animaliers. Positionnement expert, drives à l\'heure dorée et accompagnement professionnel dans le Serengeti et le Ngorongoro.',
+    url: 'https://safaritanzania.info/fr/safaris/safari-photo/',
+  }),
+  faqPage(faqItems),
+];
+---
+
+<BaseLayout
+  title="Safari Photo en Tanzanie — Circuits de Photographie Animalière"
+  description="Circuits de safari photo spécialisés en Tanzanie. Positionnement expert des véhicules, drives à l'heure dorée, supports d'appareils et accompagnement professionnel pour des images animalières époustouflantes dans le Serengeti."
+  lang={lang}
+  schema={schema}
+  breadcrumbs={[
+    { label: 'Safaris', href: '/fr/safaris/' },
+    { label: 'Safari Photo' },
+  ]}
+>
+  <Header slot="header" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--green">Pour les photographes</span>
+          <h1 class="hero__title">Safari Photo en Tanzanie</h1>
+          <p class="hero__desc">Capturez des images animalières dignes des plus grands magazines grâce à un positionnement expert, des drives à l'heure dorée et un accompagnement professionnel. Chaque détail est pensé pour la photo parfaite.</p>
+          <div class="hero__actions">
+            <a href="/fr/prix/" class="btn btn--primary btn--lg">Voir les tarifs 2026</a>
+            <a href="/fr/contact/" class="btn btn--outline btn--lg">Réserver le safari photo</a>
+          </div>
+          <div class="stats-row">
+            <div class="stat"><strong>4 max</strong><span>Par véhicule</span></div>
+            <div class="stat"><strong>Heure dorée</strong><span>Drives prioritaires</span></div>
+            <div class="stat"><strong>Tous niveaux</strong><span>Débutant à pro</span></div>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <img
+              src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=800&h=640&fit=crop&auto=format"
+              alt="Lion dans la lumière dorée du matin, idéal pour la photographie animalière dans le Serengeti"
+              width="800" height="640" loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CE QUI FAIT LA DIFFÉRENCE -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">La différence</span>
+        <h2>Pourquoi choisir un safari photo</h2>
+        <p>Un safari classique vous montre la faune. Un safari photo vous aide à la capturer dans ses moindres détails. Voici ce qui distingue nos circuits photographiques.</p>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1" style="grid-template-columns:repeat(3,1fr)">
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M36 6H12L2 16l22 28 22-28L36 6zM24 37.3L7.2 18h33.6L24 37.3zM14.1 16l3.6-8h12.6l3.6 8H14.1z"/></svg>
+          </div>
+          <h3 class="service-card__title">Positionnement expert</h3>
+          <p class="service-card__desc">Les guides positionnent les véhicules avec le soleil dans le dos, les animaux dans le cadre et les arrière-plans dégagés. Chaque arrêt est calculé pour la meilleure image possible.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm0 36c-8.82 0-16-7.18-16-16S15.18 8 24 8s16 7.18 16 16-7.18 16-16 16zm1-26h-3v12l10.5 6.3 1.5-2.46-9-5.34V14z"/></svg>
+          </div>
+          <h3 class="service-card__title">Observations prolongées</h3>
+          <p class="service-card__desc">Passez 30 à 60 minutes sur chaque site au lieu de 5 à 10 minutes. Attendez l'instant parfait : un bâillement, un étirement, un contact visuel ou une interaction entre animaux.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M16 6l2.29 2.29-4.88 4.88-2.83-2.83L16 6zM2 22v-4h6v4H2zm14-5c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zm20-11h6v4h-6v-4z"/></svg>
+          </div>
+          <h3 class="service-card__title">Priorité à l'heure dorée</h3>
+          <p class="service-card__desc">Les game drives sont planifiés autour du lever et du coucher du soleil, lorsque la lumière chaude crée des images spectaculaires. Silhouettes, contre-jours et tons dorés transforment chaque cliché.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUJETS LES PLUS PHOTOGRAPHIÉS -->
+  <section class="section section--green bg-green" style="position:relative;overflow:hidden">
+    <div style="position:absolute;bottom:0;left:-30px;opacity:.08;pointer-events:none;color:#D4A017;transform:rotate(180deg)">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Sujets phares</span>
+        <h2>La faune la plus photographiée</h2>
+        <p>La Tanzanie offre certains des animaux les plus photogéniques de la planète. Voici les sujets que nos photographes capturent le plus.</p>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1">
+        <div class="service-card">
+          <h3 class="service-card__title">Lion d'Afrique</h3>
+          <p class="service-card__desc">Crinières dorées, regards intenses et poses dramatiques. Les 3 000 lions et plus du Serengeti offrent d'innombrables opportunités de portraits puissants et de clichés d'action.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Léopard</h3>
+          <p class="service-card__desc">Le plus insaisissable des Big Five. Photographier un léopard allongé sur une branche d'acacia est un rêve accompli pour tout photographe animalier.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Grande Migration</h3>
+          <p class="service-card__desc">Des millions de gnous et de zèbres traversant la rivière Mara. Des traversées spectaculaires, des ruées poussiéreuses et des perspectives aériennes créent des images uniques au monde.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Rapaces</h3>
+          <p class="service-card__desc">Plus de 500 espèces d'oiseaux, dont les aigles martiaux, les serpentaires, les rolliers à longs brins et les flamants. La Tanzanie est un paradis pour la photographie ornithologique.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">FAQ</span>
+        <h2>Questions sur le safari photo</h2>
+        <p>Questions fréquentes sur nos expériences safari orientées photographie.</p>
+      </div>
+      <div class="faq-list animate-on-scroll delay-1">
+        {faqItems.map(item => (
+          <details>
+            <summary>{item.question}</summary>
+            <div class="faq-answer" set:html={item.answer} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <PhotoGallery images={galleryImages} title="Galerie photo — Safari photo en Tanzanie" />
+  <SafariTikTok category="serengeti" lang="fr" />
+
+  <!-- CTA -->
+  <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2>Capturez la faune tanzanienne</h2>
+        <p>Rejoignez notre safari photo et rentrez chez vous avec des images qui racontent l'histoire de la nature africaine la plus emblématique.</p>
+      </div>
+      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/fr/prix/" class="btn btn--primary btn--lg">Voir les tarifs 2026</a>
+        <a href="/fr/contact/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Réserver le safari photo</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>

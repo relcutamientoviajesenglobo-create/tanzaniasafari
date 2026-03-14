@@ -1,0 +1,141 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import BlogCard from '../../../../components/blog/BlogCard.astro';
+import { webPage } from '../../../../i18n/schema';
+
+const lang = 'fr';
+
+export async function getStaticPaths() {
+  const authors = await getCollection('authors');
+  return authors
+    .filter(a => a.id.startsWith('fr-'))
+    .map(author => ({
+      params: { slug: author.id },
+      props: { author },
+    }));
+}
+
+const { author } = Astro.props;
+const allPosts = await getCollection('blog');
+const authorPosts = allPosts
+  .filter(p => p.slug.startsWith('fr-') && p.data.authorSlug === author.id)
+  .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+
+const title = `${author.data.name} — Auteur sur Safari Tanzania`;
+const description = author.data.bio;
+
+const breadcrumbs = [
+  { label: 'Blog', href: '/fr/blog/' },
+  { label: 'Auteurs', href: '/fr/blog/' },
+  { label: author.data.name },
+];
+
+const schema = [
+  webPage({
+    name: title,
+    description,
+    url: `https://safaritanzania.info/fr/blog/auteurs/${author.id}/`,
+  }),
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={`/fr/blog/auteurs/${author.id}/`}
+  schema={schema}
+  breadcrumbs={breadcrumbs}
+  lang={lang}
+>
+  <Header slot="header" lang={lang} />
+  <Footer slot="footer" lang={lang} />
+
+  <!-- BIOGRAPHIE DE L'AUTEUR -->
+  <section class="section">
+    <div class="container" style="max-width:800px">
+      <div style="display:flex;gap:2rem;align-items:flex-start;flex-wrap:wrap">
+        <img
+          src={author.data.avatar}
+          alt={author.data.name}
+          width="120"
+          height="120"
+          loading="eager"
+          style="border-radius:50%;width:120px;height:120px;object-fit:cover;flex-shrink:0"
+        >
+        <div style="flex:1;min-width:250px">
+          <h1 style="margin-bottom:.5rem">{author.data.name}</h1>
+          <p style="color:#3D6B2E;font-weight:700;margin-bottom:.75rem">{author.data.role}</p>
+          <p style="color:#5A6B52">{author.data.bio}</p>
+          {author.data.expertise && (
+            <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem">
+              {author.data.expertise.map((tag: string) => (
+                <span class="chip chip--amber">{tag}</span>
+              ))}
+            </div>
+          )}
+          {author.data.social && (
+            <div style="display:flex;gap:1rem;margin-top:1rem">
+              {author.data.social.instagram && (
+                <a href={author.data.social.instagram} target="_blank" rel="noopener" style="color:#3D6B2E;font-weight:700;font-size:.9rem">Instagram</a>
+              )}
+              {author.data.social.facebook && (
+                <a href={author.data.social.facebook} target="_blank" rel="noopener" style="color:#3D6B2E;font-weight:700;font-size:.9rem">Facebook</a>
+              )}
+              {author.data.social.tiktok && (
+                <a href={author.data.social.tiktok} target="_blank" rel="noopener" style="color:#3D6B2E;font-weight:700;font-size:.9rem">TikTok</a>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTICLES DE L'AUTEUR -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header">
+        <h2>Articles de {author.data.name}</h2>
+        <p>{authorPosts.length} {authorPosts.length === 1 ? 'article' : 'articles'} publiés</p>
+      </div>
+
+      {authorPosts.length > 0 ? (
+        <div class="card-grid card-grid--3">
+          {authorPosts.map(post => (
+            <BlogCard
+              title={post.data.title}
+              description={post.data.description}
+              slug={post.slug.replace('fr-', '')}
+              image={post.data.image}
+              imageAlt={post.data.imageAlt}
+              author={post.data.author}
+              publishDate={post.data.publishDate}
+              readingTime={post.data.readingTime}
+              category={post.data.category}
+              lang={lang}
+            />
+          ))}
+        </div>
+      ) : (
+        <div style="text-align:center;padding:2rem 0">
+          <p style="color:#5A6B52">Cet auteur n'a pas encore d'articles publiés. Revenez bientôt.</p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green">
+    <div class="container" style="text-align:center">
+      <h2 style="color:white;margin-bottom:.75rem">Planifiez votre Safari</h2>
+      <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:500px;margin-left:auto;margin-right:auto">Nos experts vous aident à concevoir l'aventure parfaite en Tanzanie.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/fr/prix/" class="btn btn--amber btn--lg">Voir les Tarifs 2026</a>
+        <a href="/fr/contact/" class="btn btn--outline-white btn--lg">Nous Contacter</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -3,6 +3,17 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import Header from '../../../../components/Header.astro';
 import Footer from '../../../../components/Footer.astro';
 import { touristAttraction, faqPage } from '../../../../i18n/schema';
+import SafariTikTok from '../../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../../components/PhotoGallery.astro';
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=400&fit=crop&auto=format', alt: 'Retrato de un león macho con luz dorada al amanecer' },
+  { src: 'https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=400&fit=crop&auto=format', alt: 'Jirafa silueteada contra el cielo dorado del atardecer en el Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=600&h=400&fit=crop&auto=format', alt: 'Cebras en formación perfecta para composición fotográfica' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Paisaje del Serengeti con acacias y luz dorada para fotografía' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'Primer plano de elefante africano ideal para fotografía de safari' },
+  { src: 'https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&h=400&fit=crop&auto=format', alt: 'Guerrero Masái con vestimenta tradicional en la sabana' },
+];
 
 const schema = [
   touristAttraction({
@@ -133,6 +144,10 @@ const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="
       </div>
     </div>
   </section>
+
+  <!-- TIKTOK & GALLERY -->
+  <SafariTikTok category="photography" lang="es" />
+  <PhotoGallery images={galleryImages} title="Galería de Fotografía de Safari" />
 
   <!-- FAQ -->
   <section class="section section--gray" aria-labelledby="faq-title">

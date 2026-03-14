@@ -3,24 +3,35 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { touristAttraction, faqPage } from '../../i18n/schema';
+import SafariTikTok from '../../components/SafariTikTok.astro';
+import PhotoGallery from '../../components/PhotoGallery.astro';
 
 const lang = 'en';
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=400&fit=crop&auto=format', alt: 'Hot air balloon drifting over the Serengeti plains at dawn' },
+  { src: 'https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&h=400&fit=crop&auto=format', alt: 'Masai guide leading a walking safari through golden savanna grass' },
+  { src: 'https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=400&fit=crop&auto=format', alt: 'Wildebeest herds during the Great Migration wildlife watching activity' },
+  { src: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=400&fit=crop&auto=format', alt: 'Lion photographed during a guided wildlife watching activity in the Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'Elephant herd observed from a 4x4 vehicle during an adventure activity' },
+  { src: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=400&fit=crop&auto=format', alt: 'Safari vehicle driving through the Serengeti on an activity game drive' },
+];
 
 const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
 
 const faqItems = [
-  { question: 'What activities are available besides game drives?', answer: 'Tanzania offers a wide range of activities beyond traditional safaris: <a href="/en/activities/wildlife-watching/" style="color:#3D6B2E;font-weight:700">wildlife watching</a> including the Great Migration, <a href="/en/activities/bush-walks/" style="color:#3D6B2E;font-weight:700">bush walks</a> with Masai guides, <a href="/en/activities/hot-air-balloon/" style="color:#3D6B2E;font-weight:700">hot air balloon</a> flights over the Serengeti, cultural village visits, bird watching, crater lake visits and stargazing experiences.' },
+  { question: 'What activities are available besides game drives?', answer: 'Tanzania offers a wide range of activities beyond traditional safaris: <a href="/activities/wildlife-watching/" style="color:#3D6B2E;font-weight:700">wildlife watching</a> including the Great Migration, <a href="/activities/bush-walks/" style="color:#3D6B2E;font-weight:700">bush walks</a> with Masai guides, <a href="/activities/hot-air-balloon/" style="color:#3D6B2E;font-weight:700">hot air balloon</a> flights over the Serengeti, cultural village visits, bird watching, crater lake visits and stargazing experiences.' },
   { question: 'Are activities suitable for all fitness levels?', answer: 'Most activities accommodate various fitness levels. <strong>Wildlife watching</strong> from vehicles requires no physical effort. <strong>Bush walks</strong> range from gentle strolls to moderate hikes (2-4 hours). <strong>Balloon flights</strong> require basic mobility to board the basket. Our team can recommend the best activities for your fitness level and any mobility considerations.' },
-  { question: 'Can I combine multiple activities in one trip?', answer: 'Absolutely! Many of our guests combine game drives with bush walks, a balloon flight and cultural experiences. A typical <strong>5-day safari</strong> can include 2-3 different activities alongside traditional game drives. Contact us to design a custom itinerary that includes your preferred activities at the best <a href="/en/prices/" style="color:#3D6B2E;font-weight:700">prices</a>.' },
+  { question: 'Can I combine multiple activities in one trip?', answer: 'Absolutely! Many of our guests combine game drives with bush walks, a balloon flight and cultural experiences. A typical <strong>5-day safari</strong> can include 2-3 different activities alongside traditional game drives. Contact us to design a custom itinerary that includes your preferred activities at the best <a href="/prices/" style="color:#3D6B2E;font-weight:700">prices</a>.' },
   { question: 'What should I wear for outdoor activities?', answer: 'Wear lightweight, breathable clothing in <strong>neutral earth tones</strong> (khaki, olive, brown, tan). Avoid bright white, blue and black clothing. Sturdy closed-toe shoes are essential for bush walks. A hat, sunglasses and sunscreen (SPF 50+) are necessary for all outdoor activities. Layering is recommended as mornings can be cool.' },
-  { question: 'Are children allowed on all activities?', answer: 'Most activities welcome children with some age restrictions. <strong>Wildlife watching</strong> from vehicles has no age limit. <strong>Bush walks</strong> typically require children to be at least 12 years old. <strong>Hot air balloon</strong> flights have a minimum age of 7 years. Children under 5 are free on most vehicle-based activities. See our <a href="/en/prices/" style="color:#3D6B2E;font-weight:700">prices page</a> for family packages.' },
+  { question: 'Are children allowed on all activities?', answer: 'Most activities welcome children with some age restrictions. <strong>Wildlife watching</strong> from vehicles has no age limit. <strong>Bush walks</strong> typically require children to be at least 12 years old. <strong>Hot air balloon</strong> flights have a minimum age of 7 years. Children under 5 are free on most vehicle-based activities. See our <a href="/prices/" style="color:#3D6B2E;font-weight:700">prices page</a> for family packages.' },
 ];
 
 const schema = [
   touristAttraction({
     name: 'Activities in Tanzania — Wildlife Watching, Bush Walks, Balloon & More',
     description: 'Discover the best activities in Tanzania beyond traditional safaris. Wildlife watching, bush walks with Masai guides, hot air balloon flights and more.',
-    url: 'https://safaritanzania.info/en/activities/',
+    url: 'https://safaritanzania.info/activities/',
   }),
   faqPage(faqItems),
 ];
@@ -47,8 +58,8 @@ const schema = [
           <h1 class="hero__title">Activities &amp; experiences in Tanzania</h1>
           <p class="hero__desc">Tanzania offers far more than traditional safaris. Walk through the bush with Masai warriors, float over the Serengeti at dawn, track the Great Migration and immerse yourself in authentic African culture.</p>
           <div class="hero__actions">
-            <a href="/en/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
-            <a href="/en/safaris/" class="btn btn--outline btn--lg">View safaris</a>
+            <a href="/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
+            <a href="/safaris/" class="btn btn--outline btn--lg">View safaris</a>
           </div>
         </div>
         <div class="hero__visual">
@@ -74,7 +85,7 @@ const schema = [
         <p>Each activity offers a unique perspective on Tanzania's wildlife, landscapes and culture. Mix and match to create your perfect adventure.</p>
       </div>
       <div class="card-grid card-grid--3 animate-on-scroll delay-1">
-        <a href="/en/activities/wildlife-watching/" class="photo-card">
+        <a href="/activities/wildlife-watching/" class="photo-card">
           <div class="photo-card__img">
             <img src="https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=450&fit=crop&auto=format" alt="Wildebeest herd during the Great Migration in the Serengeti" width="600" height="450" loading="lazy" />
           </div>
@@ -85,7 +96,7 @@ const schema = [
             <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
           </div>
         </a>
-        <a href="/en/activities/bush-walks/" class="photo-card">
+        <a href="/activities/bush-walks/" class="photo-card">
           <div class="photo-card__img">
             <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&h=450&fit=crop&auto=format" alt="Masai guide leading a walking safari through the African bush" width="600" height="450" loading="lazy" />
           </div>
@@ -96,7 +107,7 @@ const schema = [
             <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
           </div>
         </a>
-        <a href="/en/activities/hot-air-balloon/" class="photo-card">
+        <a href="/activities/hot-air-balloon/" class="photo-card">
           <div class="photo-card__img">
             <img src="https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=450&fit=crop&auto=format" alt="Hot air balloon safari over the Serengeti National Park at dawn" width="600" height="450" loading="lazy" />
           </div>
@@ -167,7 +178,7 @@ const schema = [
         <div class="photo-card" style="cursor:default">
           <div class="photo-card__body">
             <h3 class="photo-card__title">1. Choose your safari</h3>
-            <p>Start with a <a href="/en/safaris/classic-safari/" style="color:#3D6B2E;font-weight:700">classic</a>, <a href="/en/safaris/photo-safari/" style="color:#3D6B2E;font-weight:700">photo</a> or <a href="/en/safaris/night-safari/" style="color:#3D6B2E;font-weight:700">night safari</a> as your base experience. Activities are added as complements to your core safari itinerary.</p>
+            <p>Start with a <a href="/safaris/classic-safari/" style="color:#3D6B2E;font-weight:700">classic</a>, <a href="/safaris/photo-safari/" style="color:#3D6B2E;font-weight:700">photo</a> or <a href="/safaris/night-safari/" style="color:#3D6B2E;font-weight:700">night safari</a> as your base experience. Activities are added as complements to your core safari itinerary.</p>
           </div>
         </div>
         <div class="photo-card" style="cursor:default">
@@ -179,7 +190,7 @@ const schema = [
         <div class="photo-card" style="cursor:default">
           <div class="photo-card__body">
             <h3 class="photo-card__title">3. Contact us</h3>
-            <p>Reach out via <a href="/en/contact/" style="color:#3D6B2E;font-weight:700">our contact page</a> or WhatsApp and we will design a custom itinerary with your preferred activities at the best available prices.</p>
+            <p>Reach out via <a href="/contact/" style="color:#3D6B2E;font-weight:700">our contact page</a> or WhatsApp and we will design a custom itinerary with your preferred activities at the best available prices.</p>
           </div>
         </div>
       </div>
@@ -205,6 +216,9 @@ const schema = [
     </div>
   </section>
 
+  <PhotoGallery images={galleryImages} title="Activities in Tanzania" />
+  <SafariTikTok category="wildlife" lang="en" />
+
   <!-- CTA -->
   <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
     <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
@@ -216,8 +230,8 @@ const schema = [
         <p>Discover Tanzania's extraordinary activities and create memories that will last a lifetime.</p>
       </div>
       <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-        <a href="/en/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
-        <a href="/en/contact/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Plan my trip</a>
+        <a href="/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
+        <a href="/contact/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Plan my trip</a>
       </div>
     </div>
   </section>

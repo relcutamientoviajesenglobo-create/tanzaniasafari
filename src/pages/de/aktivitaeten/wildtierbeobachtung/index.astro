@@ -1,0 +1,261 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import SafariTikTok from '../../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../../components/PhotoGallery.astro';
+import { touristAttraction, faqPage } from '../../../../i18n/schema';
+
+const lang = 'de';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const faqItems = [
+  { question: 'Was sind die Big Five und kann ich alle in Tansania sehen?', answer: 'Die <strong>Big Five</strong> bezeichnet die fünf ikonischsten afrikanischen Tiere: <strong>Löwe, Leopard, Elefant, Büffel und Nashorn</strong>. Ja, alle fünf können in Tansania gesehen werden. Die Serengeti und der Ngorongoro-Krater gehören zu den besten Orten der Welt, um alle fünf Arten zu entdecken, wobei der Ngorongoro besonders gute Chancen bietet, das bedrohte Spitzmaulnashorn zu sehen.' },
+  { question: 'Was ist die Große Migration und wann findet sie statt?', answer: 'Die Große Migration ist die jährliche Wanderung von über <strong>2 Millionen Gnus, Zebras und Gazellen</strong> durch das Serengeti-Mara-Ökosystem. Es handelt sich um ein ganzjähriges Ereignis, aber die dramatischsten Szenen spielen sich von <strong>Juli bis September</strong> ab, wenn riesige Herden die Mara und den Grumeti überqueren. Die Kälbersaison von Januar bis Februar im südlichen Serengeti ist ebenfalls spektakulär.' },
+  { question: 'Was ist die beste Jahreszeit für die Wildtierbeobachtung?', answer: 'Tansania bietet das ganze Jahr über hervorragende Wildtierbeobachtung. Die <strong>Trockenzeit (Juni–Oktober)</strong> konzentriert Tiere an Wasserquellen und macht sie leichter auffindbar. Die <strong>Grüne Saison (November–Mai)</strong> bietet üppige Landschaften, Vogelwanderungen und die Gnukälbersaison. Jede Periode hat einzigartige Vorteile für die Wildtierbeobachtung.' },
+  { question: 'Wie nah kommen wir den Tieren?', answer: 'Unsere Guides folgen strengen Parkvorschriften, die sowohl Wildtiere als auch Besucher schützen. Fahrzeuge nähern sich typischerweise bis auf <strong>20–30 Meter</strong> den meisten Tieren, was für hervorragende Beobachtung und Fotografie nah genug ist. Manche Tiere, wie Elefanten und Giraffen, kommen von sich aus noch näher. Unsere Guides lesen die Körpersprache der Tiere, um angenehme Abstände zu gewährleisten.' },
+  { question: 'Benötige ich ein Fernglas für die Wildtierbeobachtung?', answer: 'Obwohl unsere Guides Tiere mit außergewöhnlichem Sehvermögen entdecken, ist ein <strong>Fernglas sehr empfehlenswert</strong> für eine detaillierte Betrachtung, besonders für Vögel und entfernte Herden. Wir stellen hochwertige Ferngläser auf allen unseren Safaris bereit, aber Sie können auch gerne Ihr eigenes mitbringen. Ein <strong>10x42</strong>-Fernglas ist ideal für den Safari-Einsatz.' },
+  { question: 'Welche Vögel kann ich in Tansania sehen?', answer: 'Tansania ist ein Paradies für Vogelbeobachter mit über <strong>1.100 verzeichneten Arten</strong>. Highlights sind Flamingos am Natron-See, Kampfadler, Sekretärvögel, Dreifarben-Glanzstare (inoffizieller Nationalvogel Tansanias), Nashornvögel, Eisvögel, Strauße und viele seltene endemische Arten. Unsere Guides sind erfahrene Vogelkenner.' },
+];
+
+const schema = [
+  touristAttraction({
+    name: 'Wildtierbeobachtung in Tansania — Big Five & Große Migration',
+    description: 'Verfolgen Sie die Big Five und erleben Sie die Große Migration in der Serengeti. Erfahrene Wildtier-Guides, optimale Beobachtungspositionen und unvergessliche Begegnungen mit Afrikas ikonischen Tieren.',
+    url: 'https://safaritanzania.info/de/aktivitaeten/wildtierbeobachtung/',
+  }),
+  faqPage(faqItems),
+];
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=400&fit=crop&auto=format', alt: 'Männlicher Löwe mit goldener Mähne in der Serengeti-Savanne' },
+  { src: 'https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&h=400&fit=crop&auto=format', alt: 'Leopard auf einem Ast in der Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'Elefantenherde mit Jungtieren im tansanischen Busch' },
+  { src: 'https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=400&fit=crop&auto=format', alt: 'Gnus beim Überqueren des Mara-Flusses während der Großen Migration' },
+  { src: 'https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=600&h=400&fit=crop&auto=format', alt: 'Zebraherde weidend während der Migrationssaison in der Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Serengeti-Nationalpark Landschaft mit dramatischen Wolken' },
+];
+---
+
+<BaseLayout
+  title="Wildtierbeobachtung in Tansania — Big Five &amp; Große Migration"
+  description="Verfolgen Sie die Big Five und erleben Sie die Große Migration in der Serengeti und am Ngorongoro. Erfahrene Guides, optimale Beobachtungspositionen und unvergessliche Begegnungen mit Löwen, Elefanten, Leoparden und mehr."
+  lang={lang}
+  schema={schema}
+  breadcrumbs={[
+    { label: 'Aktivitäten', href: '/de/aktivitaeten/' },
+    { label: 'Wildtierbeobachtung' },
+  ]}
+>
+  <Header slot="header" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--green">Big Five &amp; Große Migration</span>
+          <h1 class="hero__title">Wildtierbeobachtung in Tansania</h1>
+          <p class="hero__desc">Verfolgen Sie die Big Five über die Serengeti-Ebenen und erleben Sie die Große Migration – eines der beeindruckendsten Naturschauspiele. Über 2 Millionen Tiere, 1.100 Vogelarten und erfahrene Guides, die alles zum Leben erwecken.</p>
+          <div class="hero__actions">
+            <a href="/de/preise/" class="btn btn--primary btn--lg">Preise 2026 ansehen</a>
+            <a href="/de/kontakt/" class="btn btn--outline btn--lg">Wildtier-Reise planen</a>
+          </div>
+          <div class="stats-row">
+            <div class="stat"><strong>Big Five</strong><span>Alle Arten vorhanden</span></div>
+            <div class="stat"><strong>2 Mio.+</strong><span>Migrationstiere</span></div>
+            <div class="stat"><strong>1.100+</strong><span>Vogelarten</span></div>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <img
+              src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=800&h=640&fit=crop&auto=format"
+              alt="Elefantenherde beim Durchqueren der weiten Serengeti-Ebenen"
+              width="800" height="640" loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIE BIG FIVE -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Die Big Five</span>
+        <h2>Afrikas ikonischste Tiere</h2>
+        <p>Tansania ist einer der wenigen Orte der Welt, an dem alle fünf legendären Tiere Afrikas frei umherstreifen. Unsere erfahrenen Guides maximieren Ihre Chancen, jedes einzelne zu sehen.</p>
+      </div>
+      <div class="card-grid card-grid--3 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=450&fit=crop&auto=format" alt="Männlicher Löwe mit goldener Mähne in den Serengeti-Grasslands" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Afrikanischer Löwe</h3>
+            <p>Die Serengeti beherbergt über 3.000 Löwen, eine der größten Populationen Afrikas. Beobachten Sie Rudeldynamiken, territoriale Kämpfe und wenn Sie Glück haben, eine Jagd in Aktion.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&h=450&fit=crop&auto=format" alt="Leopard über einem Ast in der Serengeti" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Leopard</h3>
+            <p>Das schwerste der Big Five zu sichten. Unsere Guides kennen die Lieblingsäste und Reviere der Serengeti-Leoparden und geben Ihnen die beste Chance auf eine Sichtung.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=450&fit=crop&auto=format" alt="Elefantenherde mit Jungtieren im tansanischen Busch" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Elefant</h3>
+            <p>Riesige afrikanische Elefantenherden streifen frei durch Tarangire und die Serengeti. Erleben Sie ihre komplexen sozialen Bindungen, Staubbäder und ihr fürsorgliches Familienverhalten.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GROSSE MIGRATION -->
+  <section class="section section--green bg-green" style="position:relative;overflow:hidden">
+    <div style="position:absolute;bottom:0;left:-30px;opacity:.08;pointer-events:none;color:#D4A017;transform:rotate(180deg)">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Naturwunder</span>
+        <h2>Die Große Migration</h2>
+        <p>Die größte landgebundene Tierbewegung der Erde. Über 2 Millionen Gnus, Zebras und Gazellen durchqueren die Serengeti in einem ewigen Kreislauf aus Leben, Tod und Erneuerung.</p>
+      </div>
+      <div class="card-grid card-grid--2 animate-on-scroll delay-1">
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=450&fit=crop&auto=format" alt="Gnus beim Überqueren des Mara-Flusses während der Großen Migration" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Flussüberquerungen (Jul–Sep)</h3>
+            <p>Die dramatischsten Momente der Migration finden statt, wenn riesige Herden in die krokodilverseuchten Mara und Grumeti springen. Tausende von Gnus drängen, springen und schwimmen in einem Spektakel roher Natur.</p>
+          </div>
+        </div>
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=600&h=450&fit=crop&auto=format" alt="Zebraherde weidend in der Serengeti während der Migrationssaison" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Kälbersaison (Jan–Feb)</h3>
+            <p>Im südlichen Serengeti werden rund 500.000 Kälber innerhalb weniger Wochen geboren. Die Grasslands werden zu einer Kinderstube neuen Lebens und ziehen Raubtiere an, während intime Einblicke in die Mutterschaft in der Wildnis entstehen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SAISONALER KALENDER -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">Saisonaler Leitfaden</span>
+        <h2>Wann für die beste Beobachtung besuchen</h2>
+        <p>Tansania bietet das ganze Jahr über hervorragende Wildtierbeobachtung, aber jede Saison bringt einzigartige Highlights.</p>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1" style="grid-template-columns:repeat(2,1fr)">
+        <div class="service-card">
+          <h3 class="service-card__title">Trockenzeit (Jun–Okt)</h3>
+          <p class="service-card__desc">Tiere konzentrieren sich an Wasserquellen, die Vegetation lichtet sich und die Sichtbarkeit ist hervorragend. Die Migrationsüberquerungen finden statt. Dies ist die Hochsaison mit der höchsten Wildtierdichte.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Grüne Saison (Nov–Mai)</h3>
+          <p class="service-card__desc">Üppige grüne Landschaften, dramatische Himmel und die Kälbersaison (Januar–Februar). Weniger Touristen, günstigere Preise und außergewöhnliche Vogelbeobachtung mit Zugvogelarten.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BESTE STANDORTE -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Beste Standorte</span>
+        <h2>Wo Wildtiere beobachtet werden</h2>
+        <p>Jeder Park und jedes Reservat in Tansania bietet unterschiedliche Wildtiererlebnisse und Ökosysteme.</p>
+      </div>
+      <div class="card-grid card-grid--2 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=450&fit=crop&auto=format" alt="Serengeti-Nationalpark Landschaft mit dramatischen Wolken" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Serengeti-Nationalpark</h3>
+            <p>Das größte und bekannteste Wildtiergebiet Tansanias. Heimat der Großen Migration, riesiger Löwenrudel, Geparden auf den offenen Ebenen und über 500 Vogelarten auf 30.000 Quadratkilometern.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1745885979468-44a855f8a5fa?w=600&h=450&fit=crop&auto=format" alt="Ngorongoro-Krater Panoramablick vom Rand" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Ngorongoro-Krater</h3>
+            <p>Die weltgrößte intakte Caldera mit der höchsten Wildtierdichte Afrikas. Hervorragend für Spitzmaulnashorn-Sichtungen, flamingobevölkerte Seen, Nilpferd-Pools und große Elefantenbullen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section class="section section--gray">
+    <div class="container">
+      <PhotoGallery images={galleryImages} title="Fotogalerie: Wildtierbeobachtung" />
+    </div>
+  </section>
+
+  <!-- TIKTOK -->
+  <SafariTikTok category="serengeti" lang="de" />
+
+  <!-- FAQ -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">FAQ</span>
+        <h2>Fragen zur Wildtierbeobachtung</h2>
+        <p>Häufige Fragen zur Wildtierbeobachtung, den Big Five und der Großen Migration.</p>
+      </div>
+      <div class="faq-list animate-on-scroll delay-1">
+        {faqItems.map(item => (
+          <details>
+            <summary>{item.question}</summary>
+            <div class="faq-answer" set:html={item.answer} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2>Tansanias Wildtiere erleben</h2>
+        <p>Verfolgen Sie die Big Five und die Große Migration mit unseren erfahrenen Guides. Buchen Sie noch heute Ihre Wildtierbeobachtungs-Safari.</p>
+      </div>
+      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/de/preise/" class="btn btn--primary btn--lg">Preise 2026 ansehen</a>
+        <a href="/de/kontakt/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Reise planen</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>

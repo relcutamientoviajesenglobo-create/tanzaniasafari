@@ -1,0 +1,262 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import SafariTikTok from '../../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../../components/PhotoGallery.astro';
+import { touristAttraction, faqPage } from '../../../../i18n/schema';
+
+const lang = 'de';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const faqItems = [
+  { question: 'Was ist eine Nacht-Safari in Tansania?', answer: 'Eine Nacht-Safari ist eine geführte Pirschfahrt, die <strong>nach Sonnenuntergang</strong> stattfindet, typischerweise von 18:30 bis 22:00 Uhr. Mit leistungsstarken Scheinwerfern und Infrarotausrüstung enthüllt Ihr Guide die verborgene Welt nachtaktiver Wildtiere: jagende Raubtiere, Erdferkel, Galagos, Stachelschweine und viele Arten, die am Tag nicht zu sehen sind.' },
+  { question: 'Wo finden Nacht-Safaris statt?', answer: 'Nacht-Safaris finden in bestimmten Schutzgebieten statt, in denen Nachtfahrten erlaubt sind. Die beliebtesten Standorte sind der <strong>Lake-Manyara-Nationalpark</strong>, <strong>Tarangire</strong> und private Reservate an der Serengeti-Grenze. Nationalparkvorschriften schränken Nachtfahrten in der Serengeti und am Ngorongoro ein, daher nutzen wir zugelassene Gebiete, die hervorragende nächtliche Wildtiersichtungen bieten.' },
+  { question: 'Ist eine Nacht-Safari sicher?', answer: 'Absolut. Nacht-Safaris werden in denselben verstärkten 4x4-Fahrzeugen durchgeführt, die für Tagesfahrten verwendet werden. Ihr Guide ist in nächtlichem Wildtierverhalten geschult und trägt <strong>Satellitenkommunikationsausrüstung</strong>. Der Scheinwerfer stört die Tiere nicht (sie sind daran gewöhnt), und Sie bleiben jederzeit sicher im Fahrzeug. Unsere Guides tragen Erste-Hilfe-Kästen und haben Notfallprotokolle.' },
+  { question: 'Welche Tiere kann ich auf einer Nacht-Safari sehen?', answer: 'Nacht-Safaris enthüllen Arten, die tagsüber selten zu sehen sind: <strong>jagende Leoparden</strong>, Tüpfelhyänen, Löffelhunde, Erdferkel, Erdwölfe, Galagos, Zibetkatzen, Genetten, Stachelschweine, Buschhasen und viele Eulenarten. Raubtiere sind nach Einbruch der Dunkelheit wesentlich aktiver, was Nachtfahrten zu einigen der aufregendsten Wildtiererlebnissen in Afrika macht.' },
+  { question: 'Kann ich auf einer Nacht-Safari Wildtiere fotografieren?', answer: 'Ja, aber es erfordert spezielle Techniken. Blitzfotografie wird im Allgemeinen abgeraten, da sie Tiere erschrecken kann. Unsere Guides verwenden jedoch <strong>Rotfilter-Scheinwerfer</strong>, die wildtierfreundlich und zum Fotografieren geeignet sind. Wir empfehlen Kameras, die bei hohen ISO-Werten (ISO 3200+) gut funktionieren. Für beste Ergebnisse kombinieren Sie eine Nacht-Safari mit einer <a href="/de/safaris/foto-safari/" style="color:#3D6B2E;font-weight:700">Foto-Safari</a> für Tagesaufnahmen.' },
+  { question: 'Wie lange dauert eine Nacht-Safari?', answer: 'Eine typische Nacht-Pirschfahrt dauert <strong>3 bis 4 Stunden</strong>, beginnt rund um den Sonnenuntergang (18:00–18:30 Uhr) und endet gegen 21:30–22:00 Uhr. Die Fahrt beinhaltet eine kurze Pause für heiße Getränke und Sternenbeobachtung in einem sicheren Bereich. Nacht-Safaris können zu jedem mehrtägigen <a href="/de/safaris/klassische-safari/" style="color:#3D6B2E;font-weight:700">klassischen Safari</a>-Reiseplan hinzugefügt werden.' },
+];
+
+const schema = [
+  touristAttraction({
+    name: 'Nacht-Safari in Tansania',
+    description: 'Erleben Sie nachtaktive Wildtiere in der Serengeti und Tansanias Schutzgebieten. Entdecken Sie jagende Leoparden, Hyänen, Galagos und mehr mit erfahrenen Guides nach Einbruch der Dunkelheit.',
+    url: 'https://safaritanzania.info/de/safaris/nacht-safari/',
+  }),
+  faqPage(faqItems),
+];
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&h=400&fit=crop&auto=format', alt: 'Leopard in schwachem Licht während einer nächtlichen Pirschfahrt in Tansania' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Afrikanische Savanne unter dem Sternenhimmel mit Akaziensilhouetten' },
+  { src: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=400&fit=crop&auto=format', alt: 'Safari-Fahrzeug bei einer nächtlichen Exkursion in der Tansania-Wildnis' },
+  { src: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=400&fit=crop&auto=format', alt: 'Löwe in dramatischer Beleuchtung auf einer Nacht-Safari' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'Elefanten bei einer abendlichen Pirschfahrt in der Savanne' },
+  { src: 'https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=400&fit=crop&auto=format', alt: 'Gnus in der Nacht – nächtliche Beobachtung in der Serengeti' },
+];
+---
+
+<BaseLayout
+  title="Nacht-Safari in Tansania — Nachtaktive Wildtiere in der Serengeti"
+  description="Erleben Sie die afrikanische Wildnis nach Einbruch der Dunkelheit auf einer geführten Nacht-Safari. Entdecken Sie jagende Leoparden, Hyänen, Galagos, Erdferkel und nachtaktive Raubtiere."
+  lang={lang}
+  schema={schema}
+  breadcrumbs={[
+    { label: 'Safaris', href: '/de/safaris/' },
+    { label: 'Nacht-Safari' },
+  ]}
+>
+  <Header slot="header" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--green">Nach Einbruch der Dunkelheit</span>
+          <h1 class="hero__title">Nacht-Safari in Tansania</h1>
+          <p class="hero__desc">Wenn die Sonne untergeht, beginnt das eigentliche Drama. Entdecken Sie die verborgene Welt nachtaktiver Raubtiere, scheuer Kreaturen und der faszinierenden Geräusche des afrikanischen Busches unter einem Sternenzelt.</p>
+          <div class="hero__actions">
+            <a href="/de/preise/" class="btn btn--primary btn--lg">Preise 2026 ansehen</a>
+            <a href="/de/kontakt/" class="btn btn--outline btn--lg">Nacht-Safari buchen</a>
+          </div>
+          <div class="stats-row">
+            <div class="stat"><strong>3–4 Std.</strong><span>Sonnenuntergang bis Nacht</span></div>
+            <div class="stat"><strong>20+</strong><span>Nachtaktive Arten</span></div>
+            <div class="stat"><strong>Experten</strong><span>Geschulte Guides</span></div>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <img
+              src="https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=800&h=640&fit=crop&auto=format"
+              alt="Leopard entdeckt während einer nächtlichen Pirschfahrt in Tansania"
+              width="800" height="640" loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAS ERLEBNIS -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Das Erlebnis</span>
+        <h2>Was nach Sonnenuntergang passiert</h2>
+        <p>Wenn die Dämmerung verblasst und die Sterne erscheinen, betritt eine ganz andere Tiergemeinschaft die Bühne der tansanischen Ebenen.</p>
+      </div>
+      <div class="card-grid card-grid--2 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&h=450&fit=crop&auto=format" alt="Leopard in schwachem Licht bei einer nächtlichen Pirschfahrt" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Raubtiere auf der Jagd</h3>
+            <p>Die Nacht ist die Zeit, wenn Afrikas Spitzenraubtiere am aktivsten sind. Beobachten Sie, wie Leoparden durch das Unterholz schleichen, Tüpfelhyänen ihre Jagd koordinieren und Servalkatzen mit unglaublicher Präzision auf Beute springen. Der Scheinwerfer enthüllt Verhaltensweisen, die tagsüber selten zu beobachten sind.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=450&fit=crop&auto=format" alt="Afrikanische Savanne unter sternklarem Nachthimmel mit Akaziensilhouetten" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Sternenbeobachtung &amp; Nachtgeräusche</h3>
+            <p>Zwischen den Wildtiersichtungen hält Ihr Guide das Fahrzeug an einem sicheren Ort für heiße Getränke und Sternenbeobachtung an. Ohne Lichtverschmutzung ist Tansanias Nachthimmel außerordentlich: die Milchstraße, das Südliche Kreuz und Sternschnuppen erzeugen ein himmlisches Spektakel, während der Busch Sie mit Hyänenrufen und Eulengezwitscher begleitet.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NACHTAKTIVE TIERE -->
+  <section class="section section--green bg-green" style="position:relative;overflow:hidden">
+    <div style="position:absolute;bottom:0;left:-30px;opacity:.08;pointer-events:none;color:#D4A017;transform:rotate(180deg)">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Nachtaktive Tiere</span>
+        <h2>Kreaturen der Nacht</h2>
+        <p>Nacht-Safaris enthüllen eine völlig andere Tierwelt, die tagsüber schläft und unter dem Schutz der Dunkelheit zum Leben erwacht.</p>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1">
+        <div class="service-card">
+          <h3 class="service-card__title">Leopard</h3>
+          <p class="service-card__desc">Das am schwersten zu sichtende Tier der Big Five ist ein vorwiegend nächtlicher Jäger. Beobachten Sie, wie er mit Kraft und Gewandtheit Beute verfolgt oder auf Akazienästen im Mondlicht ruht.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Galago (Buschbaby)</h3>
+          <p class="service-card__desc">Diese kleinen Primaten mit riesigen Augen springen mit unglaublicher Geschwindigkeit zwischen Ästen. Ihre gespenstischen Rufe hallen durch die afrikanische Nacht und haben ihnen den Namen "Buschbaby" eingebracht.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Tüpfelhyäne</h3>
+          <p class="service-card__desc">Hochintelligente Rudeljäger sind nach Einbruch der Dunkelheit am aktivsten. Erleben Sie ihre komplexen sozialen Strukturen, unheimlichen Laute und bemerkenswerten Jagdstrategien.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Erdferkel</h3>
+          <p class="service-card__desc">Eine der scheuesten Kreaturen Afrikas, das Erdferkel kommt nur nachts heraus, um sich von Termiten zu ernähren. Eine Sichtung ist ein seltenes Privileg, das jede Nacht-Safari unvergesslich macht.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAS INBEGRIFFEN IST -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">Was ist inbegriffen</span>
+        <h2>Details zum Nacht-Safari-Paket</h2>
+        <p>Alles, was Sie für ein sicheres und außergewöhnliches nächtliches Wildtiererlebnis benötigen.</p>
+      </div>
+      <div class="card-grid card-grid--3 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Bereitgestellte Ausrüstung</h3>
+            <p>Leistungsstarke Scheinwerfer mit Rotfiltern (wildtierfreundlich), Decken für die kühleren Abendstunden, heiße Getränke (Kaffee, Tee, heiße Schokolade) und Nachtsicht-Ferngläser bei Premium-Touren.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Sicherheitsmaßnahmen</h3>
+            <p>Verstärkte 4x4-Fahrzeuge, Satellitentelefon, erfahrener nachtqualifizierter Guide, Erste-Hilfe-Kit, Notfallprotokolle und ständiger Kontakt mit Basislager oder Lodge.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Der Zeitplan</h3>
+            <p>Abfahrt bei Sonnenuntergang (ca. 18:00 Uhr). Drei bis vier Stunden Pirschfahrt mit einer Sternenbeobachtungspause. Rückkehr zum Camp oder zur Lodge gegen 21:30–22:00 Uhr. Leichtes Abendessen kann arrangiert werden.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KOMBINIEREN -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Erlebnis kombinieren</span>
+        <h2>Fügen Sie eine Nacht-Safari zu Ihrer Reise hinzu</h2>
+        <p>Nacht-Safaris passen perfekt zu unseren anderen Safari-Erlebnissen für ein vollständiges 24-Stunden-Wildtierabenteuer.</p>
+      </div>
+      <div class="card-grid card-grid--2 animate-on-scroll delay-1">
+        <a href="/de/safaris/klassische-safari/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=450&fit=crop&auto=format" alt="Klassisches Safari-Fahrzeug in der Serengeti" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Klassische Safari + Nachtfahrt</h3>
+            <p>Kombinieren Sie Tages-Pirschfahrten mit einer abendlichen Nacht-Safari für ein vollständiges 24-Stunden-Wildtiererlebnis. Erleben Sie die Big Five am Tag und nachtaktive Raubtiere in der Nacht.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+        <a href="/de/safaris/foto-safari/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=450&fit=crop&auto=format" alt="Löwe in dramatischer Beleuchtung für Foto-Safari" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Foto-Safari + Nachtfahrt</h3>
+            <p>Erstellen Sie Goldene-Stunden-Bilder am Tag und versuchen Sie herausfordernde Nachtfotografie bei schwachem Licht. Ideal für Fotografen, die die gesamte Bandbreite afrikanischer Wildtierbilder erfassen möchten.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section class="section section--gray">
+    <div class="container">
+      <PhotoGallery images={galleryImages} title="Fotogalerie: Nacht-Safari" />
+    </div>
+  </section>
+
+  <!-- TIKTOK -->
+  <SafariTikTok category="serengeti" lang="de" />
+
+  <!-- FAQ -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">FAQ</span>
+        <h2>Fragen zur Nacht-Safari</h2>
+        <p>Alles, was Sie über unsere nächtlichen Wildtiererlebnisse in Tansania wissen müssen.</p>
+      </div>
+      <div class="faq-list animate-on-scroll delay-1">
+        {faqItems.map(item => (
+          <details>
+            <summary>{item.question}</summary>
+            <div class="faq-answer" set:html={item.answer} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2>Die afrikanische Nacht erleben</h2>
+        <p>Entdecken Sie die verborgene Welt nachtaktiver Wildtiere mit unseren erfahrenen Nacht-Safari-Guides. Eine unvergessliche Ergänzung für jede Tansania-Reise.</p>
+      </div>
+      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/de/preise/" class="btn btn--primary btn--lg">Preise 2026 ansehen</a>
+        <a href="/de/kontakt/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Nacht-Safari buchen</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>

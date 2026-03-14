@@ -3,6 +3,17 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import Header from '../../../../components/Header.astro';
 import Footer from '../../../../components/Footer.astro';
 import { lodging, faqPage } from '../../../../i18n/schema';
+import SafariTikTok from '../../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../../components/PhotoGallery.astro';
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1631049552057-403cdb8f0658?w=600&h=400&fit=crop&auto=format', alt: 'Campamento safari de tiendas de lujo en plena sabana africana' },
+  { src: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=600&h=400&fit=crop&auto=format', alt: 'Tienda de campamento de lujo permanente con todas las comodidades' },
+  { src: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&h=400&fit=crop&auto=format', alt: 'Campamento móvil de safari siguiendo la Gran Migración' },
+  { src: 'https://images.unsplash.com/photo-1510312305653-8ed496efae75?w=600&h=400&fit=crop&auto=format', alt: 'Campamento estándar de safari con fogata nocturna' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Vista del amanecer desde la terraza de una tienda de campamento' },
+  { src: 'https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=400&fit=crop&auto=format', alt: 'Jirafa vista desde el campamento safari al atardecer' },
+];
 
 const title = 'Campamentos Safari en Tanzania — Experiencia Autentica en la Sabana';
 const description = 'Vive la experiencia autentica del safari africano en campamentos de tiendas de lujo en la sabana. Escucha a los leones rugir mientras duermes bajo las estrellas de Tanzania.';
@@ -177,6 +188,10 @@ const schema = [
       </div>
     </div>
   </section>
+
+  <!-- TIKTOK & GALLERY -->
+  <SafariTikTok category="lodges" lang="es" />
+  <PhotoGallery images={galleryImages} title="Galería de Campamentos Safari" />
 
   <!-- CTA -->
   <section class="section section--green">

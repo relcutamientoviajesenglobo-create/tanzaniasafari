@@ -3,8 +3,19 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import { touristAttraction, faqPage } from '../../../i18n/schema';
+import SafariTikTok from '../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../components/PhotoGallery.astro';
 
 const lang = 'en';
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=400&fit=crop&auto=format', alt: 'Close-up lion portrait in warm golden light during a photo safari' },
+  { src: 'https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&h=400&fit=crop&auto=format', alt: 'Leopard resting on an acacia branch photographed from a safari vehicle' },
+  { src: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=400&fit=crop&auto=format', alt: 'Photography safari vehicle positioned for optimal wildlife shooting angles' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'Elephant family captured at golden hour against a dramatic sky' },
+  { src: 'https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=400&fit=crop&auto=format', alt: 'Wildebeest river crossing captured mid-action during migration season' },
+  { src: 'https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=400&fit=crop&auto=format', alt: 'Giraffe silhouette photographed against a blazing African sunset' },
+];
 
 const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
 
@@ -12,7 +23,7 @@ const faqItems = [
   { question: 'What makes a photo safari different from a regular safari?', answer: 'A photo safari prioritizes <strong>optimal shooting conditions</strong> over quantity of sightings. Your guide positions the vehicle for the best light and angles, allows extended time at each sighting (30-60 minutes vs. 5-10 on regular safaris), uses specialized vehicles with bean bags and camera mounts, and plans routes around <strong>golden hour lighting</strong>. Our photography guides understand animal behavior and can predict action moments.' },
   { question: 'What camera equipment should I bring?', answer: 'We recommend a camera with a <strong>zoom lens of at least 200mm</strong> (ideally 100-400mm or 200-600mm). A wide-angle lens (16-35mm) is useful for landscapes and vehicle shots. Bring extra batteries, memory cards and a dust-proof camera bag. We provide bean bag supports and vehicle mounts. Smartphones with telephoto lenses can also capture excellent shots with our guides\' positioning expertise.' },
   { question: 'What is the best time of day for wildlife photography?', answer: 'The <strong>golden hours</strong> (sunrise 6:00-8:00 AM and sunset 4:00-6:30 PM) provide the most dramatic lighting. However, overcast midday conditions are excellent for close-up portraits without harsh shadows. Our guides plan the day to maximize these windows, positioning you for <strong>backlit silhouettes at dawn</strong> and warm-toned portraits in the afternoon.' },
-  { question: 'Can beginners join a photo safari?', answer: 'Absolutely! Photo safaris are perfect for all skill levels. Our guides offer on-the-spot tips for composition, exposure and focusing techniques. Beginners often find that the structured approach and expert positioning help them capture far better images than they would on a regular safari. We even assist with basic <a href="/en/activities/wildlife-watching/" style="color:#3D6B2E;font-weight:700">wildlife watching</a> identification.' },
+  { question: 'Can beginners join a photo safari?', answer: 'Absolutely! Photo safaris are perfect for all skill levels. Our guides offer on-the-spot tips for composition, exposure and focusing techniques. Beginners often find that the structured approach and expert positioning help them capture far better images than they would on a regular safari. We even assist with basic <a href="/activities/wildlife-watching/" style="color:#3D6B2E;font-weight:700">wildlife watching</a> identification.' },
   { question: 'How many people are on a photo safari vehicle?', answer: 'To ensure everyone has <strong>unobstructed shooting angles</strong>, photo safari vehicles carry a maximum of <strong>4 photographers</strong> (compared to 6 on classic safaris). Each passenger gets a window position with pop-top access. For serious photographers, we offer private vehicle options for 1-2 people.' },
 ];
 
@@ -20,7 +31,7 @@ const schema = [
   touristAttraction({
     name: 'Photography Safari in Tanzania',
     description: 'Specialized photography tours for wildlife photographers. Expert positioning, golden hour drives and professional guidance in the Serengeti and Ngorongoro.',
-    url: 'https://safaritanzania.info/en/safaris/photo-safari/',
+    url: 'https://safaritanzania.info/safaris/photo-safari/',
   }),
   faqPage(faqItems),
 ];
@@ -32,7 +43,7 @@ const schema = [
   lang={lang}
   schema={schema}
   breadcrumbs={[
-    { label: 'Safaris', href: '/en/safaris/' },
+    { label: 'Safaris', href: '/safaris/' },
     { label: 'Photo Safari' },
   ]}
 >
@@ -50,8 +61,8 @@ const schema = [
           <h1 class="hero__title">Photography Safari in Tanzania</h1>
           <p class="hero__desc">Capture magazine-worthy wildlife images with expert positioning, golden hour game drives and professional guidance. Every detail is designed for the perfect shot.</p>
           <div class="hero__actions">
-            <a href="/en/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
-            <a href="/en/contact/" class="btn btn--outline btn--lg">Book photo safari</a>
+            <a href="/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
+            <a href="/contact/" class="btn btn--outline btn--lg">Book photo safari</a>
           </div>
           <div class="stats-row">
             <div class="stat"><strong>4 max</strong><span>Per vehicle</span></div>
@@ -217,6 +228,9 @@ const schema = [
     </div>
   </section>
 
+  <PhotoGallery images={galleryImages} title="Photo Safari Gallery" />
+  <SafariTikTok category="photography" lang="en" />
+
   <!-- CTA -->
   <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
     <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
@@ -228,8 +242,8 @@ const schema = [
         <p>Join our photography safari and return home with images that tell the story of Africa's most iconic wilderness.</p>
       </div>
       <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-        <a href="/en/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
-        <a href="/en/contact/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Book photo safari</a>
+        <a href="/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
+        <a href="/contact/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Book photo safari</a>
       </div>
     </div>
   </section>

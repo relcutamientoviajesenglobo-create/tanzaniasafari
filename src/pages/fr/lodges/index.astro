@@ -1,0 +1,216 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { lodging } from '../../../i18n/schema';
+import SafariTikTok from '../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../components/PhotoGallery.astro';
+
+const lang = 'fr';
+const title = 'Lodges Safari en Tanzanie — Hébergement de Luxe dans le Serengeti';
+const description = 'Découvrez les meilleurs lodges safari en Tanzanie. Hébergement de luxe dans le Serengeti, le Ngorongoro et Tarangire : suites privées, piscines à débordement, cuisine gastronomique et accès direct à la faune sauvage.';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=600&h=400&fit=crop&auto=format', alt: 'Suite luxueuse d\'un lodge safari avec vue panoramique sur les plaines du Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600&h=400&fit=crop&auto=format', alt: 'Lodge Serengeti en pierre et chaume avec architecture africaine authentique' },
+  { src: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&h=400&fit=crop&auto=format', alt: 'Lodge sur le bord du cratère du Ngorongoro avec vue brumeuse au matin' },
+  { src: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop&auto=format', alt: 'Lodge perché dans les arbres au Tarangire entouré de baobabs millénaires' },
+  { src: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=600&h=400&fit=crop&auto=format', alt: 'Piscine à débordement d\'un lodge safari avec vue sur la savane africaine' },
+  { src: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop&auto=format', alt: 'Terrasse privée d\'un lodge safari avec vue sur les plaines tanzaniennes' },
+];
+
+const breadcrumbs = [
+  { label: 'Lodges Safari' },
+];
+
+const schema = lodging('LodgingBusiness', {
+  name: 'Lodges Safari Tanzanie',
+  description,
+  url: 'https://safaritanzania.info/fr/lodges/',
+});
+---
+
+<BaseLayout title={title} description={description} schema={schema} breadcrumbs={breadcrumbs} lang={lang} canonical="/fr/lodges/">
+  <Header slot="header" lang={lang} />
+  <Footer slot="footer" lang={lang} />
+
+  <!-- Héros -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <span class="chip chip--green">Hébergement de luxe</span>
+        <h1>Lodges Safari en Tanzanie</h1>
+        <p>Découvrez la nature africaine sans renoncer au confort. Les lodges safari de Tanzanie unissent une architecture époustouflante à la beauté brute de la savane, offrant équipements premium, cuisine gastronomique et une place de premier rang pour le plus grand spectacle de la nature.</p>
+        <div class="hero__actions">
+          <a href="/fr/prix/" class="btn btn--primary btn--lg">Voir les tarifs 2026</a>
+          <a href="/fr/hebergement/camps/" class="btn btn--outline btn--lg">Voir les camps</a>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__photo-frame">
+          <div class="hero__deco hero__deco--tr"></div>
+          <div class="hero__deco hero__deco--bl"></div>
+          <img
+            src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=600&h=400&fit=crop"
+            alt="Suite luxueuse d'un lodge safari avec vue panoramique sur les plaines du Serengeti"
+            width="600"
+            height="400"
+            loading="eager"
+            style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:inherit"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lodges partenaires -->
+  <section class="section section--gray">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:.75rem">Nos lodges partenaires</h2>
+      <p style="text-align:center;max-width:620px;margin:0 auto 3rem">Des lodges soigneusement sélectionnés dans les principales destinations fauniques de Tanzanie, offrant un service exceptionnel et des emplacements à couper le souffle.</p>
+
+      <div class="card-grid card-grid--3" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=400&h=300&fit=crop" alt="Lodge de luxe du Serengeti en pierre et chaume" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Serengeti</span>
+            <p class="photo-card__title">Serengeti Savanna Lodge</p>
+            <p style="font-size:.9rem;color:var(--mc-text-muted)">Perché sur un kopje surplombant les plaines infinies. Piscine à débordement, spa et balcons privés pour observer la Grande Migration passer sous votre chambre. Service 5 étoiles.</p>
+          </div>
+        </div>
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&h=300&fit=crop" alt="Lodge sur le bord du cratère du Ngorongoro" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Ngorongoro</span>
+            <p class="photo-card__title">Ngorongoro Crater Lodge</p>
+            <p style="font-size:.9rem;color:var(--mc-text-muted)">Situé sur le bord de la plus grande caldeira volcanique intacte du monde. Dîners au coin du feu, fenêtres panoramiques et vues incomparables sur le fond du cratère au lever du soleil.</p>
+          </div>
+        </div>
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=300&fit=crop" alt="Lodge perché dans les arbres au Tarangire" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Tarangire</span>
+            <p class="photo-card__title">Tarangire Treetop Lodge</p>
+            <p style="font-size:.9rem;color:var(--mc-text-muted)">Chambres surélevées construites parmi d'anciens baobabs. D'immenses troupeaux d'éléphants visitent le point d'eau en contrebas et des léopards fréquentent les bois environnants.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ce qui est inclus -->
+  <section class="section">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:.75rem">Ce qui est inclus dans un séjour en lodge</h2>
+      <p style="text-align:center;max-width:620px;margin:0 auto 3rem">Chaque séjour en lodge comprend un package complet pour une expérience safari irréprochable de l'arrivée au départ.</p>
+
+      <div class="service-cards" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+        <div class="service-card">
+          <span style="font-size:2.2rem">🛏️</span>
+          <h3 style="color:var(--mc-green)">Chambres avec salle de bain privative</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">Chambres spacieuses avec salles de bain privatives, eau chaude, literie de luxe, moustiquaires et coffres-forts. La plupart des lodges offrent des terrasses privées avec vues sur la brousse.</p>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">🍷</span>
+          <h3 style="color:var(--mc-green)">Restauration gastronomique</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">Pension complète préparée par des chefs formés. Cuisine internationale mêlée aux saveurs tanzaniennes, petits-déjeuners en brousse et cocktails sundowner en pleine nature.</p>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">🏊</span>
+          <h3 style="color:var(--mc-green)">Piscines</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">La plupart des lodges disposent de piscines à débordement ou de plunge pools donnant sur la savane. Le moyen idéal de se rafraîchir entre les game drives.</p>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">📶</span>
+          <h3 style="color:var(--mc-green)">Connectivité moderne</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">Wi-Fi dans les espaces communs, prises de charge dans les chambres et connectivité cellulaire dans la plupart des lodges pour rester en contact depuis la brousse.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lodges vs Camps -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header">
+        <span class="chip chip--amber">Comparer</span>
+        <h2>Lodges ou Camps : comment choisir ?</h2>
+        <p>Les deux options offrent des expériences safari extraordinaires. Voici comment décider selon vos préférences.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem">
+        <div style="background:white;border-radius:var(--radius-md);padding:2rem;box-shadow:var(--shadow-card)">
+          <h3 style="color:#2D4A22;margin-bottom:1rem">Choisissez un lodge si...</h3>
+          <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.6rem;font-size:.9rem;color:#5A6B52">
+            <li style="display:flex;gap:.5rem;align-items:flex-start">
+              <svg viewBox="0 0 20 20" width="14" height="14" fill="#3D6B2E" style="flex-shrink:0;margin-top:3px"><path d="M10 0a10 10 0 100 20 10 10 0 000-20zm4.3 7.3l-5 5a1 1 0 01-1.4 0l-2-2a1 1 0 111.4-1.4L8.6 10l4.3-4.3a1 1 0 111.4 1.4z"/></svg>
+              Vous souhaitez le maximum de confort après les game drives
+            </li>
+            <li style="display:flex;gap:.5rem;align-items:flex-start">
+              <svg viewBox="0 0 20 20" width="14" height="14" fill="#3D6B2E" style="flex-shrink:0;margin-top:3px"><path d="M10 0a10 10 0 100 20 10 10 0 000-20zm4.3 7.3l-5 5a1 1 0 01-1.4 0l-2-2a1 1 0 111.4-1.4L8.6 10l4.3-4.3a1 1 0 111.4 1.4z"/></svg>
+              Vous voyagez avec des enfants en bas âge ou des personnes âgées
+            </li>
+            <li style="display:flex;gap:.5rem;align-items:flex-start">
+              <svg viewBox="0 0 20 20" width="14" height="14" fill="#3D6B2E" style="flex-shrink:0;margin-top:3px"><path d="M10 0a10 10 0 100 20 10 10 0 000-20zm4.3 7.3l-5 5a1 1 0 01-1.4 0l-2-2a1 1 0 111.4-1.4L8.6 10l4.3-4.3a1 1 0 111.4 1.4z"/></svg>
+              Vous désirez une piscine, un spa ou une connexion Wi-Fi fiable
+            </li>
+            <li style="display:flex;gap:.5rem;align-items:flex-start">
+              <svg viewBox="0 0 20 20" width="14" height="14" fill="#3D6B2E" style="flex-shrink:0;margin-top:3px"><path d="M10 0a10 10 0 100 20 10 10 0 000-20zm4.3 7.3l-5 5a1 1 0 01-1.4 0l-2-2a1 1 0 111.4-1.4L8.6 10l4.3-4.3a1 1 0 111.4 1.4z"/></svg>
+              C'est votre premier safari et vous voulez être rassuré
+            </li>
+          </ul>
+        </div>
+        <div style="background:#F5F0E8;border-radius:var(--radius-md);padding:2rem">
+          <h3 style="color:#2D4A22;margin-bottom:1rem">Choisissez un camp si...</h3>
+          <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.6rem;font-size:.9rem;color:#5A6B52">
+            <li style="display:flex;gap:.5rem;align-items:flex-start">
+              <svg viewBox="0 0 20 20" width="14" height="14" fill="#D4A017" style="flex-shrink:0;margin-top:3px"><path d="M10 0a10 10 0 100 20 10 10 0 000-20zm4.3 7.3l-5 5a1 1 0 01-1.4 0l-2-2a1 1 0 111.4-1.4L8.6 10l4.3-4.3a1 1 0 111.4 1.4z"/></svg>
+              Vous cherchez une immersion totale dans la nature sauvage
+            </li>
+            <li style="display:flex;gap:.5rem;align-items:flex-start">
+              <svg viewBox="0 0 20 20" width="14" height="14" fill="#D4A017" style="flex-shrink:0;margin-top:3px"><path d="M10 0a10 10 0 100 20 10 10 0 000-20zm4.3 7.3l-5 5a1 1 0 01-1.4 0l-2-2a1 1 0 111.4-1.4L8.6 10l4.3-4.3a1 1 0 111.4 1.4z"/></svg>
+              Vous voulez dormir sous les étoiles au son des lions
+            </li>
+            <li style="display:flex;gap:.5rem;align-items:flex-start">
+              <svg viewBox="0 0 20 20" width="14" height="14" fill="#D4A017" style="flex-shrink:0;margin-top:3px"><path d="M10 0a10 10 0 100 20 10 10 0 000-20zm4.3 7.3l-5 5a1 1 0 01-1.4 0l-2-2a1 1 0 111.4-1.4L8.6 10l4.3-4.3a1 1 0 111.4 1.4z"/></svg>
+              Vous souhaitez être exactement là où se trouvent les animaux
+            </li>
+            <li style="display:flex;gap:.5rem;align-items:flex-start">
+              <svg viewBox="0 0 20 20" width="14" height="14" fill="#D4A017" style="flex-shrink:0;margin-top:3px"><path d="M10 0a10 10 0 100 20 10 10 0 000-20zm4.3 7.3l-5 5a1 1 0 01-1.4 0l-2-2a1 1 0 111.4-1.4L8.6 10l4.3-4.3a1 1 0 111.4 1.4z"/></svg>
+              Vous préférez l'aventure authentique à un cadre trop policé
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <PhotoGallery images={galleryImages} title="Galerie photo — Lodges safari en Tanzanie" />
+  <SafariTikTok category="lodges" lang="fr" />
+
+  <!-- CTA -->
+  <section class="section section--green">
+    <div class="container" style="text-align:center;position:relative">
+      <div style="position:absolute;top:-30px;right:0;opacity:.12;pointer-events:none;color:#D4A017">
+        <Fragment set:html={ACACIA_LARGE} />
+      </div>
+      <h2 style="color:white;margin-bottom:.75rem">Réservez votre séjour en lodge</h2>
+      <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:520px;margin-left:auto;margin-right:auto">Contactez-nous pour réserver votre lodge et concevoir l'itinéraire safari parfait. Nous gérons toute la logistique pour que vous vous concentriez sur l'aventure.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/fr/prix/" class="btn btn--primary btn--lg">Voir les tarifs 2026</a>
+        <a href="/fr/contact/" class="btn btn--outline-white btn--lg" style="border-color:white;color:white">Nous contacter</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

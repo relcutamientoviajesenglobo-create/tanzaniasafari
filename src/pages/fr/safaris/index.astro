@@ -1,0 +1,242 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { touristAttraction, faqPage } from '../../../i18n/schema';
+import SafariTikTok from '../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../components/PhotoGallery.astro';
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=400&fit=crop&auto=format', alt: 'Véhicule safari 4x4 lors d\'un game drive dans la savane dorée du Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Immenses plaines du Serengeti au lever du soleil avec des acacias épars' },
+  { src: 'https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=400&fit=crop&auto=format', alt: 'Troupeau de gnous traversant le Serengeti lors de la Grande Migration' },
+  { src: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=400&fit=crop&auto=format', alt: 'Lion au repos sur un kopje rocheux dans le Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'Troupeau d\'éléphants traversant la savane à l\'heure dorée' },
+  { src: 'https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=400&fit=crop&auto=format', alt: 'Silhouette de girafe contre un coucher de soleil africain dramatique' },
+];
+
+const lang = 'fr';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const faqItems = [
+  { question: 'Quels types de safaris sont proposés en Tanzanie ?', answer: 'Nous proposons trois grands types de safari : le <strong>Safari Classique</strong> (game drives traditionnels en 4x4), le <strong>Safari Photo</strong> (circuits spécialisés pour les passionnés de photographie) et le <strong>Safari Nocturne</strong> (expériences animalières nocturnes). Chaque formule peut être personnalisée en excursion à la journée ou en expédition de plusieurs jours. Consultez notre <a href="/fr/prix/" style="color:#3D6B2E;font-weight:700">page des tarifs</a> pour les détails.' },
+  { question: 'Combien de jours dois-je prévoir pour mon safari ?', answer: 'Nous recommandons un minimum de <strong>3 jours</strong> pour bien découvrir le Serengeti et le Ngorongoro. Un safari de 5 à 7 jours permet d\'explorer plusieurs parcs à un rythme agréable. Des safaris à la journée sont également disponibles depuis Arusha pour ceux qui disposent de peu de temps. Nos guides peuvent vous aider à concevoir l\'itinéraire idéal.' },
+  { question: 'Quelle est la différence entre un safari classique et un safari photo ?', answer: 'Le <strong>Safari Classique</strong> privilégie les observations animalières complètes avec de nombreuses étapes. Le <strong><a href="/fr/safaris/safari-photo/" style="color:#3D6B2E;font-weight:700">Safari Photo</a></strong> est conçu spécialement pour les photographes : temps prolongé sur les sites d\'observation, positionnement optimal selon la lumière, véhicules à toit ouvrant pour des angles dégagés et accompagnement par des photographes animaliers expérimentés.' },
+  { question: 'Les safaris sont-ils adaptés aux enfants ?', answer: 'Absolument ! Les safaris en Tanzanie sont une expérience familiale formidable. Les enfants de moins de 5 ans sont <strong>gratuits</strong> sur la plupart des safaris. Nous proposons des véhicules adaptés aux familles, des circuits plus courts pour les jeunes enfants et des guides habitués à voyager avec des familles. Les enfants de 5 à 11 ans bénéficient de tarifs réduits. Voir notre <a href="/fr/prix/" style="color:#3D6B2E;font-weight:700">page des tarifs</a> pour les formules familiales.' },
+  { question: 'Quels véhicules utilisez-vous pour les safaris ?', answer: 'Nous utilisons des <strong>Toyota Land Cruiser</strong> et des Land Rover aménagés sur mesure, équipés de toits ouvrants pour une observation à 360 degrés. Tous les véhicules disposent de prises de charge, de glacières, de trousses de premiers secours et d\'une communication par satellite. Maximum 6 passagers par véhicule pour que chacun ait une place côté fenêtre.' },
+];
+
+const schema = [
+  touristAttraction({
+    name: 'Types de Safaris en Tanzanie — Classique, Photo et Nocturne',
+    description: 'Découvrez les meilleures expériences safari en Tanzanie. Game drives classiques, circuits photo et aventures animalières nocturnes dans le Serengeti et le Ngorongoro.',
+    url: 'https://safaritanzania.info/fr/safaris/',
+  }),
+  faqPage(faqItems),
+];
+---
+
+<BaseLayout
+  title="Types de Safaris en Tanzanie — Classique, Photo et Nocturne"
+  description="Découvrez les meilleures expériences safari en Tanzanie. Game drives classiques en 4x4, circuits photo avec des guides experts et aventures animalières nocturnes dans le Serengeti."
+  lang={lang}
+  schema={schema}
+  breadcrumbs={[{ label: 'Safaris' }]}
+>
+  <Header slot="header" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--green">Serengeti &amp; Ngorongoro</span>
+          <h1 class="hero__title">Expériences safari en Tanzanie</h1>
+          <p class="hero__desc">Choisissez votre aventure safari idéale. Des game drives classiques aux circuits photo spécialisés et aux expéditions nocturnes palpitantes, la Tanzanie offre des rencontres animalières uniques au monde.</p>
+          <div class="hero__actions">
+            <a href="/fr/prix/" class="btn btn--primary btn--lg">Voir les tarifs 2026</a>
+            <a href="/fr/contact/" class="btn btn--outline btn--lg">Planifier votre voyage</a>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <img
+              src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=800&h=640&fit=crop&auto=format"
+              alt="Véhicule safari lors d'un game drive dans les prairies dorées du Serengeti"
+              width="800" height="640" loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TYPES DE SAFARI -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Choisissez votre aventure</span>
+        <h2>Nos types de safari</h2>
+        <p>Chaque safari est personnalisé pour offrir une expérience animalière extraordinaire. Sélectionnez le style qui correspond à vos envies, nous nous occupons du reste.</p>
+      </div>
+      <div class="card-grid card-grid--3 animate-on-scroll delay-1">
+        <a href="/fr/safaris/safari-classique/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=450&fit=crop&auto=format" alt="Paysage du Serengeti lors d'un safari classique en game drive" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Le plus populaire</span>
+            <h3 class="photo-card__title">Safari Classique</h3>
+            <p>L'expérience safari tanzanienne par excellence. Game drives en 4x4 aménagés à travers le Serengeti et le cratère du Ngorongoro avec des guides locaux experts. Observez les Big Five, assistez à la Grande Migration et plongez-vous dans la nature africaine sauvage.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+        <a href="/fr/safaris/safari-photo/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=450&fit=crop&auto=format" alt="Lion mâle en lumière dorée, parfait pour la photographie animalière" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Pour les photographes</span>
+            <h3 class="photo-card__title">Safari Photo</h3>
+            <p>Conçu pour les passionnés de photographie. Temps prolongé sur les sites d'observation, positionnement optimal selon la lumière, conseils et accompagnement professionnels. Ramenez des images dignes des plus grands magazines.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+        <a href="/fr/safaris/safari-nocturne/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&h=450&fit=crop&auto=format" alt="Léopard en faible luminosité lors d'une expédition de safari nocturne" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Après le coucher du soleil</span>
+            <h3 class="photo-card__title">Safari Nocturne</h3>
+            <p>Découvrez la brousse africaine après le coucher du soleil. Grâce à des projecteurs spécialisés et des équipements de vision nocturne, partez à la rencontre des prédateurs de nuit, des galagos, des oryctéropes et des sons envoûtants de la savane.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CE QUI EST INCLUS -->
+  <section class="section section--green bg-green" style="position:relative;overflow:hidden">
+    <div style="position:absolute;bottom:0;left:-30px;opacity:.08;pointer-events:none;color:#D4A017;transform:rotate(180deg)">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Inclus dans chaque safari</span>
+        <h2>Ce qui est compris</h2>
+        <p>Tous nos safaris incluent les services essentiels pour que vous puissiez vous concentrer sur l'expérience.</p>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1">
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M40 8H8c-2.21 0-3.98 1.79-3.98 4L4 36c0 2.21 1.79 4 4 4h32c2.21 0 4-1.79 4-4V12c0-2.21-1.79-4-4-4zm-2 8L24 26 10 16v-4l14 10 14-10v4z"/></svg>
+          </div>
+          <h3 class="service-card__title">Transfert hôtel</h3>
+          <p class="service-card__desc">Prise en charge et retour gratuits depuis votre hôtel à Arusha ou Moshi, ou depuis l'aéroport.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-2 30l-10-10 2.83-2.83L22 28.34l13.17-13.17L38 18 22 34z"/></svg>
+          </div>
+          <h3 class="service-card__title">Guide expert</h3>
+          <p class="service-card__desc">Guide certifié, francophone et anglophone, avec des années d'expérience dans les parcs nationaux de Tanzanie.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M20 4H4v16h16V4zm-2 14H6V6h12v12zm18-14H20v16h16V4zm-2 14H22V6h12v12zM4 28v16h16V28H4zm14 14H6V30h12v12zm10-14h16v16H28V28zm14 14H30V30h12v12z"/></svg>
+          </div>
+          <h3 class="service-card__title">Droits d'entrée</h3>
+          <p class="service-card__desc">Tous les droits d'entrée dans les parcs nationaux, les frais de conservation et les frais de descente dans le cratère inclus.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M16 6l2.29 2.29-4.88 4.88-2.83-2.83L16 6zM2 22v-4h6v4H2zm14-5c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zm20-11h6v4h-6v-4zM32 6l5.42 4.34-2.83 2.83-4.88-4.88L32 6z"/></svg>
+          </div>
+          <h3 class="service-card__title">Repas &amp; boissons</h3>
+          <p class="service-card__desc">Panier-repas, en-cas et eau en bouteille illimitée pendant les game drives. Pension complète sur les séjours de plusieurs jours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARCS VISITÉS -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">Destinations</span>
+        <h2>Parcs et réserves visités</h2>
+        <p>Nos safaris donnent accès aux plus spectaculaires zones sauvages de Tanzanie, du célèbre Serengeti aux joyaux cachés que seuls les guides locaux connaissent.</p>
+      </div>
+      <div class="card-grid card-grid--2 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=450&fit=crop&auto=format" alt="Paysage de savane du Parc national du Serengeti" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Patrimoine mondial de l'UNESCO</span>
+            <h3 class="photo-card__title">Parc national du Serengeti</h3>
+            <p>Le joyau de la couronne des safaris africains. Patrie de la Grande Migration, de plus de 3 000 lions et de plaines infinies à perte de vue. L'écosystème du Serengeti s'étend sur 30 000 kilomètres carrés de nature préservée.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1745885979468-44a855f8a5fa?w=600&h=450&fit=crop&auto=format" alt="Vue aérienne du cratère du Ngorongoro avec son fond verdoyant" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Merveille naturelle</span>
+            <h3 class="photo-card__title">Cratère du Ngorongoro</h3>
+            <p>La plus grande caldeira volcanique intacte du monde, véritable amphithéâtre naturel pour la faune sauvage. Environ 25 000 animaux vivent sur les 260 kilomètres carrés du fond du cratère, dont le rare rhinocéros noir, des lions, des flamants et des hippopotames.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">FAQ</span>
+        <h2>Vos questions sur les safaris</h2>
+        <p>Les questions les plus fréquentes sur nos expériences safari en Tanzanie et ce à quoi s'attendre.</p>
+      </div>
+      <div class="faq-list animate-on-scroll delay-1">
+        {faqItems.map(item => (
+          <details>
+            <summary>{item.question}</summary>
+            <div class="faq-answer" set:html={item.answer} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <PhotoGallery images={galleryImages} title="Galerie photo — Safari en Tanzanie" />
+  <SafariTikTok category="serengeti" lang="fr" />
+
+  <!-- CTA -->
+  <section class="section section--green bg-green" style="position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container" style="text-align:center">
+      <div class="section__header animate-on-scroll">
+        <h2>Prêt à réserver votre safari ?</h2>
+        <p>Choisissez votre type de safari idéal et laissez notre équipe d'experts concevoir une aventure tanzanienne inoubliable.</p>
+      </div>
+      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/fr/prix/" class="btn btn--primary btn--lg">Voir les tarifs 2026</a>
+        <a href="/fr/contact/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Nous contacter</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>

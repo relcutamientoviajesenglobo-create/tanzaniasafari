@@ -1,0 +1,159 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import SafariTikTok from '../../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../../components/PhotoGallery.astro';
+
+const lang = 'fr';
+const title = 'Lodges Safari en Tanzanie — Hébergement de Luxe dans la Savane';
+const description = 'Découvrez les meilleurs lodges safari en Tanzanie. Hébergement de luxe dans le Serengeti, le Ngorongoro et Tarangire avec équipements haut de gamme, cuisine gastronomique et accès direct à la faune.';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=600&h=400&fit=crop&auto=format', alt: 'Suite luxueuse du lodge safari avec vue sur les plaines du Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600&h=400&fit=crop&auto=format', alt: 'Lodge Serengeti en pierre et chaume avec architecture africaine' },
+  { src: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&h=400&fit=crop&auto=format', alt: 'Lodge sur le bord du cratère du Ngorongoro avec vue brumeuse du matin' },
+  { src: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop&auto=format', alt: 'Lodge perché dans les arbres au Tarangire entouré de baobabs' },
+  { src: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=600&h=400&fit=crop&auto=format', alt: 'Piscine à débordement du lodge avec vue sur la savane africaine' },
+  { src: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop&auto=format', alt: 'Terrasse privée du lodge safari avec vue sur les plaines' },
+];
+
+const breadcrumbs = [
+  { label: 'Hébergement', href: '/fr/hebergement/' },
+  { label: 'Lodges Safari' },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  description: description,
+  url: 'https://safaritanzania.info/fr/hebergement/lodges/',
+};
+---
+
+<BaseLayout title={title} description={description} schema={schema} breadcrumbs={breadcrumbs} lang={lang}>
+  <Header slot="header" lang={lang} />
+  <Footer slot="footer" lang={lang} />
+
+  <!-- Héros -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <span class="chip chip--green">Hébergement de luxe</span>
+        <h1>Lodges Safari en Tanzanie</h1>
+        <p>Découvrez la nature africaine sans sacrifier le confort. Les lodges safari de Tanzanie combinent une architecture époustouflante avec la beauté brute de la savane, offrant des équipements premium, une cuisine gastronomique et une loge au premier rang du plus grand spectacle de la nature.</p>
+        <div class="hero__actions">
+          <a href="/fr/prix/" class="btn btn--primary btn--lg">Voir les tarifs 2026</a>
+          <a href="/fr/hebergement/campements/" class="btn btn--outline btn--lg">Voir les campements</a>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__photo-frame">
+          <div class="hero__deco hero__deco--tr"></div>
+          <div class="hero__deco hero__deco--bl"></div>
+          <img
+            src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=600&h=400&fit=crop"
+            alt="Suite luxueuse du lodge safari avec vue panoramique sur les plaines du Serengeti"
+            width="600"
+            height="400"
+            loading="eager"
+            style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:inherit"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lodges partenaires -->
+  <section class="section section--gray">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:.75rem">Nos lodges partenaires</h2>
+      <p style="text-align:center;max-width:620px;margin:0 auto 3rem">Des lodges soigneusement sélectionnés dans les principales destinations fauniques de Tanzanie. Chaque établissement offre un service exceptionnel, des emplacements époustouflants et des pratiques touristiques durables.</p>
+
+      <div class="card-grid card-grid--3" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=400&h=300&fit=crop" alt="Lodge de luxe du Serengeti en pierre et chaume" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Serengeti</span>
+            <p class="photo-card__title">Serengeti Savanna Lodge</p>
+            <p style="font-size:.9rem;color:var(--mc-text-muted)">Perché sur un kopje surplombant les plaines infinies. Piscine à débordement, spa et balcons privés pour regarder la Grande Migration passer sous votre chambre.</p>
+          </div>
+        </div>
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&h=300&fit=crop" alt="Lodge sur le bord du cratère du Ngorongoro avec vue brumeuse du matin" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Ngorongoro</span>
+            <p class="photo-card__title">Ngorongoro Crater Lodge</p>
+            <p style="font-size:.9rem;color:var(--mc-text-muted)">Situé sur le bord de la plus grande caldeira volcanique intacte du monde. Dîners au coin du feu, fenêtres panoramiques et vues incomparables au lever du soleil sur le fond du cratère.</p>
+          </div>
+        </div>
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=300&fit=crop" alt="Lodge perché dans les arbres au Tarangire entouré de baobabs" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Tarangire</span>
+            <p class="photo-card__title">Tarangire Treetop Lodge</p>
+            <p style="font-size:.9rem;color:var(--mc-text-muted)">Chambres surélevées construites parmi d'anciens baobabs. D'immenses troupeaux d'éléphants visitent le point d'eau en contrebas et des léopards fréquentent les bois environnants.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Équipements du lodge -->
+  <section class="section">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:.75rem">Ce qui est inclus dans un séjour en lodge</h2>
+      <p style="text-align:center;max-width:620px;margin:0 auto 3rem">Chaque séjour en lodge comprend un package complet pour une expérience safari sans accroc de l'arrivée au départ.</p>
+
+      <div class="service-cards" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+        <div class="service-card">
+          <span style="font-size:2.2rem">🛏️</span>
+          <h3 style="color:var(--mc-green)">Chambres avec salle de bain privative</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">Chambres spacieuses avec salles de bains privatives, eau chaude, literie de qualité, moustiquaires et coffres-forts. Beaucoup de lodges offrent des terrasses privées avec vues sur la brousse.</p>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">🍷</span>
+          <h3 style="color:var(--mc-green)">Restauration gastronomique</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">Pension complète préparée par des chefs formés. Cuisine internationale mêlée aux saveurs tanzaniennes locales, plus des petits-déjeuners dans la brousse et des cocktails sundowner en pleine nature.</p>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">🏊</span>
+          <h3 style="color:var(--mc-green)">Piscines</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">La plupart des lodges disposent de piscines à débordement ou de plunge pools donnant sur la savane. Le moyen idéal de se rafraîchir entre les game drives tout en observant la faune à proximité.</p>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">📶</span>
+          <h3 style="color:var(--mc-green)">Connectivité moderne</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">Wi-Fi dans les espaces communs, prises de charge dans les chambres et connectivité cellulaire dans la plupart des lodges pour rester en contact depuis la brousse.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <PhotoGallery images={galleryImages} title="Galerie photo — Lodges safari en Tanzanie" />
+  <SafariTikTok category="lodges" lang="fr" />
+
+  <!-- CTA -->
+  <section class="section section--green">
+    <div class="container" style="text-align:center;position:relative">
+      <div style="position:absolute;top:-30px;right:0;opacity:.12;pointer-events:none;color:#D4A017">
+        <Fragment set:html={ACACIA_LARGE} />
+      </div>
+      <h2 style="color:white;margin-bottom:.75rem">Réservez votre séjour en lodge</h2>
+      <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:520px;margin-left:auto;margin-right:auto">Contactez-nous pour réserver votre lodge préféré et votre itinéraire safari. Nous gérons toute la logistique pour que vous puissiez vous concentrer sur l'aventure.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/fr/prix/" class="btn btn--primary btn--lg">Voir les tarifs 2026</a>
+        <a href="/fr/contact/" class="btn btn--outline-white btn--lg" style="border-color:white;color:white">Nous contacter</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

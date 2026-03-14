@@ -1,0 +1,294 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import SafariTikTok from '../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../components/PhotoGallery.astro';
+
+const lang = 'de';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'TravelAction',
+  name: 'Anreise nach Tansania — Flüge, Visa & Transport',
+  description: 'Alles, was Sie für die Anreise nach Tansania wissen müssen. Flüge zum Kilimanjaro International Airport, Visum bei Einreise, Transport ab Arusha und die beste Reisezeit.',
+  url: 'https://safaritanzania.info/de/anreise/',
+  target: {
+    '@type': 'EntryPoint',
+    urlTemplate: 'https://safaritanzania.info/de/anreise/',
+    name: 'Anreise nach Tansania planen',
+  },
+};
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&h=400&fit=crop&auto=format', alt: 'Flugzeug bei Sonnenuntergang — Flüge nach Tansania' },
+  { src: 'https://images.unsplash.com/photo-1610641818989-c2051b5e2cfd?w=600&h=400&fit=crop&auto=format', alt: 'Kilimanjaro International Airport Terminal' },
+  { src: 'https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&h=400&fit=crop&auto=format', alt: 'Safari-Transfer — 4x4 Fahrt durch Tansania' },
+  { src: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&h=400&fit=crop&auto=format', alt: 'Arusha Stadtblick mit Kilimanjaro im Hintergrund' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Tansanische Savanne — beste Reisezeit Juli bis Oktober' },
+  { src: 'https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=400&fit=crop&auto=format', alt: 'Serengeti Nationalpark — Gnuherde bei der Großen Migration' },
+];
+---
+
+<BaseLayout
+  title="Anreise nach Tansania — Flüge, Visa & Transport"
+  description="Alles über die Anreise nach Tansania: Flüge nach Arusha (KIA/JRO), Visum bei Einreise ($50), Transfer ab Arusha und die beste Reisezeit für Ihre Safari 2026."
+  lang={lang}
+  schema={schema}
+  breadcrumbs={[{ label: 'Anreise' }]}
+>
+  <Header slot="header" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero" style="position:relative;overflow:hidden">
+    <div style="position:absolute;top:-20px;right:-40px;opacity:.08;pointer-events:none;color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--green">Reiseplanung</span>
+          <h1 class="hero__title">Anreise nach Tansania</h1>
+          <p class="hero__desc">Tansania ist von Deutschland, Österreich und der Schweiz gut erreichbar. Mit dem richtigen Flug, dem Visum bei Einreise und unserem Flughafentransfer-Service beginnt Ihr Safari-Abenteuer reibungslos und stressfrei.</p>
+          <div class="hero__actions">
+            <a href="/de/kontakt/" class="btn btn--primary btn--lg">Reise planen</a>
+            <a href="/de/preise/" class="btn btn--outline btn--lg">Preise 2026</a>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <div class="hero__deco hero__deco--bl"></div>
+            <img
+              src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&h=640&fit=crop&auto=format"
+              alt="Flugzeug bei Sonnenuntergang auf dem Weg nach Tansania"
+              width="800" height="640" loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLÜGE -->
+  <section class="section section--gray" style="position:relative;overflow:hidden">
+    <div style="position:absolute;top:20px;right:-30px;opacity:.05;pointer-events:none;color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Schritt 1</span>
+        <h2>Flüge nach Tansania</h2>
+        <p>Tansanias Haupteinreiseflughafen für Safaris ist der Kilimanjaro International Airport (KIA / IATA: JRO), 46 km von Arusha entfernt. Alternativ: Julius Nyerere International Airport (DAR) in Daressalam.</p>
+      </div>
+      <div class="card-grid card-grid--3 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&h=400&fit=crop&auto=format" alt="Direktflüge nach Kilimanjaro Airport" width="600" height="400" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Ab Deutschland</span>
+            <h3 class="photo-card__title">Flüge ab Deutschland</h3>
+            <p style="color:var(--mc-text-muted);font-size:.9rem">Meist mit 1 Zwischenstopp (Nairobi, Addis Abeba, Doha, Dubai). Flugzeit: ca. 10–14 Stunden. Airlines: Lufthansa, Ethiopian, Kenya Airways, Qatar Airways, Emirates.</p>
+            <ul style="list-style:none;padding:0;margin-top:.75rem;display:flex;flex-direction:column;gap:.4rem;font-size:.85rem;color:var(--mc-text-muted)">
+              <li>• Frankfurt (FRA) → Kilimanjaro (JRO)</li>
+              <li>• München (MUC) → Kilimanjaro (JRO)</li>
+              <li>• Berlin (BER) → Kilimanjaro (JRO)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1610641818989-c2051b5e2cfd?w=600&h=400&fit=crop&auto=format" alt="Kilimanjaro International Airport KIA JRO" width="600" height="400" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Ab Österreich &amp; Schweiz</span>
+            <h3 class="photo-card__title">Ab Wien &amp; Zürich</h3>
+            <p style="color:var(--mc-text-muted);font-size:.9rem">Direktverbindungen über Hubs wie Nairobi, Addis Abeba oder Dubai. Austrian Airlines und Swiss verbinden sich mit Partnerairlines für bequeme Verbindungen nach Kilimanjaro.</p>
+            <ul style="list-style:none;padding:0;margin-top:.75rem;display:flex;flex-direction:column;gap:.4rem;font-size:.85rem;color:var(--mc-text-muted)">
+              <li>• Wien (VIE) → Kilimanjaro (JRO)</li>
+              <li>• Zürich (ZRH) → Kilimanjaro (JRO)</li>
+              <li>• Genf (GVA) → Kilimanjaro (JRO)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&h=400&fit=crop&auto=format" alt="Transfer vom Flughafen nach Arusha" width="600" height="400" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Unser Service</span>
+            <h3 class="photo-card__title">Flughafentransfer</h3>
+            <p style="color:var(--mc-text-muted);font-size:.9rem">Unser Team holt Sie direkt am Kilimanjaro Airport ab. Der Transfer nach Arusha dauert ca. 45 Minuten und ist in allen unseren Paketen inklusive.</p>
+            <ul style="list-style:none;padding:0;margin-top:.75rem;display:flex;flex-direction:column;gap:.4rem;font-size:.85rem;color:var(--mc-text-muted)">
+              <li>• In allen Paketen inklusive</li>
+              <li>• Klimatisiertes Fahrzeug</li>
+              <li>• Namenstafel am Ausgang</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISUM -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">Schritt 2</span>
+        <h2>Visum für Tansania</h2>
+        <p>Deutsche, österreichische und Schweizer Staatsbürger können das Visum einfach bei der Einreise oder online beantragen. Der Prozess ist unkompliziert.</p>
+      </div>
+      <div class="card-grid card-grid--2 animate-on-scroll delay-1" style="gap:2rem">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Visum bei Einreise (VOA)</h3>
+            <p style="color:var(--mc-text-muted);font-size:.9rem;margin-bottom:1rem">Das gebräuchlichste und einfachste Verfahren. Erhältlich direkt am Flughafen.</p>
+            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.5rem;font-size:.9rem">
+              <li style="display:flex;gap:.5rem"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Kosten: $50 USD (bar oder Karte)</li>
+              <li style="display:flex;gap:.5rem"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Gültig für 90 Tage (Einzeleinreise)</li>
+              <li style="display:flex;gap:.5rem"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Reisepass muss 6 Monate gültig sein</li>
+              <li style="display:flex;gap:.5rem"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Rückflugticket empfohlen</li>
+              <li style="display:flex;gap:.5rem"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Nachweis ausreichender Mittel</li>
+            </ul>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">eVisa (Online-Visum)</h3>
+            <p style="color:var(--mc-text-muted);font-size:.9rem;margin-bottom:1rem">Beantragen Sie Ihr Visum bequem von zu Hause. Empfohlen zur Zeitersparnis bei der Einreise.</p>
+            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.5rem;font-size:.9rem">
+              <li style="display:flex;gap:.5rem"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Website: immigration.go.tz</li>
+              <li style="display:flex;gap:.5rem"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Kosten: $50 USD (online bezahlen)</li>
+              <li style="display:flex;gap:.5rem"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Bearbeitungszeit: 3–7 Werktage</li>
+              <li style="display:flex;gap:.5rem"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Ausdruck bei Einreise vorzeigen</li>
+              <li style="display:flex;gap:.5rem"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Mehrfacheinreise möglich</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRANSPORT AB ARUSHA -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Schritt 3</span>
+        <h2>Transport ab Arusha</h2>
+        <p>Arusha ist das Tor zu Tansanias Nationalparks. Von hier aus starten alle unsere Safaris mit komfortablen 4x4-Fahrzeugen.</p>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1">
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M40 16H8L4 28v4h4v8h8v-8h16v8h8v-8h4v-4l-4-12zm-16-8a4 4 0 100 8 4 4 0 000-8z"/></svg>
+          </div>
+          <h3 class="service-card__title">Safari-Fahrzeuge</h3>
+          <p class="service-card__desc">Unsere Toyota Land Cruiser 4x4 mit Dachöffnung starten direkt von Ihrem Hotel oder dem Flughafen. Klimaanlage, Kühlbox und Steckdosen für Ihre Geräte inklusive.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M6 26v-4l4-12h28l4 12v4H6zm4 0h28M14 34h4m16 0h4M8 26h32v12H8z"/></svg>
+          </div>
+          <h3 class="service-card__title">Distanzen ab Arusha</h3>
+          <p class="service-card__desc">Tarangire: 2 Std. • Lake Manyara: 2 Std. • Ngorongoro: 3 Std. • Serengeti: 4–5 Std. Alle Parks über gut ausgebaute oder geteerte Straßen erreichbar.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M36 18c0-6.63-5.37-12-12-12S12 11.37 12 18c0 8.25 12 22 12 22s12-13.75 12-22zm-12 5a5 5 0 110-10 5 5 0 010 10z"/></svg>
+          </div>
+          <h3 class="service-card__title">Unterkünfte in Arusha</h3>
+          <p class="service-card__desc">Übernachten Sie eine Nacht in Arusha vor Ihrer Safari, um Jetlag abzubauen. Wir empfehlen Arusha Hotel, Mount Meru Hotel oder Mount Kilimanjaro Hotel.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-1 29v-2h2v2h-2zm2.07-6.75l-.9.92C23.45 27.9 23 28.5 23 30h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2h-2c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg>
+          </div>
+          <h3 class="service-card__title">Unser Support</h3>
+          <p class="service-card__desc">Unser lokales Team in Arusha unterstützt Sie von der Ankunft bis zur Abreise. Wir koordinieren alle Transfers, Buchungen und beantworten alle Fragen vor Ort.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BESTE REISEZEIT -->
+  <section class="section" style="position:relative;overflow:hidden">
+    <div style="position:absolute;bottom:-20px;right:-30px;opacity:.05;pointer-events:none;color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">Reisezeit</span>
+        <h2>Beste Reisezeit für Tansania</h2>
+        <p>Tansania ist ganzjährig bereisbar. Jede Jahreszeit bietet einzigartige Naturerlebnisse.</p>
+      </div>
+      <div class="card-grid card-grid--2 animate-on-scroll delay-1" style="gap:2rem">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=400&fit=crop&auto=format" alt="Große Wanderung in der Serengeti — beste Saison Juli bis Oktober" width="600" height="400" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag" style="background:#D4A017;color:white">Hauptsaison</span>
+            <h3 class="photo-card__title">Juli – Oktober (Trockenzeit)</h3>
+            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.4rem;font-size:.9rem;color:var(--mc-text-muted)">
+              <li>• Große Wanderung in der Serengeti (Jul–Sep)</li>
+              <li>• Beste Wildtierbeobachtung da Tiere an Wasserlöcher kommen</li>
+              <li>• Trockenes Wetter, klare Sicht</li>
+              <li>• Höchste Buchungsnachfrage — frühzeitig buchen!</li>
+              <li>• Temperaturen: 20–28°C</li>
+            </ul>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format" alt="Tansania in der grünen Saison — üppige Landschaft" width="600" height="400" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag" style="background:var(--mc-green);color:white">Grüne Saison</span>
+            <h3 class="photo-card__title">November – März (Regenzeit)</h3>
+            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.4rem;font-size:.9rem;color:var(--mc-text-muted)">
+              <li>• Günstigere Preise (bis 20% weniger)</li>
+              <li>• Üppige grüne Landschaft, dramatische Wolken</li>
+              <li>• Weniger Touristen — intimere Erlebnisse</li>
+              <li>• Geburtszeit der Gnukälber (Jan–Feb)</li>
+              <li>• Kurze Regenschauer meist am Nachmittag</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <PhotoGallery images={galleryImages} title="Fotogalerie: Anreise & Tansania" />
+
+  <!-- TIKTOK -->
+  <SafariTikTok category="general" lang="de" />
+
+  <!-- CTA -->
+  <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2>Alles klar für Ihre Reise?</h2>
+        <p>Jetzt Kontakt aufnehmen und Ihre individuelle Tansania-Safari für 2026 planen.</p>
+      </div>
+      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/de/kontakt/" class="btn btn--primary btn--lg">Jetzt anfragen</a>
+        <a href="/de/preise/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Preise &amp; Pakete</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>
+
+<style>
+@media (max-width: 768px) {
+  .card-grid--2 { grid-template-columns: 1fr !important; }
+}
+</style>

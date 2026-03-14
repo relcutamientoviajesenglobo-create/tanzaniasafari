@@ -2,9 +2,20 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import SafariTikTok from '../../components/SafariTikTok.astro';
+import PhotoGallery from '../../components/PhotoGallery.astro';
 
 const lang = 'en';
 const title = 'Tanzania National Parks — Serengeti, Ngorongoro, Tarangire & More';
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1535338454528-1b5c8e9b0d64?w=600&h=400&fit=crop&auto=format', alt: 'Serengeti National Park panoramic landscape with acacia trees and blue sky' },
+  { src: 'https://images.unsplash.com/photo-1621414050946-1b936a78491d?w=600&h=400&fit=crop&auto=format', alt: 'Ngorongoro Crater with lush green floor and steep caldera walls' },
+  { src: 'https://images.unsplash.com/photo-1585970480901-90d6bb2a48b5?w=600&h=400&fit=crop&auto=format', alt: 'Elephant family walking through Tarangire woodland near ancient baobab trees' },
+  { src: 'https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=600&h=400&fit=crop&auto=format', alt: 'Flamingos wading on the shores of Lake Manyara at sunset' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Serengeti plains at golden hour with dramatic clouds and acacia silhouettes' },
+  { src: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&h=400&fit=crop&auto=format', alt: 'Wildebeest herd on the Serengeti plains during the Great Migration' },
+];
 const description = 'Explore Tanzania\'s iconic national parks: Serengeti, Ngorongoro Crater, Tarangire, Lake Manyara, and more. Wildlife highlights, best seasons, and what to expect at each park.';
 
 const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
@@ -18,7 +29,7 @@ const schema = {
   '@type': 'WebPage',
   name: title,
   description: description,
-  url: 'https://safaritanzania.info/en/national-parks/',
+  url: 'https://safaritanzania.info/national-parks/',
 };
 ---
 
@@ -34,8 +45,8 @@ const schema = {
         <h1>Tanzania National Parks</h1>
         <p>Tanzania is home to some of the most extraordinary wildlife areas on Earth. From the endless plains of the Serengeti to the ancient caldera of Ngorongoro, each national park offers a unique window into Africa's natural heritage.</p>
         <div class="hero__actions">
-          <a href="/en/prices/" class="btn btn--primary btn--lg">See 2026 Prices</a>
-          <a href="/en/contact/" class="btn btn--outline btn--lg">Plan Your Visit</a>
+          <a href="/prices/" class="btn btn--primary btn--lg">See 2026 Prices</a>
+          <a href="/contact/" class="btn btn--outline btn--lg">Plan Your Visit</a>
         </div>
       </div>
       <div class="hero__visual">
@@ -158,6 +169,9 @@ const schema = {
     </div>
   </section>
 
+  <PhotoGallery images={galleryImages} title="Tanzania National Parks Gallery" />
+  <SafariTikTok category="serengeti" lang="en" />
+
   <!-- CTA -->
   <section class="section section--green">
     <div class="container" style="text-align:center;position:relative">
@@ -167,8 +181,8 @@ const schema = {
       <h2 style="color:white;margin-bottom:.75rem">Explore Tanzania's Wild Heart</h2>
       <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:520px;margin-left:auto;margin-right:auto">Let us help you choose the perfect parks for your safari itinerary. Every journey is tailored to your interests, timeline, and budget.</p>
       <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-        <a href="/en/prices/" class="btn btn--primary btn--lg">See 2026 Prices</a>
-        <a href="/en/contact/" class="btn btn--outline-white btn--lg" style="border-color:white;color:white">Contact Us</a>
+        <a href="/prices/" class="btn btn--primary btn--lg">See 2026 Prices</a>
+        <a href="/contact/" class="btn btn--outline-white btn--lg" style="border-color:white;color:white">Contact Us</a>
       </div>
     </div>
   </section>

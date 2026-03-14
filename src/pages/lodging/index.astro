@@ -2,9 +2,20 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import SafariTikTok from '../../components/SafariTikTok.astro';
+import PhotoGallery from '../../components/PhotoGallery.astro';
 
 const lang = 'en';
 const title = 'Lodging in Tanzania — Luxury Lodges & Safari Camps';
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=600&h=400&fit=crop&auto=format', alt: 'Luxury safari lodge with infinity pool overlooking the Serengeti savanna' },
+  { src: 'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=600&h=400&fit=crop&auto=format', alt: 'Elegant safari lodge suite with panoramic views of the Serengeti plains' },
+  { src: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop&auto=format', alt: 'Authentic tented camp with canvas tents nestled under acacia trees' },
+  { src: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600&h=400&fit=crop&auto=format', alt: 'Serengeti lodge stone-and-thatch architecture surrounded by wildlife' },
+  { src: 'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=600&h=400&fit=crop&auto=format', alt: 'Permanent luxury tented camp with wooden deck and bush views' },
+  { src: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop&auto=format', alt: 'Safari lodge outdoor lounge area with savanna views at sunset' },
+];
 const description = 'Find the best lodging options in Tanzania for your safari. Choose between luxury lodges with premium amenities or authentic tented camps immersed in the African bush.';
 
 const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
@@ -18,7 +29,7 @@ const schema = {
   '@type': 'WebPage',
   name: title,
   description: description,
-  url: 'https://safaritanzania.info/en/lodging/',
+  url: 'https://safaritanzania.info/lodging/',
 };
 ---
 
@@ -34,8 +45,8 @@ const schema = {
         <h1>Lodging in Tanzania</h1>
         <p>From opulent lodges overlooking the Serengeti plains to intimate tented camps where you fall asleep to the sounds of the bush, Tanzania offers a range of accommodation to match every style of safari adventure.</p>
         <div class="hero__actions">
-          <a href="/en/lodging/lodges/" class="btn btn--primary btn--lg">Safari Lodges</a>
-          <a href="/en/lodging/camps/" class="btn btn--outline btn--lg">Safari Camps</a>
+          <a href="/lodging/lodges/" class="btn btn--primary btn--lg">Safari Lodges</a>
+          <a href="/lodging/camps/" class="btn btn--outline btn--lg">Safari Camps</a>
         </div>
       </div>
       <div class="hero__visual">
@@ -62,7 +73,7 @@ const schema = {
       <p style="text-align:center;max-width:620px;margin:0 auto 3rem">Each lodging option offers a distinct way to connect with Tanzania's wilderness. Both guarantee unforgettable encounters with Africa's wildlife.</p>
 
       <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:2rem">
-        <a href="/en/lodging/lodges/" class="photo-card" style="text-decoration:none">
+        <a href="/lodging/lodges/" class="photo-card" style="text-decoration:none">
           <div class="photo-card__img">
             <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=500&h=350&fit=crop" alt="Elegant safari lodge room with panoramic savanna views" width="500" height="350" loading="lazy">
           </div>
@@ -75,7 +86,7 @@ const schema = {
             </div>
           </div>
         </a>
-        <a href="/en/lodging/camps/" class="photo-card" style="text-decoration:none">
+        <a href="/lodging/camps/" class="photo-card" style="text-decoration:none">
           <div class="photo-card__img">
             <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500&h=350&fit=crop" alt="Authentic tented camp with canvas tent under acacia trees" width="500" height="350" loading="lazy">
           </div>
@@ -123,6 +134,9 @@ const schema = {
     </div>
   </section>
 
+  <PhotoGallery images={galleryImages} title="Safari Lodging Gallery" />
+  <SafariTikTok category="lodges" lang="en" />
+
   <!-- CTA -->
   <section class="section section--green">
     <div class="container" style="text-align:center;position:relative">
@@ -132,8 +146,8 @@ const schema = {
       <h2 style="color:white;margin-bottom:.75rem">Find Your Perfect Safari Stay</h2>
       <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:520px;margin-left:auto;margin-right:auto">Let us help you choose the ideal accommodation for your Tanzania safari. Browse our options or contact us for personalized recommendations.</p>
       <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-        <a href="/en/prices/" class="btn btn--primary btn--lg">See 2026 Prices</a>
-        <a href="/en/contact/" class="btn btn--outline-white btn--lg" style="border-color:white;color:white">Contact Us</a>
+        <a href="/prices/" class="btn btn--primary btn--lg">See 2026 Prices</a>
+        <a href="/contact/" class="btn btn--outline-white btn--lg" style="border-color:white;color:white">Contact Us</a>
       </div>
     </div>
   </section>

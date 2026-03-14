@@ -8,7 +8,13 @@ interface Props {
 }
 
 const { lang, currentPath } = Astro.props;
-const alternatePath = getAlternatePath(currentPath, lang);
+
+const allLangs: { code: Lang; label: string; hreflang: string; ariaLabel: string }[] = [
+  { code: 'en', label: 'EN', hreflang: 'en', ariaLabel: 'Switch to English' },
+  { code: 'es', label: 'ES', hreflang: 'es', ariaLabel: 'Cambiar a Español' },
+  { code: 'de', label: 'DE', hreflang: 'de', ariaLabel: 'Auf Deutsch wechseln' },
+  { code: 'fr', label: 'FR', hreflang: 'fr', ariaLabel: 'Passer au Français' },
+];
 ---
 
 <div class="lang-selector" aria-label="Language selector">
@@ -18,17 +24,14 @@ const alternatePath = getAlternatePath(currentPath, lang);
     <line x1="2" y1="12" x2="22" y2="12"/>
     <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
   </svg>
-  {lang === 'es' ? (
+  {allLangs.map((l, i) => (
     <>
-      <span class="lang-selector__link lang-selector__link--active" aria-current="true">ES</span>
-      <span class="lang-selector__divider" aria-hidden="true">|</span>
-      <a href={alternatePath} class="lang-selector__link" hreflang="en" aria-label="Switch to English">EN</a>
+      {i > 0 && <span class="lang-selector__divider" aria-hidden="true">|</span>}
+      {l.code === lang ? (
+        <span class="lang-selector__link lang-selector__link--active" aria-current="true">{l.label}</span>
+      ) : (
+        <a href={getAlternatePath(currentPath, l.code)} class="lang-selector__link" hreflang={l.hreflang} aria-label={l.ariaLabel}>{l.label}</a>
+      )}
     </>
-  ) : (
-    <>
-      <a href={alternatePath} class="lang-selector__link" hreflang="es" aria-label="Cambiar a Español">ES</a>
-      <span class="lang-selector__divider" aria-hidden="true">|</span>
-      <span class="lang-selector__link lang-selector__link--active" aria-current="true">EN</span>
-    </>
-  )}
+  ))}
 </div>

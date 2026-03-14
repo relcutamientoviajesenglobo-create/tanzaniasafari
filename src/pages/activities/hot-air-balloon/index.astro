@@ -3,15 +3,26 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import { touristAttraction, faqPage } from '../../../i18n/schema';
+import SafariTikTok from '../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../components/PhotoGallery.astro';
 
 const lang = 'en';
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=400&fit=crop&auto=format', alt: 'Hot air balloon ascending over the Serengeti at golden sunrise' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Aerial view of the Serengeti plains from a balloon at dawn' },
+  { src: 'https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=400&fit=crop&auto=format', alt: 'Wildebeest herds seen from above during a balloon flight over the migration' },
+  { src: 'https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=400&fit=crop&auto=format', alt: 'Giraffe viewed from a hot air balloon gliding over the Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=400&fit=crop&auto=format', alt: 'Lion pride on the plains photographed from aerial balloon perspective' },
+  { src: 'https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=600&h=400&fit=crop&auto=format', alt: 'Zebra patterns seen from above during a balloon safari over the Serengeti' },
+];
 
 const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
 
 const faqItems = [
   { question: 'When do balloon flights take off?', answer: 'Balloon flights launch <strong>just before dawn</strong>, typically around 5:30-6:00 AM, to catch the calm morning air and the spectacular sunrise over the Serengeti. You are picked up from your lodge or camp at approximately 4:30 AM. The early start is essential for safety (wind conditions) and produces the most breathtaking lighting for photography.' },
   { question: 'How long does the balloon flight last?', answer: 'The flight itself lasts approximately <strong>one hour</strong>, floating at altitudes between 30 and 300 meters depending on wind conditions and wildlife sightings. The entire experience (from pickup to return) takes about 4-5 hours, including the pre-flight briefing, the flight, landing, and a champagne bush breakfast served on the savanna after landing.' },
-  { question: 'How much does a balloon safari cost?', answer: 'Balloon flights in the Serengeti typically cost between <strong>$500 and $600 USD per person</strong>, which includes hotel pickup, the flight, a champagne bush breakfast and a certificate. This is a premium experience that is widely considered one of the highlights of any Tanzania safari. Check our <a href="/en/prices/" style="color:#3D6B2E;font-weight:700">prices page</a> for current rates and package options.' },
+  { question: 'How much does a balloon safari cost?', answer: 'Balloon flights in the Serengeti typically cost between <strong>$500 and $600 USD per person</strong>, which includes hotel pickup, the flight, a champagne bush breakfast and a certificate. This is a premium experience that is widely considered one of the highlights of any Tanzania safari. Check our <a href="/prices/" style="color:#3D6B2E;font-weight:700">prices page</a> for current rates and package options.' },
   { question: 'Is a balloon safari safe?', answer: 'Yes, balloon safaris in Tanzania have an <strong>excellent safety record</strong>. Flights are operated by licensed pilots with thousands of hours of experience. All balloons undergo daily inspections and meet international aviation standards. Flights are cancelled if wind conditions exceed safety thresholds. The pilot briefs all passengers on safety procedures and landing positions before takeoff.' },
   { question: 'What should I wear for a balloon safari?', answer: 'Wear <strong>layered clothing</strong> as early mornings can be cool (around 15 celsius) but the balloon burners generate significant heat. Long trousers and closed-toe shoes are required. Bring a warm jacket, sunglasses and a hat. Cameras with secure straps are welcome but avoid loose items. The basket is spacious but sturdy shoes help with the landing.' },
   { question: 'How many people fit in the balloon basket?', answer: 'Standard baskets carry <strong>12-16 passengers</strong> divided into compartments, each with excellent viewing positions. Private flights for couples or small groups (2-4 people) are available at a premium. All passengers have unobstructed views and photography opportunities. The pilot positions the balloon to optimize wildlife viewing throughout the flight.' },
@@ -22,7 +33,7 @@ const schema = [
   touristAttraction({
     name: 'Hot Air Balloon Safari in the Serengeti',
     description: 'Float over the Serengeti at dawn on a hot air balloon safari. Aerial views of wildlife, champagne bush breakfast and unforgettable sunrise photography.',
-    url: 'https://safaritanzania.info/en/activities/hot-air-balloon/',
+    url: 'https://safaritanzania.info/activities/hot-air-balloon/',
   }),
   faqPage(faqItems),
 ];
@@ -34,7 +45,7 @@ const schema = [
   lang={lang}
   schema={schema}
   breadcrumbs={[
-    { label: 'Activities', href: '/en/activities/' },
+    { label: 'Activities', href: '/activities/' },
     { label: 'Hot Air Balloon' },
   ]}
 >
@@ -52,8 +63,8 @@ const schema = [
           <h1 class="hero__title">Hot Air Balloon over the Serengeti</h1>
           <p class="hero__desc">Float silently over the Serengeti plains at dawn. Watch the sunrise paint the savanna gold as herds of wildlife move below you, followed by a champagne bush breakfast in the heart of the wilderness.</p>
           <div class="hero__actions">
-            <a href="/en/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
-            <a href="/en/contact/" class="btn btn--outline btn--lg">Book balloon flight</a>
+            <a href="/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
+            <a href="/contact/" class="btn btn--outline btn--lg">Book balloon flight</a>
           </div>
           <div class="stats-row">
             <div class="stat"><strong>1 hour</strong><span>Flight time</span></div>
@@ -206,7 +217,7 @@ const schema = [
         <p>A balloon flight pairs perfectly with any multi-day safari itinerary. Here are our recommended combinations.</p>
       </div>
       <div class="card-grid card-grid--2 animate-on-scroll delay-1">
-        <a href="/en/safaris/classic-safari/" class="photo-card">
+        <a href="/safaris/classic-safari/" class="photo-card">
           <div class="photo-card__img">
             <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=450&fit=crop&auto=format" alt="Classic safari vehicle on a Serengeti game drive" width="600" height="450" loading="lazy" />
           </div>
@@ -216,7 +227,7 @@ const schema = [
             <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
           </div>
         </a>
-        <a href="/en/safaris/photo-safari/" class="photo-card">
+        <a href="/safaris/photo-safari/" class="photo-card">
           <div class="photo-card__img">
             <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=450&fit=crop&auto=format" alt="Lion in golden light for photo safari" width="600" height="450" loading="lazy" />
           </div>
@@ -249,6 +260,9 @@ const schema = [
     </div>
   </section>
 
+  <PhotoGallery images={galleryImages} title="Balloon Safari Gallery" />
+  <SafariTikTok category="balloon" lang="en" />
+
   <!-- CTA -->
   <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
     <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
@@ -260,8 +274,8 @@ const schema = [
         <p>Book your hot air balloon safari for an unforgettable sunrise over Africa's most iconic landscape.</p>
       </div>
       <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-        <a href="/en/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
-        <a href="/en/contact/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Book balloon flight</a>
+        <a href="/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
+        <a href="/contact/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Book balloon flight</a>
       </div>
     </div>
   </section>

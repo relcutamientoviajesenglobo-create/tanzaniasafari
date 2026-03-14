@@ -1,0 +1,192 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import { touristAttraction, faqPage } from '../../../../i18n/schema';
+import SafariTikTok from '../../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../../components/PhotoGallery.astro';
+
+const lang = 'fr';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=400&fit=crop&auto=format', alt: 'Montgolfière s\'élevant au-dessus du Serengeti au lever doré du soleil' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Vue aérienne des plaines du Serengeti depuis une montgolfière' },
+  { src: 'https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=400&fit=crop&auto=format', alt: 'Troupeaux de gnous vus depuis une montgolfière lors de la migration' },
+  { src: 'https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=400&fit=crop&auto=format', alt: 'Girafe vue d\'en haut lors d\'un vol en montgolfière' },
+  { src: 'https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=600&h=400&fit=crop&auto=format', alt: 'Motifs des zèbres vus en perspective aérienne au-dessus de la savane' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'Éléphants marchant dans la brousse vus depuis les airs' },
+];
+
+const faqItems = [
+  { question: 'À quelle heure décollent les montgolfières ?', answer: 'Les vols en montgolfière décollent <strong>juste avant l\'aube</strong>, généralement vers 5h30-6h00, pour profiter des vents calmes du matin et du spectaculaire lever de soleil sur le Serengeti. La prise en charge depuis votre lodge ou camp se fait vers 4h30. Ce départ matinal est essentiel pour la sécurité (conditions de vent) et produit l\'éclairage le plus saisissant pour la photographie.' },
+  { question: 'Combien de temps dure le vol en montgolfière ?', answer: 'Le vol lui-même dure environ <strong>une heure</strong>, en flottant entre 30 et 300 mètres selon les conditions de vent et les observations animalières. L\'expérience complète (de la prise en charge au retour) dure environ 4 à 5 heures, incluant le briefing avant le vol, le vol, l\'atterrissage et un petit-déjeuner champagne dans la brousse servi après l\'atterrissage.' },
+  { question: 'Combien coûte un safari en montgolfière ?', answer: 'Les vols en montgolfière dans le Serengeti coûtent généralement entre <strong>500 et 600 USD par personne</strong>, ce qui inclut la prise en charge à l\'hôtel, le vol, un petit-déjeuner champagne dans la brousse et un certificat. C\'est une expérience premium qui est largement considérée comme l\'un des moments forts de tout safari en Tanzanie. Consultez notre <a href="/fr/prix/" style="color:#3D6B2E;font-weight:700">page des tarifs</a> pour les tarifs actuels et les options de forfait.' },
+  { question: 'Un safari en montgolfière est-il sûr ?', answer: 'Oui, les safaris en montgolfière en Tanzanie ont un <strong>excellent bilan sécuritaire</strong>. Les vols sont opérés par des pilotes licenciés ayant des milliers d\'heures d\'expérience. Toutes les montgolfières font l\'objet d\'inspections quotidiennes et répondent aux normes internationales de l\'aviation. Les vols sont annulés si les conditions de vent dépassent les seuils de sécurité. Le pilote informe tous les passagers des procédures de sécurité et des positions d\'atterrissage avant le décollage.' },
+  { question: 'Que faut-il porter pour un safari en montgolfière ?', answer: 'Portez des <strong>vêtements en couches</strong> car les petits matins peuvent être frais (environ 15°C) mais les brûleurs génèrent une chaleur importante. Un pantalon long et des chaussures à bout fermé sont obligatoires. Emportez une veste chaude, des lunettes de soleil et un chapeau. Les appareils photo avec des sangles sécurisées sont les bienvenus, mais évitez les objets non attachés. La nacelle est spacieuse mais des chaussures solides aident à l\'atterrissage.' },
+  { question: 'Combien de personnes peuvent monter dans la nacelle ?', answer: 'Les nacelles standard accueillent <strong>12 à 16 passagers</strong> répartis en compartiments, chacun avec d\'excellentes positions d\'observation. Des vols privés pour les couples ou les petits groupes (2 à 4 personnes) sont disponibles à un tarif premium. Tous les passagers ont des vues dégagées et des opportunités photographiques. Le pilote positionne la montgolfière pour optimiser l\'observation de la faune tout au long du vol.' },
+  { question: 'Que se passe-t-il si le vol est annulé en raison des conditions météorologiques ?', answer: 'La sécurité est la priorité absolue, et les vols peuvent être annulés si la vitesse du vent dépasse les limites de sécurité. En cas d\'annulation, vous recevez un <strong>remboursement complet</strong> ou la possibilité de reprogrammer pour un autre matin (sous réserve de disponibilité). Les annulations pour cause météorologique sont rares pendant la saison sèche (juin-octobre) mais légèrement plus fréquentes pendant la saison verte.' },
+];
+
+const schema = [
+  touristAttraction({
+    name: 'Safari en Montgolfière dans le Serengeti',
+    description: 'Survolez le Serengeti à l\'aube en montgolfière. Vues aériennes de la faune, petit-déjeuner champagne dans la brousse et photographie de lever de soleil inoubliable.',
+    url: 'https://safaritanzania.info/fr/activites/montgolfiere/',
+  }),
+  faqPage(faqItems),
+];
+---
+
+<BaseLayout
+  title="Safari en Montgolfière dans le Serengeti — Survolez la Savane"
+  description="Survolez le Serengeti à l'aube en montgolfière. Vues aériennes des troupeaux, de la Grande Migration, petit-déjeuner champagne dans la brousse et photographie inoubliable du lever de soleil sur la savane africaine."
+  lang={lang}
+  schema={schema}
+  breadcrumbs={[
+    { label: 'Activités', href: '/fr/activites/' },
+    { label: 'Montgolfière' },
+  ]}
+>
+  <Header slot="header" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--green">Safari aérien</span>
+          <h1 class="hero__title">Montgolfière au-dessus du Serengeti</h1>
+          <p class="hero__desc">Flottez silencieusement au-dessus des plaines du Serengeti à l'aube. Regardez le lever de soleil peindre la savane d'or tandis que des troupeaux d'animaux se déplacent sous vous, suivi d'un petit-déjeuner champagne au cœur de la nature.</p>
+          <div class="hero__actions">
+            <a href="/fr/prix/" class="btn btn--primary btn--lg">Voir les tarifs 2026</a>
+            <a href="/fr/contact/" class="btn btn--outline btn--lg">Réserver un vol</a>
+          </div>
+          <div class="stats-row">
+            <div class="stat"><strong>1 heure</strong><span>Durée du vol</span></div>
+            <div class="stat"><strong>Aube</strong><span>Décollage au lever du soleil</span></div>
+            <div class="stat"><strong>7 ans+</strong><span>Âge minimum</span></div>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <img
+              src="https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=800&h=640&fit=crop&auto=format"
+              alt="Montgolfière flottant au-dessus de la savane du Serengeti au lever de soleil doré"
+              width="800" height="640" loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- L'EXPÉRIENCE -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">L'expérience</span>
+        <h2>Un matin au-dessus du Serengeti</h2>
+        <p>De la prise en charge avant l'aube au toast au champagne sur la savane, chaque instant d'un safari en montgolfière est conçu pour être extraordinaire.</p>
+      </div>
+      <div class="card-grid card-grid--2 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=450&fit=crop&auto=format" alt="Montgolfière en cours de gonflage dans la lumière d'avant l'aube sur le Serengeti" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Le décollage à l'aube</h3>
+            <p>Pris en charge depuis votre lodge avant la première lueur, vous arrivez sur le site de décollage tandis que la montgolfière se gonfle. Regardez l'énorme enveloppe se remplir d'air chaud sous un ciel étoilé. Au signal du pilote, vous montez dans la nacelle et décollez en douceur vers l'aube du Serengeti.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=450&fit=crop&auto=format" alt="Plaines du Serengeti vues depuis une montgolfière au lever du soleil" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Le vol</h3>
+            <p>Pendant environ une heure, vous flottez entre 30 et 300 mètres au-dessus des plaines. Le silence est profond, seulement rompu par les jets de brûleurs. En dessous, des troupeaux de gnous et de zèbres commencent leurs mouvements matinaux, les éléphants se dirigent vers l'eau et le lever de soleil transforme le paysage en une toile d'or et d'ambre.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMME -->
+  <section class="section section--green bg-green" style="position:relative;overflow:hidden">
+    <div style="position:absolute;top:20px;right:-30px;opacity:.08;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Votre matinée</span>
+        <h2>Le programme du safari en montgolfière</h2>
+        <p>Voici exactement à quoi ressemble votre matinée en montgolfière, de la prise en charge au retour.</p>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1">
+        <div class="service-card">
+          <h3 class="service-card__title">4h30 — Prise en charge</h3>
+          <p class="service-card__desc">Notre chauffeur vient vous chercher à votre lodge ou camp et vous emmène sur le site de décollage. Café et thé chauds sont servis pendant que l'équipe prépare la montgolfière sous le ciel étoilé.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">5h30 — Décollage</h3>
+          <p class="service-card__desc">Après un briefing de sécurité, vous montez dans la nacelle. Le pilote allume les brûleurs et vous vous élevez en douceur dans l'aube du Serengeti. Le lever de soleil se déploie de façon spectaculaire à mesure que vous prenez de l'altitude.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">6h30 — Atterrissage</h3>
+          <p class="service-card__desc">Après environ une heure de vol, le pilote choisit un site d'atterrissage dans les plaines ouvertes. L'équipe vous accueille avec un toast au champagne et un certificat commémorant votre vol.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">7h00 — Petit-déjeuner dans la brousse</h3>
+          <p class="service-card__desc">Un petit-déjeuner complet est servi dans la savane avec des nappes blanches, du champagne et des jus de fruits frais. Entouré du Serengeti matinal, c'est le petit-déjeuner le plus mémorable de votre vie.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">FAQ</span>
+        <h2>Questions sur le safari en montgolfière</h2>
+        <p>Tout ce que vous devez savoir sur les vols en montgolfière au-dessus du Serengeti.</p>
+      </div>
+      <div class="faq-list animate-on-scroll delay-1">
+        {faqItems.map(item => (
+          <details>
+            <summary>{item.question}</summary>
+            <div class="faq-answer" set:html={item.answer} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <PhotoGallery images={galleryImages} title="Galerie photo — Vues depuis la montgolfière" />
+  <SafariTikTok category="serengeti" lang="fr" />
+
+  <!-- CTA -->
+  <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2>Survolez le Serengeti</h2>
+        <p>Réservez votre safari en montgolfière pour un lever de soleil inoubliable sur le paysage le plus emblématique d'Afrique.</p>
+      </div>
+      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/fr/prix/" class="btn btn--primary btn--lg">Voir les tarifs 2026</a>
+        <a href="/fr/contact/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Réserver un vol</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>

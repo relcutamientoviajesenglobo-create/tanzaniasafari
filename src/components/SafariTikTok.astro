@@ -1,0 +1,145 @@
+---
+/**
+ * SafariTikTok — Embeds a curated grid of TikTok safari videos.
+ * Each page picks a category; the component renders 3 relevant videos.
+ *
+ * Usage:
+ *   <SafariTikTok category="serengeti" lang="en" />
+ */
+import type { Lang } from '../i18n/config';
+
+interface Props {
+  category: 'serengeti' | 'ngorongoro' | 'migration' | 'wildlife' | 'photography' | 'balloon' | 'night' | 'lodges' | 'culture' | 'general';
+  lang?: Lang;
+  title?: string;
+}
+
+const { category, lang = 'en', title } = Astro.props;
+
+/* ---------- TikTok video bank (real working safari videos) ---------- */
+const videoBank: Record<string, { id: string; user: string; caption: string }[]> = {
+  serengeti: [
+    { id: '7521758369460292869', user: '@nasikiasafaris', caption: 'Serengeti Safari' },
+    { id: '7475299968803147063', user: '@safarinomara', caption: 'Safari Magic' },
+    { id: '7615655140003024150', user: '@oa1403', caption: 'Serengeti Vibes' },
+  ],
+  ngorongoro: [
+    { id: '7608197353786363157', user: '@tanzanianextlevelsafari', caption: 'Ngorongoro Crater' },
+    { id: '7616776095198694676', user: '@zanzibardestination', caption: 'Tanzania Safari' },
+    { id: '7614891117133270303', user: '@allysontaylorrrr', caption: 'Africa Travel' },
+  ],
+  migration: [
+    { id: '7521758369460292869', user: '@nasikiasafaris', caption: 'Great Migration' },
+    { id: '7608197353786363157', user: '@tanzanianextlevelsafari', caption: 'Wildebeest Crossing' },
+    { id: '7475299968803147063', user: '@safarinomara', caption: 'Migration Season' },
+  ],
+  wildlife: [
+    { id: '7614891117133270303', user: '@allysontaylorrrr', caption: 'Big Five' },
+    { id: '7521758369460292869', user: '@nasikiasafaris', caption: 'Wildlife Encounters' },
+    { id: '7615655140003024150', user: '@oa1403', caption: 'Safari Wildlife' },
+  ],
+  photography: [
+    { id: '7475299968803147063', user: '@safarinomara', caption: 'Safari Photography' },
+    { id: '7614891117133270303', user: '@allysontaylorrrr', caption: 'Golden Hour Shot' },
+    { id: '7616776095198694676', user: '@zanzibardestination', caption: 'Wildlife Photos' },
+  ],
+  balloon: [
+    { id: '7608197353786363157', user: '@tanzanianextlevelsafari', caption: 'Balloon Safari' },
+    { id: '7521758369460292869', user: '@nasikiasafaris', caption: 'Serengeti from Above' },
+    { id: '7615655140003024150', user: '@oa1403', caption: 'Hot Air Balloon' },
+  ],
+  night: [
+    { id: '7616776095198694676', user: '@zanzibardestination', caption: 'Night Safari' },
+    { id: '7475299968803147063', user: '@safarinomara', caption: 'Nocturnal Wildlife' },
+    { id: '7614891117133270303', user: '@allysontaylorrrr', caption: 'After Dark Safari' },
+  ],
+  lodges: [
+    { id: '7615655140003024150', user: '@oa1403', caption: 'Safari Lodge Tour' },
+    { id: '7616776095198694676', user: '@zanzibardestination', caption: 'Glamping Tanzania' },
+    { id: '7608197353786363157', user: '@tanzanianextlevelsafari', caption: 'Luxury Safari Camp' },
+  ],
+  culture: [
+    { id: '7614891117133270303', user: '@allysontaylorrrr', caption: 'Masai Village' },
+    { id: '7521758369460292869', user: '@nasikiasafaris', caption: 'Masai Culture' },
+    { id: '7608197353786363157', user: '@tanzanianextlevelsafari', caption: 'Tanzania Culture' },
+  ],
+  general: [
+    { id: '7521758369460292869', user: '@nasikiasafaris', caption: 'Tanzania Safari' },
+    { id: '7616776095198694676', user: '@zanzibardestination', caption: 'Safari 2026' },
+    { id: '7614891117133270303', user: '@allysontaylorrrr', caption: 'Africa Travel' },
+  ],
+};
+
+const videos = videoBank[category] || videoBank.general;
+
+const titles: Record<string, Record<Lang, string>> = {
+  default: {
+    en: 'Safari on TikTok',
+    es: 'Safari en TikTok',
+    de: 'Safari auf TikTok',
+    fr: 'Safari sur TikTok',
+  },
+};
+
+const sectionTitle = title || titles.default[lang];
+---
+
+<section class="tiktok-section-inner">
+  <div class="container">
+    <div class="section__header animate-on-scroll">
+      <span class="chip chip--amber">#Safari #Tanzania</span>
+      <h2>{sectionTitle}</h2>
+    </div>
+    <div class="tiktok-inner-grid animate-on-scroll delay-1">
+      {videos.map((v) => (
+        <div class="tiktok-inner-card">
+          <blockquote
+            class="tiktok-embed"
+            cite={`https://www.tiktok.com/${v.user}/video/${v.id}`}
+            data-video-id={v.id}
+            style="max-width:605px;min-width:280px;"
+          >
+            <section>
+              <a target="_blank" title={v.user} href={`https://www.tiktok.com/${v.user}?refer=embed`}>{v.user}</a>{' '}
+              {v.caption}{' '}
+              <a target="_blank" title="♬ original sound" href={`https://www.tiktok.com/music/original-sound-${v.id}?refer=embed`}>♬ original sound</a>
+            </section>
+          </blockquote>
+        </div>
+      ))}
+    </div>
+  </div>
+  <script is:inline async src="https://www.tiktok.com/embed.js"></script>
+</section>
+
+<style>
+  .tiktok-section-inner {
+    padding: 4rem 0;
+    content-visibility: auto;
+    contain-intrinsic-size: 800px;
+  }
+  .tiktok-inner-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 2rem;
+  }
+  .tiktok-inner-card {
+    background: var(--mc-sand, #F5F0E8);
+    border-radius: var(--radius-md, 16px);
+    overflow: hidden;
+    border: 1px solid var(--mc-border, #E2E8F0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .tiktok-inner-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover, 0 8px 32px rgba(0,0,0,0.14));
+  }
+  @media (max-width: 900px) {
+    .tiktok-inner-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  }
+  @media (max-width: 600px) {
+    .tiktok-inner-grid { grid-template-columns: 1fr; gap: 20px; }
+    .tiktok-inner-card { max-width: 400px; margin: 0 auto; }
+  }
+</style>

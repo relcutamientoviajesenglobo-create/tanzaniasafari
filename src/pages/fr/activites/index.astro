@@ -1,0 +1,240 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { touristAttraction, faqPage } from '../../../i18n/schema';
+import SafariTikTok from '../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../components/PhotoGallery.astro';
+
+const lang = 'fr';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=400&fit=crop&auto=format', alt: 'Montgolfière survolant la savane du Serengeti au lever du soleil' },
+  { src: 'https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&h=400&fit=crop&auto=format', alt: 'Guide masaï conduisant une marche dans la brousse africaine' },
+  { src: 'https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=400&fit=crop&auto=format', alt: 'Troupeau de gnous lors de la Grande Migration dans le Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=400&fit=crop&auto=format', alt: 'Lion mâle en lumière dorée pour la photographie animalière' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Panorama des plaines du Serengeti avec des nuages dramatiques' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'Troupeau d\'éléphants dans la savane tanzanienne au crépuscule' },
+];
+
+const faqItems = [
+  { question: 'Quelles activités sont disponibles en dehors des game drives ?', answer: 'La Tanzanie offre bien plus que les safaris traditionnels : <a href="/fr/activites/observation-faune/" style="color:#3D6B2E;font-weight:700">observation de la faune</a> dont la Grande Migration, <a href="/fr/activites/marches-brousse/" style="color:#3D6B2E;font-weight:700">marches dans la brousse</a> avec des guides masaïs, vols en <a href="/fr/activites/montgolfiere/" style="color:#3D6B2E;font-weight:700">montgolfière</a> au-dessus du Serengeti, visites de villages culturels, ornithologie, excursions aux lacs de cratère et observations des étoiles.' },
+  { question: 'Les activités sont-elles adaptées à tous les niveaux de forme physique ?', answer: 'La plupart des activités s\'adaptent à différents niveaux physiques. L\'<strong>observation de la faune</strong> depuis les véhicules ne demande aucun effort physique. Les <strong>marches dans la brousse</strong> vont de balades tranquilles à des randonnées modérées (2 à 4 heures). Les <strong>vols en montgolfière</strong> demandent une mobilité basique pour monter dans la nacelle. Notre équipe peut recommander les activités les mieux adaptées à votre condition physique.' },
+  { question: 'Puis-je combiner plusieurs activités lors d\'un même voyage ?', answer: 'Absolument ! Beaucoup de nos clients combinent des game drives avec des marches dans la brousse, un vol en montgolfière et des expériences culturelles. Un <strong>safari de 5 jours</strong> typique peut inclure 2 à 3 activités différentes en plus des game drives traditionnels. Contactez-nous pour concevoir un itinéraire sur mesure intégrant vos activités préférées aux meilleurs <a href="/fr/prix/" style="color:#3D6B2E;font-weight:700">tarifs</a>.' },
+  { question: 'Que faut-il porter pour les activités en plein air ?', answer: 'Portez des vêtements légers et respirants dans des <strong>tons neutres terreux</strong> (kaki, olive, marron, beige). Évitez le blanc vif, le bleu et le noir. Des chaussures fermées robustes sont indispensables pour les marches dans la brousse. Un chapeau, des lunettes de soleil et de la crème solaire (SPF 50+) sont nécessaires pour toutes les activités en plein air. Prévoyez des couches car les matins peuvent être frais.' },
+  { question: 'Les enfants sont-ils admis sur toutes les activités ?', answer: 'La plupart des activités accueillent les enfants avec certaines restrictions d\'âge. L\'<strong>observation de la faune</strong> depuis les véhicules n\'a pas de limite d\'âge. Les <strong>marches dans la brousse</strong> requièrent généralement un âge minimum de 12 ans. Les vols en <strong>montgolfière</strong> ont un âge minimum de 7 ans. Les enfants de moins de 5 ans sont gratuits sur la plupart des activités en véhicule. Consultez notre <a href="/fr/prix/" style="color:#3D6B2E;font-weight:700">page des tarifs</a> pour les formules familiales.' },
+];
+
+const schema = [
+  touristAttraction({
+    name: 'Activités en Tanzanie — Observation de la Faune, Marches, Montgolfière et plus',
+    description: 'Découvrez les meilleures activités en Tanzanie au-delà des safaris traditionnels. Observation de la faune, marches dans la brousse avec des guides masaïs, vols en montgolfière et bien plus encore.',
+    url: 'https://safaritanzania.info/fr/activites/',
+  }),
+  faqPage(faqItems),
+];
+---
+
+<BaseLayout
+  title="Activités en Tanzanie — Observation de la Faune, Marches, Montgolfière et plus"
+  description="Découvrez des activités extraordinaires en Tanzanie au-delà des game drives. Observation de la faune, marches dans la brousse avec des guides masaïs, vols en montgolfière au-dessus du Serengeti et expériences culturelles."
+  lang={lang}
+  schema={schema}
+  breadcrumbs={[{ label: 'Activités' }]}
+>
+  <Header slot="header" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--green">Au-delà des game drives</span>
+          <h1 class="hero__title">Activités &amp; expériences en Tanzanie</h1>
+          <p class="hero__desc">La Tanzanie offre bien plus que les safaris traditionnels. Marchez dans la brousse avec des guerriers masaïs, survolez le Serengeti à l'aube, suivez la Grande Migration et plongez dans l'authentique culture africaine.</p>
+          <div class="hero__actions">
+            <a href="/fr/prix/" class="btn btn--primary btn--lg">Voir les tarifs 2026</a>
+            <a href="/fr/safaris/" class="btn btn--outline btn--lg">Voir les safaris</a>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <img
+              src="https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=800&h=640&fit=crop&auto=format"
+              alt="Montgolfière survolant la savane du Serengeti au lever du soleil"
+              width="800" height="640" loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARTES D'ACTIVITÉS -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Choisissez votre aventure</span>
+        <h2>Nos activités phares</h2>
+        <p>Chaque activité offre une perspective unique sur la faune, les paysages et la culture de la Tanzanie. Combinez-les pour créer votre aventure parfaite.</p>
+      </div>
+      <div class="card-grid card-grid--3 animate-on-scroll delay-1">
+        <a href="/fr/activites/observation-faune/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=450&fit=crop&auto=format" alt="Troupeau de gnous lors de la Grande Migration dans le Serengeti" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Faune sauvage</span>
+            <h3 class="photo-card__title">Observation de la faune</h3>
+            <p>Pistez les Big Five, assistez à la Grande Migration et observez les animaux emblématiques d'Afrique dans leur habitat naturel. Des guides experts décryptent le comportement animal et l'écologie.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+        <a href="/fr/activites/marches-brousse/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&h=450&fit=crop&auto=format" alt="Guide masaï conduisant une marche safari dans la brousse africaine" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Aventure</span>
+            <h3 class="photo-card__title">Marches dans la brousse</h3>
+            <p>Sortez du véhicule et marchez dans la savane avec des guides masaïs expérimentés. Apprenez les techniques de pistage, découvrez les plantes médicinales et connectez-vous avec le paysage au niveau du sol.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+        <a href="/fr/activites/montgolfiere/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=450&fit=crop&auto=format" alt="Safari en montgolfière au-dessus du Parc national du Serengeti à l'aube" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Aérien</span>
+            <h3 class="photo-card__title">Montgolfière</h3>
+            <p>Survolez le Serengeti à l'aube pour une perspective aérienne à couper le souffle. Flottez silencieusement au-dessus des troupeaux d'animaux et atterrissez pour un petit-déjeuner champagne dans la brousse.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUTRES EXPÉRIENCES -->
+  <section class="section section--green bg-green" style="position:relative;overflow:hidden">
+    <div style="position:absolute;top:20px;right:-30px;opacity:.08;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Expériences culturelles et naturelles</span>
+        <h2>D'autres façons de découvrir la Tanzanie</h2>
+        <p>Complétez votre safari avec ces expériences culturelles et naturelles authentiques qui révèlent l'âme de l'Afrique de l'Est.</p>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1">
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm0 6c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6 2.69-6 6-6zm0 28.4c-5 0-9.27-2.88-11.34-7.07C15.07 28.55 20 27 24 27c3.99 0 8.93 1.55 11.34 4.33C33.27 35.52 29 38.4 24 38.4z"/></svg>
+          </div>
+          <h3 class="service-card__title">Visite d'un village masaï</h3>
+          <p class="service-card__desc">Visitez un boma masaï (village) authentique et découvrez leurs traditions, leur art de la perle, leur culture guerrière et leur relation harmonieuse avec la faune sauvage. Un échange culturel enrichissant.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M18.85 10.39l1.06-3.54c.18-.63.76-1.06 1.42-1.06h5.34c.66 0 1.24.43 1.42 1.06l1.06 3.54 3.54 1.06c.63.18 1.06.76 1.06 1.42v5.34c0 .66-.43 1.24-1.06 1.42L29.15 20 28.09 23.54c-.18.63-.76 1.06-1.42 1.06H21.33c-.66 0-1.24-.43-1.42-1.06L18.85 20l-3.54-1.06c-.63-.18-1.06-.76-1.06-1.42v-5.34c0-.66.43-1.24 1.06-1.42l3.54-1.37z M24 28c-7.73 0-14 6.27-14 14h28c0-7.73-6.27-14-14-14z"/></svg>
+          </div>
+          <h3 class="service-card__title">Ornithologie</h3>
+          <p class="service-card__desc">La Tanzanie accueille plus de 1 100 espèces d'oiseaux. Des excursions ornithologiques spécialisées ciblent les colonies de flamants, les aigles, les martins-pêcheurs, les calaos et le spectaculaire rollier à longs brins.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 2C13.51 2 5 10.51 5 21c0 14.28 17.2 24.26 17.93 24.67.31.18.69.18 1 0C24.8 45.26 43 35.28 43 21 43 10.51 34.49 2 24 2zm0 27c-4.97 0-9-4.03-9-9s4.03-9 9-9 9 4.03 9 9-4.03 9-9 9z"/></svg>
+          </div>
+          <h3 class="service-card__title">Excursion au lac de cratère</h3>
+          <p class="service-card__desc">Visitez le magnifique cratère d'Empakaai ou le lac Natron pour voir des flamants, des paysages volcaniques et des panoramas dramatiques que peu de touristes découvrent jamais.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M14 36l12-4 12 4V8c0-1.1-.9-2-2-2H14c-1.1 0-2 .9-2 2v28zM38 6c1.1 0 2 .9 2 2v36l-16-6-16 6V8c0-1.1.9-2 2-2h28z"/></svg>
+          </div>
+          <h3 class="service-card__title">Observation des étoiles</h3>
+          <p class="service-card__desc">Loin de toute pollution lumineuse, le ciel nocturne tanzanien est parmi les plus beaux du monde. Nos guides animent des séances d'observation identifiant constellations, planètes et la Voie lactée.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANIFICATION -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">Planifiez vos activités</span>
+        <h2>Comment intégrer des activités à votre voyage</h2>
+        <p>Les activités peuvent s'ajouter à n'importe quel forfait safari. Voici comment commencer.</p>
+      </div>
+      <div class="card-grid card-grid--3 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">1. Choisissez votre safari</h3>
+            <p>Commencez par un safari <a href="/fr/safaris/safari-classique/" style="color:#3D6B2E;font-weight:700">classique</a>, <a href="/fr/safaris/safari-photo/" style="color:#3D6B2E;font-weight:700">photo</a> ou <a href="/fr/safaris/safari-nocturne/" style="color:#3D6B2E;font-weight:700">nocturne</a> comme base de votre expérience. Les activités s'ajoutent en complément de votre itinéraire safari principal.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">2. Sélectionnez vos activités</h3>
+            <p>Choisissez parmi l'observation de la faune, les marches dans la brousse, les vols en montgolfière, les visites culturelles ou l'ornithologie. Notre équipe recommandera la meilleure combinaison selon vos centres d'intérêt.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">3. Contactez-nous</h3>
+            <p>Écrivez-nous via <a href="/fr/contact/" style="color:#3D6B2E;font-weight:700">notre page de contact</a> ou WhatsApp et nous concevrons un itinéraire sur mesure avec vos activités préférées aux meilleurs tarifs disponibles.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">FAQ</span>
+        <h2>Vos questions sur les activités</h2>
+        <p>Questions fréquentes sur les activités et expériences en Tanzanie.</p>
+      </div>
+      <div class="faq-list animate-on-scroll delay-1">
+        {faqItems.map(item => (
+          <details>
+            <summary>{item.question}</summary>
+            <div class="faq-answer" set:html={item.answer} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <PhotoGallery images={galleryImages} title="Galerie photo — Activités en Tanzanie" />
+  <SafariTikTok category="serengeti" lang="fr" />
+
+  <!-- CTA -->
+  <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2>Prêt pour l'aventure ?</h2>
+        <p>Découvrez les activités extraordinaires de la Tanzanie et créez des souvenirs qui dureront toute une vie.</p>
+      </div>
+      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/fr/prix/" class="btn btn--primary btn--lg">Voir les tarifs 2026</a>
+        <a href="/fr/contact/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Planifier mon voyage</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>

@@ -1,0 +1,214 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import SafariTikTok from '../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../components/PhotoGallery.astro';
+import { lodging } from '../../../i18n/schema';
+
+const lang = 'de';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const schema = lodging('LodgingBusiness', {
+  name: 'Safari-Lodges Tansania — Luxus-Unterkünfte in den Nationalparks',
+  description: 'Die besten Safari-Lodges in Tansania 2026. Finden Sie Luxus-Unterkünfte in der Serengeti, Ngorongoro und Tarangire für Ihre unvergessliche Safari.',
+  url: 'https://safaritanzania.info/de/lodges/',
+  starRating: { '@type': 'Rating', ratingValue: '5' },
+});
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=600&h=400&fit=crop&auto=format', alt: 'Serengeti Luxus-Lodge mit Swimmingpool und Savannenpanorama' },
+  { src: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&h=400&fit=crop&auto=format', alt: 'Ngorongoro-Lodge am Kraterrand mit Blick ins Tal' },
+  { src: 'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=600&h=400&fit=crop&auto=format', alt: 'Exklusives Safari-Lodge-Zimmer mit Panoramafenster' },
+  { src: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop&auto=format', alt: 'Tarangire Lodge umgeben von uralten Baobab-Bäumen' },
+  { src: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600&h=400&fit=crop&auto=format', alt: 'Abendessen auf der Veranda einer Serengeti Lodge' },
+  { src: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&h=400&fit=crop&auto=format', alt: 'Safari-Fahrzeug startet von der Lodge zur Morgenpirsch' },
+];
+---
+
+<BaseLayout
+  title="Safari-Lodges Tansania — Luxus-Unterkünfte in den Nationalparks"
+  description="Entdecken Sie Tansanias besten Safari-Lodges 2026. Luxus-Unterkünfte in der Serengeti, Ngorongoro, Tarangire und Lake Manyara mit Vollpension und täglichen Pirschfahrten."
+  lang={lang}
+  schema={schema}
+  breadcrumbs={[{ label: 'Safari-Lodges' }]}
+>
+  <Header slot="header" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero" style="position:relative;overflow:hidden">
+    <div style="position:absolute;top:-20px;right:-40px;opacity:.08;pointer-events:none;color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--green">Luxus &amp; Wildnis</span>
+          <h1 class="hero__title">Safari-Lodges in Tansania</h1>
+          <p class="hero__desc">Tansanias Safari-Lodges sind einzigartige Oasen des Komforts inmitten der afrikanischen Wildnis. Sie bieten Fünf-Sterne-Erlebnisse — von Infinity-Pools mit Savannenblick bis zu Gourmet-Restaurants mit lokaler Küche — alles nur einen Schritt von den großartigsten Wildtieren der Welt entfernt.</p>
+          <div class="hero__actions">
+            <a href="/de/kontakt/" class="btn btn--primary btn--lg">Lodge buchen</a>
+            <a href="/de/preise/" class="btn btn--outline btn--lg">Preise &amp; Pakete</a>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <div class="hero__deco hero__deco--bl"></div>
+            <img
+              src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800&h=640&fit=crop&auto=format"
+              alt="Luxus-Safari-Lodge mit Infinitypool in der Serengeti"
+              width="800" height="640" loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LODGE TYPEN -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Lodge-Kategorien</span>
+        <h2>Welche Lodge passt zu Ihnen?</h2>
+        <p>Von klassischen Standard-Lodges bis zu Ultra-Luxus-Villen — Tansania bietet Unterkünfte für jeden Anspruch und jedes Budget.</p>
+      </div>
+      <div class="card-grid card-grid--3 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=600&h=400&fit=crop&auto=format" alt="Standard Safari Lodge" width="600" height="400" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">3–4 Sterne</span>
+            <h3 class="photo-card__title">Komfort-Lodges</h3>
+            <p style="color:var(--mc-text-muted);font-size:.9rem">Ausgezeichnete Unterkünfte mit En-Suite-Badezimmern, Swimmingpool und Vollpension. Beste Option für Familien und Reisende, die Komfort zu vernünftigen Preisen suchen.</p>
+            <p style="color:var(--mc-green);font-weight:700;margin-top:.75rem">ab $180/Nacht</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default;border:2px solid var(--mc-green)">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop&auto=format" alt="Premium Safari Lodge mit Pool" width="600" height="400" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">4–5 Sterne</span>
+            <h3 class="photo-card__title">Premium-Lodges</h3>
+            <p style="color:var(--mc-text-muted);font-size:.9rem">Exklusive Lodges mit privaten Suiten, Infinity-Pools, Spa-Einrichtungen und hervorragender Gastronomie. Perfekt für Flitterwochen und besondere Anlässe.</p>
+            <p style="color:var(--mc-green);font-weight:700;margin-top:.75rem">ab $350/Nacht</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600&h=400&fit=crop&auto=format" alt="Ultra-Luxus Safari Villa" width="600" height="400" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">5 Sterne Ultra-Luxus</span>
+            <h3 class="photo-card__title">Luxus-Villen</h3>
+            <p style="color:var(--mc-text-muted);font-size:.9rem">Das Höchste in der afrikanischen Hotellerie. Private Villen mit eigenem Pool, persönlichem Butler, Privatkoch und maßgeschneiderten Pirschfahrten. Einzigartiges Erlebnis.</p>
+            <p style="color:var(--mc-green);font-weight:700;margin-top:.75rem">ab $800/Nacht</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARKS & LODGES -->
+  <section class="section" style="position:relative;overflow:hidden">
+    <div style="position:absolute;bottom:-20px;left:-30px;opacity:.05;pointer-events:none;color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">Nach Park wählen</span>
+        <h2>Lodges nach Nationalpark</h2>
+        <p>Jeder Nationalpark hat seine eigenen herausragenden Unterkünfte in bester Lage für maximale Wildtierbeobachtung.</p>
+      </div>
+      <div class="card-grid card-grid--2 animate-on-scroll delay-1" style="gap:2rem">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <span class="chip chip--amber" style="margin-bottom:.75rem">Serengeti</span>
+            <h3 class="photo-card__title">Serengeti-Lodges</h3>
+            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.4rem;font-size:.9rem;color:var(--mc-text-muted)">
+              <li>• Four Seasons Safari Lodge — Zentrale Serengeti</li>
+              <li>• Singita Grumeti — Westliche Serengeti</li>
+              <li>• Serena Serengeti — Zentrale Serengeti</li>
+              <li>• Sopa Lodge — Östliche Serengeti</li>
+            </ul>
+            <p style="font-size:.85rem;color:var(--mc-text-muted);margin-top:.75rem">Beste Zeit: Juli–Oktober (Große Migration)</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <span class="chip chip--green" style="margin-bottom:.75rem">Ngorongoro</span>
+            <h3 class="photo-card__title">Ngorongoro-Lodges</h3>
+            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.4rem;font-size:.9rem;color:var(--mc-text-muted)">
+              <li>• Ngorongoro Serena Lodge — Kraterrand</li>
+              <li>• Ngorongoro Sopa Lodge — Kraterrand</li>
+              <li>• &amp;Beyond Ngorongoro Crater Lodge — Premium</li>
+              <li>• Rhino Lodge — Budgetfreundlich</li>
+            </ul>
+            <p style="font-size:.85rem;color:var(--mc-text-muted);margin-top:.75rem">Beste Zeit: Ganzjährig (Trockenzeit Juni–Oktober)</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <span class="chip" style="background:#6B4C2A;color:white;margin-bottom:.75rem">Tarangire</span>
+            <h3 class="photo-card__title">Tarangire-Lodges</h3>
+            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.4rem;font-size:.9rem;color:var(--mc-text-muted)">
+              <li>• Oliver's Camp — Exklusiv</li>
+              <li>• Tarangire Sopa Lodge — Baumwipfel</li>
+              <li>• Swala Tented Camp — Luxuriös</li>
+              <li>• Tarangire Safari Lodge — Komfort</li>
+            </ul>
+            <p style="font-size:.85rem;color:var(--mc-text-muted);margin-top:.75rem">Beste Zeit: Juni–Oktober (Elefantenversammlungen)</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <span class="chip" style="background:#1A6B8A;color:white;margin-bottom:.75rem">Lake Manyara</span>
+            <h3 class="photo-card__title">Lake Manyara-Lodges</h3>
+            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.4rem;font-size:.9rem;color:var(--mc-text-muted)">
+              <li>• &amp;Beyond Lake Manyara Tree Lodge</li>
+              <li>• Lake Manyara Serena Lodge</li>
+              <li>• Manyara Ranch Conservancy</li>
+              <li>• Lake Manyara Hotel</li>
+            </ul>
+            <p style="font-size:.85rem;color:var(--mc-text-muted);margin-top:.75rem">Beste Zeit: Ganzjährig (Flamingos das ganze Jahr)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <PhotoGallery images={galleryImages} title="Fotogalerie: Safari-Lodges in Tansania" />
+
+  <!-- TIKTOK -->
+  <SafariTikTok category="lodges" lang="de" />
+
+  <!-- CTA -->
+  <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2>Ihre Safari-Lodge erwartet Sie</h2>
+        <p>Kontaktieren Sie uns für individuelle Lodge-Empfehlungen, Verfügbarkeitsprüfung und die besten Preise für Ihre Tansania-Safari 2026.</p>
+      </div>
+      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/de/kontakt/" class="btn btn--primary btn--lg">Lodge anfragen</a>
+        <a href="/de/unterkuenfte/zeltcamps/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Zeltcamps ansehen</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>
+
+<style>
+@media (max-width: 768px) {
+  .card-grid--2 { grid-template-columns: 1fr !important; }
+}
+</style>

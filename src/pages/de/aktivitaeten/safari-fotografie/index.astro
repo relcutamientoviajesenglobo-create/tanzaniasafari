@@ -1,0 +1,211 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import SafariTikTok from '../../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../../components/PhotoGallery.astro';
+
+const lang = 'de';
+const title = 'Safari-Fotografie in Tansania — Vollständiger Leitfaden für Fotografen';
+const description = 'Meistern Sie die Safari-Fotografie in Tansania mit unserem vollständigen Leitfaden. Erfahren Sie alles über die beste Kameraausrüstung, Techniken, optimale Lichtverhältnisse und Top-Fotografie-Standorte in der Serengeti und am Ngorongoro.';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const breadcrumbs = [
+  { label: 'Aktivitäten', href: '/de/aktivitaeten/' },
+  { label: 'Safari-Fotografie' },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'TouristAttraction',
+  name: 'Safari-Fotografie in Tansania',
+  description: description,
+  url: 'https://safaritanzania.info/de/aktivitaeten/safari-fotografie/',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Arusha',
+    addressRegion: 'Arusha Region',
+    addressCountry: 'TZ',
+  },
+};
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=400&fit=crop&auto=format', alt: 'Löwen-Porträt in perfekter Goldene-Stunden-Beleuchtung – Safari-Fotografie' },
+  { src: 'https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&h=400&fit=crop&auto=format', alt: 'Leopard in einem Akazienbaum – ideales Wildtierfotografie-Motiv' },
+  { src: 'https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=400&fit=crop&auto=format', alt: 'Giraffensilhouette gegen den Abendhimmel – dramatische Komposition' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'Elefantenherde im goldenen Licht für Wildtierfotografie' },
+  { src: 'https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=400&fit=crop&auto=format', alt: 'Gnus beim Flussübergang – dramatische Aktionsfotografie' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Weite Serengeti-Landschaft – perfekte Umgebungsfotografie' },
+];
+---
+
+<BaseLayout title={title} description={description} schema={schema} breadcrumbs={breadcrumbs} lang={lang}>
+  <Header slot="header" lang={lang} />
+  <Footer slot="footer" lang={lang} />
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <span class="chip chip--green">Fotografie</span>
+        <h1>Safari-Fotografie in Tansania</h1>
+        <p>Halten Sie die rohe Schönheit von Afrikas ikonischer Tierwelt fest. Von der großen Gnuwanderung bis zum Leopard auf einem Akazienast bietet Tansania in jedem Winkel seiner Nationalparks erstklassige Fotografiemöglichkeiten.</p>
+        <div class="hero__actions">
+          <a href="/de/preise/" class="btn btn--primary btn--lg">Preise 2026 ansehen</a>
+          <a href="/de/kontakt/" class="btn btn--outline btn--lg">Jetzt anfragen</a>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__photo-frame">
+          <div class="hero__deco hero__deco--tr"></div>
+          <div class="hero__deco hero__deco--bl"></div>
+          <img
+            src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop"
+            alt="Fotograf hält einen Löwen in der Serengeti-Savanne bei Goldener Stunde fest"
+            width="600"
+            height="400"
+            loading="eager"
+            style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:inherit"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Essenzielle Ausrüstung -->
+  <section class="section section--gray">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:.75rem">Essenzielle Kameraausrüstung für die Safari</h2>
+      <p style="text-align:center;max-width:620px;margin:0 auto 3rem">Die richtige Ausrüstung mitzubringen entscheidet zwischen Schnappschüssen und beeindruckenden Wildtierbildern. Das empfehlen erfahrene Safari-Fotografen.</p>
+
+      <div class="service-cards" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+        <div class="service-card">
+          <span style="font-size:2.2rem">📷</span>
+          <h3 style="color:var(--mc-green)">Kameragehäuse</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">Eine Vollformat-DSLR oder spiegellose Kamera mit schnellem Autofokus und hoher ISO-Leistung. Nehmen Sie ein Ersatzgehäuse für Notfälle mit.</p>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">🔭</span>
+          <h3 style="color:var(--mc-green)">Teleobjektive</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">Ein 100–400 mm oder 200–600 mm Zoom ist unverzichtbar. Für Nahaufnahmen dient ein 70–200 mm f/2.8 auch als Porträtobjektiv für Masai-Kulturaufnahmen.</p>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">💾</span>
+          <h3 style="color:var(--mc-green)">Speicher &amp; Strom</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">Bringen Sie viele Hochgeschwindigkeitsspeicherkarten (mindestens 128 GB pro Tag) und eine portable Festplatte mit. Solarladegeräte und Ersatzakkus sind im Busch unverzichtbar.</p>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">🎒</span>
+          <h3 style="color:var(--mc-green)">Zubehör</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">Ein Bohnensack zur Fahrzeugstabilisierung, ein Objektivreinigungsset für staubige Bedingungen, eine Regenschutzabdeckung und ein leichtes Einbeinstativ für Wandersafaris.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Beste Standorte -->
+  <section class="section">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:.75rem">Beste Fotografiestandorte</h2>
+      <p style="text-align:center;max-width:620px;margin:0 auto 3rem">Tansanias vielfältige Landschaften bieten unvergleichliche Kulissen für Wildtierfotografie. Jeder Park bietet einzigartige Motive und Lichtverhältnisse.</p>
+
+      <div class="card-grid card-grid--3" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+        <a href="/de/nationalparks/" class="photo-card" style="text-decoration:none">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1535338454528-1b5c8e9b0d64?w=400&h=300&fit=crop" alt="Gnumigration beim Überqueren des Mara-Flusses in der Serengeti" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Nationalpark</span>
+            <p class="photo-card__title">Serengeti-Nationalpark</p>
+            <p style="font-size:.9rem;color:var(--mc-text-muted)">Ikonische Landschaften, die Große Migration, Großkatzen und endlose Goldene-Stunden-Möglichkeiten auf 14.750 km² Savanne.</p>
+          </div>
+        </a>
+        <a href="/de/nationalparks/" class="photo-card" style="text-decoration:none">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1621414050946-1b936a78491d?w=400&h=300&fit=crop" alt="Flamingos im Ngorongoro-Krater mit nebeliger Kulisse" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">UNESCO-Welterbe</span>
+            <p class="photo-card__title">Ngorongoro-Krater</p>
+            <p style="font-size:.9rem;color:var(--mc-text-muted)">Dichte Tierwelt in einer begrenzten Caldera schafft Nahaufnahmen. Dramatischer Nebel und Kraterrandperspektiven für beeindruckende Aufnahmen.</p>
+          </div>
+        </a>
+        <a href="/de/nationalparks/" class="photo-card" style="text-decoration:none">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=400&h=300&fit=crop" alt="Elefantenherde neben Baobab-Bäumen in Tarangire" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Geheimtipp</span>
+            <p class="photo-card__title">Tarangire-Nationalpark</p>
+            <p style="font-size:.9rem;color:var(--mc-text-muted)">Riesige Elefantenherden, uralte Baobab-Bäume und wenige Touristen für intime Fotografiemomente das ganze Jahr über.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fotografietipps -->
+  <section class="section section--gray">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:.75rem">Profi-Fotografietipps</h2>
+      <p style="text-align:center;max-width:620px;margin:0 auto 3rem">Techniken, die große Safari-Fotografen von der Masse abheben. Wenden Sie diese Prinzipien an, um Bilder zu erstellen, die eine Geschichte erzählen.</p>
+
+      <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem">
+        <div style="display:flex;gap:1rem;align-items:flex-start">
+          <span style="font-size:1.8rem;flex-shrink:0">🌅</span>
+          <div>
+            <h3 style="font-size:1.1rem;margin-bottom:.35rem">Goldene-Stunden-Timing</h3>
+            <p style="font-size:.92rem">Das beste Licht in Tansania liegt zwischen 6:00–8:30 Uhr und 16:30–18:30 Uhr. Planen Sie Pirschfahrten rund um diese Zeitfenster für warmes, gerichtetes Licht, das Ihren Motiven Tiefe verleiht.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;align-items:flex-start">
+          <span style="font-size:1.8rem;flex-shrink:0">👁️</span>
+          <div>
+            <h3 style="font-size:1.1rem;margin-bottom:.35rem">Augenhöhen-Perspektive</h3>
+            <p style="font-size:.92rem">Fotografieren Sie wann immer möglich auf Augenhöhe des Tieres. Dies schafft eine intime Verbindung zum Betrachter. Nutzen Sie Bohnensäcke am Fahrzeugfenster für stabilisierte Tiefwinkelaufnahmen.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;align-items:flex-start">
+          <span style="font-size:1.8rem;flex-shrink:0">🎯</span>
+          <div>
+            <h3 style="font-size:1.1rem;margin-bottom:.35rem">Verhalten im Fokus</h3>
+            <p style="font-size:.92rem">Porträts sind großartig, aber Verhaltensaufnahmen erzählen reichhaltigere Geschichten. Warten Sie auf ein Gähnen, eine Jagd, Körperpflege oder spielerische Interaktionen, anstatt zur nächsten Sichtung zu eilen.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;align-items:flex-start">
+          <span style="font-size:1.8rem;flex-shrink:0">🌍</span>
+          <div>
+            <h3 style="font-size:1.1rem;margin-bottom:.35rem">Umgebungsgeschichten erzählen</h3>
+            <p style="font-size:.92rem">Beziehen Sie die Landschaft in Ihren Rahmen ein. Ein einsamer Elefant vor einem weiten Serengeti-Himmel erzählt eine viel größere Geschichte als ein enger Ausschnitt. Weitwinkelobjektive für dramatischen Kontext.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fotogalerie -->
+  <section class="section">
+    <div class="container">
+      <PhotoGallery images={galleryImages} title="Fotogalerie: Safari-Fotografie" />
+    </div>
+  </section>
+
+  <!-- TIKTOK -->
+  <SafariTikTok category="serengeti" lang="de" />
+
+  <!-- Foto-Safari CTA -->
+  <section class="section section--green">
+    <div class="container" style="text-align:center;position:relative">
+      <div style="position:absolute;top:-30px;right:0;opacity:.12;pointer-events:none;color:#D4A017">
+        <Fragment set:html={ACACIA_LARGE} />
+      </div>
+      <h2 style="color:white;margin-bottom:.75rem">Bereit, die Wildnis fotografisch festzuhalten?</h2>
+      <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:520px;margin-left:auto;margin-right:auto">Unsere spezialisierten Foto-Safaris beinhalten offene Fahrzeuge, Guides, die das Tierverhalten verstehen, und optimale Positionierung für die besten Aufnahmen.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/de/preise/" class="btn btn--primary btn--lg">Preise 2026 ansehen</a>
+        <a href="/de/kontakt/" class="btn btn--outline-white btn--lg" style="border-color:white;color:white">Kontakt aufnehmen</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

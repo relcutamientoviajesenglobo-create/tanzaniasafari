@@ -11,7 +11,7 @@ const description = 'Guias completas para tu viaje a Tanzania: que llevar, mejor
 
 const allPosts = await getCollection('blog');
 const posts = allPosts
-  .filter(post => !post.slug.startsWith('en-') && post.data.silo === 'guias-viaje')
+  .filter(post => !post.slug.startsWith('en-') && !post.slug.startsWith('de-') && !post.slug.startsWith('fr-') && post.data.silo === 'guias-viaje')
   .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
 
 const breadcrumbs = [

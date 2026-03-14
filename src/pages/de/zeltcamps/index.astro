@@ -1,0 +1,197 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import SafariTikTok from '../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../components/PhotoGallery.astro';
+import { lodging } from '../../../i18n/schema';
+
+const lang = 'de';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const schema = lodging('Campground', {
+  name: 'Safari-Zeltcamps Tansania — Authentische Wildniserlebnisse',
+  description: 'Entdecken Sie Tansanias beste Safari-Zeltcamps. Schlafen Sie unter Akazienbäumen, hören Sie Löwen brüllen und erleben Sie die Serengeti hautnah unter dem Sternenhimmel.',
+  url: 'https://safaritanzania.info/de/zeltcamps/',
+});
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop&auto=format', alt: 'Safari-Zeltcamp in der Serengeti — Luxus-Zelt unter Akazienbäumen' },
+  { src: 'https://images.unsplash.com/photo-1567608285969-48f170c1b1f8?w=600&h=400&fit=crop&auto=format', alt: 'Glamping-Zelt mit offener Veranda und Savannenpanorama' },
+  { src: 'https://images.unsplash.com/photo-1549366021-9f761d450615?w=600&h=400&fit=crop&auto=format', alt: 'Lagerfeuer-Abend im Safari-Zeltcamp mit Blick auf die Sterne' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'Morgennebel über einem Zeltcamp in der Ngorongoro-Region' },
+  { src: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=400&fit=crop&auto=format', alt: 'Löwe im Gras nahe einem Safari-Zeltcamp' },
+  { src: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=400&fit=crop&auto=format', alt: 'Gepard auf einem Baum — typisches Erlebnis bei Namiri Plains Camp' },
+];
+---
+
+<BaseLayout
+  title="Safari-Zeltcamps Tansania — Authentische Wildniserlebnisse"
+  description="Tansanias beste Safari-Zeltcamps 2026. Schlafen Sie inmitten der Serengeti, hören Sie Löwen brüllen und erleben Sie Afrikas Wildnis unter dem Sternenhimmel. Jetzt buchen!"
+  lang={lang}
+  schema={schema}
+  breadcrumbs={[{ label: 'Safari-Zeltcamps' }]}
+>
+  <Header slot="header" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero" style="position:relative;overflow:hidden">
+    <div style="position:absolute;top:-20px;right:-40px;opacity:.08;pointer-events:none;color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--green">Das Original-Safarigefühl</span>
+          <h1 class="hero__title">Safari-Zeltcamps in Tansania</h1>
+          <p class="hero__desc">Entdecken Sie Tansanias Nationalparks von innen heraus. In einem Safari-Zeltcamp schlafen Sie buchstäblich im Herzen der Serengeti — mit nichts als einem Leinwandzelt zwischen Ihnen und den schlafenden Löwen. Das ist Afrika, wie es sich seit Generationen angefühlt hat.</p>
+          <div class="hero__actions">
+            <a href="/de/kontakt/" class="btn btn--primary btn--lg">Camp reservieren</a>
+            <a href="/de/preise/" class="btn btn--outline btn--lg">Preise ansehen</a>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <div class="hero__deco hero__deco--bl"></div>
+            <img
+              src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=640&fit=crop&auto=format"
+              alt="Safari-Zeltcamp unter Akazienbäumen in der Serengeti"
+              width="800" height="640" loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAMP-TYPEN -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Camp-Stile</span>
+        <h2>Welcher Camp-Typ passt zu Ihnen?</h2>
+        <p>Von klassischem Buschcamping bis zu luxuriösem Glamping — Tansanias Zeltcamps decken jeden Abenteuergeist ab.</p>
+      </div>
+      <div class="card-grid card-grid--3 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1567608285969-48f170c1b1f8?w=600&h=400&fit=crop&auto=format" alt="Glamping-Zelt mit Luxus-Ausstattung" width="600" height="400" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Glamping</span>
+            <h3 class="photo-card__title">Luxus-Zeltcamps</h3>
+            <p style="color:var(--mc-text-muted);font-size:.9rem">Kingsize-Betten, Holzböden, Private Badezimmer und ein Butler-Service — alles in einem Leinwandzelt mit Naturklängen. Das Beste aus beiden Welten.</p>
+            <p style="color:var(--mc-green);font-weight:700;margin-top:.75rem">ab $600/Nacht</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default;border:2px solid var(--mc-green)">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop&auto=format" alt="Komfort-Zeltcamp in der Serengeti" width="600" height="400" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Beliebt</span>
+            <h3 class="photo-card__title">Komfort-Zeltcamps</h3>
+            <p style="color:var(--mc-text-muted);font-size:.9rem">Komfortable Zelte mit eigenem Badezimmer, gutem Bett und hervorragender Küche. Das ideale Gleichgewicht zwischen echtem Wildniserlebnis und notwendigem Komfort.</p>
+            <p style="color:var(--mc-green);font-weight:700;margin-top:.75rem">ab $350/Nacht</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1549366021-9f761d450615?w=600&h=400&fit=crop&auto=format" alt="Busch-Camp einfache Unterkunft" width="600" height="400" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Abenteuer</span>
+            <h3 class="photo-card__title">Busch-Camps</h3>
+            <p style="color:var(--mc-text-muted);font-size:.9rem">Einfachere Zelte für den echten Abenteurer. Geteilte Einrichtungen, einfache Küche, aber unschlagbare Lage mitten im Wildtierparadies.</p>
+            <p style="color:var(--mc-green);font-weight:700;margin-top:.75rem">ab $150/Nacht</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAS ERWARTET SIE -->
+  <section class="section" style="position:relative;overflow:hidden">
+    <div style="position:absolute;top:20px;left:-30px;opacity:.05;pointer-events:none;color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">Ein typischer Tag</span>
+        <h2>Ein Tag im Safari-Zeltcamp</h2>
+        <p>Das Leben in einem Zeltcamp folgt dem Rhythmus der Natur und der Tiere.</p>
+      </div>
+      <div class="card-grid card-grid--2 animate-on-scroll delay-1" style="gap:2rem">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title" style="display:flex;align-items:center;gap:.5rem">
+              <span style="background:var(--mc-amber,#D4A017);color:white;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0">05:30</span>
+              Frühaufstieg
+            </h3>
+            <p style="color:var(--mc-text-muted);font-size:.9rem">Ein heißes Getränk und ein leichtes Frühstück vor der Morgendämmerung. Die Natur erwacht — und die besten Wildtierbeobachtungen warten bei Sonnenaufgang.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title" style="display:flex;align-items:center;gap:.5rem">
+              <span style="background:var(--mc-green);color:white;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0">06:00</span>
+              Morgenpirsch
+            </h3>
+            <p style="color:var(--mc-text-muted);font-size:.9rem">3–4 Stunden Pirschfahrt in den besten Wildtiergebieten. Raubkatzen sind am aktivsten in der Morgenkühle — perfekte Zeit für unvergessliche Begegnungen.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title" style="display:flex;align-items:center;gap:.5rem">
+              <span style="background:#6B4C2A;color:white;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0">12:00</span>
+              Mittagspause
+            </h3>
+            <p style="color:var(--mc-text-muted);font-size:.9rem">Rückkehr ins Camp, Duschen und ausgiebiges Mittagessen. Die Hitze des Mittags ist die ideale Zeit für Entspannung, Lektüre und Vogelbeobachtung vom Camp aus.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title" style="display:flex;align-items:center;gap:.5rem">
+              <span style="background:#1A6B8A;color:white;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0">19:00</span>
+              Sonnenuntergang &amp; Lagerfeuer
+            </h3>
+            <p style="color:var(--mc-text-muted);font-size:.9rem">Drinks beim Sonnenuntergang, gemeinsames Abendessen und Sternenbeobachtung am Lagerfeuer. Guides erzählen Geschichten über die Tiere und den Busch.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <PhotoGallery images={galleryImages} title="Fotogalerie: Safari-Zeltcamps in Tansania" />
+
+  <!-- TIKTOK -->
+  <SafariTikTok category="lodges" lang="de" />
+
+  <!-- CTA -->
+  <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2>Erleben Sie Afrika wie die Pioniere</h2>
+        <p>Reservieren Sie Ihren Platz in einem der authentischsten Safariunterkünfte der Welt. Plätze für 2026 sind begrenzt.</p>
+      </div>
+      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/de/kontakt/" class="btn btn--primary btn--lg">Camp buchen</a>
+        <a href="/de/lodges/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Lodges ansehen</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>
+
+<style>
+@media (max-width: 768px) {
+  .card-grid--2 { grid-template-columns: 1fr !important; }
+}
+</style>

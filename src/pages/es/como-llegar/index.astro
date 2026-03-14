@@ -3,6 +3,17 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import { place, faqPage } from '../../../i18n/schema';
+import SafariTikTok from '../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../components/PhotoGallery.astro';
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1436491865332-7a61a109db05?w=600&h=400&fit=crop&auto=format', alt: 'Aeropuerto Internacional del Kilimanjaro en Tanzania' },
+  { src: 'https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&h=400&fit=crop&auto=format', alt: 'Monte Kilimanjaro visto desde la sabana de Tanzania' },
+  { src: 'https://images.unsplash.com/photo-1611348586804-61bf6c080437?w=600&h=400&fit=crop&auto=format', alt: 'Ciudad de Arusha con el Monte Meru de fondo' },
+  { src: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=400&fit=crop&auto=format', alt: 'Vehículo 4x4 de traslado desde el aeropuerto a los parques' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Ruta terrestre hacia el Serengeti desde Arusha' },
+  { src: 'https://images.unsplash.com/photo-1529074763233-c6fc62e6a0f0?w=600&h=400&fit=crop&auto=format', alt: 'Vista aérea de Dar es Salaam, Tanzania' },
+];
 
 const title = 'Como Llegar a Tanzania — Vuelos, Visados y Transporte 2026';
 const description = 'Guia completa para llegar a Tanzania: vuelos al aeropuerto de Kilimanjaro (JRO), requisitos de visa, vacunas, transporte terrestre desde Arusha y consejos de viaje 2026.';
@@ -228,6 +239,10 @@ const schema = [
       </div>
     </div>
   </section>
+
+  <!-- TIKTOK & GALLERY -->
+  <SafariTikTok category="general" lang="es" />
+  <PhotoGallery images={galleryImages} title="Galería: Llegar a Tanzania" />
 
   <!-- CTA -->
   <section class="section section--green">

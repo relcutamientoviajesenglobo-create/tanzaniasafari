@@ -23,8 +23,8 @@ export function getNavItems(lang: Lang) {
       {
         label: 'Lodging', href: '/lodging/',
         children: [
-          { label: '🏨 Safari Lodges',  href: '/lodging/safari-lodges/' },
-          { label: '⛺ Tented Camps',    href: '/lodging/tented-camps/' },
+          { label: '🏨 Safari Lodges',  href: '/lodging/lodges/' },
+          { label: '⛺ Tented Camps',    href: '/lodging/camps/' },
         ]
       },
       { label: 'Prices',          href: '/prices/' },
@@ -53,10 +53,10 @@ export function getNavItems(lang: Lang) {
         ]
       },
       {
-        label: 'Unterkunft', href: '/de/unterkunft/',
+        label: 'Unterkünfte', href: '/de/unterkuenfte/',
         children: [
-          { label: '🏨 Safari Lodges',  href: '/de/unterkunft/lodges/' },
-          { label: '⛺ Camps',           href: '/de/unterkunft/camps/' },
+          { label: '🏨 Safari Lodges',  href: '/de/unterkuenfte/lodges/' },
+          { label: '⛺ Zeltcamps',       href: '/de/unterkuenfte/zeltcamps/' },
         ]
       },
       { label: 'Preise',    href: '/de/preise/' },
@@ -88,7 +88,7 @@ export function getNavItems(lang: Lang) {
         label: 'Hébergement', href: '/fr/hebergement/',
         children: [
           { label: '🏨 Lodges',       href: '/fr/hebergement/lodges/' },
-          { label: '⛺ Campements',    href: '/fr/hebergement/campements/' },
+          { label: '⛺ Camps',         href: '/fr/hebergement/camps/' },
         ]
       },
       { label: 'Prix',            href: '/fr/prix/' },

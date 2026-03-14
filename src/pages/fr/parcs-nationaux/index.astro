@@ -1,0 +1,242 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { touristAttraction, faqPage } from '../../../i18n/schema';
+import SafariTikTok from '../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../components/PhotoGallery.astro';
+
+const lang = 'fr';
+const title = 'Parcs Nationaux de Tanzanie — Serengeti, Ngorongoro, Tarangire & Plus';
+const description = 'Découvrez les parcs nationaux de Tanzanie : Serengeti, cratère du Ngorongoro, Tarangire, Lac Manyara, Ruaha et Selous. Faune exceptionnelle, paysages inoubliables, Grande Migration annuelle.';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Troupeau de gnous lors de la Grande Migration dans le Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&h=400&fit=crop&auto=format', alt: 'Éléphants au point d\'eau dans le parc de Tarangire' },
+  { src: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=400&fit=crop&auto=format', alt: 'Lion mâle dans le cratère du Ngorongoro en Tanzanie' },
+  { src: 'https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=400&fit=crop&auto=format', alt: 'Vol en montgolfière au-dessus des plaines du Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'Zèbres et flamants roses au lac Manyara en Tanzanie' },
+  { src: 'https://images.unsplash.com/photo-1605640840605-14ac1855827b?w=600&h=400&fit=crop&auto=format', alt: 'Guépard au repos sur un rocher dans la savane tanzanienne' },
+];
+
+const parks = [
+  {
+    name: 'Serengeti',
+    tag: 'Patrimoine mondial UNESCO',
+    img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=500&h=350&fit=crop&auto=format',
+    alt: 'Plaines sans fin du Serengeti avec troupeau de gnous en migration',
+    desc: 'Le parc national le plus célèbre d\'Afrique. Les plaines sans fin du Serengeti accueillent la Grande Migration annuelle de 1,5 million de gnous et 250 000 zèbres. Le parc abrite les cinq grands animaux africains et des densités exceptionnelles de lions et de guépards.',
+    highlight: 'Grande Migration (juil.–août)',
+  },
+  {
+    name: 'Cratère du Ngorongoro',
+    tag: 'Plus grand cratère intact du monde',
+    img: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&h=350&fit=crop&auto=format',
+    alt: 'Vue aérienne du cratère du Ngorongoro en Tanzanie',
+    desc: 'La plus grande caldeira volcanique intacte du monde, large de 19 km, avec 25 000 animaux résidents permanents. Rhinocéros noirs, lions, éléphants, buffles et hippos dans un écrin naturel à couper le souffle. Les brumes matinales créent des paysages d\'une beauté mystérieuse.',
+    highlight: 'Rhinocéros noirs et Big Five',
+  },
+  {
+    name: 'Tarangire',
+    tag: 'Capitale des éléphants',
+    img: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&h=350&fit=crop&auto=format',
+    alt: 'Éléphants sous les baobabs géants dans le parc de Tarangire',
+    desc: 'Connu pour ses immenses baobabs millénaires et ses concentrations record d\'éléphants en saison sèche (plus de 3 000 individus). La rivière Tarangire attire une faune extraordinaire : lions, léopards, lions, girafes et plus de 550 espèces d\'oiseaux.',
+    highlight: 'Plus de 3 000 éléphants en saison sèche',
+  },
+  {
+    name: 'Lac Manyara',
+    tag: 'Lions grimpeurs et flamants',
+    img: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=500&h=350&fit=crop&auto=format',
+    alt: 'Flamants roses sur le lac Manyara en Tanzanie',
+    desc: 'Un parc compact mais fascinant, niché entre le Rift africain et le lac alcalin. Célèbre pour ses lions qui grimpent aux arbres et ses nuées de flamants roses. La forêt tropicale dense abrite des babouins et des lémuriens, contrastant avec les prairies ouvertes du bord du lac.',
+    highlight: 'Lions grimpeurs et flamants roses',
+  },
+  {
+    name: 'Selous / Nyerere',
+    tag: 'Plus grande réserve d\'Afrique',
+    img: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=500&h=350&fit=crop&auto=format',
+    alt: 'Safaris en bateau sur le fleuve Rufiji dans la réserve de Selous',
+    desc: 'La plus grande réserve naturelle d\'Afrique subsaharienne (presque aussi vaste que la Suisse). Inégalée pour les safaris en bateau sur le fleuve Rufiji, les marches avec des rangers et des densités exceptionnelles de buffles, éléphants et chiens sauvages.',
+    highlight: 'Safari en bateau et marches en brousse',
+  },
+  {
+    name: 'Ruaha',
+    tag: 'Tanzanie sauvage et préservée',
+    img: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=500&h=350&fit=crop&auto=format',
+    alt: 'Paysage sauvage du parc national de Ruaha avec éléphants',
+    desc: 'Le deuxième plus grand parc de Tanzanie, encore peu fréquenté des touristes mais extraordinaire. Paysages semi-arides traversés par la rivière Great Ruaha. Population de lions parmi les plus importantes du monde, plus des espèces rares comme le lycaon et l\'éland du Cap.',
+    highlight: 'Plus de 500 lions et safaris exclusifs',
+  },
+];
+
+const faqs = [
+  { question: 'Quelle est la différence entre une réserve et un parc national ?', answer: 'Un parc national est entièrement protégé : aucune habitation, aucune chasse. Une réserve de chasse (comme Selous) permet une utilisation contrôlée des ressources. Dans les deux cas, l\'observation de la faune est l\'activité principale et les deux offrent des expériences animalières extraordinaires.' },
+  { question: 'Peut-on visiter plusieurs parcs en un seul safari ?', answer: 'Oui, nos forfaits multi-jours sont conçus pour combiner plusieurs parcs. Un safari de 5 jours couvre typiquement Tarangire, Ngorongoro et le Serengeti. Un forfait de 7 jours peut y ajouter le lac Manyara. Nous optimisons les itinéraires pour minimiser les temps de route.' },
+  { question: 'Les parcs sont-ils accessibles toute l\'année ?', answer: 'Oui, tous nos parcs principaux sont ouverts toute l\'année. La saison sèche (juin–octobre) offre les meilleures conditions d\'observation. Pendant la saison des pluies (avril–mai), certaines pistes deviennent difficiles mais les parcs restent accessibles et offrent de splendides paysages verdoyants.' },
+];
+
+const schema = [
+  touristAttraction({
+    name: 'Parcs Nationaux de Tanzanie',
+    description,
+    url: 'https://safaritanzania.info/fr/parcs-nationaux/',
+  }),
+  faqPage(faqs),
+];
+
+const breadcrumbs = [
+  { label: 'Parcs Nationaux' },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="/fr/parcs-nationaux/"
+  schema={schema}
+  breadcrumbs={breadcrumbs}
+  lang={lang}
+>
+  <Header slot="header" lang={lang} />
+  <Footer slot="footer" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <span class="chip chip--green">Faune sauvage</span>
+        <h1 class="hero__title">Parcs Nationaux de Tanzanie</h1>
+        <p class="hero__desc">La Tanzanie abrite certains des parcs nationaux les plus spectaculaires de la planète. Des plaines infinies du Serengeti au cratère mystérieux du Ngorongoro, chaque destination offre un spectacle naturel unique.</p>
+        <div class="hero__actions">
+          <a href="/fr/prix/" class="btn btn--primary btn--lg">Voir les forfaits</a>
+          <a href="/fr/contact/" class="btn btn--outline btn--lg">Demander un devis</a>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__photo-frame">
+          <div class="hero__deco hero__deco--tr"></div>
+          <div class="hero__deco hero__deco--bl"></div>
+          <img
+            src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&h=600&fit=crop&auto=format"
+            alt="Troupeau de gnous lors de la Grande Migration dans le Serengeti en Tanzanie"
+            width="600"
+            height="480"
+            loading="eager"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARTE DES PARCS -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header">
+        <span class="chip chip--amber">Découverte</span>
+        <h2>Les Grands Parcs de Tanzanie</h2>
+        <p>Chaque parc possède sa propre personnalité et ses propres trésors fauniques. Voici les incontournables de tout safari tanzanien.</p>
+      </div>
+
+      <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem">
+        {parks.map((park) => (
+          <div class="photo-card">
+            <div class="photo-card__img">
+              <img src={park.img} alt={park.alt} width="500" height="350" loading="lazy">
+            </div>
+            <div class="photo-card__body">
+              <span class="photo-card__tag">{park.tag}</span>
+              <p class="photo-card__title">{park.name}</p>
+              <p style="font-size:.9rem;color:#5A6B52;margin-bottom:.75rem">{park.desc}</p>
+              <div style="display:flex;align-items:center;gap:.5rem">
+                <svg viewBox="0 0 20 20" width="14" height="14" fill="#D4A017"><path d="M10 0a10 10 0 100 20 10 10 0 000-20zm4.3 7.3l-5 5a1 1 0 01-1.4 0l-2-2a1 1 0 111.4-1.4L8.6 10l4.3-4.3a1 1 0 111.4 1.4z"/></svg>
+                <span style="font-size:.82rem;color:#3D4B36;font-weight:600">{park.highlight}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- LES 5 GRANDS -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <span class="chip chip--green">Big Five</span>
+        <h2>Observer les Cinq Grands</h2>
+        <p>La Tanzanie est l'une des rares destinations au monde où l'on peut observer les cinq grands animaux d'Afrique en liberté dans leur habitat naturel.</p>
+      </div>
+
+      <div class="service-cards" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr))">
+        <div class="service-card" style="text-align:center">
+          <span style="font-size:2.5rem">🦁</span>
+          <p class="service-card__title">Lion</p>
+          <p class="service-card__desc" style="font-size:.85rem">Serengeti, Ngorongoro, Lac Manyara (grimpeurs), Ruaha</p>
+        </div>
+        <div class="service-card" style="text-align:center">
+          <span style="font-size:2.5rem">🐘</span>
+          <p class="service-card__title">Éléphant</p>
+          <p class="service-card__desc" style="font-size:.85rem">Tarangire (record), Serengeti, Selous, Ruaha</p>
+        </div>
+        <div class="service-card" style="text-align:center">
+          <span style="font-size:2.5rem">🦏</span>
+          <p class="service-card__title">Rhinocéros noir</p>
+          <p class="service-card__desc" style="font-size:.85rem">Ngorongoro (population protégée), Selous</p>
+        </div>
+        <div class="service-card" style="text-align:center">
+          <span style="font-size:2.5rem">🐆</span>
+          <p class="service-card__title">Léopard</p>
+          <p class="service-card__desc" style="font-size:.85rem">Serengeti, Tarangire, Lac Manyara, Selous</p>
+        </div>
+        <div class="service-card" style="text-align:center">
+          <span style="font-size:2.5rem">🦬</span>
+          <p class="service-card__title">Buffle</p>
+          <p class="service-card__desc" style="font-size:.85rem">Tous les parcs principaux, très commun en Tanzanie</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--gray">
+    <div class="container" style="max-width:800px">
+      <div class="section__header">
+        <h2>Questions sur les Parcs Nationaux</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details class="faq-item">
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <PhotoGallery images={galleryImages} title="Galerie — Parcs nationaux de Tanzanie" />
+  <SafariTikTok category="wildlife" lang="fr" />
+
+  <!-- CTA -->
+  <section class="section section--green">
+    <div class="container" style="text-align:center;position:relative">
+      <div style="position:absolute;top:-30px;right:0;opacity:.12;pointer-events:none;color:#D4A017">
+        <Fragment set:html={ACACIA_LARGE} />
+      </div>
+      <h2 style="color:white;margin-bottom:.75rem">Réservez votre Safari dans les Parcs</h2>
+      <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:520px;margin-left:auto;margin-right:auto">Nos guides connaissent chaque centimètre de ces parcs. Ils vous emmèneront là où les autres ne vont pas pour des observations animalières inoubliables.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/fr/prix/" class="btn btn--amber btn--lg">Voir les tarifs 2026</a>
+        <a href="/fr/contact/" class="btn btn--outline-white btn--lg">Demander un devis</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

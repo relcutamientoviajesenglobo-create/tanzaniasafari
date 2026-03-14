@@ -1,0 +1,7 @@
+# Redirect old /en/ prefixed paths to root (EN is default)
+/en/*  /:splat  301
+
+# Language detection fallback
+/de  /de/  301
+/fr  /fr/  301
+/es  /es/  301

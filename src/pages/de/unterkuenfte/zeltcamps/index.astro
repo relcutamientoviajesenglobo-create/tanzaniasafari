@@ -1,0 +1,236 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import SafariTikTok from '../../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../../components/PhotoGallery.astro';
+import { lodging } from '../../../../i18n/schema';
+
+const lang = 'de';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const schema = lodging('Campground', {
+  name: 'Safari-Zeltcamps in Tansania — Authentische Buscherlebnisse',
+  description: 'Entdecken Sie Tansanias beste Safari-Zeltcamps. Namiri Plains, Kichakani Serengeti, Lemala Camps — authentische Buscherlebnisse unter dem afrikanischen Sternenhimmel.',
+  url: 'https://safaritanzania.info/de/unterkuenfte/zeltcamps/',
+});
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop&auto=format', alt: 'Namiri Plains Camp — Luxus-Zelt in der östlichen Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1567608285969-48f170c1b1f8?w=600&h=400&fit=crop&auto=format', alt: 'Glamping-Zelt mit Kingsize-Bett und Holzdeck in der Savanne' },
+  { src: 'https://images.unsplash.com/photo-1549366021-9f761d450615?w=600&h=400&fit=crop&auto=format', alt: 'Abendessen am Lagerfeuer im Safari-Zeltcamp' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Sonnenuntergang vom Zeltcamp mit Savannenpanorama' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'Lemala Camp — Morgennebel über der Serengeti Savanne' },
+  { src: 'https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=400&fit=crop&auto=format', alt: 'Sternenhimmel über einem Zeltcamp in der Serengeti' },
+];
+
+const camps = [
+  {
+    name: 'Namiri Plains Camp',
+    category: 'Luxus-Zeltcamp',
+    location: 'Östliche Serengeti',
+    price: 'ab $850/Nacht',
+    img: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop&auto=format',
+    alt: 'Namiri Plains Camp — exklusives Zeltcamp in der östlichen Serengeti',
+    desc: 'Namiri Plains ist bekannt als eines der besten Orte in Afrika zur Beobachtung von Geparden. Das Camp verfügt über 8 geräumige Zelte mit privatem Badezimmer, Holzböden und einer offenen Veranda. Die östliche Serengeti ist für Gäste dieses privaten Camps fast alleine — ein unvergleichliches Erlebnis.',
+    highlights: ['Bestes Geparden-Sichtgebiet', '8 private Luxus-Zelte', 'Privates Wildtierreservat', 'All-inclusive inklusive Pirschfahrten'],
+  },
+  {
+    name: 'Kichakani Serengeti Camp',
+    category: 'Mobile Tented Camp',
+    location: 'Zentrale & Nördliche Serengeti',
+    price: 'ab $450/Nacht',
+    img: 'https://images.unsplash.com/photo-1567608285969-48f170c1b1f8?w=600&h=400&fit=crop&auto=format',
+    alt: 'Kichakani Camp — mobiles Zeltcamp folgt der Großen Migration',
+    desc: 'Kichakani ist ein mobiles Zeltcamp, das der Großen Migration folgt. Es ist eines der authentischsten Campingerlebnisse in Tansania — Wände aus Leinwand, Sternenhimmel als Decke und Löwengebrüll als Einschlafbegleitung. Das Camp verbindet traditionelles Camping mit modernem Komfort.',
+    highlights: ['Folgt der Großen Migration', 'Authentisches Bush-Feeling', 'Maßgeschneiderte Pirschfahrten', 'Sternenbeobachtung inklusive'],
+  },
+  {
+    name: 'Lemala Camps',
+    category: 'Seasonal Tented Camps',
+    location: 'Serengeti, Ngorongoro, Tarangire',
+    price: 'ab $380/Nacht',
+    img: 'https://images.unsplash.com/photo-1549366021-9f761d450615?w=600&h=400&fit=crop&auto=format',
+    alt: 'Lemala Camp — Lagerfeuer-Abend in der tansanischen Savanne',
+    desc: 'Lemala Camps betreibt mehrere saisonale Zeltcamps in Tansanias Top-Nationalparks. Jedes Camp ist für maximale Wildtierbeobachtung positioniert und bietet komfortable Leinwandzelte mit privaten Badezimmern, ausgezeichneter Küche und herzlichem Personal.',
+    highlights: ['3 Standorte in Nordtansania', 'Kleine Gruppengrößen', 'Ausgezeichnete Lage', 'Familienfreundlich'],
+  },
+];
+---
+
+<BaseLayout
+  title="Safari-Zeltcamps in Tansania — Authentische Buscherlebnisse"
+  description="Entdecken Sie Tansanias beste Safari-Zeltcamps 2026. Namiri Plains, Kichakani und Lemala — authentische Wildniserlebnisse unter dem afrikanischen Sternenhimmel in der Serengeti."
+  lang={lang}
+  schema={schema}
+  breadcrumbs={[
+    { label: 'Unterkünfte', href: '/de/unterkuenfte/' },
+    { label: 'Zeltcamps' },
+  ]}
+>
+  <Header slot="header" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero" style="position:relative;overflow:hidden">
+    <div style="position:absolute;top:-20px;right:-40px;opacity:.08;pointer-events:none;color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--green">Busch pur</span>
+          <h1 class="hero__title">Safari-Zeltcamps in Tansania</h1>
+          <p class="hero__desc">Für Reisende, die den Kontakt zur Natur suchen, sind Tansanias Zeltcamps die ultimative Wahl. Schlafen Sie in luxuriösen Leinwandzelten inmitten der Serengeti, wachen Sie zum Vogelgesang auf und erleben Sie die afrikanische Wildnis auf ihre authentischste Art.</p>
+          <div class="hero__actions">
+            <a href="/de/kontakt/" class="btn btn--primary btn--lg">Camp anfragen</a>
+            <a href="/de/unterkuenfte/lodges/" class="btn btn--outline btn--lg">Lodges ansehen</a>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <div class="hero__deco hero__deco--bl"></div>
+            <img
+              src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=640&fit=crop&auto=format"
+              alt="Safari-Zeltcamp unter Akazienbäumen in der Serengeti"
+              width="800" height="640" loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WARUM ZELTCAMP -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Das Zeltcamp-Erlebnis</span>
+        <h2>Warum ein Zeltcamp wählen?</h2>
+        <p>Zeltcamps bieten eine Verbindung zur Natur, die keine Lodge replizieren kann. Das ist die essenzielle afrikanische Erfahrung.</p>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1">
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 2L4 42h40L24 2zm0 8l14 24H10L24 10z"/></svg>
+          </div>
+          <h3 class="service-card__title">Inmitten der Wildnis</h3>
+          <p class="service-card__desc">Zeltcamps können an Orten aufgestellt werden, wo Lodges nie gebaut werden dürfen. Sie schlafen buchstäblich mitten im Jagdrevier der Löwen.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M14 36l12-4 12 4V8c0-1.1-.9-2-2-2H14c-1.1 0-2 .9-2 2v28z"/></svg>
+          </div>
+          <h3 class="service-card__title">Sternenhimmel unvergesslich</h3>
+          <p class="service-card__desc">Weit weg von jeder Lichtquelle bietet die Serengeti einen der reinsten Sternenhimmel der Welt. Von Ihrem Zelt aus ist die Milchstraße mit bloßem Auge zu sehen.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm0 8c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm4 20h-8v-2h2v-8h-2v-2h6v10h2v2z"/></svg>
+          </div>
+          <h3 class="service-card__title">Kleine, intime Gruppen</h3>
+          <p class="service-card__desc">Zeltcamps nehmen typischerweise nur 8–16 Gäste auf. Diese Exklusivität garantiert persönlichere Pirschfahrten und tiefere Verbindungen mit Ihren Guides.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M6 26v-4l4-12h28l4 12v4H6zm4 0h28M10 32h28v6H10z"/></svg>
+          </div>
+          <h3 class="service-card__title">Lagerfeuer &amp; Gemeinschaft</h3>
+          <p class="service-card__desc">Abendessen rund ums Lagerfeuer unter dem Sternenhimmel. Diese gemeinsamen Momente mit anderen Safari-Enthusiasten werden zu bleibenden Erinnerungen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAMP CARDS -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">Empfohlene Camps</span>
+        <h2>Tansanias Top Safari-Zeltcamps</h2>
+        <p>Diese Camps stehen für das Beste, was das afrikanische Zeltcamping zu bieten hat — von authentisch bis luxuriös.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:3rem;margin-top:2rem">
+        {camps.map((camp, i) => (
+          <div class="animate-on-scroll camp-row" style={i % 2 === 1 ? 'direction:rtl' : ''}>
+            <div class="camp-row__img" style={i % 2 === 1 ? 'direction:ltr' : ''}>
+              <img src={camp.img} alt={camp.alt} width="600" height="400" loading="lazy" />
+            </div>
+            <div class="camp-row__body" style={i % 2 === 1 ? 'direction:ltr' : ''}>
+              <div style="display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin-bottom:.75rem">
+                <span class="chip chip--amber">{camp.category}</span>
+                <span style="font-size:.85rem;color:var(--mc-text-muted)">{camp.location}</span>
+              </div>
+              <h3 style="font-size:1.5rem;font-weight:800;margin-bottom:.5rem">{camp.name}</h3>
+              <p style="color:var(--mc-text-muted);line-height:1.7;margin-bottom:1rem">{camp.desc}</p>
+              <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.25rem">
+                {camp.highlights.map(h => (
+                  <li style="display:flex;gap:.5rem;align-items:flex-start;font-size:.9rem">
+                    <span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span>
+                    {h}
+                  </li>
+                ))}
+              </ul>
+              <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
+                <span style="font-size:1.1rem;font-weight:700;color:var(--mc-green)">{camp.price}</span>
+                <a href="/de/kontakt/" class="btn btn--primary">Verfügbarkeit anfragen</a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <PhotoGallery images={galleryImages} title="Fotogalerie: Safari-Zeltcamps in Tansania" />
+
+  <!-- TIKTOK -->
+  <SafariTikTok category="lodges" lang="de" />
+
+  <!-- CTA -->
+  <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2>Erleben Sie Tansania unter dem Sternenhimmel</h2>
+        <p>Reservieren Sie Ihren Platz in einem unserer empfohlenen Safari-Zeltcamps für 2026. Frühbucher-Verfügbarkeit begrenzt.</p>
+      </div>
+      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/de/kontakt/" class="btn btn--primary btn--lg">Jetzt reservieren</a>
+        <a href="/de/preise/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Preise ansehen</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>
+
+<style>
+.camp-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.camp-row__img {
+  border-radius: var(--radius-lg, 20px);
+  overflow: hidden;
+  aspect-ratio: 3/2;
+}
+.camp-row__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media (max-width: 768px) {
+  .camp-row, .camp-row[style*="direction:rtl"] {
+    grid-template-columns: 1fr;
+    direction: ltr !important;
+  }
+  .camp-row__img, .camp-row__body { direction: ltr !important; }
+}
+</style>

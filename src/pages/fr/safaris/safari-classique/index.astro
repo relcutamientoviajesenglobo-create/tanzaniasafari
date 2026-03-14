@@ -1,0 +1,235 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import { touristAttraction, faqPage } from '../../../../i18n/schema';
+import SafariTikTok from '../../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../../components/PhotoGallery.astro';
+
+const lang = 'fr';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=400&fit=crop&auto=format', alt: 'Girafe traversant la forêt d\'acacias dans le Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=600&h=400&fit=crop&auto=format', alt: 'Zèbres en formation dans les plaines du Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=400&fit=crop&auto=format', alt: 'Migration de gnous traversant la rivière du Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=400&fit=crop&auto=format', alt: 'Portrait de lion dans la lumière dorée du Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'Éléphants traversant la savane au crépuscule' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Savane dorée du Serengeti avec des acacias au lever du soleil' },
+];
+
+const faqItems = [
+  { question: 'Qu\'est-ce qu\'un safari classique en Tanzanie ?', answer: 'Un safari classique est l\'expérience traditionnelle du game drive africain. Vous voyagez dans un 4x4 aménagé (généralement un Toyota Land Cruiser) avec un toit ouvrant à travers les parcs nationaux et les réserves. Votre guide expert repère la faune, explique le comportement animal et vous conduit aux meilleurs sites d\'observation. Les safaris classiques en Tanzanie visitent généralement le <strong>Serengeti</strong> et le <strong>cratère du Ngorongoro</strong>.' },
+  { question: 'Combien de jours faut-il pour un safari classique ?', answer: 'Bien que nous proposions des <strong>safaris à la journée depuis Arusha</strong>, nous recommandons un minimum de 3 jours pour bien découvrir le Serengeti. Un <strong>safari de 5 jours</strong> permet d\'explorer à la fois le Serengeti et le Ngorongoro à un rythme agréable. Pour une expérience ultime, une <strong>expédition de 7 jours</strong> ajoute le lac Manyara et Tarangire. Consultez notre <a href="/fr/prix/" style="color:#3D6B2E;font-weight:700">page des tarifs</a> pour les forfaits multi-jours.' },
+  { question: 'Quels animaux verrai-je lors d\'un safari classique ?', answer: 'Le Serengeti et le Ngorongoro abritent les <strong>Big Five</strong> : lion, léopard, éléphant, buffle et rhinocéros. Vous verrez aussi couramment des girafes, des zèbres, des gnous, des hippopotames, des hyènes, des guépards, des phacochères, des babouins et des centaines d\'espèces d\'oiseaux. Pendant <a href="/fr/activites/observation-faune/" style="color:#3D6B2E;font-weight:700">la saison des migrations</a> (juillet-septembre), vous pourrez assister au passage de millions de gnous et de zèbres.' },
+  { question: 'Qu\'est-ce qui est inclus dans un forfait safari classique ?', answer: 'Tous nos forfaits de safari classique comprennent : transfert hôtel/aéroport, un guide certifié francophone ou anglophone, un 4x4 aménagé avec toit ouvrant, tous les droits d\'entrée dans les parcs, un déjeuner panier et des en-cas, de l\'eau en bouteille illimitée et des jumelles. Les safaris multi-jours incluent également un hébergement en pension complète dans des lodges ou des camps de tentes de qualité. Voir tous les détails sur notre <a href="/fr/prix/" style="color:#3D6B2E;font-weight:700">page des tarifs</a>.' },
+  { question: 'Le safari classique est-il adapté aux familles avec enfants ?', answer: 'Oui ! Les safaris classiques sont parfaits pour les familles. Les enfants de moins de 5 ans sont <strong>gratuits</strong> et ceux de 5 à 11 ans bénéficient de tarifs réduits. Nous proposons des véhicules adaptés aux enfants avec des rehausseurs, planifions des circuits plus courts pour les jeunes enfants et nos guides savent rendre le safari ludique et éducatif pour les enfants de tous âges.' },
+  { question: 'À quelle heure commencent les safaris classiques ?', answer: 'Les game drives débutent généralement à l\'<strong>aube (vers 6h00)</strong>, lorsque les animaux sont les plus actifs. Après le drive matinal, vous déjeunez dans un endroit pittoresque ou dans un lodge. Un drive en fin d\'après-midi de 15h30 à 18h30 capture la lumière de l\'heure dorée et l\'activité animalière du soir. Les matins peuvent être frais (environ 15-20°C), pensez à prendre une veste légère.' },
+];
+
+const schema = [
+  touristAttraction({
+    name: 'Safari Classique en Tanzanie',
+    description: 'Vivez le safari africain par excellence avec des game drives en 4x4 à travers le Serengeti et le cratère du Ngorongoro. Observez les Big Five avec des guides experts.',
+    url: 'https://safaritanzania.info/fr/safaris/safari-classique/',
+  }),
+  faqPage(faqItems),
+];
+---
+
+<BaseLayout
+  title="Safari Classique en Tanzanie — Game Drives dans le Serengeti et le Ngorongoro"
+  description="Vivez l'aventure safari africaine par excellence. Game drives en 4x4 à travers le Serengeti et le cratère du Ngorongoro avec des guides locaux experts. Observez les Big Five."
+  lang={lang}
+  schema={schema}
+  breadcrumbs={[
+    { label: 'Safaris', href: '/fr/safaris/' },
+    { label: 'Safari Classique' },
+  ]}
+>
+  <Header slot="header" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--green">Safari le plus populaire</span>
+          <h1 class="hero__title">Safari Classique en Tanzanie</h1>
+          <p class="hero__desc">L'expérience safari africaine par excellence. Traversez les plaines du Serengeti et descendez dans le cratère du Ngorongoro en 4x4 avec des guides locaux experts qui connaissent chaque piste et chaque animal.</p>
+          <div class="hero__actions">
+            <a href="/fr/prix/" class="btn btn--primary btn--lg">Voir les tarifs 2026</a>
+            <a href="/fr/contact/" class="btn btn--outline btn--lg">Réserver ce safari</a>
+          </div>
+          <div class="stats-row">
+            <div class="stat"><strong>Big Five</strong><span>Tous observables</span></div>
+            <div class="stat"><strong>6 pers.</strong><span>Max. par véhicule</span></div>
+            <div class="stat"><strong>1-7 jours</strong><span>Séjours flexibles</span></div>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <img
+              src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=800&h=640&fit=crop&auto=format"
+              alt="Véhicule safari avec des touristes lors d'un game drive classique dans le Serengeti"
+              width="800" height="640" loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- À QUOI S'ATTENDRE -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">L'expérience</span>
+        <h2>À quoi s'attendre lors d'un safari classique</h2>
+        <p>Un safari classique en Tanzanie est un voyage à travers certains des paysages les plus riches en biodiversité de la planète, guidé par des experts qui donnent vie à la brousse.</p>
+      </div>
+      <div class="card-grid card-grid--2 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=450&fit=crop&auto=format" alt="Savane dorée du Serengeti avec des acacias épars au lever du soleil" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Game drives à l'aube</h3>
+            <p>Partez dès les premières lueurs quand la savane s'éveille. Les lions rentrent de leurs chasses nocturnes, les éléphants émergent de la brousse et le Serengeti se transforme sous le soleil doré du matin. Votre guide lit le paysage comme un livre, suit les empreintes fraîches et écoute les cris d'alarme.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1745885979468-44a855f8a5fa?w=600&h=450&fit=crop&auto=format" alt="Fond du cratère du Ngorongoro avec la faune sauvage et la végétation luxuriante" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Descente dans le cratère du Ngorongoro</h3>
+            <p>Descendez 600 mètres dans la plus grande caldeira volcanique intacte du monde, un amphithéâtre naturel abritant environ 25 000 animaux. Le fond du cratère offre la plus haute densité de faune d'Afrique, dont le rhinocéros noir en voie de disparition dans son habitat naturel.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAUNE -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">Faune sauvage</span>
+        <h2>Animaux que vous rencontrerez</h2>
+        <p>Les parcs nationaux tanzaniens abritent une diversité animalière extraordinaire. Voici quelques-unes des espèces emblématiques que vous pourrez observer.</p>
+      </div>
+      <div class="card-grid card-grid--3 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=450&fit=crop&auto=format" alt="Lion mâle à crinière reposant dans les herbes du Serengeti" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Lions</h3>
+            <p>Le Serengeti abrite plus de 3 000 lions, l'une des plus grandes populations d'Afrique. Observez la dynamique des troupes, les comportements de chasse et des lionceaux joueurs dans les herbes dorées.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=450&fit=crop&auto=format" alt="Troupeau d'éléphants traversant les plaines du Serengeti" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Éléphants</h3>
+            <p>D'immenses troupeaux d'éléphants d'Afrique errent librement dans Tarangire et le Serengeti. Assistez aux mères protégeant leurs petits, aux rituels de bain de poussière et à ces géants paisibles aux points d'eau.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=450&fit=crop&auto=format" alt="Silhouette de girafe contre le coucher de soleil africain" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Girafes</h3>
+            <p>Dominant les forêts d'acacias, les girafes masaï sont une présence constante dans les plaines tanzaniennes. Leurs mouvements élégants se découpant sur les ciels du coucher de soleil créent des instants inoubliables.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ITINÉRAIRE TYPE -->
+  <section class="section section--green bg-green" style="position:relative;overflow:hidden">
+    <div style="position:absolute;top:20px;right:-30px;opacity:.08;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Itinéraire type</span>
+        <h2>Un safari classique de 3 jours typique</h2>
+        <p>Voici à quoi ressemble un safari classique multi-jours, d'Arusha au Serengeti et retour.</p>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1">
+        <div class="service-card">
+          <h3 class="service-card__title">Jour 1 : Arusha — Serengeti</h3>
+          <p class="service-card__desc">Prise en charge tôt le matin depuis votre hôtel. Traversée du Grand Rift Valley avec des arrêts aux points de vue. Entrée dans le Serengeti par la porte de Naabi Hill. Game drive en fin d'après-midi avec lions, éléphants et girafes. Coucher de soleil au camp.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Jour 2 : Journée complète au Serengeti</h3>
+          <p class="service-card__desc">Game drive à l'aube dans le Serengeti central. Visite de la vallée de la Seronera, réputée pour les observations de léopards. Déjeuner en plein air au bord de la rivière Grumeti. Drive en fin d'après-midi vers les kopjes, formations rocheuses où se reposent les lions.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Jour 3 : Cratère du Ngorongoro</h3>
+          <p class="service-card__desc">Route vers la zone de conservation du Ngorongoro. Descente dans le cratère pour un game drive de demi-journée. Observation des rhinocéros noirs, des flamants et des mares d'hippopotames. Remontée et retour à Arusha en soirée.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon" style="color:var(--mc-green)">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-2 30l-10-10 2.83-2.83L22 28.34l13.17-13.17L38 18 22 34z"/></svg>
+          </div>
+          <h3 class="service-card__title">Personnalisable</h3>
+          <p class="service-card__desc">Chaque itinéraire peut être prolongé ou modifié. Ajoutez le lac Manyara, Tarangire ou des jours supplémentaires au Serengeti. Contactez-nous pour un programme sur mesure.</p>
+          <a href="/fr/contact/" class="btn">Planifier mon safari</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">FAQ</span>
+        <h2>Questions sur le safari classique</h2>
+        <p>Tout ce que vous devez savoir sur nos game drives classiques en Tanzanie.</p>
+      </div>
+      <div class="faq-list animate-on-scroll delay-1">
+        {faqItems.map(item => (
+          <details>
+            <summary>{item.question}</summary>
+            <div class="faq-answer" set:html={item.answer} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <PhotoGallery images={galleryImages} title="Galerie photo — Safari classique" />
+  <SafariTikTok category="serengeti" lang="fr" />
+
+  <!-- CTA -->
+  <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2>Réservez votre safari classique</h2>
+        <p>Le Serengeti vous attend. Laissez nos guides experts vous faire découvrir le meilleur de la faune tanzanienne lors d'un safari classique inoubliable.</p>
+      </div>
+      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/fr/prix/" class="btn btn--primary btn--lg">Voir les tarifs 2026</a>
+        <a href="/fr/contact/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Nous contacter</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>

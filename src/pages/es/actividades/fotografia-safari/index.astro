@@ -4,6 +4,18 @@ import Header from '../../../../components/Header.astro';
 import Footer from '../../../../components/Footer.astro';
 import { touristAttraction, faqPage } from '../../../../i18n/schema';
 
+import SafariTikTok from '../../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../../components/PhotoGallery.astro';
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=400&fit=crop&auto=format', alt: 'Retrato de un león al amanecer capturado con teleobjetivo' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Fotografía de paisaje del Serengeti con luz dorada al atardecer' },
+  { src: 'https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=600&h=400&fit=crop&auto=format', alt: 'Cebras en composición fotográfica perfecta en la sabana' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'Elefante en primer plano ideal para fotografía de vida salvaje' },
+  { src: 'https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=400&fit=crop&auto=format', alt: 'Jirafa silueteada al atardecer perfecta para fotografía de safari' },
+  { src: 'https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&h=400&fit=crop&auto=format', alt: 'Guerrero Masái con vestimenta colorida para fotografía cultural' },
+];
+
 const title = 'Fotografia de Safari en Tanzania — Guia Completa para Fotografos';
 const description = 'Aprende a fotografiar la vida salvaje africana: equipo recomendado, mejores ubicaciones, consejos de expertos y horarios ideales para capturar el Serengeti y Ngorongoro.';
 
@@ -252,6 +264,10 @@ const schema = [
       </div>
     </div>
   </section>
+
+  <!-- TIKTOK & GALLERY -->
+  <SafariTikTok category="photography" lang="es" />
+  <PhotoGallery images={galleryImages} title="Galería de Fotografía de Safari" />
 
   <!-- CTA -->
   <section class="section section--green">

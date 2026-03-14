@@ -10,17 +10,28 @@ interface Props {
 
 const lang: Lang = Astro.props.lang || 'es';
 
-/** Return the localized href for a given Spanish path */
-function href(esPath: string): string {
-  if (lang === 'en') {
-    return getAlternatePath(esPath, 'es');
-  }
-  return esPath;
+/** Return the localized href for a given ES-slug path (e.g. '/precios/') */
+const footerPaths: Record<string, Record<Lang, string>> = {
+  '/precios/': { en: '/prices/', es: '/es/precios/', de: '/de/preise/', fr: '/fr/prix/' },
+  '/como-llegar/': { en: '/how-to-get-here/', es: '/es/como-llegar/', de: '/de/anreise/', fr: '/fr/comment-venir/' },
+  '/safaris/': { en: '/safaris/', es: '/es/safaris/', de: '/de/safaris/', fr: '/fr/safaris/' },
+  '/safaris/safari-clasico/': { en: '/safaris/classic-safari/', es: '/es/safaris/safari-clasico/', de: '/de/safaris/klassische-safari/', fr: '/fr/safaris/safari-classique/' },
+  '/safaris/safari-fotografico/': { en: '/safaris/photo-safari/', es: '/es/safaris/safari-fotografico/', de: '/de/safaris/foto-safari/', fr: '/fr/safaris/safari-photo/' },
+  '/safaris/safari-nocturno/': { en: '/safaris/night-safari/', es: '/es/safaris/safari-nocturno/', de: '/de/safaris/nacht-safari/', fr: '/fr/safaris/safari-nocturne/' },
+  '/actividades/': { en: '/activities/', es: '/es/actividades/', de: '/de/aktivitaeten/', fr: '/fr/activites/' },
+  '/hospedaje/': { en: '/lodging/', es: '/es/hospedaje/', de: '/de/unterkuenfte/', fr: '/fr/hebergement/' },
+  '/blog/': { en: '/blog/', es: '/es/blog/', de: '/de/blog/', fr: '/fr/blog/' },
+  '/contacto/': { en: '/contact/', es: '/es/contacto/', de: '/de/kontakt/', fr: '/fr/contact/' },
+  '/aviso-privacidad/': { en: '/privacy-policy/', es: '/es/aviso-privacidad/', de: '/de/datenschutz/', fr: '/fr/politique-confidentialite/' },
+  '/terminos/': { en: '/terms/', es: '/es/terminos/', de: '/de/agb/', fr: '/fr/conditions-generales/' },
+};
+function href(esSlug: string): string {
+  return footerPaths[esSlug]?.[lang] || esSlug;
 }
 
 const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="160" height="128" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
 
-const homeHref = lang === 'en' ? '/en/' : '/';
+const homeHref = lang === 'en' ? '/' : `/${lang}/`;
 ---
 
 <footer class="footer" role="contentinfo">
@@ -83,7 +94,7 @@ const homeHref = lang === 'en' ? '/en/' : '/';
             </svg>
             <div class="logo__text">
               <span class="logo__name">Safari Tanzania</span>
-              <span class="logo__sub">{lang === 'en' ? 'African Safaris' : 'Safaris en África'}</span>
+              <span class="logo__sub">{lang === 'en' ? 'African Safaris' : lang === 'de' ? 'Afrikanische Safaris' : lang === 'fr' ? 'Safaris en Afrique' : 'Safaris en África'}</span>
               <span class="logo__loc">Arusha, Tanzania</span>
             </div>
           </a>

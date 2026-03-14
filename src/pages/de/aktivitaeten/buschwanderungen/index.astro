@@ -1,0 +1,272 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import SafariTikTok from '../../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../../components/PhotoGallery.astro';
+import { touristAttraction, faqPage } from '../../../../i18n/schema';
+
+const lang = 'de';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const faqItems = [
+  { question: 'Was ist eine Buschwanderung in Tansania?', answer: 'Eine Buschwanderung (oder Safariwanderung) ist eine <strong>geführte Wanderexpedition</strong> durch die afrikanische Wildnis mit erfahrenen Masai-Guides und bewaffneten Rangern. Im Gegensatz zu fahrzeugbasierten Safaris tauchen Buschwanderungen Sie auf Bodenniveau in die Landschaft ein. Sie lernen Tierspurensuche, identifizieren Heilpflanzen, lesen den Busch und erleben die Geräusche, Gerüche und Anblicke Afrikas auf eine Weise, die vom Fahrzeug aus unmöglich ist.' },
+  { question: 'Ist eine Buschwanderung sicher?', answer: 'Ja, Sicherheit hat für uns höchste Priorität. Alle Buschwanderungen werden von <strong>zwei Guides</strong> geleitet: einem Masai-Fährtensucher, der die Landschaft liest, und einem bewaffneten Ranger mit TANAPA-Zertifizierung (Tansanias Nationalparkbehörde). Guides tragen Satellitenkommunikation, Erste-Hilfe-Ausrüstung und sind in Wildtierverhalten geschult. Routen werden geplant, um risikoreiche Begegnungen zu vermeiden.' },
+  { question: 'Wie lange dauern Buschwanderungen?', answer: 'Buschwanderungen dauern typischerweise <strong>2 bis 4 Stunden</strong>, meist in den kühleren Morgenstunden (6:00–10:00 Uhr). Kürzere Wanderungen von 1–2 Stunden sind für Familien und Personen mit eingeschränkter Mobilität verfügbar. Mehrtägige Safariwanderungen (3–5 Tage) sind für erfahrene Wanderer erhältlich, die die Wildnis zu Fuß erkunden möchten.' },
+  { question: 'Was werde ich auf einer Buschwanderung sehen?', answer: 'Buschwanderungen konzentrieren sich auf die kleineren Wunder des Busches: <strong>Tierspuren und Kotidentifikation</strong>, Heilpflanzen der Masai, Insektenkolonien, Vogelnester, Reptilien und die komplexe Ökologie der Savanne. Sie können auch größere Tiere wie Giraffen, Zebras, Antilopen und sogar Elefanten in sicherer Entfernung begegnen.' },
+  { question: 'Was soll ich auf einer Buschwanderung tragen?', answer: 'Tragen Sie <strong>robuste geschlossene Wanderschuhe</strong> (eingelaufen vor Ihrer Reise), lange Hosen, ein langärmeliges Hemd in neutralen Farben (Khaki, Olivgrün, Beige), einen breitkrempigen Hut und Sonnenbrille. Tragen Sie Insektenschutzmittel und Sonnenschutzmittel (LSF 50+). Bringen Sie einen kleinen Rucksack mit Wasser mit und vermeiden Sie Parfüm.' },
+  { question: 'Was ist das Mindestalter für Buschwanderungen?', answer: 'Das Mindestalter für Standard-Buschwanderungen beträgt typischerweise <strong>12 Jahre</strong>, obwohl dies je nach Standort variieren kann. Einige kürzere, sanftere Wanderungen in risikoarmen Gebieten können Kinder ab 8 Jahren mit elterlicher Aufsicht akzeptieren. Für Familien mit jüngeren Kindern empfehlen wir fahrzeugbasierte <a href="/de/aktivitaeten/wildtierbeobachtung/" style="color:#3D6B2E;font-weight:700">Wildtierbeobachtung</a> ohne Altersbeschränkung.' },
+];
+
+const schema = [
+  touristAttraction({
+    name: 'Buschwanderungen in Tansania — Safariwanderungen mit Masai-Guides',
+    description: 'Safariwanderungen mit erfahrenen Masai-Guides durch den tansanischen Busch. Lernen Sie Fährtensuche, entdecken Sie Heilpflanzen und erleben Sie Afrika auf Bodenniveau.',
+    url: 'https://safaritanzania.info/de/aktivitaeten/buschwanderungen/',
+  }),
+  faqPage(faqItems),
+];
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&h=400&fit=crop&auto=format', alt: 'Masai-Guide führt Besucher durch den tansanischen Busch' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Savannenlandschaft mit Tierspuren im weichen Boden' },
+  { src: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=400&fit=crop&auto=format', alt: 'Morgenhafte Safari-Wanderung durch die goldene Savanne' },
+  { src: 'https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=400&fit=crop&auto=format', alt: 'Giraffe in Akazienwäldern – Begegnung auf der Buschwanderung' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'Elefantenherde in der Savanne – Sichtung auf der Wandersafari' },
+  { src: 'https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=400&fit=crop&auto=format', alt: 'Weite Savanne Tansanias – ideales Gelände für Buschwanderungen' },
+];
+---
+
+<BaseLayout
+  title="Buschwanderungen in Tansania — Safariwanderungen mit Masai-Guides"
+  description="Erleben Sie Safariwanderungen mit erfahrenen Masai-Guides durch den tansanischen Busch. Lernen Sie Tierspurensuche, entdecken Sie Heilpflanzen und verbinden Sie sich mit Afrika auf Bodenniveau."
+  lang={lang}
+  schema={schema}
+  breadcrumbs={[
+    { label: 'Aktivitäten', href: '/de/aktivitaeten/' },
+    { label: 'Buschwanderungen' },
+  ]}
+>
+  <Header slot="header" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--green">Safariwanderung</span>
+          <h1 class="hero__title">Buschwanderungen mit Masai-Guides</h1>
+          <p class="hero__desc">Verlassen Sie das Fahrzeug und betreten Sie die afrikanische Wildnis zu Fuß. Wandern Sie durch die Savanne mit erfahrenen Masai-Kriegern, die jahrhundertelanges Buschkunde-Wissen, Fährtensuchfähigkeiten und kulturelle Weisheit teilen.</p>
+          <div class="hero__actions">
+            <a href="/de/preise/" class="btn btn--primary btn--lg">Preise 2026 ansehen</a>
+            <a href="/de/kontakt/" class="btn btn--outline btn--lg">Buschwanderung buchen</a>
+          </div>
+          <div class="stats-row">
+            <div class="stat"><strong>2–4 Std.</strong><span>Wanderdauer</span></div>
+            <div class="stat"><strong>Masai</strong><span>Erfahrene Guides</span></div>
+            <div class="stat"><strong>Ab 12 J.</strong><span>Mindestalter</span></div>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <img
+              src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=800&h=640&fit=crop&auto=format"
+              alt="Masai-Guide führt eine Safariwanderung durch die goldene tansanische Savanne"
+              width="800" height="640" loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAS ERLEBNIS -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Das Erlebnis</span>
+        <h2>Was Buschwanderungen besonders macht</h2>
+        <p>Eine Buschwanderung verwandelt Ihre Safari von der Beobachtung zur Immersion. Spüren Sie die Erde unter Ihren Füßen, lesen Sie Tierspuren und entdecken Sie die verborgenen Details des afrikanischen Busches.</p>
+      </div>
+      <div class="card-grid card-grid--2 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&h=450&fit=crop&auto=format" alt="Masai-Krieger in traditioneller Kleidung führen Besucher durch den Busch" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Masai-Kulturwissen</h3>
+            <p>Ihr Masai-Guide teilt generationenaltes Buschkunde-Wissen: welche Pflanzen heilen, welche Bäume Wasser anzeigen, wie man das Tierverhalten aus der Ferne liest und die traditionellen Geschichten, die in die Landschaft gewoben sind. Dieses Wissen wurde über Jahrhunderte weitergegeben und verwandelt die Wanderung in einen tiefgründigen kulturellen Austausch.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=450&fit=crop&auto=format" alt="Savannenlandschaft mit Tierspuren im weichen Boden" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Tierspurensuche</h3>
+            <p>Lernen Sie Tierspuren, Kot und territoriale Markierungen zu identifizieren. Ihr Guide zeigt, wie man Löwenabdrücke von Leopardenabdrücken unterscheidet, die Frische von Elefantenkot einschätzt und die Geschichte des Busches aus Hinweisen liest, die ungeschulten Augen unsichtbar sind.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAS SIE ENTDECKEN WERDEN -->
+  <section class="section section--green bg-green" style="position:relative;overflow:hidden">
+    <div style="position:absolute;bottom:0;left:-30px;opacity:.08;pointer-events:none;color:#D4A017;transform:rotate(180deg)">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Verborgene Wunder</span>
+        <h2>Was Sie zu Fuß entdecken werden</h2>
+        <p>Buschwanderungen enthüllen eine ganze Welt, die Fahrzeugsafaris verpassen. Hier sind einige der Highlights, die unsere Wanderer erleben.</p>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1">
+        <div class="service-card">
+          <h3 class="service-card__title">Heilpflanzen</h3>
+          <p class="service-card__desc">Masai-Guides identifizieren Dutzende von Pflanzen aus der traditionellen Medizin: Zahnbürsten-Bäume, Fiebersenker, Schmerzmittel und antiseptische Rinden. Eine lebendige Apotheke des Busches.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Insekten-Ökologie</h3>
+          <p class="service-card__desc">Von kathedralenartigen Termitenhügeln bis zu Mistkäfer-Highways und Webameisen-Nestern enthüllt die Mikrobiologie der Savanne komplexe Ingenieursleistungen und Sozialstrukturen.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Vogelleben</h3>
+          <p class="service-card__desc">Zu Fuß hören und sehen Sie Vögel, die von lauten Fahrzeugen übersehen werden: Webervögel beim Nestbau, Nektarvögel, die sich von Wildblumen ernähren, und Greifvögel, die von Akazienästen auf Beute lauern.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Landschaftsverständnis</h3>
+          <p class="service-card__desc">Lernen Sie, warum bestimmte Bäume an spezifischen Orten wachsen, wie Flüsse die Landschaft formen, warum Kopjes Raubtiere anziehen und wie Feuer das Serengeti-Ökosystem prägt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SICHERHEIT -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">Sicherheit</span>
+        <h2>Ihre Sicherheit auf der Wanderung</h2>
+        <p>Jede Buschwanderung folgt strengen Sicherheitsprotokollen, die von Tansanias Nationalparkbehörde und unseren erfahrenen Masai-Guides entwickelt wurden.</p>
+      </div>
+      <div class="card-grid card-grid--3 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Zwei-Guides-System</h3>
+            <p>Jede Buschwanderung wird von einem Masai-Fährtensucher vorne und einem bewaffneten TANAPA-zertifizierten Ranger hinten geleitet. Diese Formation gewährleistet 360-Grad-Bewusstsein und sofortige Reaktionsfähigkeit.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Routenplanung</h3>
+            <p>Guides erkunden Routen vor jeder Wanderung und prüfen auf frische Raubtierhinweise sowie Ausweichmöglichkeiten. Routen priorisieren sicheres Terrain mit guter Sichtbarkeit.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Notfallausrüstung</h3>
+            <p>Guides tragen Satellitentelefone, Erste-Hilfe-Kästen, Schlangenbiss-Serum und Notfallraketen. Fahrzeugunterstützung ist immer innerhalb von 15 Minuten erreichbar. Alle Guides sind in Erste Hilfe geschult.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KOMBINIEREN -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Perfekte Kombinationen</span>
+        <h2>Buschwanderungen mit anderen Erlebnissen kombinieren</h2>
+        <p>Buschwanderungen ergänzen fahrzeugbasierte Safaris perfekt. Fügen Sie eine Morgenwanderung zu jedem mehrtägigen Safari-Reiseplan hinzu.</p>
+      </div>
+      <div class="card-grid card-grid--3 animate-on-scroll delay-1">
+        <a href="/de/safaris/klassische-safari/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=450&fit=crop&auto=format" alt="Klassisches Safari-Fahrzeug in der Serengeti" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Klassische Safari + Buschwanderung</h3>
+            <p>Pirschfahrten am Tag, Safariwanderung am Morgen. Die ultimative Kombination aus fahrzeugbasierter Beobachtung und intimer Erkundung auf Bodenniveau.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+        <a href="/de/aktivitaeten/wildtierbeobachtung/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=450&fit=crop&auto=format" alt="Gnuherde während der Großen Migration" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Wildtierbeobachtung + Wanderung</h3>
+            <p>Beobachten Sie die Big Five vom Fahrzeug aus, erkunden Sie dann Fährtensuche und Ökologie zu Fuß. Zwei Perspektiven auf dieselbe außergewöhnliche Wildnis.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+        <a href="/de/aktivitaeten/heissluftballon/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=450&fit=crop&auto=format" alt="Heißluftballon über der Serengeti bei Sonnenaufgang" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Ballon + Buschwanderung</h3>
+            <p>Sehen Sie die Savanne von oben im Ballon, erkunden Sie sie dann zu Fuß auf Bodenniveau. Zwei unvergessliche Perspektiven an einem einzigen Tag.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section class="section section--gray">
+    <div class="container">
+      <PhotoGallery images={galleryImages} title="Fotogalerie: Buschwanderungen" />
+    </div>
+  </section>
+
+  <!-- TIKTOK -->
+  <SafariTikTok category="serengeti" lang="de" />
+
+  <!-- FAQ -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">FAQ</span>
+        <h2>Fragen zu Buschwanderungen</h2>
+        <p>Alles, was Sie über Safariwanderungen in Tansania mit Masai-Guides wissen müssen.</p>
+      </div>
+      <div class="faq-list animate-on-scroll delay-1">
+        {faqItems.map(item => (
+          <details>
+            <summary>{item.question}</summary>
+            <div class="faq-answer" set:html={item.answer} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2>Durch den afrikanischen Busch wandern</h2>
+        <p>Erleben Sie Tansania auf Bodenniveau mit unseren erfahrenen Masai-Guides. Eine unvergessliche Verbindung mit der Wildnis.</p>
+      </div>
+      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/de/preise/" class="btn btn--primary btn--lg">Preise 2026 ansehen</a>
+        <a href="/de/kontakt/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Buschwanderung buchen</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>

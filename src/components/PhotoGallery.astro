@@ -1,0 +1,228 @@
+---
+/**
+ * PhotoGallery — Responsive masonry-style image gallery for safari pages.
+ * Renders a grid of photos with lightbox-style zoom on click.
+ *
+ * Usage:
+ *   <PhotoGallery images={[{ src: '...', alt: '...' }]} title="Gallery" />
+ */
+
+interface GalleryImage {
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  images: GalleryImage[];
+  title?: string;
+  columns?: 2 | 3 | 4;
+}
+
+const { images, title = 'Gallery', columns = 3 } = Astro.props;
+const gridClass = `gallery-grid gallery-grid--${columns}`;
+---
+
+<section class="gallery-section">
+  <div class="container">
+    <div class="section__header animate-on-scroll">
+      <h2>{title}</h2>
+    </div>
+    <div class={gridClass + ' animate-on-scroll delay-1'}>
+      {images.map((img, i) => (
+        <button class="gallery-item" data-gallery-index={i} type="button" aria-label={`View: ${img.alt}`}>
+          <img
+            src={img.src}
+            alt={img.alt}
+            width="600"
+            height="400"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="gallery-item__overlay">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </div>
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="gallery-lightbox" id="gallery-lightbox" aria-hidden="true" role="dialog" aria-label="Image viewer">
+    <button class="gallery-lightbox__close" aria-label="Close" type="button">&times;</button>
+    <button class="gallery-lightbox__prev" aria-label="Previous" type="button">&#8249;</button>
+    <button class="gallery-lightbox__next" aria-label="Next" type="button">&#8250;</button>
+    <img class="gallery-lightbox__img" src="" alt="" />
+  </div>
+</section>
+
+<style>
+  .gallery-section { padding: 4rem 0; }
+
+  .gallery-grid {
+    display: grid;
+    gap: 16px;
+    margin-top: 2rem;
+  }
+  .gallery-grid--2 { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid--3 { grid-template-columns: repeat(3, 1fr); }
+  .gallery-grid--4 { grid-template-columns: repeat(4, 1fr); }
+
+  .gallery-item {
+    position: relative;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    border-radius: var(--radius-md, 16px);
+    overflow: hidden;
+    background: none;
+    aspect-ratio: 3 / 2;
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .gallery-item:hover img { transform: scale(1.06); }
+  .gallery-item__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .gallery-item:hover .gallery-item__overlay { opacity: 1; }
+
+  /* Lightbox */
+  .gallery-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0,0,0,0.92);
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+  .gallery-lightbox[aria-hidden="false"] { display: flex; }
+  .gallery-lightbox__img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+  .gallery-lightbox__close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2.5rem;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 10;
+  }
+  .gallery-lightbox__prev,
+  .gallery-lightbox__next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: white;
+    font-size: 2.5rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    z-index: 10;
+  }
+  .gallery-lightbox__prev { left: 1rem; }
+  .gallery-lightbox__next { right: 1rem; }
+  .gallery-lightbox__prev:hover,
+  .gallery-lightbox__next:hover { background: rgba(255,255,255,0.3); }
+
+  @media (max-width: 900px) {
+    .gallery-grid--3 { grid-template-columns: repeat(2, 1fr); }
+    .gallery-grid--4 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .gallery-grid--2,
+    .gallery-grid--3,
+    .gallery-grid--4 { grid-template-columns: 1fr; }
+    .gallery-item { aspect-ratio: 4 / 3; }
+    .gallery-lightbox__prev,
+    .gallery-lightbox__next { width: 40px; height: 40px; font-size: 2rem; }
+  }
+</style>
+
+<script>
+  const lightbox = document.getElementById('gallery-lightbox');
+  const lightboxImg = lightbox?.querySelector('.gallery-lightbox__img') as HTMLImageElement;
+  const items = document.querySelectorAll('.gallery-item');
+  const images: { src: string; alt: string }[] = [];
+  let currentIndex = 0;
+
+  items.forEach((item, i) => {
+    const img = item.querySelector('img');
+    if (img) {
+      images.push({ src: img.src, alt: img.alt });
+      item.addEventListener('click', () => openLightbox(i));
+    }
+  });
+
+  function openLightbox(index: number) {
+    currentIndex = index;
+    if (lightboxImg && lightbox) {
+      lightboxImg.src = images[index].src;
+      lightboxImg.alt = images[index].alt;
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeLightbox() {
+    lightbox?.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  lightbox?.querySelector('.gallery-lightbox__close')?.addEventListener('click', closeLightbox);
+  lightbox?.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  lightbox?.querySelector('.gallery-lightbox__prev')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    if (lightboxImg) {
+      lightboxImg.src = images[currentIndex].src;
+      lightboxImg.alt = images[currentIndex].alt;
+    }
+  });
+
+  lightbox?.querySelector('.gallery-lightbox__next')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    currentIndex = (currentIndex + 1) % images.length;
+    if (lightboxImg) {
+      lightboxImg.src = images[currentIndex].src;
+      lightboxImg.alt = images[currentIndex].alt;
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (lightbox?.getAttribute('aria-hidden') === 'false') {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') lightbox.querySelector<HTMLButtonElement>('.gallery-lightbox__prev')?.click();
+      if (e.key === 'ArrowRight') lightbox.querySelector<HTMLButtonElement>('.gallery-lightbox__next')?.click();
+    }
+  });
+</script>

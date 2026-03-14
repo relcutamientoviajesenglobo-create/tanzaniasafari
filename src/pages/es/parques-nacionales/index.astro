@@ -3,6 +3,17 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import { touristAttraction } from '../../../i18n/schema';
+import SafariTikTok from '../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../components/PhotoGallery.astro';
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1535338454528-1b5c57e4fa28?w=600&h=400&fit=crop&auto=format', alt: 'Llanuras del Serengeti con manada de ñus durante la Gran Migración' },
+  { src: 'https://images.unsplash.com/photo-1621252179027-94459d278660?w=600&h=400&fit=crop&auto=format', alt: 'Cráter del Ngorongoro con animales pastando en el fondo' },
+  { src: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&h=400&fit=crop&auto=format', alt: 'Elefantes junto a baobabs milenarios en Tarangire' },
+  { src: 'https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=600&h=400&fit=crop&auto=format', alt: 'Flamencos rosados en el Lago Manyara de Tanzania' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Sabana del Serengeti con acacias al atardecer' },
+  { src: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=400&fit=crop&auto=format', alt: 'León en la reserva Nyerere (ex-Selous) de Tanzania' },
+];
 
 const title = 'Parques Nacionales de Tanzania — Serengeti, Ngorongoro, Tarangire y Mas';
 const description = 'Conoce los principales parques nacionales de Tanzania para safari: Serengeti, Ngorongoro, Tarangire, Lago Manyara, Selous y mas. Guia completa con informacion de cada parque.';
@@ -179,6 +190,10 @@ const schema = [
       </div>
     </div>
   </section>
+
+  <!-- TIKTOK & GALLERY -->
+  <SafariTikTok category="serengeti" lang="es" />
+  <PhotoGallery images={galleryImages} title="Galería de Parques Nacionales" />
 
   <!-- CTA -->
   <section class="section section--green">

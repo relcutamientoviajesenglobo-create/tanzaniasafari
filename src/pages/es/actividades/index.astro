@@ -3,6 +3,17 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import { touristAttraction, faqPage } from '../../../i18n/schema';
+import SafariTikTok from '../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../components/PhotoGallery.astro';
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=400&fit=crop&auto=format', alt: 'Globo aerostático sobrevolando la sabana del Serengeti al amanecer' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'Elefante africano de cerca en el Parque Nacional Tarangire' },
+  { src: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=400&fit=crop&auto=format', alt: 'León macho en la sabana del Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&h=400&fit=crop&auto=format', alt: 'Guía Masái liderando caminata en la sabana de Tanzania' },
+  { src: 'https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=600&h=400&fit=crop&auto=format', alt: 'Cebras y ñus durante la Gran Migración en el Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=400&fit=crop&auto=format', alt: 'Vehículo 4x4 de safari en las llanuras africanas' },
+];
 
 const schema = [
   touristAttraction({
@@ -164,6 +175,10 @@ const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="
       </div>
     </div>
   </section>
+
+  <!-- TIKTOK & GALLERY -->
+  <SafariTikTok category="wildlife" lang="es" />
+  <PhotoGallery images={galleryImages} title="Galería de Actividades en Tanzania" />
 
   <!-- FAQ -->
   <section class="section" aria-labelledby="faq-title">

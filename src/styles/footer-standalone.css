@@ -91,6 +91,27 @@
 .footer__cta .btn--outline { border-color: white; color: white; }
 .footer__cta .btn--outline:hover { background: white; color: var(--mc-green); }
 
+/* --- Homepage dark footer override --- */
+.homepage-footer .footer { background: #0a0a0a; }
+.homepage-footer .footer__cta { background: #111; }
+.homepage-footer .footer__cta h2 { color: #ffaa00; }
+.homepage-footer .footer__cta .btn--primary { background: #ffaa00; color: #0a0a0a; border-color: #ffaa00; }
+.homepage-footer .footer__cta .btn--primary:hover { background: #e69500; border-color: #e69500; }
+.homepage-footer .footer__cta .btn--outline { border-color: rgba(255,255,255,.4); color: rgba(255,255,255,.9); }
+.homepage-footer .footer__cta .btn--outline:hover { background: rgba(255,255,255,.1); color: #fff; }
+.homepage-footer .footer__share { background: #050505; }
+.homepage-footer .footer__share-icon { border-color: rgba(255,170,0,.3); }
+.homepage-footer .footer__share-icon:hover { border-color: #ffaa00; background: rgba(255,170,0,.1); }
+.homepage-footer .footer__bottom { background: #0a0a0a; }
+.homepage-footer .footer__col-title { color: #ffaa00; }
+.homepage-footer .footer__col-links a:hover { color: #ffaa00; }
+.homepage-footer .footer__contact a:hover { color: #ffaa00; }
+.homepage-footer .footer__legal { border-top-color: rgba(255,170,0,.15); }
+.homepage-footer .lang-selector__link:hover { color: #ffaa00; }
+.homepage-footer .lang-selector:hover .lang-selector__globe { color: #ffaa00; }
+.homepage-footer .footer__legal-links a:hover { color: #ffaa00; }
+.homepage-footer .whatsapp-fab__label { background: #111; }
+
 /* Acacia decos in footer CTA */
 .footer__acacia {
   position: absolute;

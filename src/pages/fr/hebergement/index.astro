@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import SafariTikTok from '../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../components/PhotoGallery.astro';
+
+const lang = 'fr';
+const title = 'Hébergement en Tanzanie — Lodges de Luxe & Camps de Safari';
+const description = 'Trouvez les meilleures options d\'hébergement en Tanzanie pour votre safari. Choisissez entre des lodges de luxe avec équipements haut de gamme ou d\'authentiques camps sous tente immergés dans la brousse africaine.';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=600&h=400&fit=crop&auto=format', alt: 'Lodge safari de luxe avec piscine à débordement donnant sur le Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=600&h=400&fit=crop&auto=format', alt: 'Suite élégante du lodge safari avec vue panoramique sur la savane tanzanienne' },
+  { src: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop&auto=format', alt: 'Camp sous tente authentique sous des acacias dans le Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&h=400&fit=crop&auto=format', alt: 'Tentes mobiles vertes dans le camp de safari du Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=600&h=400&fit=crop&auto=format', alt: 'Camp permanent sous tente avec terrasses en bois dans la brousse' },
+  { src: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600&h=400&fit=crop&auto=format', alt: 'Lodge Serengeti en pierre et chaume avec architecture africaine authentique' },
+];
+
+const breadcrumbs = [
+  { label: 'Hébergement' },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  description: description,
+  url: 'https://safaritanzania.info/fr/hebergement/',
+};
+---
+
+<BaseLayout title={title} description={description} schema={schema} breadcrumbs={breadcrumbs} lang={lang}>
+  <Header slot="header" lang={lang} />
+  <Footer slot="footer" lang={lang} />
+
+  <!-- Héros -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <span class="chip chip--green">Hébergement</span>
+        <h1>Hébergement en Tanzanie</h1>
+        <p>Des lodges fastueux surplombant les plaines du Serengeti aux camps sous tente intimistes où vous vous endormez aux sons de la brousse africaine, la Tanzanie offre une gamme d'hébergements pour tous les styles d'aventure safari.</p>
+        <div class="hero__actions">
+          <a href="/fr/hebergement/lodges/" class="btn btn--primary btn--lg">Lodges safari</a>
+          <a href="/fr/hebergement/camps/" class="btn btn--outline btn--lg">Camps safari</a>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__photo-frame">
+          <div class="hero__deco hero__deco--tr"></div>
+          <div class="hero__deco hero__deco--bl"></div>
+          <img
+            src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=600&h=400&fit=crop"
+            alt="Lodge safari de luxe avec piscine à débordement donnant sur le Serengeti"
+            width="600"
+            height="400"
+            loading="eager"
+            style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:inherit"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Types d'hébergement -->
+  <section class="section section--gray">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:.75rem">Choisissez votre expérience safari</h2>
+      <p style="text-align:center;max-width:620px;margin:0 auto 3rem">Chaque option d'hébergement offre une manière distincte de se connecter avec la nature sauvage tanzanienne. Les deux garantissent des rencontres animalières inoubliables.</p>
+
+      <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:2rem">
+        <a href="/fr/hebergement/lodges/" class="photo-card" style="text-decoration:none">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=500&h=350&fit=crop" alt="Suite élégante du lodge safari avec vue panoramique sur la savane" width="500" height="350" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Expérience premium</span>
+            <p class="photo-card__title">Lodges Safari</p>
+            <p style="font-size:.92rem;color:var(--mc-text-muted)">Structures permanentes avec salles de bains privatives, piscines, restauration gastronomique et service de classe mondiale. Idéal pour les voyageurs qui veulent le confort sans sacrifier l'accès à la faune.</p>
+            <div class="photo-card__arrow">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </a>
+        <a href="/fr/hebergement/camps/" class="photo-card" style="text-decoration:none">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500&h=350&fit=crop" alt="Camp authentique sous tente avec tentes en toile sous des acacias" width="500" height="350" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Aventure authentique</span>
+            <p class="photo-card__title">Camps Safari</p>
+            <p style="font-size:.92rem;color:var(--mc-text-muted)">Des tentes en toile nichées dans la nature sauvage, offrant une expérience immersive dans la brousse. Réveillez-vous aux chants des oiseaux, dînez sous les étoiles et entendez les lions rugir depuis votre tente.</p>
+            <div class="photo-card__arrow">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ce que vous trouverez -->
+  <section class="section">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:.75rem">Ce que vous trouverez dans votre hébergement</h2>
+      <p style="text-align:center;max-width:620px;margin:0 auto 3rem">Quelle que soit l'option choisie, tous nos lodges et camps partenaires répondent à des normes élevées de qualité, de sécurité et de durabilité.</p>
+
+      <div class="service-cards" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+        <div class="service-card">
+          <span style="font-size:2.2rem">🍽️</span>
+          <h3 style="color:var(--mc-green)">Pension complète</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">Tous les repas inclus : petits-déjeuners copieux, paniers-repas pour les game drives et dîners multi-plats avec cuisines internationale et tanzanienne locale.</p>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">🚐</span>
+          <h3 style="color:var(--mc-green)">Accès aux game drives</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">Game drives matin et soir inclus dans tous les séjours. Guides francophones et anglophones expérimentés avec une connaissance intime du comportement animal et du terrain.</p>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">🌿</span>
+          <h3 style="color:var(--mc-green)">Pratiques éco-responsables</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">Énergie solaire, conservation de l'eau et partenariats communautaires. Nos hébergements soutiennent activement les programmes locaux de conservation et des communautés masaïes.</p>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">🛡️</span>
+          <h3 style="color:var(--mc-green)">Sécurité et confort</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">Sécurité 24h/24, installations de premiers secours, communication radio et personnel formé. Wi-Fi disponible dans la plupart des lodges et certains camps pour rester connecté.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <PhotoGallery images={galleryImages} title="Galerie photo — Hébergements safari en Tanzanie" />
+  <SafariTikTok category="lodges" lang="fr" />
+
+  <!-- CTA -->
+  <section class="section section--green">
+    <div class="container" style="text-align:center;position:relative">
+      <div style="position:absolute;top:-30px;right:0;opacity:.12;pointer-events:none;color:#D4A017">
+        <Fragment set:html={ACACIA_LARGE} />
+      </div>
+      <h2 style="color:white;margin-bottom:.75rem">Trouvez votre hébergement safari idéal</h2>
+      <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:520px;margin-left:auto;margin-right:auto">Laissez-nous vous aider à choisir l'hébergement idéal pour votre safari en Tanzanie. Consultez nos options ou contactez-nous pour des recommandations personnalisées.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/fr/prix/" class="btn btn--primary btn--lg">Voir les tarifs 2026</a>
+        <a href="/fr/contact/" class="btn btn--outline-white btn--lg" style="border-color:white;color:white">Nous contacter</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,11 @@
+{
+  "name": "Safari Tanzania Team",
+  "role": "Redaktionsteam",
+  "bio": "Unser Redaktionsteam besteht aus zertifizierten Safari-Guides, Wildtierexperten und leidenschaftlichen Naturliebhabern mit über 15 Jahren Erfahrung in Tansania.",
+  "avatar": "/media/authors/equipo-safari.jpg",
+  "expertise": ["Safaris", "Wildtiere", "Fotografie", "Massai-Kultur", "Nationalparks"],
+  "social": {
+    "instagram": "https://www.instagram.com/safaritanzaniainfo",
+    "facebook": "https://www.facebook.com/safaritanzaniainfo"
+  }
+}

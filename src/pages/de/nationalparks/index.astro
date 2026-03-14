@@ -1,0 +1,290 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import SafariTikTok from '../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../components/PhotoGallery.astro';
+import { touristAttraction } from '../../../i18n/schema';
+
+const lang = 'de';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const schema = touristAttraction({
+  name: 'Tansanias Nationalparks — Serengeti, Ngorongoro, Tarangire & Lake Manyara',
+  description: 'Entdecken Sie Tansanias beeindruckende Nationalparks: Serengeti, Ngorongoro-Krater, Tarangire und Lake Manyara. Heimat der Big Five und der Großen Migration.',
+  url: 'https://safaritanzania.info/de/nationalparks/',
+  image: 'https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=1200&h=630&fit=crop&auto=format',
+});
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=400&fit=crop&auto=format', alt: 'Gnuherde in der Serengeti während der Großen Migration' },
+  { src: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=400&fit=crop&auto=format', alt: 'Löwenfamilie im Ngorongoro-Krater' },
+  { src: 'https://images.unsplash.com/photo-1549366021-9f761d450615?w=600&h=400&fit=crop&auto=format', alt: 'Elefantenherde im Tarangire Nationalpark' },
+  { src: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=400&fit=crop&auto=format', alt: 'Männlicher Löwe in der Serengeti Savanne' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'Flamingos am Lake Manyara' },
+  { src: 'https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=400&fit=crop&auto=format', alt: 'Heißluftballon über dem Serengeti-Nationalpark bei Sonnenaufgang' },
+];
+
+const parks = [
+  {
+    name: 'Serengeti Nationalpark',
+    tag: 'UNESCO-Weltkulturerbe',
+    tagColor: '#D4A017',
+    area: '14.763 km²',
+    highlight: 'Große Migration',
+    img: 'https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=450&fit=crop&auto=format',
+    alt: 'Gnuherde bei der Großen Migration im Serengeti Nationalpark',
+    desc: 'Die Serengeti ist Tansanias bekanntester Nationalpark und eine der letzten intakten Tiermigrationsrouten der Welt. Jedes Jahr wandern über 1,5 Millionen Gnus, 200.000 Zebras und 500.000 Gazellen in einem der eindrucksvollsten Naturschauspiele der Welt.',
+    facts: [
+      'Jährliche Große Migration (Jul–Sep)',
+      'Big Five: Löwe, Leopard, Elefant, Büffel, Nashorn',
+      'Über 500 Vogelarten',
+      'Heißluftballon-Safaris möglich',
+    ],
+  },
+  {
+    name: 'Ngorongoro-Krater',
+    tag: 'Weltnaturerbe',
+    tagColor: '#3D6B2E',
+    area: '264 km² (Krater)',
+    highlight: 'Schwarzes Nashorn',
+    img: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=450&fit=crop&auto=format',
+    alt: 'Ngorongoro-Krater Panorama mit Wildtieren',
+    desc: 'Der Ngorongoro-Krater ist die größte intakte vulkanische Caldera der Welt und beherbergt über 25.000 Wildtiere in einem einzigen Becken. Dieser natürliche Zoo bietet außergewöhnlich hohe Tierbeobachtungsdichte und ist der letzte Rückzugsort des seltenen Schwarzen Nashorns in Tansania.',
+    facts: [
+      'Über 25.000 Tiere im Krater',
+      'Letztes Refugium des Schwarzen Nashorns',
+      'Ganzjährige Tierbeobachtung',
+      'Spektakuläre Aussicht vom Kraterrand',
+    ],
+  },
+  {
+    name: 'Tarangire Nationalpark',
+    tag: 'Elefantenparadies',
+    tagColor: '#6B4C2A',
+    area: '2.850 km²',
+    highlight: 'Elefantenherden',
+    img: 'https://images.unsplash.com/photo-1549366021-9f761d450615?w=600&h=450&fit=crop&auto=format',
+    alt: 'Elefantenherde im Tarangire Nationalpark mit Baobab-Bäumen',
+    desc: 'Tarangire beherbergt die größte Elefantenpopulation in Nordtansania. In der Trockenzeit strömen Tausende von Tieren zum Tarangire-Fluss und schaffen atemberaubende Begegnungen. Der Park ist auch für seine uralten Baobab-Bäume und seinen außergewöhnlichen Vogelreichtum bekannt.',
+    facts: [
+      'Größte Elefantenkonzentration in Nordtansania',
+      'Über 550 Vogelarten erfasst',
+      'Jahrhundertealte Baobab-Bäume',
+      'Buschcamps für authentisches Erlebnis',
+    ],
+  },
+  {
+    name: 'Lake Manyara',
+    tag: 'Geheimtipp',
+    tagColor: '#1A6B8A',
+    area: '325 km²',
+    highlight: 'Baum-kletternde Löwen',
+    img: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=450&fit=crop&auto=format',
+    alt: 'Flamingos am Lake Manyara mit Bergkulisse',
+    desc: 'Lake Manyara ist ein Geheimtipp unter Safarifahrern und bekannt für seine einzigartigen baumsitzenden Löwen. Der alkalische See beherbergt Hunderttausende von Flamingos und bietet eine dramatische Kulisse aus Rift Valley-Wänden und üppigem Regenwald.',
+    facts: [
+      'Berühmt für baumsitzende Löwen',
+      'Hunderttausende von Flamingos',
+      'Rift Valley-Steilwände als Kulisse',
+      'Kompaktes Gebiet — ideal mit anderen Parks kombinierbar',
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Tansanias Nationalparks — Serengeti, Ngorongoro, Tarangire & Mehr"
+  description="Entdecken Sie Tansanias Nationalparks: Serengeti, Ngorongoro-Krater, Tarangire und Lake Manyara. Heimat der Big Five, der Großen Migration und außergewöhnlicher Tierwelt."
+  lang={lang}
+  schema={schema}
+  breadcrumbs={[{ label: 'Nationalparks' }]}
+>
+  <Header slot="header" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero" style="position:relative;overflow:hidden">
+    <div style="position:absolute;top:-20px;right:-40px;opacity:.08;pointer-events:none;color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--green">4 Nationalparks</span>
+          <h1 class="hero__title">Tansanias Nationalparks</h1>
+          <p class="hero__desc">Tansania ist ein Land voller außergewöhnlicher Nationalparks und Schutzgebiete. Von der endlosen Serengeti-Ebene bis zum einzigartigen Ngorongoro-Krater, vom elefantenreichen Tarangire bis zum malerischen Lake Manyara — jeder Park ist ein Universum für sich.</p>
+          <div class="hero__actions">
+            <a href="/de/preise/" class="btn btn--primary btn--lg">Preise &amp; Pakete</a>
+            <a href="/de/kontakt/" class="btn btn--outline btn--lg">Reise planen</a>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <div class="hero__deco hero__deco--bl"></div>
+            <img
+              src="https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=800&h=640&fit=crop&auto=format"
+              alt="Gnuherde bei der Großen Migration in der Serengeti"
+              width="800" height="640" loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZAHLEN -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Tansanias Schatzkiste</span>
+        <h2>Warum Tansanias Parks einzigartig sind</h2>
+        <p>Mit über 38% der Landesfläche als Schutzgebiet ausgewiesen ist Tansania eines der naturreichsten Länder Afrikas.</p>
+      </div>
+      <div class="animate-on-scroll delay-1 stats-grid">
+        <div class="stat-box">
+          <div class="stat-num">22</div>
+          <div class="stat-label">Nationalparks</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">1.5M</div>
+          <div class="stat-label">Gnus bei der Migration</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">1.100+</div>
+          <div class="stat-label">Vogelarten</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">38%</div>
+          <div class="stat-label">Land als Schutzgebiet</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARK CARDS -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">Die Parks</span>
+        <h2>Unsere vier Haupt-Nationalparks</h2>
+      </div>
+      <div class="parks-list">
+        {parks.map((park, i) => (
+          <div class={`park-item animate-on-scroll${i % 2 === 1 ? ' park-item--reverse' : ''}`}>
+            <div class="park-item__img">
+              <img src={park.img} alt={park.alt} width="600" height="450" loading="lazy" />
+            </div>
+            <div class="park-item__body">
+              <span class="chip" style={`background:${park.tagColor};color:white;margin-bottom:.75rem`}>{park.tag}</span>
+              <h3 style="font-size:1.75rem;font-weight:800;margin-bottom:.5rem">{park.name}</h3>
+              <div style="display:flex;gap:1rem;margin-bottom:1rem;flex-wrap:wrap">
+                <span style="font-size:.85rem;background:var(--mc-sand,#F5F0E8);padding:.25rem .75rem;border-radius:20px;border:1px solid var(--mc-border,#E2E8F0)">Fläche: {park.area}</span>
+                <span style={`font-size:.85rem;padding:.25rem .75rem;border-radius:20px;background:${park.tagColor}22;border:1px solid ${park.tagColor}44;color:${park.tagColor}`}>Highlight: {park.highlight}</span>
+              </div>
+              <p style="color:var(--mc-text-muted);line-height:1.7;margin-bottom:1.25rem">{park.desc}</p>
+              <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.4rem">
+                {park.facts.map(fact => (
+                  <li style="display:flex;gap:.5rem;align-items:flex-start;font-size:.9rem">
+                    <span style={`color:${park.tagColor};font-weight:700;flex-shrink:0`}>✓</span>
+                    {fact}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <PhotoGallery images={galleryImages} title="Fotogalerie: Tansanias Nationalparks" />
+
+  <!-- TIKTOK -->
+  <SafariTikTok category="wildlife" lang="de" />
+
+  <!-- CTA -->
+  <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2>Entdecken Sie Tansanias Nationalparks 2026</h2>
+        <p>Planen Sie Ihre individuelle Nationalpark-Safari und erleben Sie Afrikas atemberaubende Tierwelt hautnah.</p>
+      </div>
+      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/de/preise/" class="btn btn--primary btn--lg">Preise ansehen</a>
+        <a href="/de/kontakt/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Kontakt aufnehmen</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>
+
+<style>
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.stat-box {
+  text-align: center;
+  padding: 1.5rem;
+  background: var(--mc-sand, #F5F0E8);
+  border-radius: var(--radius-md, 16px);
+  border: 1px solid var(--mc-border, #E2E8F0);
+}
+.stat-num {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--mc-green);
+}
+.stat-label {
+  font-size: .9rem;
+  color: var(--mc-text-muted);
+  margin-top: .25rem;
+}
+.parks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  margin-top: 2rem;
+}
+.park-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.park-item--reverse {
+  direction: rtl;
+}
+.park-item--reverse > * {
+  direction: ltr;
+}
+.park-item__img {
+  border-radius: var(--radius-lg, 20px);
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+.park-item__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media (max-width: 900px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .park-item, .park-item--reverse {
+    grid-template-columns: 1fr;
+    direction: ltr;
+  }
+}
+@media (max-width: 480px) {
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>

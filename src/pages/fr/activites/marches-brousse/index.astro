@@ -1,0 +1,265 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import { touristAttraction, faqPage } from '../../../../i18n/schema';
+import SafariTikTok from '../../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../../components/PhotoGallery.astro';
+
+const lang = 'fr';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&h=400&fit=crop&auto=format', alt: 'Guerriers masaïs en tenue traditionnelle guidant des visiteurs dans la brousse' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Paysage de savane avec des empreintes d\'animaux dans la terre meuble' },
+  { src: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=400&fit=crop&auto=format', alt: 'Véhicule safari classique dans le Serengeti pour une marche combinée' },
+  { src: 'https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=400&fit=crop&auto=format', alt: 'Troupeau de gnous dans la savane tanzanienne pendant une marche safari' },
+  { src: 'https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=400&fit=crop&auto=format', alt: 'Montgolfière au-dessus du Serengeti lors d\'une activité combinée' },
+  { src: 'https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=400&fit=crop&auto=format', alt: 'Girafe dans la forêt d\'acacias lors d\'une marche dans la brousse' },
+];
+
+const faqItems = [
+  { question: 'Qu\'est-ce qu\'une marche dans la brousse en Tanzanie ?', answer: 'Une marche dans la brousse (ou safari pédestre) est une <strong>expédition pédestre guidée</strong> dans la nature africaine avec des guides masaïs expérimentés et des rangers armés. Contrairement aux safaris en véhicule, les marches dans la brousse vous plongent dans le paysage au niveau du sol. Vous apprenez à pister les animaux, identifiez les plantes médicinales, lisez la brousse et découvrez les sons, les odeurs et les sensations de l\'Afrique d\'une manière impossible depuis un véhicule.' },
+  { question: 'Une marche dans la brousse est-elle sûre ?', answer: 'Oui, la sécurité est notre priorité absolue. Toutes les marches sont menées par <strong>deux guides</strong> : un pisteur masaï qui lit le paysage et un ranger armé certifié par l\'Autorité des parcs nationaux de Tanzanie (TANAPA). Les guides portent des équipements de communication par satellite et des trousses de premiers secours, et sont formés au comportement de la faune. Les itinéraires sont planifiés pour éviter les rencontres animales à haut risque, et des protocoles stricts sont en place pour toute observation sur pied.' },
+  { question: 'Combien de temps durent les marches dans la brousse ?', answer: 'Les marches durent généralement <strong>2 à 4 heures</strong>, généralement pendant les heures plus fraîches du matin (6h00-10h00). Des marches plus courtes d\'1 à 2 heures sont disponibles pour les familles et les personnes à mobilité réduite. Des safaris pédestres de plusieurs jours (3 à 5 jours) sont disponibles pour les randonneurs expérimentés souhaitant traverser la nature à pied, avec hébergement dans des camps de tentes mobiles.' },
+  { question: 'Que verrai-je lors d\'une marche dans la brousse ?', answer: 'Les marches dans la brousse se concentrent sur les petites merveilles que l\'on manque depuis les véhicules : identification des <strong>empreintes et des crottes</strong> d\'animaux, plantes médicinales utilisées par les guérisseurs masaïs, colonies d\'insectes, nids d\'oiseaux, reptiles et l\'écologie complexe de la savane. Vous pouvez également rencontrer des animaux plus grands comme des girafes, des zèbres, des antilopes et même des éléphants à distance sécurisée.' },
+  { question: 'Que faut-il porter pour une marche dans la brousse ?', answer: 'Portez des <strong>chaussures de randonnée ou des boots robustes à bout fermé</strong> (rodées avant votre voyage), un pantalon long, une chemise à manches longues aux couleurs neutres (kaki, olive, beige), un chapeau à larges bords et des lunettes de soleil. Appliquez un répulsif à insectes et de la crème solaire (SPF 50+). Emportez un petit sac à dos avec de l\'eau (nous fournissons des bouteilles) et évitez les parfums qui peuvent attirer les insectes et alerter les animaux.' },
+  { question: 'Quel est l\'âge minimum pour les marches dans la brousse ?', answer: 'L\'âge minimum pour les marches standard dans la brousse est généralement de <strong>12 ans</strong>, bien que cela puisse varier selon le lieu et la discrétion du guide. Certaines marches plus courtes et plus douces dans des zones à faible risque peuvent accepter des enfants à partir de 8 ans sous surveillance parentale. Pour les familles avec de jeunes enfants, nous recommandons l\'<a href="/fr/activites/observation-faune/" style="color:#3D6B2E;font-weight:700">observation de la faune en véhicule</a> qui n\'a pas de restriction d\'âge.' },
+];
+
+const schema = [
+  touristAttraction({
+    name: 'Marches dans la Brousse en Tanzanie — Safaris Pédestres avec des Guides Masaïs',
+    description: 'Safaris pédestres avec des guides masaïs expérimentés dans la brousse tanzanienne. Apprenez le pistage, découvrez les plantes médicinales et découvrez l\'Afrique au niveau du sol.',
+    url: 'https://safaritanzania.info/fr/activites/marches-brousse/',
+  }),
+  faqPage(faqItems),
+];
+---
+
+<BaseLayout
+  title="Marches dans la Brousse en Tanzanie — Safaris Pédestres avec des Guides Masaïs"
+  description="Découvrez les safaris pédestres avec des guides masaïs expérimentés dans la brousse tanzanienne. Apprenez le pistage des animaux, découvrez les plantes médicinales et connectez-vous avec l'Afrique au niveau du sol."
+  lang={lang}
+  schema={schema}
+  breadcrumbs={[
+    { label: 'Activités', href: '/fr/activites/' },
+    { label: 'Marches dans la brousse' },
+  ]}
+>
+  <Header slot="header" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--green">Safari pédestre</span>
+          <h1 class="hero__title">Marches dans la brousse avec des guides masaïs</h1>
+          <p class="hero__desc">Sortez du véhicule et entrez dans la nature africaine. Marchez dans la savane avec des guerriers masaïs expérimentés qui partagent des siècles de savoir bushcraft, de techniques de pistage et de sagesse culturelle.</p>
+          <div class="hero__actions">
+            <a href="/fr/prix/" class="btn btn--primary btn--lg">Voir les tarifs 2026</a>
+            <a href="/fr/contact/" class="btn btn--outline btn--lg">Réserver une marche</a>
+          </div>
+          <div class="stats-row">
+            <div class="stat"><strong>2-4 h</strong><span>Durée de la marche</span></div>
+            <div class="stat"><strong>Masaïs</strong><span>Guides experts</span></div>
+            <div class="stat"><strong>12 ans+</strong><span>Âge minimum</span></div>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <img
+              src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=800&h=640&fit=crop&auto=format"
+              alt="Guide masaï conduisant un safari pédestre dans la savane dorée tanzanienne"
+              width="800" height="640" loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- L'EXPÉRIENCE -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">L'expérience</span>
+        <h2>Ce qui rend les marches dans la brousse si particulières</h2>
+        <p>Une marche dans la brousse transforme votre safari d'une observation en une immersion totale. Sentez la terre sous vos pieds, lisez les empreintes animales et découvrez les détails cachés de la brousse africaine.</p>
+      </div>
+      <div class="card-grid card-grid--2 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&h=450&fit=crop&auto=format" alt="Guerriers masaïs en tenue traditionnelle guidant des visiteurs dans la brousse" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Savoir traditionnel masaï</h3>
+            <p>Votre guide masaï partage des générations de sagesse bushcraft : quelles plantes soignent, quels arbres signalent la présence d'eau, comment lire le comportement animal de loin et les histoires traditionnelles tissées dans le paysage. Ce savoir transmis depuis des siècles transforme la marche en un profond échange culturel.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=450&fit=crop&auto=format" alt="Paysage de savane avec des empreintes d'animaux dans la terre meuble" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Pistage des animaux</h3>
+            <p>Apprenez à identifier les empreintes, les crottes et les marquages territoriaux. Votre guide montre comment distinguer les empreintes d'un lion de celles d'un léopard, évaluer la fraîcheur des excréments d'éléphants et lire l'histoire de la brousse à partir d'indices invisibles pour l'œil non averti. Ce travail de détective ajoute une dimension palpitante à votre safari.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CE QUE VOUS DÉCOUVRIREZ -->
+  <section class="section section--green bg-green" style="position:relative;overflow:hidden">
+    <div style="position:absolute;bottom:0;left:-30px;opacity:.08;pointer-events:none;color:#D4A017;transform:rotate(180deg)">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Merveilles cachées</span>
+        <h2>Ce que vous découvrirez à pied</h2>
+        <p>Les marches dans la brousse révèlent tout un monde que les safaris en véhicule ne font qu'effleurer. Voici quelques-uns des points forts que nos marcheurs rencontrent.</p>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1">
+        <div class="service-card">
+          <h3 class="service-card__title">Plantes médicinales</h3>
+          <p class="service-card__desc">Les guides masaïs identifient des dizaines de plantes utilisées en médecine traditionnelle : brosses à dents naturelles, fébrifuges, analgésiques et écorces antiseptiques. Une véritable pharmacopée vivante de la brousse.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Écologie des insectes</h3>
+          <p class="service-card__desc">Des termitières cathédrales aux autoroutes de bousiers et aux nids de fourmis tisseuses, le micro-monde de la savane révèle des structures d'ingénierie et des sociétés d'une complexité remarquable.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Vie aviaire</h3>
+          <p class="service-card__desc">À pied, vous entendez et voyez des oiseaux que les véhicules bruyants font fuir : des tisserins construisant leurs nids, des souimangas se nourrissant de fleurs sauvages et des rapaces chassant depuis des perchoirs d'acacia.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Lecture du paysage</h3>
+          <p class="service-card__desc">Apprenez pourquoi certains arbres poussent à des endroits précis, comment les rivières sculptent le paysage, pourquoi les kopjes (affleurements granitiques) attirent les prédateurs et comment le feu façonne l'écosystème du Serengeti.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SÉCURITÉ -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">Sécurité</span>
+        <h2>Votre sécurité lors de la marche</h2>
+        <p>Chaque marche dans la brousse suit des protocoles de sécurité stricts établis par l'autorité des parcs nationaux de Tanzanie et nos guides masaïs expérimentés.</p>
+      </div>
+      <div class="card-grid card-grid--3 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Système à deux guides</h3>
+            <p>Chaque marche est menée par un pisteur masaï en tête et un ranger armé certifié TANAPA en queue. Cette formation assure une vigilance à 360 degrés et une capacité d'intervention immédiate si nécessaire.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Planification des itinéraires</h3>
+            <p>Les guides reconnaissent les itinéraires avant chaque marche, vérifient les signes récents de prédateurs et planifient des options de détour. Les itinéraires privilégient un terrain sûr avec une bonne visibilité et des points d'échappement naturels.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Équipement d'urgence</h3>
+            <p>Les guides portent des téléphones satellites, des trousses de premiers secours, du sérum antivenin et des fusées de détresse. Un véhicule de secours est toujours à moins de 15 minutes. Tous les guides sont formés aux premiers secours et aux protocoles d'urgence faunique.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMBINER -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Combinaisons idéales</span>
+        <h2>Associez les marches à d'autres expériences</h2>
+        <p>Les marches dans la brousse se combinent parfaitement avec les safaris en véhicule. Ajoutez une marche matinale à tout itinéraire safari multi-jours.</p>
+      </div>
+      <div class="card-grid card-grid--3 animate-on-scroll delay-1">
+        <a href="/fr/safaris/safari-classique/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=450&fit=crop&auto=format" alt="Véhicule de safari classique dans le Serengeti" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Safari Classique + Marche</h3>
+            <p>Game drives de jour, safari pédestre le matin. La combinaison ultime entre l'observation en véhicule et l'exploration intime au niveau du sol.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+        <a href="/fr/activites/observation-faune/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=450&fit=crop&auto=format" alt="Troupeau de gnous lors de la Grande Migration" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Observation faune + Marche</h3>
+            <p>Observez les Big Five depuis un véhicule, puis explorez le pistage et l'écologie à pied. Deux perspectives sur la même nature extraordinaire.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+        <a href="/fr/activites/montgolfiere/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=450&fit=crop&auto=format" alt="Montgolfière au-dessus du Serengeti au lever du soleil" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Montgolfière + Marche</h3>
+            <p>Découvrez la savane depuis les airs en montgolfière, puis explorez-la au niveau du sol à pied. Deux perspectives inoubliables en une seule journée.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">FAQ</span>
+        <h2>Questions sur les marches dans la brousse</h2>
+        <p>Tout ce que vous devez savoir sur les safaris pédestres en Tanzanie avec des guides masaïs.</p>
+      </div>
+      <div class="faq-list animate-on-scroll delay-1">
+        {faqItems.map(item => (
+          <details>
+            <summary>{item.question}</summary>
+            <div class="faq-answer" set:html={item.answer} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <PhotoGallery images={galleryImages} title="Galerie photo — Marches dans la brousse" />
+  <SafariTikTok category="serengeti" lang="fr" />
+
+  <!-- CTA -->
+  <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2>Marchez dans la brousse africaine</h2>
+        <p>Découvrez la Tanzanie au niveau du sol avec nos guides masaïs experts. Un lien inoubliable avec la nature sauvage.</p>
+      </div>
+      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/fr/prix/" class="btn btn--primary btn--lg">Voir les tarifs 2026</a>
+        <a href="/fr/contact/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Réserver une marche</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>

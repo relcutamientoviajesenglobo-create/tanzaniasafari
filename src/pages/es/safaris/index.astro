@@ -3,6 +3,17 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import { touristAttraction, faqPage } from '../../../i18n/schema';
+import SafariTikTok from '../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../components/PhotoGallery.astro';
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Llanuras doradas del Serengeti al atardecer con acacias' },
+  { src: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=400&fit=crop&auto=format', alt: 'León macho descansando en la sabana africana' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'Elefante africano entre baobabs en Tarangire' },
+  { src: 'https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=600&h=400&fit=crop&auto=format', alt: 'Manada de cebras migrando en el Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=400&fit=crop&auto=format', alt: 'Jirafa masái silueteada al atardecer en Tanzania' },
+  { src: 'https://images.unsplash.com/photo-1745885979468-44a855f8a5fa?w=600&h=400&fit=crop&auto=format', alt: 'Vista panorámica del Cráter del Ngorongoro' },
+];
 
 const schema = [
   touristAttraction({
@@ -165,6 +176,10 @@ const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="
       </div>
     </div>
   </section>
+
+  <!-- TIKTOK & GALLERY -->
+  <SafariTikTok category="serengeti" lang="es" />
+  <PhotoGallery images={galleryImages} title="Galería de fotos del Serengeti" />
 
   <!-- FAQ -->
   <section class="section" aria-labelledby="faq-title">

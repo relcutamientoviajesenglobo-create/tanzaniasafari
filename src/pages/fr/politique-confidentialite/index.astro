@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { webPage } from '../../../i18n/schema';
+
+const lang = 'fr';
+const title = 'Politique de Confidentialité — Safari Tanzania';
+const description = 'Politique de confidentialité de Safari Tanzania. Informations sur la collecte, l\'utilisation et la protection de vos données personnelles conformément au RGPD.';
+
+const breadcrumbs = [
+  { label: 'Politique de Confidentialité' },
+];
+
+const schema = [
+  webPage({
+    name: title,
+    description,
+    url: 'https://safaritanzania.info/fr/politique-confidentialite/',
+  }),
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="/fr/politique-confidentialite/"
+  schema={schema}
+  breadcrumbs={breadcrumbs}
+  lang={lang}
+>
+  <Header slot="header" lang={lang} />
+  <Footer slot="footer" lang={lang} />
+
+  <section class="section">
+    <div class="container" style="max-width:800px">
+      <h1 style="margin-bottom:2rem">Politique de Confidentialité</h1>
+      <p style="font-size:.85rem;color:#5A6B52;margin-bottom:2rem"><strong>Dernière mise à jour :</strong> 14 mars 2026</p>
+
+      <div style="display:flex;flex-direction:column;gap:2rem">
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:.75rem">1. Responsable du traitement des données</h2>
+          <p>Safari Tanzania, dont le siège est situé à Sokoine Road, Arusha, Tanzanie, est responsable du traitement de vos données personnelles collectées via le site <strong>safaritanzania.info</strong>. Pour toute question relative à la protection de vos données, contactez-nous à <a href="mailto:info@safaritanzania.info" style="color:#3D6B2E;font-weight:700">info@safaritanzania.info</a>.</p>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:.75rem">2. Données collectées</h2>
+          <p>Nous collectons les données personnelles suivantes :</p>
+          <ul style="margin-top:.75rem;padding-left:1.5rem;list-style:disc;display:flex;flex-direction:column;gap:.4rem;color:#5A6B52">
+            <li><strong>Données de contact :</strong> nom, prénom, adresse e-mail, numéro de téléphone (via le formulaire de contact ou de réservation)</li>
+            <li><strong>Données de navigation :</strong> adresse IP, type de navigateur, pages visitées, durée de visite (via cookies analytiques)</li>
+            <li><strong>Données de réservation :</strong> informations relatives à votre safari, dates, nombre de voyageurs, préférences</li>
+            <li><strong>Communications :</strong> historique de nos échanges par e-mail ou via le site</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:.75rem">3. Finalités et bases légales du traitement</h2>
+          <p>Vos données sont traitées pour les finalités suivantes :</p>
+          <ul style="margin-top:.75rem;padding-left:1.5rem;list-style:disc;display:flex;flex-direction:column;gap:.4rem;color:#5A6B52">
+            <li><strong>Exécution d'un contrat :</strong> traitement de vos réservations et demandes de devis</li>
+            <li><strong>Intérêt légitime :</strong> amélioration de nos services, analyse de l'audience du site, prévention des fraudes</li>
+            <li><strong>Consentement :</strong> envoi de newsletters et communications marketing (vous pouvez vous désinscrire à tout moment)</li>
+            <li><strong>Obligation légale :</strong> conservation des données comptables et fiscales</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:.75rem">4. Cookies et technologies de suivi</h2>
+          <p>Notre site utilise des cookies pour améliorer votre expérience. Les types de cookies utilisés :</p>
+          <ul style="margin-top:.75rem;padding-left:1.5rem;list-style:disc;display:flex;flex-direction:column;gap:.4rem;color:#5A6B52">
+            <li><strong>Cookies essentiels :</strong> nécessaires au fonctionnement du site (pas de consentement requis)</li>
+            <li><strong>Cookies analytiques :</strong> mesure d'audience via des outils anonymisés (avec votre consentement)</li>
+            <li><strong>Cookies de préférences :</strong> mémorisation de vos choix de langue et paramètres</li>
+          </ul>
+          <p style="margin-top:.75rem">Vous pouvez gérer vos préférences cookies à tout moment via les paramètres de votre navigateur.</p>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:.75rem">5. Partage des données</h2>
+          <p>Vos données personnelles ne sont jamais vendues à des tiers. Elles peuvent être partagées avec :</p>
+          <ul style="margin-top:.75rem;padding-left:1.5rem;list-style:disc;display:flex;flex-direction:column;gap:.4rem;color:#5A6B52">
+            <li>Nos partenaires opérationnels (lodges, transporteurs, guides locaux) dans le cadre de l'exécution de votre réservation</li>
+            <li>Nos prestataires techniques (hébergement web, outils de messagerie) soumis à des engagements de confidentialité stricts</li>
+            <li>Les autorités compétentes en cas d'obligation légale</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:.75rem">6. Durée de conservation</h2>
+          <ul style="padding-left:1.5rem;list-style:disc;display:flex;flex-direction:column;gap:.4rem;color:#5A6B52">
+            <li><strong>Données de contact et réservation :</strong> conservées 3 ans après la fin de la relation commerciale</li>
+            <li><strong>Données comptables :</strong> conservées 10 ans conformément aux obligations légales</li>
+            <li><strong>Données analytiques :</strong> conservées 13 mois maximum</li>
+            <li><strong>Listes de diffusion :</strong> jusqu'à désinscription de votre part</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:.75rem">7. Vos droits</h2>
+          <p>Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez des droits suivants :</p>
+          <ul style="margin-top:.75rem;padding-left:1.5rem;list-style:disc;display:flex;flex-direction:column;gap:.4rem;color:#5A6B52">
+            <li><strong>Droit d'accès :</strong> obtenir une copie de vos données personnelles</li>
+            <li><strong>Droit de rectification :</strong> corriger des données inexactes ou incomplètes</li>
+            <li><strong>Droit à l'effacement :</strong> demander la suppression de vos données dans certaines conditions</li>
+            <li><strong>Droit à la portabilité :</strong> recevoir vos données dans un format structuré</li>
+            <li><strong>Droit d'opposition :</strong> vous opposer au traitement de vos données à des fins marketing</li>
+            <li><strong>Droit de limitation :</strong> demander la restriction du traitement dans certaines circonstances</li>
+          </ul>
+          <p style="margin-top:.75rem">Pour exercer ces droits, contactez-nous à <a href="mailto:info@safaritanzania.info" style="color:#3D6B2E;font-weight:700">info@safaritanzania.info</a>. Nous répondons dans un délai de 30 jours.</p>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:.75rem">8. Sécurité des données</h2>
+          <p>Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos données contre tout accès non autorisé, altération, divulgation ou destruction : chiffrement SSL, accès restreint aux données, sauvegardes régulières et formation de nos équipes à la protection des données.</p>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:.75rem">9. Transferts internationaux</h2>
+          <p>En tant qu'opérateur de safaris en Tanzanie, certaines de vos données peuvent être transférées vers des pays situés hors de l'Union Européenne dans le cadre de l'organisation de votre voyage. Ces transferts sont effectués dans le respect des garanties appropriées prévues par le RGPD (clauses contractuelles types, décisions d'adéquation).</p>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:.75rem">10. Réclamations</h2>
+          <p>Si vous estimez que le traitement de vos données ne respecte pas la réglementation applicable, vous avez le droit d'introduire une réclamation auprès de l'autorité de contrôle compétente dans votre pays de résidence (en France, la CNIL : <a href="https://www.cnil.fr" target="_blank" rel="noopener" style="color:#3D6B2E;font-weight:700">www.cnil.fr</a>).</p>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:.75rem">11. Modifications de cette politique</h2>
+          <p>Nous nous réservons le droit de modifier cette politique de confidentialité à tout moment. La version la plus récente est toujours disponible sur cette page avec sa date de mise à jour. En cas de modifications substantielles, nous vous en informerons par e-mail si vous êtes abonné à notre liste de diffusion.</p>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:.75rem">12. Contact</h2>
+          <p>Pour toute question relative à notre politique de confidentialité ou à l'exercice de vos droits :<br>
+          <strong>Safari Tanzania</strong><br>
+          Sokoine Road, Arusha, Tanzanie<br>
+          E-mail : <a href="mailto:info@safaritanzania.info" style="color:#3D6B2E;font-weight:700">info@safaritanzania.info</a><br>
+          Téléphone : <a href="tel:+255753000000" style="color:#3D6B2E;font-weight:700">+255 753 000 000</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

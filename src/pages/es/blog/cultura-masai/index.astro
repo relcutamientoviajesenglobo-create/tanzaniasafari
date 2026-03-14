@@ -11,7 +11,7 @@ const description = 'Descubre la fascinante cultura del pueblo Masai: tradicione
 
 const allPosts = await getCollection('blog');
 const posts = allPosts
-  .filter(post => !post.slug.startsWith('en-') && post.data.silo === 'cultura-masai')
+  .filter(post => !post.slug.startsWith('en-') && !post.slug.startsWith('de-') && !post.slug.startsWith('fr-') && post.data.silo === 'cultura-masai')
   .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
 
 const breadcrumbs = [

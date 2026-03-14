@@ -3,6 +3,17 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import { touristAttraction, faqPage } from '../../../i18n/schema';
+import SafariTikTok from '../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../components/PhotoGallery.astro';
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Safari clásico en vehículo 4x4 por las llanuras del Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=400&fit=crop&auto=format', alt: 'León durante un avistamiento de Big Five en Tanzania' },
+  { src: 'https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=400&fit=crop&auto=format', alt: 'Globo aerostático al amanecer sobre el Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'Elefante en safari incluido en paquetes todo incluido' },
+  { src: 'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=600&h=400&fit=crop&auto=format', alt: 'Lodge de lujo incluido en paquetes de safari de varios días' },
+  { src: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=400&fit=crop&auto=format', alt: 'Vehículo safari con guía experto incluido en todos los paquetes' },
+];
 
 const title = 'Precios Safari Tanzania 2026 — Tarifas, Paquetes y Reservas';
 const description = 'Consulta los precios actualizados 2026 para safaris en Tanzania: safari de un dia desde $150 USD, multi-dia desde $800 USD, globo aerostatico $500 USD. Paquetes todo incluido.';
@@ -255,6 +266,10 @@ const schema = [
       </div>
     </div>
   </section>
+
+  <!-- TIKTOK & GALLERY -->
+  <SafariTikTok category="general" lang="es" />
+  <PhotoGallery images={galleryImages} title="Galería de Safaris" />
 
   <!-- CTA -->
   <section class="section section--green">

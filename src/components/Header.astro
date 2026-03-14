@@ -11,14 +11,15 @@ const lang: Lang = Astro.props.lang || 'es';
 const currentPath = Astro.url.pathname;
 const isActive = (path: string) => currentPath === path || currentPath.startsWith(path + '/');
 const navItems = getNavItems(lang);
-const pricesHref = lang === 'en' ? '/en/prices/' : '/precios/';
+const pricesHref = { en: '/prices/', es: '/es/precios/', de: '/de/preise/', fr: '/fr/prix/' }[lang];
+const homeHref = lang === 'en' ? '/' : `/${lang}/`;
 ---
 
 <header class="header" role="banner">
   <div class="container header__inner">
 
     <!-- LOGO -->
-    <a href={lang === 'en' ? '/en/' : '/'} class="header__logo" aria-label="Safari Tanzania — Inicio">
+    <a href={homeHref} class="header__logo" aria-label="Safari Tanzania — Inicio">
       <svg class="logo__mark" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <circle cx="28" cy="28" r="28" fill="#3D6B2E"/>
         <g transform="translate(8,6) scale(0.7)">
@@ -34,7 +35,7 @@ const pricesHref = lang === 'en' ? '/en/prices/' : '/precios/';
       </svg>
       <div class="logo__text">
         <span class="logo__name">Safari Tanzania</span>
-        <span class="logo__sub">{lang === 'en' ? 'African Safaris' : 'Safaris en África'}</span>
+        <span class="logo__sub">{lang === 'en' ? 'African Safaris' : lang === 'de' ? 'Afrikanische Safaris' : lang === 'fr' ? 'Safaris en Afrique' : 'Safaris en África'}</span>
         <span class="logo__loc">Arusha, Tanzania</span>
       </div>
     </a>

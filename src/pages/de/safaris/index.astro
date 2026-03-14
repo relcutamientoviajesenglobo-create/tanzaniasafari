@@ -1,0 +1,249 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import SafariTikTok from '../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../components/PhotoGallery.astro';
+import { touristAttraction, faqPage } from '../../../i18n/schema';
+
+const lang = 'de';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const faqItems = [
+  { question: 'Welche Safari-Typen gibt es in Tansania?', answer: 'Wir bieten drei Hauptarten an: die <strong>Klassische Safari</strong> (traditionelle Pirschfahrten im 4x4-Fahrzeug), die <strong>Foto-Safari</strong> (spezialisierte Touren für Fotografiebegeisterte) und die <strong>Nacht-Safari</strong> (nächtliche Wildtier-Erlebnisse). Jede Safari kann als Tagestour oder mehrtägige Expedition gebucht werden. Besuchen Sie unsere <a href="/de/preise/" style="color:#3D6B2E;font-weight:700">Preisseite</a> für Paketdetails.' },
+  { question: 'Wie viele Tage sollte meine Safari dauern?', answer: 'Wir empfehlen mindestens <strong>3 Tage</strong>, um die Serengeti und den Ngorongoro vollständig zu erleben. Eine 5-7-tägige Safari ermöglicht es Ihnen, mehrere Parks in entspanntem Tempo zu erkunden. Tagessafaris ab Arusha sind ebenfalls für Reisende mit wenig Zeit verfügbar. Unsere Guides helfen Ihnen, den perfekten Reiseplan für Ihren Zeitplan zu gestalten.' },
+  { question: 'Was ist der Unterschied zwischen einer klassischen und einer Foto-Safari?', answer: 'Eine <strong>Klassische Safari</strong> konzentriert sich auf umfassendes Wildtierbeobachten mit mehreren Stopps und Standorten. Eine <strong><a href="/de/safaris/foto-safari/" style="color:#3D6B2E;font-weight:700">Foto-Safari</a></strong> ist speziell für Fotografen konzipiert, mit mehr Zeit an den Sichtungsstellen, optimaler Positionierung für Lichtverhältnisse, Fahrzeugen mit aufklappbaren Dächern für uneingeschränkte Winkel und Begleitung durch erfahrene Wildtierfotografen.' },
+  { question: 'Sind Safaris für Kinder geeignet?', answer: 'Absolut! Tansania-Safaris sind ein fantastisches Familienerlebnis. Kinder unter 5 Jahren sind auf den meisten Safaris <strong>kostenlos</strong>. Wir bieten kinderfreundliche Fahrzeuge, kürzere Fahrstrecken für jüngere Kinder und Guides mit Erfahrung mit Familien. Kinder von 5-11 Jahren erhalten ermäßigte Preise. Besuchen Sie unsere <a href="/de/preise/" style="color:#3D6B2E;font-weight:700">Preisseite</a> für Familienpakete.' },
+  { question: 'Welche Fahrzeuge werden für Safaris verwendet?', answer: 'Wir nutzen speziell ausgebaute <strong>Toyota Land Cruiser</strong> und Land Rover mit aufklappbaren Dächern für eine 360-Grad-Wildtierbeobachtung. Alle Fahrzeuge haben Ladebuchsen, Kühlboxen für Getränke, Erste-Hilfe-Kästen und Satellitenkommunikation. Maximal 6 Passagiere pro Fahrzeug stellen sicher, dass jeder einen Fensterplatz hat.' },
+];
+
+const schema = [
+  touristAttraction({
+    name: 'Safari-Typen in Tansania — Klassisch, Fotografie & Nachtsafari',
+    description: 'Entdecken Sie die besten Safari-Erlebnisse in Tansania. Klassische Pirschfahrten, Fotografietouren und nächtliche Wildtierabenteuer in der Serengeti und am Ngorongoro.',
+    url: 'https://safaritanzania.info/de/safaris/',
+  }),
+  faqPage(faqItems),
+];
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=400&fit=crop&auto=format', alt: 'Safari-Fahrzeug auf einer Pirschfahrt durch die goldene Serengeti-Savanne' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Serengeti-Landschaft bei Sonnenaufgang mit verstreuten Akazienbäumen' },
+  { src: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=400&fit=crop&auto=format', alt: 'Männlicher Löwe mit Mähne in der goldenen Serengeti-Savanne' },
+  { src: 'https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&h=400&fit=crop&auto=format', alt: 'Leopard in einem Akazienbaum im Serengeti-Nationalpark' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'Elefantenherde beim Überqueren der Serengeti-Ebenen' },
+  { src: 'https://images.unsplash.com/photo-1745885979468-44a855f8a5fa?w=600&h=400&fit=crop&auto=format', alt: 'Luftaufnahme des Ngorongoro-Kraters mit üppiger grüner Kraterfläche' },
+];
+---
+
+<BaseLayout
+  title="Safari-Typen in Tansania — Klassisch, Fotografie & Nachtsafari"
+  description="Entdecken Sie die besten Safari-Erlebnisse in Tansania. Klassische Pirschfahrten im 4x4-Fahrzeug, Fotografietouren mit erfahrenen Guides und nächtliche Wildtierabenteuer in der Serengeti."
+  lang={lang}
+  schema={schema}
+  breadcrumbs={[{ label: 'Safaris' }]}
+>
+  <Header slot="header" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--green">Serengeti &amp; Ngorongoro</span>
+          <h1 class="hero__title">Safari-Erlebnisse in Tansania</h1>
+          <p class="hero__desc">Wählen Sie Ihr perfektes Safari-Abenteuer. Von klassischen Pirschfahrten über spezialisierte Fotografietouren bis hin zu fesselnden Nachtexpeditionen bietet Tansania Wildtier-Begegnungen wie nirgendwo sonst auf der Welt.</p>
+          <div class="hero__actions">
+            <a href="/de/preise/" class="btn btn--primary btn--lg">Preise 2026 ansehen</a>
+            <a href="/de/kontakt/" class="btn btn--outline btn--lg">Reise planen</a>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <img
+              src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=800&h=640&fit=crop&auto=format"
+              alt="Safari-Fahrzeug auf einer Pirschfahrt durch die goldene Serengeti-Savanne"
+              width="800" height="640" loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SAFARI-TYPEN -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Wählen Sie Ihr Abenteuer</span>
+        <h2>Unsere Safari-Typen</h2>
+        <p>Jede Safari ist darauf ausgerichtet, ein außergewöhnliches Wildtier-Erlebnis zu bieten. Wählen Sie den Stil, der Ihren Interessen entspricht – den Rest übernehmen wir.</p>
+      </div>
+      <div class="card-grid card-grid--3 animate-on-scroll delay-1">
+        <a href="/de/safaris/klassische-safari/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=450&fit=crop&auto=format" alt="Serengeti-Landschaft während einer klassischen Pirschfahrt" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Beliebteste Safari</span>
+            <h3 class="photo-card__title">Klassische Safari</h3>
+            <p>Das quintessenzielle Tansania-Safari-Erlebnis. Pirschfahrten in maßgefertigten 4x4-Fahrzeugen durch die Serengeti und den Ngorongoro-Krater mit sachkundigen lokalen Guides. Begegnen Sie den Big Five, erleben Sie die Große Migration und tauchen Sie in die afrikanische Wildnis ein.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+        <a href="/de/safaris/foto-safari/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=450&fit=crop&auto=format" alt="Männlicher Löwe im goldenen Licht – ideal für Wildtierfotografie" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Für Fotografen</span>
+            <h3 class="photo-card__title">Foto-Safari</h3>
+            <p>Konzipiert für Fotobegeisterte. Verlängerte Zeit an den Sichtungsstellen, optimal positionierte Fahrzeuge für das beste Licht, professionelle Tipps und Anleitung. Erstellen Sie magazinreife Bilder von Tansanias Wildtieren in ihrem natürlichen Lebensraum.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+        <a href="/de/safaris/nacht-safari/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&h=450&fit=crop&auto=format" alt="Leopard bei schwachem Licht während einer Nacht-Safari-Expedition" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Nach Einbruch der Dunkelheit</span>
+            <h3 class="photo-card__title">Nacht-Safari</h3>
+            <p>Erleben Sie die afrikanische Wildnis nach Sonnenuntergang. Mit speziellen Scheinwerfern und Nachtsichtausrüstung entdecken Sie nächtliche Raubtiere, Galagos, Erdferkel und die faszinierenden Geräusche der Savanne in der Nacht.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEISTUNGEN -->
+  <section class="section section--green bg-green" style="position:relative;overflow:hidden">
+    <div style="position:absolute;bottom:0;left:-30px;opacity:.08;pointer-events:none;color:#D4A017;transform:rotate(180deg)">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Jede Safari beinhaltet</span>
+        <h2>Was ist inbegriffen</h2>
+        <p>Alle unsere Safaris beinhalten wesentliche Leistungen, damit Sie sich ganz auf das Erlebnis konzentrieren können.</p>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1">
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M40 8H8c-2.21 0-3.98 1.79-3.98 4L4 36c0 2.21 1.79 4 4 4h32c2.21 0 4-1.79 4-4V12c0-2.21-1.79-4-4-4zm-2 8L24 26 10 16v-4l14 10 14-10v4z"/></svg>
+          </div>
+          <h3 class="service-card__title">Hotelabholung</h3>
+          <p class="service-card__desc">Kostenloser Hin- und Rücktransfer von Ihrem Hotel in Arusha oder Moshi oder vom Flughafen.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-2 30l-10-10 2.83-2.83L22 28.34l13.17-13.17L38 18 22 34z"/></svg>
+          </div>
+          <h3 class="service-card__title">Erfahrener Guide</h3>
+          <p class="service-card__desc">Zertifizierter deutschsprachiger Guide mit jahrelanger Erfahrung in Tansanias Nationalparks.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M20 4H4v16h16V4zm-2 14H6V6h12v12zm18-14H20v16h16V4zm-2 14H22V6h12v12zM4 28v16h16V28H4zm14 14H6V30h12v12zm10-14h16v16H28V28zm14 14H30V30h12v12z"/></svg>
+          </div>
+          <h3 class="service-card__title">Parkgebühren</h3>
+          <p class="service-card__desc">Alle Nationalparkeintrittskarten, Naturschutzgebühren und Kraterabstiegsgebühren sind inbegriffen.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M16 6l2.29 2.29-4.88 4.88-2.83-2.83L16 6zM2 22v-4h6v4H2zm14-5c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zm20-11h6v4h-6v-4zM32 6l5.42 4.34-2.83 2.83-4.88-4.88L32 6z"/></svg>
+          </div>
+          <h3 class="service-card__title">Mahlzeiten &amp; Getränke</h3>
+          <p class="service-card__desc">Lunchpaket, Snacks und unbegrenzt Flaschenwasser während der Pirschfahrten. Vollpension auf Mehrtagestouren.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARKS -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">Reiseziele</span>
+        <h2>Parks und Reservate, die wir besuchen</h2>
+        <p>Unsere Safaris führen Sie zu Tansanias spektakulärsten Wildtiergebieten, vom legendären Serengeti-Nationalpark bis zu versteckten Juwelen, die nur lokale Guides kennen.</p>
+      </div>
+      <div class="card-grid card-grid--2 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=450&fit=crop&auto=format" alt="Weite Savannenlandschaft des Serengeti-Nationalparks" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">UNESCO-Welterbe</span>
+            <h3 class="photo-card__title">Serengeti-Nationalpark</h3>
+            <p>Das Kronjuwel der afrikanischen Safaris. Heimat der Großen Migration, über 3.000 Löwen und endloser Ebenen, die sich bis zum Horizont erstrecken. Das Serengeti-Ökosystem umfasst 30.000 Quadratkilometer unberührter Wildnis.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1745885979468-44a855f8a5fa?w=600&h=450&fit=crop&auto=format" alt="Luftaufnahme des Ngorongoro-Kraters mit üppig grünem Kraterboden" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Naturwunder</span>
+            <h3 class="photo-card__title">Ngorongoro-Krater</h3>
+            <p>Die größte intakte vulkanische Caldera der Welt und ein natürliches Amphitheater für Wildtiere. Heimat von etwa 25.000 Tieren, darunter das seltene Spitzmaulnashorn, Löwen, Flamingos und Nilpferde auf einer 260 Quadratkilometer großen Kraterfläche.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOTOGALERIE -->
+  <section class="section">
+    <div class="container">
+      <PhotoGallery images={galleryImages} title="Fotogalerie" />
+    </div>
+  </section>
+
+  <!-- TIKTOK -->
+  <SafariTikTok category="serengeti" lang="de" />
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">FAQ</span>
+        <h2>Safari-Fragen beantwortet</h2>
+        <p>Häufige Fragen zu unseren Tansania-Safari-Erlebnissen und was Sie erwartet.</p>
+      </div>
+      <div class="faq-list animate-on-scroll delay-1">
+        {faqItems.map(item => (
+          <details>
+            <summary>{item.question}</summary>
+            <div class="faq-answer" set:html={item.answer} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green bg-green" style="position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container" style="text-align:center">
+      <div class="section__header animate-on-scroll">
+        <h2>Bereit, Ihre Safari zu buchen?</h2>
+        <p>Wählen Sie Ihren idealen Safari-Typ und lassen Sie unser Expertenteam ein unvergessliches Tansania-Abenteuer für Sie gestalten.</p>
+      </div>
+      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/de/preise/" class="btn btn--primary btn--lg">Preise 2026 ansehen</a>
+        <a href="/de/kontakt/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Kontakt aufnehmen</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>

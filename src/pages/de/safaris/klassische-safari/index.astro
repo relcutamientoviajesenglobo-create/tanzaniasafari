@@ -1,0 +1,242 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import SafariTikTok from '../../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../../components/PhotoGallery.astro';
+import { touristAttraction, faqPage } from '../../../../i18n/schema';
+
+const lang = 'de';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const faqItems = [
+  { question: 'Was ist eine klassische Safari in Tansania?', answer: 'Eine klassische Safari ist das traditionelle afrikanische Pirschfahrt-Erlebnis. Sie reisen in einem maßgefertigten 4x4-Fahrzeug (in der Regel einem Toyota Land Cruiser) mit aufklappbarem Dach durch Nationalparks und Wildreservate. Ihr erfahrener Guide sichtet Wildtiere, erklärt das Tierverhalten und navigiert zu den besten Aussichtspunkten. Klassische Safaris in Tansania besuchen typischerweise die <strong>Serengeti</strong> und den <strong>Ngorongoro-Krater</strong>.' },
+  { question: 'Wie viele Tage benötige ich für eine klassische Safari?', answer: 'Obwohl wir <strong>Tagessafaris ab Arusha</strong> anbieten, empfehlen wir mindestens 3 Tage, um die Serengeti richtig zu erleben. Eine <strong>5-tägige Safari</strong> ermöglicht es Ihnen, sowohl die Serengeti als auch den Ngorongoro in einem angenehmen Tempo zu erkunden. Für das ultimative Erlebnis erweitert eine <strong>7-tägige Expedition</strong> die Route um den Manyara-See und Tarangire. Prüfen Sie unsere <a href="/de/preise/" style="color:#3D6B2E;font-weight:700">Preisseite</a> für Mehrtages-Pakete.' },
+  { question: 'Welche Tiere werde ich auf einer klassischen Safari sehen?', answer: 'Die Serengeti und der Ngorongoro beherbergen die <strong>Big Five</strong>: Löwe, Leopard, Elefant, Büffel und Nashorn. Außerdem sehen Sie häufig Giraffen, Zebras, Gnus, Nilpferde, Hyänen, Geparden, Warzenschweine, Paviane und Hunderte von Vogelarten. Während der <a href="/de/aktivitaeten/wildtierbeobachtung/" style="color:#3D6B2E;font-weight:700">Migrationszeit</a> (Juli–September) können Sie Millionen von Gnus und Zebras beim Durchqueren der Serengeti erleben.' },
+  { question: 'Was ist in einem klassischen Safari-Paket enthalten?', answer: 'Alle unsere klassischen Safari-Pakete beinhalten: Hotel-/Flughafentransfer, einen zertifizierten deutschsprachigen Guide, ein maßgefertigtes 4x4-Fahrzeug mit aufklappbarem Dach, alle Nationalparkgebühren, Lunchpaket und Snacks, unbegrenzt Flaschenwasser und Ferngläser. Mehrtages-Safaris beinhalten auch Vollpension in hochwertigen Lodges oder Zeltcamps. Vollständige Details finden Sie auf unserer <a href="/de/preise/" style="color:#3D6B2E;font-weight:700">Preisseite</a>.' },
+  { question: 'Ist die klassische Safari für Familien mit Kindern geeignet?', answer: 'Ja! Klassische Safaris sind ideal für Familien. Kinder unter 5 Jahren sind <strong>kostenlos</strong> und Kinder von 5-11 Jahren erhalten ermäßigte Preise. Wir bieten kinderfreundliche Fahrzeuge mit Kindersitzen, planen kürzere Fahrstrecken für jüngere Kinder und unsere Guides sind erfahren darin, Safaris für Kinder jeden Alters lehrreich und spannend zu gestalten.' },
+  { question: 'Wann beginnen klassische Safaris?', answer: 'Pirschfahrten beginnen typischerweise <strong>bei Tagesanbruch (gegen 6:00 Uhr)</strong>, wenn die Tiere am aktivsten sind. Nach einer Morgenfahrt genießen Sie das Mittagessen an einem malerischen Ort oder in einer Lodge. Eine Nachmittagsfahrt von 15:30–18:30 Uhr fängt das goldene Stundenlicht und die abendliche Tieraktivität ein. Frühe Morgen können kühl sein (rund 15–20 Grad Celsius), bringen Sie also eine leichte Jacke mit.' },
+];
+
+const schema = [
+  touristAttraction({
+    name: 'Klassische Safari in Tansania',
+    description: 'Erleben Sie die quintessenzielle afrikanische Safari mit Pirschfahrten in 4x4-Fahrzeugen durch die Serengeti und den Ngorongoro-Krater. Beobachten Sie die Big Five mit erfahrenen Guides.',
+    url: 'https://safaritanzania.info/de/safaris/klassische-safari/',
+  }),
+  faqPage(faqItems),
+];
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=400&fit=crop&auto=format', alt: 'Giraffe durchquert den Akazienwald in der Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=600&h=400&fit=crop&auto=format', alt: 'Zebraformation auf den Serengeti-Ebenen' },
+  { src: 'https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=400&fit=crop&auto=format', alt: 'Gnus beim Überqueren des Serengeti-Flusses während der Migration' },
+  { src: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=400&fit=crop&auto=format', alt: 'Löwen-Porträt im goldenen Serengeti-Licht' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'Elefanten beim Überqueren der Savanne in der Dämmerung' },
+  { src: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=400&fit=crop&auto=format', alt: 'Safari-Fahrzeug mit Touristen auf einer klassischen Pirschfahrt durch die Serengeti' },
+];
+---
+
+<BaseLayout
+  title="Klassische Safari in Tansania — Pirschfahrten in der Serengeti &amp; Ngorongoro"
+  description="Erleben Sie das quintessenzielle afrikanische Safari-Abenteuer. Pirschfahrten in maßgefertigten 4x4-Fahrzeugen durch die Serengeti und den Ngorongoro-Krater mit erfahrenen lokalen Guides."
+  lang={lang}
+  schema={schema}
+  breadcrumbs={[
+    { label: 'Safaris', href: '/de/safaris/' },
+    { label: 'Klassische Safari' },
+  ]}
+>
+  <Header slot="header" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--green">Beliebteste Safari</span>
+          <h1 class="hero__title">Klassische Safari in Tansania</h1>
+          <p class="hero__desc">Das quintessenzielle afrikanische Safari-Erlebnis. Durchqueren Sie die Serengeti-Ebenen und steigen Sie in den Ngorongoro-Krater hinab – in maßgefertigten 4x4-Fahrzeugen mit erfahrenen lokalen Guides, die jeden Weg und jedes Tier kennen.</p>
+          <div class="hero__actions">
+            <a href="/de/preise/" class="btn btn--primary btn--lg">Preise 2026 ansehen</a>
+            <a href="/de/kontakt/" class="btn btn--outline btn--lg">Diese Safari buchen</a>
+          </div>
+          <div class="stats-row">
+            <div class="stat"><strong>Big Five</strong><span>Alle sichtbar</span></div>
+            <div class="stat"><strong>6 Pers.</strong><span>Max. pro Fahrzeug</span></div>
+            <div class="stat"><strong>1–7 Tage</strong><span>Flexible Reisen</span></div>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <img
+              src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=800&h=640&fit=crop&auto=format"
+              alt="Safari-Fahrzeug mit Touristen auf einer klassischen Pirschfahrt durch die Serengeti"
+              width="800" height="640" loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAS SIE ERWARTET -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Das Erlebnis</span>
+        <h2>Was Sie auf einer klassischen Safari erwartet</h2>
+        <p>Eine klassische Tansania-Safari ist eine Reise durch einige der artenreichsten Landschaften der Erde, geführt von Experten, die die Wildnis zum Leben erwecken.</p>
+      </div>
+      <div class="card-grid card-grid--2 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=450&fit=crop&auto=format" alt="Goldene Serengeti-Savanne mit vereinzelten Akazienbäumen bei Sonnenaufgang" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Morgen-Pirschfahrten im Morgengrauen</h3>
+            <p>Brechen Sie beim ersten Licht auf, wenn die Savanne erwacht. Löwen kehren von ihren nächtlichen Jagden zurück, Elefanten treten aus dem Busch hervor und die Serengeti verwandelt sich in der goldenen Morgensonne. Ihr Guide liest die Landschaft wie ein Buch, verfolgt frische Spuren und lauscht auf Warnrufe.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1745885979468-44a855f8a5fa?w=600&h=450&fit=crop&auto=format" alt="Ngorongoro-Kraterboden mit Wildtieren und üppiger Vegetation" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Abstieg in den Ngorongoro-Krater</h3>
+            <p>Steigen Sie 600 Meter in die größte intakte vulkanische Caldera der Welt hinab – ein natürliches Amphitheater mit rund 25.000 Tieren. Der Kraterboden bietet die höchste Wildtierdichte Afrikas, einschließlich des bedrohten Spitzmaulnashorns in seinem natürlichen Lebensraum.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WILDTIERE -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">Wildtiere</span>
+        <h2>Tiere, denen Sie begegnen werden</h2>
+        <p>Tansanias Nationalparks beherbergen eine außergewöhnliche Artenvielfalt. Hier sind einige der ikonischen Arten, die Sie erwarten können.</p>
+      </div>
+      <div class="card-grid card-grid--3 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=450&fit=crop&auto=format" alt="Männlicher Löwe mit Mähne ruhend in der Serengeti-Savanne" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Löwen</h3>
+            <p>Die Serengeti beherbergt über 3.000 Löwen, eine der größten Populationen Afrikas. Beobachten Sie die Rudelstruktur, das Jagdverhalten und verspielt herumtollende Jungtiere im goldenen Gras.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=450&fit=crop&auto=format" alt="Elefantenherde beim Überqueren der Serengeti-Ebenen" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Elefanten</h3>
+            <p>Riesige Elefantenherden streifen frei durch Tarangire und die Serengeti. Beobachten Sie Mütter beim Schutz ihrer Jungtiere, Staubbäder und diese sanftmütigen Giganten an Wasserstellen.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=450&fit=crop&auto=format" alt="Giraffensilhouette gegen den afrikanischen Sonnenuntergang" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Giraffen</h3>
+            <p>Hoch aufragend über dem Akazienwald sind Masai-Giraffen eine ständige Erscheinung auf den tansanischen Ebenen. Ihre eleganten Bewegungen vor dem Abendhimmel schaffen unvergessliche Momente.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MUSTERREISEPLAN -->
+  <section class="section section--green bg-green" style="position:relative;overflow:hidden">
+    <div style="position:absolute;top:20px;right:-30px;opacity:.08;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Muster-Reiseplan</span>
+        <h2>Eine typische 3-tägige klassische Safari</h2>
+        <p>So sieht eine klassische Mehrtages-Safari aus – von Arusha in die Serengeti und zurück.</p>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1">
+        <div class="service-card">
+          <h3 class="service-card__title">Tag 1: Arusha → Serengeti</h3>
+          <p class="service-card__desc">Frühmorgenliche Abholung von Ihrem Hotel. Fahrt durch das Ostafrikanische Rift Valley mit Stopps an Aussichtspunkten. Einfahrt in die Serengeti über das Naabi-Hill-Tor. Nachmittags Pirschfahrt mit Sichtungen von Löwen, Elefanten und Giraffen. Sonnenuntergang am Camp.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Tag 2: Ganztags Serengeti</h3>
+          <p class="service-card__desc">Pirschfahrt im Morgengrauen in der zentralen Serengeti. Besuch des Seronera-Tals, berühmt für Leopardensichtungen. Picknick-Mittagessen am Grumeti-Fluss. Nachmittagsfahrt zu den Kopjes, Granitfelsen, auf denen Löwen ruhen.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Tag 3: Ngorongoro-Krater</h3>
+          <p class="service-card__desc">Fahrt zum Ngorongoro-Schutzgebiet. Abstieg in den Krater für eine halbstündige Pirschfahrt. Sichtung von Spitzmaulnashörnern, Flamingos und Nilpferd-Pools. Aufstieg und Rückkehr nach Arusha am Abend.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon" style="color:var(--mc-green)">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-2 30l-10-10 2.83-2.83L22 28.34l13.17-13.17L38 18 22 34z"/></svg>
+          </div>
+          <h3 class="service-card__title">Anpassbar</h3>
+          <p class="service-card__desc">Jedes Reiseprogramm kann verlängert oder abgeändert werden. Fügen Sie den Manyara-See, Tarangire oder weitere Serengeti-Tage hinzu. Kontaktieren Sie uns für einen individuellen Plan.</p>
+          <a href="/de/kontakt/" class="btn">Meine Safari planen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section class="section">
+    <div class="container">
+      <PhotoGallery images={galleryImages} title="Fotogalerie: Klassische Safari-Momente" />
+    </div>
+  </section>
+
+  <!-- TIKTOK -->
+  <SafariTikTok category="serengeti" lang="de" />
+
+  <!-- FAQ -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">FAQ</span>
+        <h2>Fragen zur klassischen Safari</h2>
+        <p>Alles, was Sie über unsere klassischen Pirschfahrt-Safaris in Tansania wissen müssen.</p>
+      </div>
+      <div class="faq-list animate-on-scroll delay-1">
+        {faqItems.map(item => (
+          <details>
+            <summary>{item.question}</summary>
+            <div class="faq-answer" set:html={item.answer} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2>Buchen Sie Ihre klassische Safari</h2>
+        <p>Die Serengeti erwartet Sie. Lassen Sie unsere erfahrenen Guides Ihnen das Beste der Tansania-Wildnis auf einer unvergesslichen klassischen Safari zeigen.</p>
+      </div>
+      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/de/preise/" class="btn btn--primary btn--lg">Preise 2026 ansehen</a>
+        <a href="/de/kontakt/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Kontakt aufnehmen</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>

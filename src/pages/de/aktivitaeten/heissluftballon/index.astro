@@ -1,0 +1,263 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import SafariTikTok from '../../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../../components/PhotoGallery.astro';
+import { touristAttraction, faqPage } from '../../../../i18n/schema';
+
+const lang = 'de';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const faqItems = [
+  { question: 'Wann starten Ballonfahrten?', answer: 'Ballonfahrten starten <strong>kurz vor der Morgendämmerung</strong>, typischerweise gegen 5:30–6:00 Uhr, um die ruhige Morgenluft und den spektakulären Sonnenaufgang über der Serengeti zu erleben. Sie werden von Ihrer Lodge oder Ihrem Camp gegen 4:30 Uhr abgeholt. Der frühe Start ist für die Sicherheit (Windbedingungen) unerlässlich und liefert das atemberaubendste Licht für die Fotografie.' },
+  { question: 'Wie lange dauert die Ballonfahrt?', answer: 'Der Flug selbst dauert etwa <strong>eine Stunde</strong> in Höhen zwischen 30 und 300 Metern, abhängig von Windbedingungen und Wildtiersichtungen. Das gesamte Erlebnis (von der Abholung bis zur Rückkehr) dauert etwa 4–5 Stunden, einschließlich der Sicherheitseinweisung, des Flugs, der Landung und eines Champagner-Buschfrühstücks auf der Savanne.' },
+  { question: 'Wie viel kostet eine Ballonsafari?', answer: 'Ballonfahrten in der Serengeti kosten typischerweise zwischen <strong>500 und 600 USD pro Person</strong>, einschließlich Hotelabholung, Flug, Champagner-Buschfrühstück und Zertifikat. Dies ist ein Premium-Erlebnis, das weithin als eines der Highlights jeder Tansania-Safari gilt. Prüfen Sie unsere <a href="/de/preise/" style="color:#3D6B2E;font-weight:700">Preisseite</a> für aktuelle Preise.' },
+  { question: 'Ist eine Ballonsafari sicher?', answer: 'Ja, Ballonsafaris in Tansania haben eine <strong>ausgezeichnete Sicherheitsbilanz</strong>. Flüge werden von lizenzierten Piloten mit Tausenden von Stunden Erfahrung durchgeführt. Alle Ballons werden täglich inspiziert und erfüllen internationale Luftfahrtstandards. Flüge werden abgesagt, wenn die Windbedingungen Sicherheitsschwellen überschreiten.' },
+  { question: 'Was soll ich für eine Ballonsafari tragen?', answer: 'Tragen Sie <strong>Schichtkleidung</strong>, da frühe Morgen kühl sein können (ca. 15 Grad Celsius), die Ballonbrenner jedoch erhebliche Wärme erzeugen. Lange Hosen und geschlossene Schuhe sind erforderlich. Bringen Sie eine warme Jacke, Sonnenbrille und einen Hut mit. Kameras mit sicheren Trägern sind willkommen, aber vermeiden Sie lose Gegenstände.' },
+  { question: 'Wie viele Personen passen in den Ballonkorb?', answer: 'Standard-Körbe tragen <strong>12–16 Passagiere</strong> in Abteilen aufgeteilt, jeder mit hervorragender Aussicht. Private Flüge für Paare oder kleine Gruppen (2–4 Personen) sind gegen Aufpreis verfügbar. Alle Passagiere haben ungehinderte Aussicht und Fotografiemöglichkeiten.' },
+  { question: 'Was passiert, wenn der Flug wetterbedingt abgesagt wird?', answer: 'Sicherheit hat höchste Priorität, und Flüge können abgesagt werden, wenn die Windgeschwindigkeit sichere Grenzen überschreitet. Bei Absage erhalten Sie eine <strong>vollständige Rückerstattung</strong> oder die Option, auf einen anderen Morgen umzubuchen. Wetterbedingte Absagen sind in der Trockenzeit (Juni–Oktober) selten, aber in der Grünen Saison etwas häufiger.' },
+];
+
+const schema = [
+  touristAttraction({
+    name: 'Heißluftballon-Safari über der Serengeti',
+    description: 'Schweben Sie bei Tagesanbruch über die Serengeti auf einer Heißluftballon-Safari. Luftaufnahmen der Wildtiere, Champagner-Buschfrühstück und unvergessliche Sonnenaufgangs-Fotografie.',
+    url: 'https://safaritanzania.info/de/aktivitaeten/heissluftballon/',
+  }),
+  faqPage(faqItems),
+];
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=400&fit=crop&auto=format', alt: 'Heißluftballon aufsteigend über der Serengeti beim goldenen Sonnenaufgang' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Luftaufnahme der Serengeti-Ebenen aus einem Heißluftballon' },
+  { src: 'https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=400&fit=crop&auto=format', alt: 'Gnuherden von einem Heißluftballon während der Migration gesehen' },
+  { src: 'https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=400&fit=crop&auto=format', alt: 'Giraffe von oben während einer Ballonfahrt über der Savanne' },
+  { src: 'https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=600&h=400&fit=crop&auto=format', alt: 'Zebramuster aus der Luftperspektive über der Savanne' },
+  { src: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=400&fit=crop&auto=format', alt: 'Serengeti von oben – weite Landschaft im Morgenrot' },
+];
+---
+
+<BaseLayout
+  title="Heißluftballon-Safari über der Serengeti — Über die Savanne fliegen"
+  description="Schweben Sie bei Tagesanbruch über die Serengeti auf einer Heißluftballon-Safari. Luftaufnahmen von Herden, der Großen Migration, Champagner-Buschfrühstück und unvergessliche Sonnenaufgangs-Fotografie."
+  lang={lang}
+  schema={schema}
+  breadcrumbs={[
+    { label: 'Aktivitäten', href: '/de/aktivitaeten/' },
+    { label: 'Heißluftballon' },
+  ]}
+>
+  <Header slot="header" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--green">Luftsafari</span>
+          <h1 class="hero__title">Heißluftballon über der Serengeti</h1>
+          <p class="hero__desc">Schweben Sie lautlos über die Serengeti-Ebenen bei Tagesanbruch. Beobachten Sie, wie der Sonnenaufgang die Savanne in Gold taucht, während Wildtierherden sich unter Ihnen bewegen, gefolgt von einem Champagner-Buschfrühstück im Herzen der Wildnis.</p>
+          <div class="hero__actions">
+            <a href="/de/preise/" class="btn btn--primary btn--lg">Preise 2026 ansehen</a>
+            <a href="/de/kontakt/" class="btn btn--outline btn--lg">Ballonfahrt buchen</a>
+          </div>
+          <div class="stats-row">
+            <div class="stat"><strong>1 Stunde</strong><span>Flugzeit</span></div>
+            <div class="stat"><strong>Tagesanbruch</strong><span>Sonnenaufgang-Start</span></div>
+            <div class="stat"><strong>Ab 7 J.</strong><span>Mindestalter</span></div>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <img
+              src="https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=800&h=640&fit=crop&auto=format"
+              alt="Heißluftballon schwimmend über der Serengeti-Savanne beim goldenen Sonnenaufgang"
+              width="800" height="640" loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAS ERLEBNIS -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Das Erlebnis</span>
+        <h2>Ein Morgen über der Serengeti</h2>
+        <p>Von der frühmorgendlichen Abholung bis zum Champagnertoast auf der Savanne ist jeder Moment einer Ballonsafari auf Außergewöhnliches ausgerichtet.</p>
+      </div>
+      <div class="card-grid card-grid--2 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=450&fit=crop&auto=format" alt="Heißluftballon wird im Morgengrauen auf der Serengeti aufgepumpt" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Der Morgenstart</h3>
+            <p>Sie werden vor dem ersten Licht von Ihrer Lodge abgeholt und erreichen den Startplatz, während der Ballon aufgeblasen wird. Beobachten Sie den riesigen Hüllenstoff, der sich unter einem Sternenhimmel mit Heißluft füllt. Wenn der Pilot "alle einsteigen" ruft, klettern Sie in den Korb und heben sanft in das Serengeti-Morgengrauen ab.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=450&fit=crop&auto=format" alt="Serengeti-Ebenen aus einem Heißluftballon bei Sonnenaufgang gesehen" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Der Flug</h3>
+            <p>Für etwa eine Stunde schweben Sie zwischen 30 und 300 Metern über den Ebenen. Die Stille ist tiefgreifend, unterbrochen nur von gelegentlichen Brennerblasts. Unten beginnen Gnu- und Zebra-Herden ihre morgendlichen Wanderungen, Elefanten ziehen zur Wasserstelle und der Sonnenaufgang verwandelt die Landschaft in eine Leinwand aus Gold und Bernstein.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZEITPLAN -->
+  <section class="section section--green bg-green" style="position:relative;overflow:hidden">
+    <div style="position:absolute;top:20px;right:-30px;opacity:.08;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Ihr Morgen</span>
+        <h2>Der Zeitplan der Ballonsafari</h2>
+        <p>So sieht Ihr Heißluftballon-Morgen aus – von der Abholung bis zur Rückkehr.</p>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1">
+        <div class="service-card">
+          <h3 class="service-card__title">4:30 Uhr — Abholung</h3>
+          <p class="service-card__desc">Unser Fahrer holt Sie von Ihrer Lodge oder Ihrem Camp ab und fährt zum Startplatz. Heißer Kaffee und Tee werden serviert, während die Crew unter dem Sternenhimmel den Ballon vorbereitet.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">5:30 Uhr — Start</h3>
+          <p class="service-card__desc">Nach einer Sicherheitseinweisung besteigen Sie den Korb. Der Pilot zündet die Brenner und Sie steigen sanft in das Serengeti-Morgengrauen auf. Der Sonnenaufgang entfaltet sich spektakulär, während Sie an Höhe gewinnen.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">6:30 Uhr — Landung</h3>
+          <p class="service-card__desc">Nach etwa einer Stunde Flug wählt der Pilot einen Landeplatz auf den offenen Ebenen. Die Crew erwartet Sie mit einem Champagner-Toast und einem Zertifikat zum Gedenken an Ihren Flug.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">7:00 Uhr — Buschfrühstück</h3>
+          <p class="service-card__desc">Ein vollständiges englisches Buschfrühstück wird auf der Savanne mit weißen Tischdecken, Champagner und frischen Säften serviert. Umgeben von der morgendlichen Serengeti ist es das unvergesslichste Frühstück Ihres Lebens.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOTOGRAFIE -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">Fotografie</span>
+        <h2>Den Flug von oben festhalten</h2>
+        <p>Eine Ballonsafari bietet Fotografiemöglichkeiten, die von keinem anderen Aussichtspunkt aus möglich sind. Hier sind Tipps für die besten Luftaufnahmen.</p>
+      </div>
+      <div class="card-grid card-grid--3 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Kameraeinstellungen</h3>
+            <p>Verwenden Sie eine schnelle Verschlusszeit (1/500+), da der Ballon sich leicht bewegt. Ein Weitwinkelobjektiv (16–35 mm) erfasst die weite Landschaft, ein mittleres Zoom (70–200 mm) ist ideal für Wildtiere von oben. Aufnahmen im RAW-Format für maximale Bearbeitungsflexibilität bei dem dramatischen Licht.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Beste Momente</h3>
+            <p>Die dramatischsten Aufnahmen entstehen in den ersten 10 Minuten des Sonnenaufgangs, wenn der Himmel in Farben leuchtet. Schattenspiele auf den Ebenen, der eigene Schatten des Ballons auf dem Boden und Luftaufnahmen von Tierherden schaffen einzigartige Kompositionen.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Sicherheitstipps</h3>
+            <p>Verwenden Sie immer einen Kameragurt, da eine fallengelassene Kamera für immer verloren ist. Wechseln Sie keine Objektive während des Fluges. Smartphones mit Teleobjektiv-Fähigkeit funktionieren überraschend gut. Der Pilot berücksichtigt Fotografiewünsche, wenn es sicher ist.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section class="section">
+    <div class="container">
+      <PhotoGallery images={galleryImages} title="Fotogalerie: Ansichten von oben" />
+    </div>
+  </section>
+
+  <!-- KOMBINIEREN -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">Perfekte Ergänzung</span>
+        <h2>Eine Ballonfahrt zu Ihrer Safari hinzufügen</h2>
+        <p>Eine Ballonfahrt passt perfekt zu jedem mehrtägigen Safari-Reiseplan. Hier sind unsere empfohlenen Kombinationen.</p>
+      </div>
+      <div class="card-grid card-grid--2 animate-on-scroll delay-1">
+        <a href="/de/safaris/klassische-safari/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=450&fit=crop&auto=format" alt="Klassisches Safari-Fahrzeug auf einer Serengeti-Pirschfahrt" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Klassische Safari + Ballon</h3>
+            <p>Die beliebteste Kombination. Genießen Sie tagsüber Pirschfahrten und fügen Sie an einem Morgen eine Ballonfahrt für das ultimative Serengeti-Erlebnis aus jedem Winkel hinzu.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+        <a href="/de/safaris/foto-safari/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=450&fit=crop&auto=format" alt="Löwe im goldenen Licht für Foto-Safari" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Foto-Safari + Ballon</h3>
+            <p>Erstellen Sie Luftlandschaftsbilder aus dem Ballon und Wildtierporträts auf Bodenniveau auf der Foto-Safari. Der Traum eines Fotografen.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIKTOK -->
+  <SafariTikTok category="serengeti" lang="de" />
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">FAQ</span>
+        <h2>Fragen zur Ballonsafari</h2>
+        <p>Alles, was Sie über Heißluftballon-Fahrten über der Serengeti wissen müssen.</p>
+      </div>
+      <div class="faq-list animate-on-scroll delay-1">
+        {faqItems.map(item => (
+          <details>
+            <summary>{item.question}</summary>
+            <div class="faq-answer" set:html={item.answer} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2>Über die Serengeti fliegen</h2>
+        <p>Buchen Sie Ihre Heißluftballon-Safari für einen unvergesslichen Sonnenaufgang über Afrikas ikonischster Landschaft.</p>
+      </div>
+      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/de/preise/" class="btn btn--primary btn--lg">Preise 2026 ansehen</a>
+        <a href="/de/kontakt/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Ballonfahrt buchen</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>

@@ -1,0 +1,10 @@
+{
+  "name": "Joseph Mollel",
+  "role": "Guide safari Masaï",
+  "bio": "Joseph Mollel est un guide safari Masaï né à Arusha. Fort de plus de 20 ans d'expérience de guidage dans le Serengeti et le Ngorongoro, il connaît chaque recoin de la savane tanzanienne et partage sa sagesse ancestrale avec les visiteurs.",
+  "avatar": "/media/authors/guia-local.jpg",
+  "expertise": ["Serengeti", "Ngorongoro", "grande migration", "pistage d'animaux", "culture Masaï"],
+  "social": {
+    "instagram": "https://www.instagram.com/safaritanzaniainfo"
+  }
+}

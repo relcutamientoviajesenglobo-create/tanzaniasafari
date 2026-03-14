@@ -1,0 +1,316 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { place, faqPage } from '../../../i18n/schema';
+import SafariTikTok from '../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../components/PhotoGallery.astro';
+
+const lang = 'fr';
+const title = 'Comment venir en Tanzanie — Vols, Visa & Transport';
+const description = 'Guide complet pour voyager en Tanzanie en 2026 : vols vers l\'aéroport du Kilimandjaro (JRO), formalités de visa e-Visa, vaccins obligatoires, transport depuis Arusha vers les parcs nationaux.';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1436491865332-7a61a109db05?w=600&h=400&fit=crop&auto=format', alt: 'Aéroport International du Kilimandjaro en Tanzanie, porte d\'entrée des safaris' },
+  { src: 'https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&h=400&fit=crop&auto=format', alt: 'Le mont Kilimandjaro vu depuis la savane tanzanienne' },
+  { src: 'https://images.unsplash.com/photo-1529074763233-c6fc62e6a0f0?w=600&h=400&fit=crop&auto=format', alt: 'Vue aérienne de Dar es Salaam, Tanzanie' },
+  { src: 'https://images.unsplash.com/photo-1611348586804-61bf6c080437?w=600&h=400&fit=crop&auto=format', alt: 'La ville d\'Arusha avec le mont Méru en arrière-plan' },
+  { src: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=400&fit=crop&auto=format', alt: 'Transfert en 4x4 depuis l\'aéroport vers les parcs nationaux de Tanzanie' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Route en terre rouge vers le Serengeti depuis Arusha' },
+];
+
+const breadcrumbs = [
+  { label: 'Comment venir' },
+];
+
+const faqs = [
+  { question: 'Ai-je besoin d\'un visa pour aller en Tanzanie ?', answer: 'Oui, la quasi-totalité des nationalités doit obtenir un visa. Vous pouvez demander un e-Visa en ligne sur immigration.go.tz pour 50 $ USD avant votre voyage. Le traitement prend 3 à 5 jours ouvrables. Il est aussi possible d\'obtenir un visa à l\'arrivée à l\'aéroport.' },
+  { question: 'Quels vaccins sont nécessaires pour la Tanzanie ?', answer: 'La vaccination contre la fièvre jaune est obligatoire si vous venez d\'un pays endémique. Sont fortement recommandées : hépatite A et B, typhoïde et une prophylaxie antipaludéenne. Consultez votre médecin au moins 6 semaines avant le départ.' },
+  { question: 'Quel est le meilleur aéroport pour arriver ?', answer: 'L\'aéroport international du Kilimandjaro (JRO) est le plus pratique, à seulement 46 km d\'Arusha (1 heure de route). Il reçoit des vols directs depuis Amsterdam (KLM), Istanbul (Turkish Airlines), Nairobi et Addis-Abeba. L\'aéroport Julius Nyerere de Dar es Salaam (DAR) est une alternative nécessitant un vol intérieur supplémentaire.' },
+  { question: 'Proposez-vous un service de transfert depuis l\'aéroport ?', answer: 'Oui, le transfert depuis l\'aéroport JRO vers votre hôtel à Arusha est inclus dans tous nos forfaits. Le trajet dure environ 1 heure. Pour les arrivées hors heures de bureau, nous organisons des transferts de nuit sur demande.' },
+  { question: 'Quelle est la meilleure période pour visiter la Tanzanie ?', answer: 'La saison sèche de juin à octobre est idéale pour observer la faune. Les animaux se concentrent autour des points d\'eau et la Grande Migration traverse le Serengeti en juillet-août. La saison verte de novembre à mars offre un paysage luxuriant, moins de touristes et des tarifs plus avantageux.' },
+];
+
+const schema = [
+  place({
+    name: 'Aéroport International du Kilimandjaro',
+    description,
+    url: 'https://safaritanzania.info/fr/comment-venir/',
+  }),
+  faqPage(faqs),
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="/fr/comment-venir/"
+  schema={schema}
+  breadcrumbs={breadcrumbs}
+  lang={lang}
+>
+  <Header slot="header" lang={lang} />
+  <Footer slot="footer" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <span class="chip chip--green">Guide de voyage</span>
+        <h1 class="hero__title">Comment venir en Tanzanie</h1>
+        <p class="hero__desc">Tout ce que vous devez savoir pour planifier votre voyage : vols, visa, vaccins et transport terrestre. Nous venons vous chercher à l'aéroport.</p>
+        <div class="hero__actions">
+          <a href="/fr/prix/" class="btn btn--primary btn--lg">Voir les forfaits</a>
+          <a href="/fr/contact/" class="btn btn--outline btn--lg">Nous contacter</a>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__photo-frame">
+          <div class="hero__deco hero__deco--tr"></div>
+          <div class="hero__deco hero__deco--bl"></div>
+          <img
+            src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=800&h=600&fit=crop&auto=format"
+            alt="Le mont Kilimandjaro vu depuis la savane tanzanienne"
+            width="600"
+            height="480"
+            loading="eager"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VOLS -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <span class="chip chip--amber">Vols</span>
+        <h2>Vols vers la Tanzanie</h2>
+        <p>La Tanzanie dispose de deux aéroports internationaux principaux avec des connexions directes depuis l'Europe, l'Asie et les autres pays africains.</p>
+      </div>
+
+      <div class="card-grid card-grid--2">
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1436491865332-7a61a109db05?w=800&h=600&fit=crop&auto=format" alt="Aéroport International du Kilimandjaro en Tanzanie" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Recommandé</span>
+            <p class="photo-card__title">Aéroport du Kilimandjaro (JRO)</p>
+            <p style="font-size:.9rem;color:#5A6B52">L'aéroport le plus proche des parcs du nord. À seulement 46 km d'Arusha (1 heure de route). Vols directs depuis Amsterdam (KLM), Istanbul (Turkish Airlines), Nairobi et Addis-Abeba. Connexions via Dubaï, Doha et Paris.</p>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1529074763233-c6fc62e6a0f0?w=800&h=600&fit=crop&auto=format" alt="Vue aérienne de Dar es Salaam, Tanzanie" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Alternative</span>
+            <p class="photo-card__title">Julius Nyerere, Dar es Salaam (DAR)</p>
+            <p style="font-size:.9rem;color:#5A6B52">Le plus grand aéroport de Tanzanie avec plus de vols internationaux. Nécessite un vol intérieur vers Arusha ou Kilimandjaro (1h30, à partir de 100 $ USD). Idéal si vous combinez safari et côte tanzanienne.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#F5F0E8;border-radius:var(--radius-md);padding:1.5rem;margin-top:2rem">
+        <h3 style="color:#2D4A22;margin-bottom:.75rem;font-size:1rem">Compagnies aériennes desservant la Tanzanie depuis l'Europe</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:.75rem">
+          {['KLM (Amsterdam direct)', 'Turkish Airlines (Istanbul)', 'Ethiopian Airlines (Addis-Abeba)', 'Kenya Airways (Nairobi)', 'Qatar Airways (Doha)', 'Emirates (Dubaï)', 'Air France via connexion', 'Condor (Frankfurt)'].map(airline => (
+            <span style="background:white;border:1px solid #d1d9ca;border-radius:20px;padding:.3rem .9rem;font-size:.85rem;color:#3D4B36">{airline}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISA ET DOCUMENTS -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header">
+        <span class="chip chip--green">Formalités</span>
+        <h2>Visa et Documentation</h2>
+        <p>Préparez vos documents à l'avance pour une arrivée sereine en Tanzanie.</p>
+      </div>
+
+      <div class="service-cards" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+        <div class="service-card">
+          <svg viewBox="0 0 24 24" width="40" height="40" fill="#D4A017"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+          <p class="service-card__title">e-Visa en ligne</p>
+          <p class="service-card__desc">Demandez votre visa sur immigration.go.tz. Coût : 50 $ USD. Délai : 3–5 jours ouvrables. Validité : 90 jours. La solution la plus simple et la plus recommandée.</p>
+        </div>
+        <div class="service-card">
+          <svg viewBox="0 0 24 24" width="40" height="40" fill="#D4A017"><path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+          <p class="service-card__title">Passeport valide</p>
+          <p class="service-card__desc">Passeport avec une validité minimale de 6 mois à partir de la date d'entrée et au moins 2 pages vierges. Vérifiez ce point avant de réserver vos billets d'avion.</p>
+        </div>
+        <div class="service-card">
+          <svg viewBox="0 0 24 24" width="40" height="40" fill="#D4A017"><path d="M19 3H5c-1.1 0-1.99.9-1.99 2L3 19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm1-9h-2v4l3.25 1.95.75-1.23-2-1.22V8z"/></svg>
+          <p class="service-card__title">Vaccins recommandés</p>
+          <p class="service-card__desc">Fièvre jaune obligatoire si vous venez d'une zone endémique. Recommandés : hépatite A/B, typhoïde, prophylaxie antipaludéenne. Consultez votre médecin 6 semaines avant le départ.</p>
+        </div>
+        <div class="service-card">
+          <svg viewBox="0 0 24 24" width="40" height="40" fill="#D4A017"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+          <p class="service-card__title">Assurance voyage</p>
+          <p class="service-card__desc">Fortement recommandée avec couverture médicale et évacuation. La Tanzanie ne dispose pas de système de santé public pour les touristes. Prévoyez une couverture minimale de 100 000 $.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRANSPORT DEPUIS ARUSHA -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <span class="chip chip--amber">Transport</span>
+        <h2>Transport depuis Arusha</h2>
+        <p>Arusha est la ville de base pour les safaris du nord de la Tanzanie. Depuis ici, nous vous emmenons dans tous les grands parcs nationaux.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start">
+        <div>
+          <h3 style="margin-bottom:1rem;color:#2D4A22">Distances depuis Arusha</h3>
+          <div style="display:flex;flex-direction:column;gap:.75rem">
+            <div style="background:white;border-radius:var(--radius-md);padding:1.25rem;box-shadow:var(--shadow-card);display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <p style="font-weight:700;color:#2D4A22;font-size:.95rem">Tarangire</p>
+                <p style="font-size:.8rem;color:#5A6B52">118 km depuis Arusha</p>
+              </div>
+              <span style="font-family:var(--font-head);font-weight:800;color:#D4A017;font-size:1.1rem">~2h</span>
+            </div>
+            <div style="background:white;border-radius:var(--radius-md);padding:1.25rem;box-shadow:var(--shadow-card);display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <p style="font-weight:700;color:#2D4A22;font-size:.95rem">Lac Manyara</p>
+                <p style="font-size:.8rem;color:#5A6B52">126 km depuis Arusha</p>
+              </div>
+              <span style="font-family:var(--font-head);font-weight:800;color:#D4A017;font-size:1.1rem">~2h30</span>
+            </div>
+            <div style="background:white;border-radius:var(--radius-md);padding:1.25rem;box-shadow:var(--shadow-card);display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <p style="font-weight:700;color:#2D4A22;font-size:.95rem">Ngorongoro</p>
+                <p style="font-size:.8rem;color:#5A6B52">190 km depuis Arusha</p>
+              </div>
+              <span style="font-family:var(--font-head);font-weight:800;color:#D4A017;font-size:1.1rem">~3h30</span>
+            </div>
+            <div style="background:white;border-radius:var(--radius-md);padding:1.25rem;box-shadow:var(--shadow-card);display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <p style="font-weight:700;color:#2D4A22;font-size:.95rem">Serengeti</p>
+                <p style="font-size:.8rem;color:#5A6B52">335 km depuis Arusha</p>
+              </div>
+              <span style="font-family:var(--font-head);font-weight:800;color:#D4A017;font-size:1.1rem">~7h</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 style="margin-bottom:1rem;color:#2D4A22">Notre service de transport</h3>
+          <div style="background:white;border-radius:var(--radius-md);padding:1.5rem;box-shadow:var(--shadow-card)">
+            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.75rem;font-size:.9rem;color:#5A6B52">
+              <li style="display:flex;align-items:flex-start;gap:.5rem">
+                <svg viewBox="0 0 20 20" width="16" height="16" fill="#3D6B2E" style="flex-shrink:0;margin-top:3px"><path d="M10 0a10 10 0 100 20 10 10 0 000-20zm4.3 7.3l-5 5a1 1 0 01-1.4 0l-2-2a1 1 0 111.4-1.4L8.6 10l4.3-4.3a1 1 0 111.4 1.4z"/></svg>
+                Prise en charge à l'aéroport JRO incluse dans tous les forfaits
+              </li>
+              <li style="display:flex;align-items:flex-start;gap:.5rem">
+                <svg viewBox="0 0 20 20" width="16" height="16" fill="#3D6B2E" style="flex-shrink:0;margin-top:3px"><path d="M10 0a10 10 0 100 20 10 10 0 000-20zm4.3 7.3l-5 5a1 1 0 01-1.4 0l-2-2a1 1 0 111.4-1.4L8.6 10l4.3-4.3a1 1 0 111.4 1.4z"/></svg>
+                Véhicules Toyota Land Cruiser 4x4 avec toit ouvrant
+              </li>
+              <li style="display:flex;align-items:flex-start;gap:.5rem">
+                <svg viewBox="0 0 20 20" width="16" height="16" fill="#3D6B2E" style="flex-shrink:0;margin-top:3px"><path d="M10 0a10 10 0 100 20 10 10 0 000-20zm4.3 7.3l-5 5a1 1 0 01-1.4 0l-2-2a1 1 0 111.4-1.4L8.6 10l4.3-4.3a1 1 0 111.4 1.4z"/></svg>
+                Chauffeurs-guides avec plus de 10 ans d'expérience
+              </li>
+              <li style="display:flex;align-items:flex-start;gap:.5rem">
+                <svg viewBox="0 0 20 20" width="16" height="16" fill="#3D6B2E" style="flex-shrink:0;margin-top:3px"><path d="M10 0a10 10 0 100 20 10 10 0 000-20zm4.3 7.3l-5 5a1 1 0 01-1.4 0l-2-2a1 1 0 111.4-1.4L8.6 10l4.3-4.3a1 1 0 111.4 1.4z"/></svg>
+                Véhicules équipés de radio, glacière et prises USB
+              </li>
+              <li style="display:flex;align-items:flex-start;gap:.5rem">
+                <svg viewBox="0 0 20 20" width="16" height="16" fill="#3D6B2E" style="flex-shrink:0;margin-top:3px"><path d="M10 0a10 10 0 100 20 10 10 0 000-20zm4.3 7.3l-5 5a1 1 0 01-1.4 0l-2-2a1 1 0 111.4-1.4L8.6 10l4.3-4.3a1 1 0 111.4 1.4z"/></svg>
+                Maximum 6 passagers par véhicule pour le confort de tous
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEILLEURE PERIODE -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header">
+        <span class="chip chip--amber">Saisons</span>
+        <h2>Meilleure période pour visiter</h2>
+        <p>La Tanzanie est une destination safari toute l'année. Chaque saison offre des expériences animalières uniques et mémorables.</p>
+      </div>
+
+      <div class="card-grid card-grid--2" style="gap:1.5rem">
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format" alt="Animaux dans la savane sèche du Serengeti en haute saison" width="400" height="280" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Haute saison</span>
+            <p class="photo-card__title">Juin – Octobre : Saison sèche</p>
+            <p style="font-size:.9rem;color:#5A6B52">La saison idéale pour observer la faune. Les animaux se concentrent autour des points d'eau, la végétation est basse et la Grande Migration traverse le Serengeti en juillet-août. Routes praticables et ciel dégagé.</p>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format" alt="Savane verdoyante en saison des pluies en Tanzanie" width="400" height="280" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Basse saison</span>
+            <p class="photo-card__title">Novembre – Mai : Saison verte</p>
+            <p style="font-size:.9rem;color:#5A6B52">Paysages luxuriants avec de nombreux animaux et leurs petits nés au printemps. Moins de touristes, tarifs réduits de 10 à 20 %. Décembre–janvier et mars sont particulièrement appréciés malgré quelques pluies courtes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#2D4A22;color:white;border-radius:var(--radius-md);padding:1.75rem;margin-top:2rem;display:flex;align-items:flex-start;gap:1rem">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="#D4A017" style="flex-shrink:0;margin-top:2px"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+        <div>
+          <p style="font-weight:700;margin-bottom:.35rem;font-size:1rem">Conseil de nos guides</p>
+          <p style="opacity:.9;font-size:.9rem">Pour la Grande Migration — le spectacle naturel le plus impressionnant du monde — planifiez votre visite entre juillet et août. Les passages de gués de la rivière Mara avec les crocodiles sont inoubliables. Réservez au moins 6 mois à l'avance pour cette période.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container" style="max-width:800px">
+      <div class="section__header">
+        <h2>Questions Fréquentes sur le Voyage</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details class="faq-item">
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <PhotoGallery images={galleryImages} title="Galerie — Venir en Tanzanie" />
+  <SafariTikTok category="general" lang="fr" />
+
+  <!-- CTA -->
+  <section class="section section--green">
+    <div class="container" style="text-align:center">
+      <h2 style="color:white;margin-bottom:.75rem">Planifiez votre Voyage en Tanzanie</h2>
+      <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:520px;margin-left:auto;margin-right:auto">Nous gérons toute la logistique pour vous : transferts, hébergement, safari, tout est organisé pour que vous profitiez pleinement de votre aventure africaine.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/fr/prix/" class="btn btn--amber btn--lg">Voir les tarifs 2026</a>
+        <a href="/fr/contact/" class="btn btn--outline-white btn--lg">Nous contacter</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

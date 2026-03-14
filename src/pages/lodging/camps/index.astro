@@ -2,15 +2,26 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
+import SafariTikTok from '../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../components/PhotoGallery.astro';
 
 const lang = 'en';
 const title = 'Safari Camps in Tanzania — Authentic Bush Camp Experience';
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop&auto=format', alt: 'Luxury tented camp at sunset with canvas tent under acacia trees in the Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&h=400&fit=crop&auto=format', alt: 'Mobile migration camp with green canvas tents set on the Serengeti plains' },
+  { src: 'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=600&h=400&fit=crop&auto=format', alt: 'Permanent tented camp with wooden deck and panoramic bush views' },
+  { src: 'https://images.unsplash.com/photo-1510312305653-8ed496efae75?w=600&h=400&fit=crop&auto=format', alt: 'Fly camp setup under the Milky Way with minimal lighting in the wilderness' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Bush dinner setup at a tented camp under the stars in Tanzania' },
+  { src: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=400&fit=crop&auto=format', alt: 'Game drive departing from a tented camp at dawn in the Serengeti' },
+];
 const description = 'Experience authentic tented safari camps in Tanzania. Sleep under canvas in the Serengeti, Ngorongoro, and Tarangire with close-to-nature luxury, bush dinners, and unforgettable wildlife encounters.';
 
 const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
 
 const breadcrumbs = [
-  { label: 'Lodging', href: '/en/lodging/' },
+  { label: 'Lodging', href: '/lodging/' },
   { label: 'Safari Camps' },
 ];
 
@@ -19,7 +30,7 @@ const schema = {
   '@type': 'WebPage',
   name: title,
   description: description,
-  url: 'https://safaritanzania.info/en/lodging/camps/',
+  url: 'https://safaritanzania.info/lodging/camps/',
 };
 ---
 
@@ -35,8 +46,8 @@ const schema = {
         <h1>Safari Camps in Tanzania</h1>
         <p>Fall asleep to the symphony of the African night and wake to birdsong at dawn. Tanzania's tented camps offer an authentic, immersive safari experience that connects you directly with the wild while maintaining thoughtful comfort.</p>
         <div class="hero__actions">
-          <a href="/en/prices/" class="btn btn--primary btn--lg">See 2026 Prices</a>
-          <a href="/en/lodging/lodges/" class="btn btn--outline btn--lg">View Safari Lodges</a>
+          <a href="/prices/" class="btn btn--primary btn--lg">See 2026 Prices</a>
+          <a href="/lodging/lodges/" class="btn btn--outline btn--lg">View Safari Lodges</a>
         </div>
       </div>
       <div class="hero__visual">
@@ -136,6 +147,9 @@ const schema = {
     </div>
   </section>
 
+  <PhotoGallery images={galleryImages} title="Tented Camps Gallery" />
+  <SafariTikTok category="lodges" lang="en" />
+
   <!-- CTA -->
   <section class="section section--green">
     <div class="container" style="text-align:center;position:relative">
@@ -145,8 +159,8 @@ const schema = {
       <h2 style="color:white;margin-bottom:.75rem">Book Your Camp Adventure</h2>
       <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:520px;margin-left:auto;margin-right:auto">Experience the authentic African bush at our carefully selected tented camps. Contact us to design your ideal safari itinerary.</p>
       <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-        <a href="/en/prices/" class="btn btn--primary btn--lg">See 2026 Prices</a>
-        <a href="/en/contact/" class="btn btn--outline-white btn--lg" style="border-color:white;color:white">Contact Us</a>
+        <a href="/prices/" class="btn btn--primary btn--lg">See 2026 Prices</a>
+        <a href="/contact/" class="btn btn--outline-white btn--lg" style="border-color:white;color:white">Contact Us</a>
       </div>
     </div>
   </section>

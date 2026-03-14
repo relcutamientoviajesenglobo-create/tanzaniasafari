@@ -2,15 +2,26 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
+import SafariTikTok from '../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../components/PhotoGallery.astro';
 
 const lang = 'en';
 const title = 'Safari Photography in Tanzania — Complete Guide for Photographers';
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=400&fit=crop&auto=format', alt: 'Lion portrait captured with a telephoto lens during a photography safari' },
+  { src: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=400&fit=crop&auto=format', alt: 'Photographer using a bean bag mount on a safari vehicle in the Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&h=400&fit=crop&auto=format', alt: 'Leopard in an acacia tree captured at golden hour by a safari photographer' },
+  { src: 'https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=400&fit=crop&auto=format', alt: 'Giraffe framed against a dramatic sunset sky in Tanzania' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Wide-angle landscape of the Serengeti used as a photography backdrop' },
+  { src: 'https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=400&fit=crop&auto=format', alt: 'Wildebeest migration captured mid-action with a telephoto lens during river crossing' },
+];
 const description = 'Master safari photography in Tanzania with our complete guide. Learn the best camera gear, techniques, optimal lighting conditions and top wildlife photography locations in the Serengeti and Ngorongoro.';
 
 const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
 
 const breadcrumbs = [
-  { label: 'Activities', href: '/en/activities/' },
+  { label: 'Activities', href: '/activities/' },
   { label: 'Safari Photography' },
 ];
 
@@ -19,7 +30,7 @@ const schema = {
   '@type': 'TouristAttraction',
   name: 'Safari Photography in Tanzania',
   description: description,
-  url: 'https://safaritanzania.info/en/activities/safari-photography/',
+  url: 'https://safaritanzania.info/activities/safari-photography/',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Arusha',
@@ -41,8 +52,8 @@ const schema = {
         <h1>Safari Photography in Tanzania</h1>
         <p>Capture the raw beauty of Africa's most iconic wildlife. From the great wildebeest migration to a leopard resting in an acacia tree, Tanzania offers world-class photography opportunities in every corner of its national parks.</p>
         <div class="hero__actions">
-          <a href="/en/prices/" class="btn btn--primary btn--lg">See 2026 Prices</a>
-          <a href="/en/contact/" class="btn btn--outline btn--lg">Inquire Now</a>
+          <a href="/prices/" class="btn btn--primary btn--lg">See 2026 Prices</a>
+          <a href="/contact/" class="btn btn--outline btn--lg">Inquire Now</a>
         </div>
       </div>
       <div class="hero__visual">
@@ -100,7 +111,7 @@ const schema = {
       <p style="text-align:center;max-width:620px;margin:0 auto 3rem">Tanzania's diverse landscapes offer unparalleled backdrops for wildlife photography. Each park presents unique subjects and lighting conditions.</p>
 
       <div class="card-grid card-grid--3" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
-        <a href="/en/national-parks/" class="photo-card" style="text-decoration:none">
+        <a href="/national-parks/" class="photo-card" style="text-decoration:none">
           <div class="photo-card__img">
             <img src="https://images.unsplash.com/photo-1535338454528-1b5c8e9b0d64?w=400&h=300&fit=crop" alt="Wildebeest migration crossing the Mara River in Serengeti" width="400" height="300" loading="lazy">
           </div>
@@ -110,7 +121,7 @@ const schema = {
             <p style="font-size:.9rem;color:var(--mc-text-muted)">Iconic landscapes, the Great Migration, big cats, and endless golden-hour opportunities across 14,750 km&sup2; of savanna.</p>
           </div>
         </a>
-        <a href="/en/national-parks/" class="photo-card" style="text-decoration:none">
+        <a href="/national-parks/" class="photo-card" style="text-decoration:none">
           <div class="photo-card__img">
             <img src="https://images.unsplash.com/photo-1621414050946-1b936a78491d?w=400&h=300&fit=crop" alt="Flamingos in the Ngorongoro Crater with misty backdrop" width="400" height="300" loading="lazy">
           </div>
@@ -120,7 +131,7 @@ const schema = {
             <p style="font-size:.9rem;color:var(--mc-text-muted)">Dense wildlife in a contained caldera creates close encounters. Dramatic fog and crater-rim perspectives make stunning shots.</p>
           </div>
         </a>
-        <a href="/en/national-parks/" class="photo-card" style="text-decoration:none">
+        <a href="/national-parks/" class="photo-card" style="text-decoration:none">
           <div class="photo-card__img">
             <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=400&h=300&fit=crop" alt="Elephant herd walking past baobab trees in Tarangire" width="400" height="300" loading="lazy">
           </div>
@@ -173,6 +184,9 @@ const schema = {
     </div>
   </section>
 
+  <PhotoGallery images={galleryImages} title="Safari Photography Gallery" />
+  <SafariTikTok category="photography" lang="en" />
+
   <!-- Photo Safaris CTA -->
   <section class="section section--green">
     <div class="container" style="text-align:center;position:relative">
@@ -182,8 +196,8 @@ const schema = {
       <h2 style="color:white;margin-bottom:.75rem">Ready to Capture the Wild?</h2>
       <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:520px;margin-left:auto;margin-right:auto">Our specialized photography safaris include open-roof vehicles, expert guides who understand animal behavior, and optimal positioning for the best shots.</p>
       <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-        <a href="/en/prices/" class="btn btn--primary btn--lg">See 2026 Prices</a>
-        <a href="/en/contact/" class="btn btn--outline-white btn--lg" style="border-color:white;color:white">Contact Us</a>
+        <a href="/prices/" class="btn btn--primary btn--lg">See 2026 Prices</a>
+        <a href="/contact/" class="btn btn--outline-white btn--lg" style="border-color:white;color:white">Contact Us</a>
       </div>
     </div>
   </section>

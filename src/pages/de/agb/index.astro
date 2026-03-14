@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { webPage } from '../../../i18n/schema';
+
+const lang = 'de';
+const title = 'Allgemeine Geschäftsbedingungen — Safari Tanzania';
+const description = 'Allgemeine Geschäftsbedingungen von Safari Tanzania. Informationen zu Buchungen, Stornierungen, Zahlungen, Haftung und unseren Safari-Dienstleistungen.';
+
+const breadcrumbs = [
+  { label: 'Allgemeine Geschäftsbedingungen' },
+];
+
+const schema = [
+  webPage({
+    name: title,
+    description,
+    url: 'https://safaritanzania.info/de/agb/',
+  }),
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="/de/agb/"
+  schema={schema}
+  breadcrumbs={breadcrumbs}
+  lang={lang}
+>
+  <Header slot="header" lang={lang} />
+  <Footer slot="footer" lang={lang} />
+
+  <section class="section">
+    <div class="container" style="max-width:800px">
+      <h1 style="margin-bottom:2rem">Allgemeine Geschäftsbedingungen</h1>
+      <p style="font-size:.85rem;color:#5A6B52;margin-bottom:2rem"><strong>Letzte Aktualisierung:</strong> 14. März 2026</p>
+
+      <div style="display:flex;flex-direction:column;gap:2rem">
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:.75rem">1. Allgemeine Informationen</h2>
+          <p>Diese Allgemeinen Geschäftsbedingungen regeln das Verhältnis zwischen Safari Tanzania (nachfolgend "das Unternehmen"), mit Sitz in Sokoine Road, Arusha, Tansania, und dem Kunden, der unsere Safari- und Tourismusdienstleistungen in Anspruch nimmt. Mit der Buchung akzeptiert der Kunde diese Bedingungen in vollem Umfang.</p>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:.75rem">2. Buchungen und Bestätigung</h2>
+          <ul style="padding-left:1.5rem;list-style:disc;display:flex;flex-direction:column;gap:.4rem;color:#5A6B52">
+            <li>Buchungen werden nach Eingang einer Anzahlung von 30 % des Gesamtpreises bestätigt.</li>
+            <li>Der Restbetrag (70 %) ist mindestens 30 Tage vor Beginn der Safari zu entrichten.</li>
+            <li>Buchungen, die weniger als 30 Tage im Voraus getätigt werden, erfordern eine vollständige Zahlung zum Zeitpunkt der Buchung.</li>
+            <li>Die Buchungsbestätigung wird per E-Mail mit dem detaillierten Reiseprogramm versandt.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:.75rem">3. Preise und Leistungen</h2>
+          <p>Die auf der Website veröffentlichten Preise sind Richtwerte und können je nach Saison, Verfügbarkeit und Unterkunftsart variieren. Der endgültige Preis wird im personalisierten Angebot bestätigt. Sofern nicht anders angegeben, umfassen die Pakete:</p>
+          <ul style="margin-top:.75rem;padding-left:1.5rem;list-style:disc;display:flex;flex-direction:column;gap:.4rem;color:#5A6B52">
+            <li>Transport im 4x4-Fahrzeug mit Aufstelldach</li>
+            <li>Professioneller mehrsprachiger Reiseführer (Deutsch/Englisch)</li>
+            <li>Unterkunft gemäß dem gewählten Paket</li>
+            <li>Vollpension während der Safari</li>
+            <li>Eintrittskarten für Nationalparks</li>
+            <li>Unbegrenzt Mineralwasser</li>
+            <li>Flughafentransfer (Arusha)</li>
+          </ul>
+          <p style="margin-top:.75rem">Nicht inbegriffen sind: internationale Flüge, tansanisches Visum, Reiseversicherung, Trinkgelder, alkoholische Getränke, Wäscheservice und persönliche Ausgaben.</p>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:.75rem">4. Stornierungsbedingungen</h2>
+          <ul style="padding-left:1.5rem;list-style:disc;display:flex;flex-direction:column;gap:.4rem;color:#5A6B52">
+            <li><strong>60+ Tage vor Reisebeginn:</strong> Kostenlose Stornierung, vollständige Rückerstattung der Anzahlung.</li>
+            <li><strong>30–59 Tage vor Reisebeginn:</strong> 50 % der Anzahlung werden einbehalten.</li>
+            <li><strong>15–29 Tage vor Reisebeginn:</strong> 100 % der Anzahlung werden einbehalten.</li>
+            <li><strong>Weniger als 15 Tage vor Reisebeginn:</strong> Keine Rückerstattung.</li>
+            <li>Bei höherer Gewalt (Naturkatastrophen, Pandemien, Reisebeschränkungen) wird eine kostenfreie Umbuchung oder ein vollständiges Guthaben angeboten.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:.75rem">5. Pflichten des Kunden</h2>
+          <ul style="padding-left:1.5rem;list-style:disc;display:flex;flex-direction:column;gap:.4rem;color:#5A6B52">
+            <li>Gültigen Reisepass (mindestens 6 Monate Restgültigkeit)</li>
+            <li>Gültiges tansanisches Visum vor Reisebeginn</li>
+            <li>Aktuelle Reiseschutzimpfungen (Gelbfieber empfohlen)</li>
+            <li>Abschluss einer Reiseversicherung mit medizinischer Evakuierungsdeckung</li>
+            <li>Mitteilung relevanter medizinischer Informationen</li>
+            <li>Befolgen der Anweisungen der Reiseführer während der Safari</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:.75rem">6. Haftungsbeschränkung</h2>
+          <p>Safari Tanzania agiert als Reiseveranstalter und ist nicht verantwortlich für:</p>
+          <ul style="margin-top:.75rem;padding-left:1.5rem;list-style:disc;display:flex;flex-direction:column;gap:.4rem;color:#5A6B52">
+            <li>Flugverspätungen oder -ausfälle</li>
+            <li>Verlust oder Beschädigung von Gepäck</li>
+            <li>Gesundheitsprobleme des Kunden</li>
+            <li>Unvorhersehbares Verhalten von Wildtieren</li>
+            <li>Widrige Wetterbedingungen</li>
+            <li>Änderungen in den Vorschriften der Nationalparks</li>
+          </ul>
+          <p style="margin-top:.75rem">Wir behalten uns das Recht vor, Reiseprogramme aus Sicherheitsgründen, wegen Wetter- oder Straßenverhältnissen zu ändern, wobei gleichwertige Alternativen angeboten werden.</p>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:.75rem">7. Reiseversicherung</h2>
+          <p>Wir empfehlen dringend den Abschluss einer umfassenden Reiseversicherung, die medizinische Kosten, Evakuierung, Reiseabbruch und Gepäckverlust abdeckt. Kunden reisen ohne eine solche Versicherung auf eigenes Risiko.</p>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:.75rem">8. Geistiges Eigentum</h2>
+          <p>Alle Inhalte dieser Website (Texte, Bilder, Logos, Design) sind Eigentum von Safari Tanzania und durch Urheberrecht geschützt. Die Vervielfältigung ohne vorherige schriftliche Genehmigung ist untersagt.</p>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:.75rem">9. Anzuwendendes Recht</h2>
+          <p>Diese Bedingungen unterliegen dem Recht der Vereinigten Republik Tansania. Etwaige Streitigkeiten werden den Gerichten in Arusha, Tansania, unterworfen.</p>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:.75rem">10. Kontakt</h2>
+          <p>Bei Fragen zu diesen Bedingungen wenden Sie sich bitte an <a href="mailto:info@safaritanzania.info" style="color:#3D6B2E;font-weight:700">info@safaritanzania.info</a> oder rufen Sie uns an unter <a href="tel:+255753000000" style="color:#3D6B2E;font-weight:700">+255 753 000 000</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -11,7 +11,7 @@ const description = 'Descubre las mejores actividades de aventura en Tanzania: g
 
 const allPosts = await getCollection('blog');
 const posts = allPosts
-  .filter(post => !post.slug.startsWith('en-') && post.data.silo === 'actividades-aventura')
+  .filter(post => !post.slug.startsWith('en-') && !post.slug.startsWith('de-') && !post.slug.startsWith('fr-') && post.data.silo === 'actividades-aventura')
   .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
 
 const breadcrumbs = [

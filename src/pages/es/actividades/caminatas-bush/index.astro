@@ -3,6 +3,17 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import Header from '../../../../components/Header.astro';
 import Footer from '../../../../components/Footer.astro';
 import { touristAttraction, faqPage } from '../../../../i18n/schema';
+import SafariTikTok from '../../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../../components/PhotoGallery.astro';
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&h=400&fit=crop&auto=format', alt: 'Guerreros Masái con vestimenta tradicional roja en la sabana de Tanzania' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Paisaje de sabana con acacias durante una caminata bush' },
+  { src: 'https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=400&fit=crop&auto=format', alt: 'Jirafa avistada durante una caminata en la sabana africana' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'Elefante observado a distancia segura durante senderismo bush' },
+  { src: 'https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=600&h=400&fit=crop&auto=format', alt: 'Cebras vistas desde tierra durante caminata guiada Masái' },
+  { src: 'https://images.unsplash.com/photo-1745885979468-44a855f8a5fa?w=600&h=400&fit=crop&auto=format', alt: 'Borde del Cráter del Ngorongoro desde un sendero de montaña' },
+];
 
 const schema = [
   touristAttraction({
@@ -141,6 +152,10 @@ const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="
       </div>
     </div>
   </section>
+
+  <!-- TIKTOK & GALLERY -->
+  <SafariTikTok category="culture" lang="es" />
+  <PhotoGallery images={galleryImages} title="Galería de Caminatas Bush" />
 
   <!-- FAQ -->
   <section class="section section--gray" aria-labelledby="faq-title">

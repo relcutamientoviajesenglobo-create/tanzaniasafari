@@ -3,8 +3,19 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import { touristAttraction, faqPage } from '../../../i18n/schema';
+import SafariTikTok from '../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../components/PhotoGallery.astro';
 
 const lang = 'en';
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=400&fit=crop&auto=format', alt: 'Male African lion with golden mane — one of the Big Five in the Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&h=400&fit=crop&auto=format', alt: 'Leopard draped over a branch — the most elusive of the Big Five' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'African elephant herd with calves crossing the Serengeti plains' },
+  { src: 'https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=400&fit=crop&auto=format', alt: 'Wildebeest river crossing during the Great Migration in the Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=600&h=400&fit=crop&auto=format', alt: 'Zebra herd grazing on the open Serengeti plains during migration' },
+  { src: 'https://images.unsplash.com/photo-1745885979468-44a855f8a5fa?w=600&h=400&fit=crop&auto=format', alt: 'Ngorongoro Crater floor packed with wildlife including flamingos and buffalo' },
+];
 
 const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
 
@@ -21,7 +32,7 @@ const schema = [
   touristAttraction({
     name: 'Wildlife Watching in Tanzania — Big Five & Great Migration',
     description: 'Track the Big Five and witness the Great Migration in the Serengeti. Expert wildlife guides, optimal viewing and unforgettable encounters with Africa\'s iconic animals.',
-    url: 'https://safaritanzania.info/en/activities/wildlife-watching/',
+    url: 'https://safaritanzania.info/activities/wildlife-watching/',
   }),
   faqPage(faqItems),
 ];
@@ -33,7 +44,7 @@ const schema = [
   lang={lang}
   schema={schema}
   breadcrumbs={[
-    { label: 'Activities', href: '/en/activities/' },
+    { label: 'Activities', href: '/activities/' },
     { label: 'Wildlife Watching' },
   ]}
 >
@@ -51,8 +62,8 @@ const schema = [
           <h1 class="hero__title">Wildlife Watching in Tanzania</h1>
           <p class="hero__desc">Track the Big Five across the Serengeti plains and witness the Great Migration, one of nature's most awe-inspiring spectacles. Over 2 million animals, 1,100 bird species and expert guides who bring it all to life.</p>
           <div class="hero__actions">
-            <a href="/en/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
-            <a href="/en/contact/" class="btn btn--outline btn--lg">Plan wildlife trip</a>
+            <a href="/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
+            <a href="/contact/" class="btn btn--outline btn--lg">Plan wildlife trip</a>
           </div>
           <div class="stats-row">
             <div class="stat"><strong>Big Five</strong><span>All species present</span></div>
@@ -219,6 +230,9 @@ const schema = [
     </div>
   </section>
 
+  <PhotoGallery images={galleryImages} title="Big Five Wildlife Gallery" />
+  <SafariTikTok category="wildlife" lang="en" />
+
   <!-- CTA -->
   <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
     <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
@@ -230,8 +244,8 @@ const schema = [
         <p>Track the Big Five and the Great Migration with our expert guides. Book your wildlife watching safari today.</p>
       </div>
       <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-        <a href="/en/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
-        <a href="/en/contact/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Plan my trip</a>
+        <a href="/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
+        <a href="/contact/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Plan my trip</a>
       </div>
     </div>
   </section>

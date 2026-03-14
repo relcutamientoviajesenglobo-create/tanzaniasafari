@@ -1,0 +1,246 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import SafariTikTok from '../../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../../components/PhotoGallery.astro';
+import { lodging } from '../../../../i18n/schema';
+
+const lang = 'de';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const schema = lodging('LodgingBusiness', {
+  name: 'Safari-Lodges in Tansania — Luxusunterkünfte in der Serengeti',
+  description: 'Entdecken Sie die besten Luxus-Safari-Lodges in Tansania. Von der Four Seasons Serengeti über Singita Grumeti bis zu Serena und Sopa Lodges — Komfort in der Wildnis.',
+  url: 'https://safaritanzania.info/de/unterkuenfte/lodges/',
+  starRating: { '@type': 'Rating', ratingValue: '5' },
+});
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=600&h=400&fit=crop&auto=format', alt: 'Four Seasons Serengeti Lodge — Infinitypool mit Blick auf die Savanne' },
+  { src: 'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=600&h=400&fit=crop&auto=format', alt: 'Serena Lodge Zimmer mit Panoramafenster und Savannenpanorama' },
+  { src: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop&auto=format', alt: 'Sopa Lodge im Herzen des Ngorongoro Schutzgebietes' },
+  { src: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&h=400&fit=crop&auto=format', alt: 'Luxus-Lodge-Deck mit Ausblick auf den Ngorongoro-Krater' },
+  { src: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600&h=400&fit=crop&auto=format', alt: 'Singita Grumeti Lodge — Luxus-Bungalow in der westlichen Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop&auto=format', alt: 'Sonnenuntergang von der Terrasse einer Serengeti-Lodge' },
+];
+
+const lodges = [
+  {
+    name: 'Four Seasons Safari Lodge Serengeti',
+    category: '5 Sterne',
+    location: 'Zentrale Serengeti',
+    price: 'ab $1.200/Nacht',
+    img: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=600&h=400&fit=crop&auto=format',
+    alt: 'Four Seasons Safari Lodge Serengeti mit Infinitypool',
+    desc: 'Die Four Seasons Safari Lodge Serengeti vereint Fünf-Sterne-Luxus mit dem authentischen Wildniserlebnis. 77 Zimmer und Villen, alle mit privaten Balkonen mit Blick auf die Serengeti. Das ganzjährig geöffnete Wasserhole-Viewing-Deck bietet außergewöhnliche Wildtierbeobachtungen direkt von der Lodge.',
+    highlights: ['77 Zimmer & Suiten', 'Infinitypool mit Savannenblick', 'Spa & Wellness', 'Weinlounge & 3 Restaurants'],
+  },
+  {
+    name: 'Singita Grumeti',
+    category: '5 Sterne Ultra-Luxury',
+    location: 'Westliche Serengeti',
+    price: 'ab $2.500/Nacht',
+    img: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600&h=400&fit=crop&auto=format',
+    alt: 'Singita Grumeti — exklusive Lodge in der westlichen Serengeti',
+    desc: 'Singita Grumeti steht für das Höchste im afrikanischen Luxustourismus. Gelegen in einem privaten Naturreservat von 350.000 Hektar, bietet Singita exklusive Wildtierbeobachtung ohne Massentourismus. Die Lodge ist bekannt für ihre handgefertigten Möbel, private Pools und außergewöhnliche Gastronomie.',
+    highlights: ['Privates 350.000 ha Reservat', 'Individuell gestaltete Villen', 'Private Infinity Pools', 'Farm-to-Table Gastronomie'],
+  },
+  {
+    name: 'Serena Lodges Tansania',
+    category: '4–5 Sterne',
+    location: 'Serengeti, Ngorongoro, Tarangire',
+    price: 'ab $350/Nacht',
+    img: 'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=600&h=400&fit=crop&auto=format',
+    alt: 'Serena Lodge — traditionelle Architektur in der Serengeti',
+    desc: 'Die Serena-Kette bietet mehrere exzellente Lodges in Tansanias Top-Parks. Mit traditioneller Architektur aus lokalen Materialien integriert sich jede Serena Lodge harmonisch in ihre Umgebung. Die Kette ist für ihre außergewöhnlichen Lagebeobachtungsdecks und familiäre Atmosphäre bekannt.',
+    highlights: ['3 Lodges in Nordtansania', 'Traditionelle Architektur', 'Ausgezeichnete Lage', 'Exzellenter Wert'],
+  },
+  {
+    name: 'Sopa Lodges',
+    category: '4 Sterne',
+    location: 'Serengeti, Ngorongoro, Tarangire, Manyara',
+    price: 'ab $280/Nacht',
+    img: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop&auto=format',
+    alt: 'Sopa Lodge im Ngorongoro Schutzgebiet',
+    desc: 'Sopa Lodges sind eine hervorragende Wahl für Reisende, die Komfort und guten Wert kombinieren möchten. Mit vier Lodges in Tansanias wichtigsten Parks bieten Sopa-Unterkünfte ausgezeichnete Poolanlagen, freundliches Personal und fantastische Lage in direkter Nähe zu erstklassigen Wildtiergebieten.',
+    highlights: ['4 Standorte in Nordtansania', 'Swimmingpool bei jeder Lodge', 'Pünktliche Pirschfahrten', 'Familienpakete verfügbar'],
+  },
+];
+---
+
+<BaseLayout
+  title="Safari-Lodges in Tansania — Luxusunterkünfte in der Serengeti"
+  description="Die besten Safari-Lodges in Tansania 2026. Four Seasons Serengeti, Singita Grumeti, Serena und Sopa Lodges — Luxus und Komfort inmitten Afrikas größter Wildtiergebiete."
+  lang={lang}
+  schema={schema}
+  breadcrumbs={[
+    { label: 'Unterkünfte', href: '/de/unterkuenfte/' },
+    { label: 'Lodges' },
+  ]}
+>
+  <Header slot="header" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero" style="position:relative;overflow:hidden">
+    <div style="position:absolute;top:-20px;right:-40px;opacity:.08;pointer-events:none;color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--green">Luxus in der Wildnis</span>
+          <h1 class="hero__title">Safari-Lodges in Tansania</h1>
+          <p class="hero__desc">Tansanias Luxus-Safari-Lodges vereinen Fünf-Sterne-Komfort mit der atemberaubenden Schönheit der afrikanischen Wildnis. Wachen Sie zum Löwengebrüll auf, genießen Sie Gourmet-Frühstücke mit Blick auf die Serengeti und kehren Sie nach aufregenden Pirschfahrten in exklusive Suiten zurück.</p>
+          <div class="hero__actions">
+            <a href="/de/kontakt/" class="btn btn--primary btn--lg">Unterkunft anfragen</a>
+            <a href="/de/preise/" class="btn btn--outline btn--lg">Preise &amp; Pakete</a>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <div class="hero__deco hero__deco--bl"></div>
+            <img
+              src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800&h=640&fit=crop&auto=format"
+              alt="Luxus-Safari-Lodge mit Infinitypool und Panoramablick auf die Serengeti"
+              width="800" height="640" loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Warum Lodges wählen?</span>
+        <h2>Das Beste aus zwei Welten</h2>
+        <p>Safari-Lodges bieten Ihnen echtes Wildtiererleben gepaart mit dem Komfort, den Sie von einem Luxushotel gewohnt sind. Kein Kompromiss zwischen Abenteuer und Bequemlichkeit.</p>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1">
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 2l6.18 12.53L44 16.57l-10 9.74 2.36 13.76L24 34l-12.36 6.07 2.36-13.76L4 16.57l13.82-2.04z"/></svg>
+          </div>
+          <h3 class="service-card__title">5-Sterne-Komfort</h3>
+          <p class="service-card__desc">Luxuriöse Betten, Premium-Bettwäsche, fließendes Heißwasser, Klimaanlage und exquisite Einrichtung — alles, was Sie von einem erstklassigen Hotel erwarten.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M36 18c0-6.63-5.37-12-12-12S12 11.37 12 18c0 8.25 12 22 12 22s12-13.75 12-22zm-12 5a5 5 0 110-10 5 5 0 010 10z"/></svg>
+          </div>
+          <h3 class="service-card__title">Strategische Lage</h3>
+          <p class="service-card__desc">Alle empfohlenen Lodges befinden sich innerhalb oder am Rand der Nationalparks für unmittelbaren Zugang zu Pirschgebieten ohne Fahrzeiten.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M40 12H8l-4 12v4h4v12h8V28h16v12h8V28h4v-4l-4-12z"/></svg>
+          </div>
+          <h3 class="service-card__title">Gourmet-Gastronomie</h3>
+          <p class="service-card__desc">Internationale Küche mit lokalen Einflüssen, beeindruckende Weinauswahl und private Dining-Erlebnisse unter freiem Himmel.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-2 28l-8-8 1.41-1.41L22 29.17l12.59-12.59L36 18l-14 14z"/></svg>
+          </div>
+          <h3 class="service-card__title">Swimmingpool &amp; Spa</h3>
+          <p class="service-card__desc">Erholen Sie sich nach aufregenden Pirschfahrten am Pool mit Savannenblick oder im Spa. Ein perfektes Ende eines unvergesslichen Safari-Tages.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LODGE CARDS -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">Empfohlene Lodges</span>
+        <h2>Tansanias Top Safari-Lodges</h2>
+        <p>Diese sorgfältig ausgewählten Lodges bieten außergewöhnliche Wildtierbeobachtung, exquisiten Komfort und unvergessliche Erlebnisse.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:3rem;margin-top:2rem">
+        {lodges.map((lodge, i) => (
+          <div class="animate-on-scroll lodge-row" style={i % 2 === 1 ? 'flex-direction:row-reverse' : ''}>
+            <div class="lodge-row__img">
+              <img src={lodge.img} alt={lodge.alt} width="600" height="400" loading="lazy" />
+            </div>
+            <div class="lodge-row__body">
+              <div style="display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin-bottom:.75rem">
+                <span class="chip chip--amber">{lodge.category}</span>
+                <span style="font-size:.85rem;color:var(--mc-text-muted)">{lodge.location}</span>
+              </div>
+              <h3 style="font-size:1.5rem;font-weight:800;margin-bottom:.5rem">{lodge.name}</h3>
+              <p style="color:var(--mc-text-muted);line-height:1.7;margin-bottom:1rem">{lodge.desc}</p>
+              <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.25rem">
+                {lodge.highlights.map(h => (
+                  <li style="display:flex;gap:.5rem;align-items:flex-start;font-size:.9rem">
+                    <span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span>
+                    {h}
+                  </li>
+                ))}
+              </ul>
+              <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
+                <span style="font-size:1.1rem;font-weight:700;color:var(--mc-green)">{lodge.price}</span>
+                <a href="/de/kontakt/" class="btn btn--primary">Verfügbarkeit anfragen</a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <PhotoGallery images={galleryImages} title="Fotogalerie: Safari-Lodges in Tansania" />
+
+  <!-- TIKTOK -->
+  <SafariTikTok category="lodges" lang="de" />
+
+  <!-- CTA -->
+  <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2>Bereit für Ihren Luxus-Aufenthalt?</h2>
+        <p>Kontaktieren Sie uns für individuelle Empfehlungen und die besten Verfügbarkeiten in Tansanias Luxus-Lodges 2026.</p>
+      </div>
+      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/de/kontakt/" class="btn btn--primary btn--lg">Anfrage senden</a>
+        <a href="/de/unterkuenfte/zeltcamps/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Zeltcamps ansehen</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>
+
+<style>
+.lodge-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.lodge-row__img {
+  border-radius: var(--radius-lg, 20px);
+  overflow: hidden;
+  aspect-ratio: 3/2;
+}
+.lodge-row__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media (max-width: 768px) {
+  .lodge-row, .lodge-row[style*="row-reverse"] {
+    grid-template-columns: 1fr;
+    flex-direction: column !important;
+  }
+}
+</style>

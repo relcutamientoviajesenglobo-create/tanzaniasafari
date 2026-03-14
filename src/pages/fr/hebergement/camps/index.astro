@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import SafariTikTok from '../../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../../components/PhotoGallery.astro';
+
+const lang = 'fr';
+const title = 'Camps de Safari en Tanzanie — Expériences Authentiques en Brousse';
+const description = 'Vivez l\'expérience authentique des camps de safari en Tanzanie. Dormez sous les étoiles dans le Serengeti, le Ngorongoro et le Tarangire avec confort et immersion totale dans la nature sauvage africaine.';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop&auto=format', alt: 'Camp de safari de luxe sous tente au coucher du soleil avec acacias dans le Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&h=400&fit=crop&auto=format', alt: 'Camp mobile de migration avec tentes vertes dans les plaines du Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=600&h=400&fit=crop&auto=format', alt: 'Camp permanent sous tente avec terrasse en bois et vue panoramique sur la brousse' },
+  { src: 'https://images.unsplash.com/photo-1510312305653-8ed496efae75?w=600&h=400&fit=crop&auto=format', alt: 'Camp en brousse sous la Voie lactée avec éclairage minimal dans la nature sauvage' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Dîner en brousse au camp safari sous les étoiles en Tanzanie' },
+  { src: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=400&fit=crop&auto=format', alt: 'Game drive partant du camp à l\'aube dans le Serengeti tanzanien' },
+];
+
+const breadcrumbs = [
+  { label: 'Hébergement', href: '/fr/hebergement/' },
+  { label: 'Camps' },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  description: description,
+  url: 'https://safaritanzania.info/fr/hebergement/camps/',
+};
+---
+
+<BaseLayout title={title} description={description} schema={schema} breadcrumbs={breadcrumbs} lang={lang}>
+  <Header slot="header" lang={lang} />
+  <Footer slot="footer" lang={lang} />
+
+  <!-- Héros -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <span class="chip chip--green">Expérience en brousse</span>
+        <h1>Camps de Safari en Tanzanie</h1>
+        <p>Endormez-vous au son de la symphonie nocturne africaine et réveillez-vous aux chants des oiseaux à l'aube. Les camps de safari en Tanzanie offrent une immersion authentique dans la nature sauvage, avec un confort réfléchi pour vivre la brousse de l'intérieur.</p>
+        <div class="hero__actions">
+          <a href="/fr/prix/" class="btn btn--primary btn--lg">Voir les tarifs 2026</a>
+          <a href="/fr/hebergement/lodges/" class="btn btn--outline btn--lg">Voir les lodges</a>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__photo-frame">
+          <div class="hero__deco hero__deco--tr"></div>
+          <div class="hero__deco hero__deco--bl"></div>
+          <img
+            src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop"
+            alt="Camp de safari de luxe au coucher du soleil avec tentes en toile sous des acacias dans le Serengeti"
+            width="600"
+            height="400"
+            loading="eager"
+            style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:inherit"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Types de camps -->
+  <section class="section section--gray">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:.75rem">Types de camps safari</h2>
+      <p style="text-align:center;max-width:620px;margin:0 auto 3rem">Des camps mobiles qui suivent la Grande Migration aux camps permanents équipés, choisissez le niveau d'aventure qui vous correspond.</p>
+
+      <div class="card-grid card-grid--3" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=400&h=300&fit=crop" alt="Camp mobile de migration dans le Serengeti" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Saisonnier</span>
+            <p class="photo-card__title">Camps mobiles de migration</p>
+            <p style="font-size:.9rem;color:var(--mc-text-muted)">Ces camps se déplacent pour suivre la migration des gnous à travers le Serengeti. Cadres intimistes avec 6 à 10 tentes et zones d'observation exclusives inaccessibles aux autres visiteurs.</p>
+          </div>
+        </div>
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=400&h=300&fit=crop" alt="Camp permanent de luxe sous tente avec terrasses en bois" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Toute l'année</span>
+            <p class="photo-card__title">Camps permanents sous tente</p>
+            <p style="font-size:.9rem;color:var(--mc-text-muted)">Camps à emplacement fixe avec plateformes en bois surélevées, salles de bain attenantes et électricité. Tout le charme de la vie sous tente avec la fiabilité d'une infrastructure permanente.</p>
+          </div>
+        </div>
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1510312305653-8ed496efae75?w=400&h=300&fit=crop" alt="Camp en brousse minimaliste sous la Voie lactée" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Aventure</span>
+            <p class="photo-card__title">Camps en brousse</p>
+            <p style="font-size:.9rem;color:var(--mc-text-muted)">Camping épuré pour le véritable aventurier. Installations légères dans des endroits reculés avec cuisinier de camp, guide dédié et vues ininterrompues sur le ciel nocturne africain.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- La vie au camp -->
+  <section class="section">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:.75rem">Une journée au camp safari</h2>
+      <p style="text-align:center;max-width:620px;margin:0 auto 3rem">La vie dans un camp suit le rythme de la brousse africaine. Chaque moment est une invitation à se reconnecter avec la nature.</p>
+
+      <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem">
+        <div style="display:flex;gap:1rem;align-items:flex-start">
+          <span style="font-size:1.8rem;flex-shrink:0">🌅</span>
+          <div>
+            <h3 style="font-size:1.1rem;margin-bottom:.35rem">Game drive à l'aube</h3>
+            <p style="font-size:.92rem;color:#5A6B52">Réveil à 5h30 avec un café chaud livré dans votre tente. Départ pour le game drive matinal quand les prédateurs sont les plus actifs et la lumière est magique pour la photographie.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;align-items:flex-start">
+          <span style="font-size:1.8rem;flex-shrink:0">☀️</span>
+          <div>
+            <h3 style="font-size:1.1rem;margin-bottom:.35rem">Repos en milieu de journée</h3>
+            <p style="font-size:.92rem;color:#5A6B52">Retour au camp pour un copieux brunch, puis détente pendant les heures les plus chaudes. Lisez, faites une sieste ou profitez d'un hamac à l'ombre des acacias en écoutant la brousse.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;align-items:flex-start">
+          <span style="font-size:1.8rem;flex-shrink:0">🌇</span>
+          <div>
+            <h3 style="font-size:1.1rem;margin-bottom:.35rem">Sundowner en savane</h3>
+            <p style="font-size:.92rem;color:#5A6B52">Game drive de l'après-midi suivi de cocktails sundowner sur les plaines dorées au coucher du soleil. Dîner sous les étoiles avec les sons envoûtants de la savane africaine.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;align-items:flex-start">
+          <span style="font-size:1.8rem;flex-shrink:0">🔥</span>
+          <div>
+            <h3 style="font-size:1.1rem;margin-bottom:.35rem">Soirée au coin du feu</h3>
+            <p style="font-size:.92rem;color:#5A6B52">Terminez chaque soirée autour du feu de camp. Partagez des histoires avec vos guides, observez les étoiles filantes et écoutez les lions rugir au loin — une expérience africaine profondément authentique.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ce qui est inclus -->
+  <section class="section section--gray">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:.75rem">Ce qui est inclus dans un séjour en camp</h2>
+      <p style="text-align:center;max-width:620px;margin:0 auto 3rem">Chaque séjour comprend tout ce dont vous avez besoin pour une aventure safari mémorable et confortable.</p>
+
+      <div class="service-cards" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+        <div class="service-card">
+          <span style="font-size:2.2rem">⛺</span>
+          <h3 style="color:var(--mc-green)">Tentes confortables</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">Grandes tentes en toile avec vrais lits, literie de qualité, moustiquaires et éclairage. Certains camps proposent des salles de bain attenantes avec douche chaude.</p>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">🍽️</span>
+          <h3 style="color:var(--mc-green)">Pension complète</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">Trois repas par jour préparés par le cuisinier du camp. Petits-déjeuners copieux, paniers-repas et dîners sous les étoiles avec produits frais et spécialités tanzaniennes.</p>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">🚗</span>
+          <h3 style="color:var(--mc-green)">Game drives inclus</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">Game drives matin et soir inclus chaque jour. Guide naturaliste expérimenté avec une connaissance intime du comportement animal et des meilleurs spots dans le parc.</p>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">🌿</span>
+          <h3 style="color:var(--mc-green)">Tourisme responsable</h3>
+          <p style="color:var(--mc-green);opacity:.85;font-size:.95rem">Nos camps partenaires utilisent l'énergie solaire, gèrent l'eau durablement et soutiennent les communautés masaïes. Votre séjour contribue à la conservation de la faune.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <PhotoGallery images={galleryImages} title="Galerie photo — Camps safari en Tanzanie" />
+  <SafariTikTok category="lodges" lang="fr" />
+
+  <!-- CTA -->
+  <section class="section section--green">
+    <div class="container" style="text-align:center;position:relative">
+      <div style="position:absolute;top:-30px;right:0;opacity:.12;pointer-events:none;color:#D4A017">
+        <Fragment set:html={ACACIA_LARGE} />
+      </div>
+      <h2 style="color:white;margin-bottom:.75rem">Réservez votre aventure en camp safari</h2>
+      <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:520px;margin-left:auto;margin-right:auto">Vivez l'authentique brousse africaine dans nos camps soigneusement sélectionnés. Contactez-nous pour concevoir votre itinéraire safari idéal avec hébergement en camp.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/fr/prix/" class="btn btn--primary btn--lg">Voir les tarifs 2026</a>
+        <a href="/fr/contact/" class="btn btn--outline-white btn--lg" style="border-color:white;color:white">Nous contacter</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

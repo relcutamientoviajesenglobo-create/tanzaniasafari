@@ -55,8 +55,8 @@ const {
 const authorData = await getEntry('authors', authorSlug);
 
 const siteUrl = 'https://safaritanzania.info';
-const blogBase = lang === 'en' ? '/en/blog' : '/blog';
-const authorBase = lang === 'en' ? '/en/blog/authors' : '/blog/autores';
+const blogBase = lang === 'en' ? '/blog' : `/${lang}/blog`;
+const authorBase = { en: '/blog/authors', es: '/es/blog/autores', de: '/de/blog/autoren', fr: '/fr/blog/auteurs' }[lang];
 
 // Build Schema.org BlogPosting
 const blogPostingSchema = {
@@ -128,18 +128,19 @@ const siloLabels: Record<string, string> = {
   'cultura-masai': t('silo.cultura-masai', lang),
 };
 
-// Silo slug mapping for English URLs
-const siloSlugsEn: Record<string, string> = {
-  'safaris-tanzania': 'tanzania-safaris',
-  'actividades-aventura': 'adventure-activities',
-  'hospedaje-lodges': 'lodges-camps',
-  'guias-viaje': 'travel-guides',
-  'cultura-masai': 'masai-culture',
+// Silo slug mapping per language
+const siloSlugs: Record<string, Record<Lang, string>> = {
+  'safaris-tanzania': { en: 'tanzania-safaris', es: 'safaris-tanzania', de: 'safari-tansania', fr: 'safaris-tanzanie' },
+  'actividades-aventura': { en: 'adventure-activities', es: 'actividades-aventura', de: 'abenteuer-aktivitaeten', fr: 'activites-aventure' },
+  'hospedaje-lodges': { en: 'lodges-camps', es: 'hospedaje-lodges', de: 'lodges-camps', fr: 'lodges-camps' },
+  'guias-viaje': { en: 'travel-guides', es: 'guias-viaje', de: 'reisefuehrer', fr: 'guides-voyage' },
+  'cultura-masai': { en: 'masai-culture', es: 'cultura-masai', de: 'masai-kultur', fr: 'culture-masai' },
 };
 
+const siloSlug = siloSlugs[silo]?.[lang] || silo;
 const siloHref = lang === 'en'
-  ? `/en/blog/${siloSlugsEn[silo] || silo}/`
-  : `/blog/${silo}/`;
+  ? `/blog/${siloSlug}/`
+  : `/${lang}/blog/${siloSlug}/`;
 
 const breadcrumbs = [
   { label: 'Blog', href: `${blogBase}/` },
@@ -156,8 +157,8 @@ const categoryLabels: Record<string, string> = {
   consejos: t('cat.consejos', lang),
 };
 
-const pricesHref = lang === 'en' ? '/en/prices/' : '/precios/';
-const directionsHref = lang === 'en' ? '/en/how-to-get-here/' : '/como-llegar/';
+const pricesHref = { en: '/prices/', es: '/es/precios/', de: '/de/preise/', fr: '/fr/prix/' }[lang];
+const directionsHref = { en: '/how-to-get-here/', es: '/es/como-llegar/', de: '/de/anreise/', fr: '/fr/comment-venir/' }[lang];
 ---
 
 <BaseLayout

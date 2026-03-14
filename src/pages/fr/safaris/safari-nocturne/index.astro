@@ -1,0 +1,224 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import { touristAttraction, faqPage } from '../../../../i18n/schema';
+import SafariTikTok from '../../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../../components/PhotoGallery.astro';
+
+const lang = 'fr';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&h=400&fit=crop&auto=format', alt: 'Léopard en faible luminosité lors d\'un game drive nocturne en Tanzanie' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Savane africaine sous un ciel étoilé avec des acacias en silhouette' },
+  { src: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=400&fit=crop&auto=format', alt: 'Lion en éclairage dramatique lors d\'un safari nocturne' },
+  { src: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=400&fit=crop&auto=format', alt: 'Véhicule safari classique dans le Serengeti lors d\'une excursion nocturne' },
+  { src: 'https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=400&fit=crop&auto=format', alt: 'Gnous traversant la savane à la tombée de la nuit' },
+  { src: 'https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=400&fit=crop&auto=format', alt: 'Girafe au clair de lune dans la savane tanzanienne' },
+];
+
+const faqItems = [
+  { question: 'Qu\'est-ce qu\'un safari nocturne en Tanzanie ?', answer: 'Un safari nocturne est un game drive guidé réalisé <strong>après le coucher du soleil</strong>, généralement de 18h30 à 22h00. Grâce à des projecteurs puissants et des équipements infrarouges, votre guide révèle le monde caché de la faune nocturne : prédateurs en chasse, oryctéropes fouisseurs, galagos, porcs-épics et de nombreuses espèces impossibles à voir en plein jour.' },
+  { question: 'Où se déroulent les safaris nocturnes ?', answer: 'Les safaris nocturnes opèrent dans des zones de conservation spécifiques où la conduite nocturne est autorisée. Les endroits les plus populaires incluent le <strong>Parc national du lac Manyara</strong>, <strong>Tarangire</strong> et les concessions privées bordant le Serengeti. La réglementation des parcs nationaux restreint la conduite de nuit dans le Serengeti et le Ngorongoro, nous utilisons donc des zones agréées offrant d\'excellentes observations d\'animaux nocturnes.' },
+  { question: 'Un safari nocturne est-il sûr ?', answer: 'Absolument. Les safaris nocturnes se déroulent dans les mêmes 4x4 renforcés que les drives de jour. Votre guide est formé au comportement de la faune nocturne et dispose d\'un équipement de <strong>communication par satellite</strong>. Le projecteur ne dérange pas les animaux (ils y sont habitués) et vous restez en sécurité à l\'intérieur du véhicule en permanence. Nos guides portent des trousses de premiers secours et ont des protocoles d\'urgence en place.' },
+  { question: 'Quels animaux peut-on voir lors d\'un safari nocturne ?', answer: 'Les safaris nocturnes révèlent des espèces rarement vues de jour : <strong>léopards en chasse</strong>, hyènes tachetées, renards à grandes oreilles, oryctéropes, protèles, galagos, civettes, genettes, porcs-épics, lièvres-sauteurs et de nombreuses espèces de hiboux. Les prédateurs sont bien plus actifs après la tombée de la nuit, faisant des drives nocturnes certaines des rencontres animalières les plus frissonnantes d\'Afrique.' },
+  { question: 'Puis-je photographier la faune lors d\'un safari nocturne ?', answer: 'Oui, mais cela nécessite des techniques spécifiques. La photographie au flash est généralement déconseillée car elle peut effrayer les animaux. Cependant, nos guides utilisent des <strong>projecteurs à filtre rouge</strong> respectueux de la faune et adaptés à la photographie. Nous recommandons des appareils photo performants à haute valeur ISO (ISO 3200+). Pour de meilleurs résultats, combinez un safari nocturne avec un <a href="/fr/safaris/safari-photo/" style="color:#3D6B2E;font-weight:700">safari photo</a> pour les clichés diurnes.' },
+  { question: 'Combien de temps dure un safari nocturne ?', answer: 'Un game drive nocturne dure généralement <strong>3 à 4 heures</strong>, partant au coucher du soleil (18h00-18h30) et rentrant vers 21h30-22h00. Le drive inclut un court arrêt pour des boissons chaudes et une séance d\'observation des étoiles dans une zone sécurisée. Les safaris nocturnes peuvent s\'ajouter à tout itinéraire de <a href="/fr/safaris/safari-classique/" style="color:#3D6B2E;font-weight:700">safari classique</a> multi-jours.' },
+];
+
+const schema = [
+  touristAttraction({
+    name: 'Safari Nocturne en Tanzanie',
+    description: 'Découvrez la faune nocturne dans le Serengeti et les zones de conservation tanzaniennes. Observez léopards, hyènes, galagos et bien plus encore avec des guides experts après la tombée de la nuit.',
+    url: 'https://safaritanzania.info/fr/safaris/safari-nocturne/',
+  }),
+  faqPage(faqItems),
+];
+---
+
+<BaseLayout
+  title="Safari Nocturne en Tanzanie — Faune Nocturne dans le Serengeti"
+  description="Découvrez la brousse africaine après la tombée de la nuit lors d'un safari nocturne guidé. Observez des léopards en chasse, des hyènes, des galagos, des oryctéropes et des prédateurs nocturnes avec des guides experts."
+  lang={lang}
+  schema={schema}
+  breadcrumbs={[
+    { label: 'Safaris', href: '/fr/safaris/' },
+    { label: 'Safari Nocturne' },
+  ]}
+>
+  <Header slot="header" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--green">Après le coucher du soleil</span>
+          <h1 class="hero__title">Safari Nocturne en Tanzanie</h1>
+          <p class="hero__desc">Quand le soleil se couche, le vrai spectacle commence. Découvrez le monde caché des prédateurs nocturnes, des créatures insaisissables et les sons envoûtants de la brousse africaine sous un manteau d'étoiles.</p>
+          <div class="hero__actions">
+            <a href="/fr/prix/" class="btn btn--primary btn--lg">Voir les tarifs 2026</a>
+            <a href="/fr/contact/" class="btn btn--outline btn--lg">Réserver le safari nocturne</a>
+          </div>
+          <div class="stats-row">
+            <div class="stat"><strong>3-4 h</strong><span>Coucher de soleil à la nuit</span></div>
+            <div class="stat"><strong>20+</strong><span>Espèces nocturnes</span></div>
+            <div class="stat"><strong>Expert</strong><span>Guides certifiés</span></div>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <img
+              src="https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=800&h=640&fit=crop&auto=format"
+              alt="Léopard repéré lors d'un game drive nocturne en Tanzanie"
+              width="800" height="640" loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- L'EXPÉRIENCE -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">L'expérience</span>
+        <h2>Ce qui se passe après le coucher du soleil</h2>
+        <p>Quand le crépuscule cède la place aux étoiles, une troupe entièrement différente entre en scène dans les plaines tanzaniennes.</p>
+      </div>
+      <div class="card-grid card-grid--2 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&h=450&fit=crop&auto=format" alt="Léopard en faible luminosité lors d'un game drive nocturne" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Prédateurs en chasse</h3>
+            <p>La nuit, c'est quand les grands prédateurs d'Afrique sont les plus actifs. Regardez les léopards se faufiler dans les sous-bois, les hyènes tachetées coordonner leurs chasses et les servals bondir sur leurs proies avec une précision redoutable. Le projecteur révèle des comportements rarement observés en plein jour.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=450&fit=crop&auto=format" alt="Savane africaine sous un ciel nocturne étoilé avec des acacias en silhouette" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Observation des étoiles et sons nocturnes</h3>
+            <p>Entre les observations, votre guide arrête le véhicule dans une zone sécurisée pour des boissons chaudes et une séance d'observation des étoiles. Sans pollution lumineuse, le ciel nocturne tanzanien est extraordinaire : la Voie lactée, la Croix du Sud et des étoiles filantes créent un spectacle céleste tandis que la brousse vous berce d'appels d'hyènes et de hululations de hiboux.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAUNE NOCTURNE -->
+  <section class="section section--green bg-green" style="position:relative;overflow:hidden">
+    <div style="position:absolute;bottom:0;left:-30px;opacity:.08;pointer-events:none;color:#D4A017;transform:rotate(180deg)">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Faune nocturne</span>
+        <h2>Les créatures de la nuit</h2>
+        <p>Les safaris nocturnes révèlent un monde entièrement différent d'animaux qui dorment le jour et s'animent à la faveur de l'obscurité.</p>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1">
+        <div class="service-card">
+          <h3 class="service-card__title">Léopard</h3>
+          <p class="service-card__desc">Le plus insaisissable des Big Five, le léopard est avant tout un chasseur nocturne. Observez-le traquer ses proies avec furtivité et puissance, ou se reposer sur des branches d'acacia au clair de lune.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Galago (Bushbaby)</h3>
+          <p class="service-card__desc">Ces petits primates aux immenses yeux bondissent de branches en branches à une vitesse incroyable. Leurs cris envoûtants résonnent dans la nuit africaine, ce qui leur a valu le nom de "bébés de la brousse".</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Hyène tachetée</h3>
+          <p class="service-card__desc">Des chasseurs en meute très intelligents, les hyènes sont les plus actives après la tombée de la nuit. Assistez à leur complexe dynamique sociale, leurs vocalisations inquiétantes et leurs remarquables stratégies de chasse.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Oryctérope</h3>
+          <p class="service-card__desc">L'une des créatures les plus insaisissables d'Afrique, l'oryctérope ne sort que la nuit pour se nourrir de termites. En apercevoir un est un privilège rare qui rend tout safari nocturne inoubliable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMBINER AVEC -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Combinez votre expérience</span>
+        <h2>Ajoutez un safari nocturne à votre séjour</h2>
+        <p>Les safaris nocturnes s'associent parfaitement à nos autres expériences pour une aventure animalière complète de 24 heures.</p>
+      </div>
+      <div class="card-grid card-grid--2 animate-on-scroll delay-1">
+        <a href="/fr/safaris/safari-classique/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=450&fit=crop&auto=format" alt="Véhicule de safari classique dans le Serengeti" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Safari Classique + Drive Nocturne</h3>
+            <p>Combinez les game drives de jour avec un safari nocturne en soirée pour une expérience animalière complète sur 24 heures. Observez les Big Five de jour et les prédateurs nocturnes de nuit.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+        <a href="/fr/safaris/safari-photo/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=450&fit=crop&auto=format" alt="Lion en éclairage dramatique pour le safari photo" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Safari Photo + Drive Nocturne</h3>
+            <p>Capturez des images à l'heure dorée de jour et tentez la photographie en faible luminosité la nuit. Parfait pour les photographes souhaitant couvrir toute la gamme de la faune africaine.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">FAQ</span>
+        <h2>Questions sur le safari nocturne</h2>
+        <p>Tout ce que vous devez savoir sur nos expériences animalières nocturnes en Tanzanie.</p>
+      </div>
+      <div class="faq-list animate-on-scroll delay-1">
+        {faqItems.map(item => (
+          <details>
+            <summary>{item.question}</summary>
+            <div class="faq-answer" set:html={item.answer} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <PhotoGallery images={galleryImages} title="Galerie photo — Safari nocturne en Tanzanie" />
+  <SafariTikTok category="serengeti" lang="fr" />
+
+  <!-- CTA -->
+  <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2>Vivez la nuit africaine</h2>
+        <p>Découvrez le monde caché de la faune nocturne avec nos guides experts. Un ajout inoubliable à tout séjour en Tanzanie.</p>
+      </div>
+      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/fr/prix/" class="btn btn--primary btn--lg">Voir les tarifs 2026</a>
+        <a href="/fr/contact/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Réserver le safari nocturne</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>

@@ -2,9 +2,20 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import SafariTikTok from '../../components/SafariTikTok.astro';
+import PhotoGallery from '../../components/PhotoGallery.astro';
 
 const lang = 'en';
 const title = 'How to Get to Tanzania — Flights, Visas & Transport 2026';
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?w=600&h=400&fit=crop&auto=format', alt: 'Aerial view of Mount Kilimanjaro — gateway to Tanzania safari adventures' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Safari vehicle driving through the Tanzanian landscape from Arusha' },
+  { src: 'https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&h=400&fit=crop&auto=format', alt: 'Welcome arrival at an Arusha hotel ahead of a Tanzanian safari' },
+  { src: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=400&fit=crop&auto=format', alt: '4x4 safari vehicle ready for the journey from Arusha to the Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=400&fit=crop&auto=format', alt: 'Charter bush flight over the Great Rift Valley heading to the Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1535338454528-1b5c8e9b0d64?w=600&h=400&fit=crop&auto=format', alt: 'Serengeti landscape — the final destination after arriving in Tanzania' },
+];
 const description = 'Complete 2026 guide on how to get to Tanzania for your safari. Flight options, visa requirements, airport transfers, and ground transportation from Arusha to the Serengeti and beyond.';
 
 const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
@@ -42,8 +53,8 @@ const schema = {
         <h1>How to Get to Tanzania</h1>
         <p>Everything you need to know about reaching Tanzania for your safari. From international flights and visa requirements to local transportation and the journey from Arusha to the national parks.</p>
         <div class="hero__actions">
-          <a href="/en/prices/" class="btn btn--primary btn--lg">See 2026 Prices</a>
-          <a href="/en/contact/" class="btn btn--outline btn--lg">Contact Us</a>
+          <a href="/prices/" class="btn btn--primary btn--lg">See 2026 Prices</a>
+          <a href="/contact/" class="btn btn--outline btn--lg">Contact Us</a>
         </div>
       </div>
       <div class="hero__visual">
@@ -140,6 +151,9 @@ const schema = {
     </div>
   </section>
 
+  <PhotoGallery images={galleryImages} title="Getting to Tanzania" />
+  <SafariTikTok category="general" lang="en" />
+
   <!-- CTA -->
   <section class="section section--green">
     <div class="container" style="text-align:center;position:relative">
@@ -149,8 +163,8 @@ const schema = {
       <h2 style="color:white;margin-bottom:.75rem">Need Help Planning Your Trip?</h2>
       <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:520px;margin-left:auto;margin-right:auto">Our team can assist with flight recommendations, visa guidance, and all ground transportation arrangements. We handle the logistics so you can focus on the adventure.</p>
       <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-        <a href="/en/prices/" class="btn btn--primary btn--lg">See 2026 Prices</a>
-        <a href="/en/contact/" class="btn btn--outline-white btn--lg" style="border-color:white;color:white">Contact Us</a>
+        <a href="/prices/" class="btn btn--primary btn--lg">See 2026 Prices</a>
+        <a href="/contact/" class="btn btn--outline-white btn--lg" style="border-color:white;color:white">Contact Us</a>
       </div>
     </div>
   </section>

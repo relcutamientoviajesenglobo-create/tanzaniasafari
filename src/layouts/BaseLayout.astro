@@ -83,7 +83,7 @@ const schemaArr = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
         <div class="container">
           <ol class="breadcrumbs__list" itemscope itemtype="https://schema.org/BreadcrumbList">
             <li class="breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-              <a href={lang === 'en' ? '/en/' : '/'} class="breadcrumbs__link" itemprop="item"><span itemprop="name">{t('breadcrumb.home', lang)}</span></a>
+              <a href={lang === 'en' ? '/' : `/${lang}/`} class="breadcrumbs__link" itemprop="item"><span itemprop="name">{t('breadcrumb.home', lang)}</span></a>
               <meta itemprop="position" content="1">
             </li>
             {breadcrumbs.map((crumb, i) => (

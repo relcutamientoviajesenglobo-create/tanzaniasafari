@@ -2,15 +2,26 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
+import SafariTikTok from '../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../components/PhotoGallery.astro';
 
 const lang = 'en';
 const title = 'Safari Lodges in Tanzania — Luxury Accommodation in the Savanna';
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600&h=400&fit=crop&auto=format', alt: 'Serengeti luxury lodge with stone-and-thatch architecture and savanna views' },
+  { src: 'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=600&h=400&fit=crop&auto=format', alt: 'Elegant lodge room with floor-to-ceiling windows overlooking the Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&h=400&fit=crop&auto=format', alt: 'Ngorongoro Crater rim lodge with dramatic misty morning views' },
+  { src: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop&auto=format', alt: 'Lodge swimming pool overlooking the African savanna at sunset' },
+  { src: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=600&h=400&fit=crop&auto=format', alt: 'Luxury safari lodge terrace with outdoor dining and wildlife views' },
+  { src: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop&auto=format', alt: 'Tarangire treetop lodge room built among ancient baobab trees' },
+];
 const description = 'Discover the best safari lodges in Tanzania. Luxury accommodation in the Serengeti, Ngorongoro, and Tarangire with premium amenities, gourmet dining, and direct wildlife access.';
 
 const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
 
 const breadcrumbs = [
-  { label: 'Lodging', href: '/en/lodging/' },
+  { label: 'Lodging', href: '/lodging/' },
   { label: 'Safari Lodges' },
 ];
 
@@ -19,7 +30,7 @@ const schema = {
   '@type': 'WebPage',
   name: title,
   description: description,
-  url: 'https://safaritanzania.info/en/lodging/lodges/',
+  url: 'https://safaritanzania.info/lodging/lodges/',
 };
 ---
 
@@ -35,8 +46,8 @@ const schema = {
         <h1>Safari Lodges in Tanzania</h1>
         <p>Experience the African wilderness without sacrificing comfort. Tanzania's safari lodges combine stunning architecture with the raw beauty of the savanna, offering premium amenities, gourmet cuisine, and front-row seats to nature's greatest spectacle.</p>
         <div class="hero__actions">
-          <a href="/en/prices/" class="btn btn--primary btn--lg">See 2026 Prices</a>
-          <a href="/en/lodging/camps/" class="btn btn--outline btn--lg">View Safari Camps</a>
+          <a href="/prices/" class="btn btn--primary btn--lg">See 2026 Prices</a>
+          <a href="/lodging/camps/" class="btn btn--outline btn--lg">View Safari Camps</a>
         </div>
       </div>
       <div class="hero__visual">
@@ -128,6 +139,9 @@ const schema = {
     </div>
   </section>
 
+  <PhotoGallery images={galleryImages} title="Safari Lodges Gallery" />
+  <SafariTikTok category="lodges" lang="en" />
+
   <!-- CTA -->
   <section class="section section--green">
     <div class="container" style="text-align:center;position:relative">
@@ -137,8 +151,8 @@ const schema = {
       <h2 style="color:white;margin-bottom:.75rem">Book Your Lodge Stay</h2>
       <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:520px;margin-left:auto;margin-right:auto">Contact us to reserve your preferred lodge and safari itinerary. We handle all logistics so you can focus on the adventure.</p>
       <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-        <a href="/en/prices/" class="btn btn--primary btn--lg">See 2026 Prices</a>
-        <a href="/en/contact/" class="btn btn--outline-white btn--lg" style="border-color:white;color:white">Contact Us</a>
+        <a href="/prices/" class="btn btn--primary btn--lg">See 2026 Prices</a>
+        <a href="/contact/" class="btn btn--outline-white btn--lg" style="border-color:white;color:white">Contact Us</a>
       </div>
     </div>
   </section>

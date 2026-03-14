@@ -3,6 +3,17 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import Header from '../../../../components/Header.astro';
 import Footer from '../../../../components/Footer.astro';
 import { touristAttraction, faqPage } from '../../../../i18n/schema';
+import SafariTikTok from '../../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../../components/PhotoGallery.astro';
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Sabana del Serengeti durante el crepúsculo con cielo anaranjado' },
+  { src: 'https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=400&fit=crop&auto=format', alt: 'Jirafa silueteada contra el cielo nocturno de Tanzania' },
+  { src: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=400&fit=crop&auto=format', alt: 'León al acecho en la oscuridad de la sabana' },
+  { src: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=400&fit=crop&auto=format', alt: 'Vehículo de safari con spotlight en la noche africana' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'Elefante avistado durante un safari nocturno en Tanzania' },
+  { src: 'https://images.unsplash.com/photo-1745885979468-44a855f8a5fa?w=600&h=400&fit=crop&auto=format', alt: 'Panorámica del Ngorongoro bajo el cielo estrellado' },
+];
 
 const schema = [
   touristAttraction({
@@ -131,6 +142,10 @@ const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="
       </div>
     </div>
   </section>
+
+  <!-- TIKTOK & GALLERY -->
+  <SafariTikTok category="night" lang="es" />
+  <PhotoGallery images={galleryImages} title="Galería del Safari Nocturno" />
 
   <!-- FAQ -->
   <section class="section section--gray" aria-labelledby="faq-title">

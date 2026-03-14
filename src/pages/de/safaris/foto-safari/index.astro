@@ -1,0 +1,231 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import SafariTikTok from '../../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../../components/PhotoGallery.astro';
+import { touristAttraction, faqPage } from '../../../../i18n/schema';
+
+const lang = 'de';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const faqItems = [
+  { question: 'Was unterscheidet eine Foto-Safari von einer normalen Safari?', answer: 'Eine Foto-Safari priorisiert <strong>optimale Aufnahmebedingungen</strong> gegenüber der Anzahl der Sichtungen. Ihr Guide positioniert das Fahrzeug für das beste Licht und die besten Winkel, gewährt verlängerte Zeit bei jeder Sichtung (30–60 Minuten statt 5–10 bei normalen Safaris), nutzt speziell ausgestattete Fahrzeuge mit Bohnensäcken und Kamerahalterungen und plant Routen rund um das <strong>Goldene-Stunden-Licht</strong>. Unsere Fotografie-Guides verstehen das Tierverhalten und können Actionmomente vorausahnen.' },
+  { question: 'Welches Kameraequipment sollte ich mitbringen?', answer: 'Wir empfehlen eine Kamera mit einem <strong>Zoomobjektiv von mindestens 200 mm</strong> (idealerweise 100–400 mm oder 200–600 mm). Ein Weitwinkelobjektiv (16–35 mm) ist nützlich für Landschaften. Bringen Sie zusätzliche Akkus, Speicherkarten und eine staubdichte Kameratasche mit. Wir stellen Bohnensack-Stützen und Fahrzeughalterungen bereit. Smartphones mit Teleobjektiv können mit unserer Positionierungskompetenz ebenfalls hervorragende Bilder liefern.' },
+  { question: 'Was ist die beste Tageszeit für Wildtierfotografie?', answer: 'Die <strong>goldenen Stunden</strong> (Sonnenaufgang 6:00–8:00 Uhr und Sonnenuntergang 16:00–18:30 Uhr) bieten das dramatischste Licht. Bewölkte Mittagsbedingungen eignen sich jedoch hervorragend für Nahaufnahmen ohne harte Schatten. Unsere Guides planen den Tag so, dass diese Zeitfenster optimal genutzt werden, und positionieren Sie für <strong>Gegenlicht-Silhouetten bei Morgengrauen</strong> und wärmlich getönte Porträts am Nachmittag.' },
+  { question: 'Können Anfänger an einer Foto-Safari teilnehmen?', answer: 'Absolut! Foto-Safaris sind für alle Erfahrungsstufen geeignet. Unsere Guides bieten vor Ort Tipps zu Komposition, Belichtung und Fokusmethoden. Anfänger stellen oft fest, dass der strukturierte Ansatz und die fachkundige Positionierung ihnen helfen, weit bessere Bilder zu machen als auf einer regulären Safari. Wir helfen sogar bei der grundlegenden <a href="/de/aktivitaeten/wildtierbeobachtung/" style="color:#3D6B2E;font-weight:700">Wildtieridentifikation</a>.' },
+  { question: 'Wie viele Personen befinden sich in einem Foto-Safari-Fahrzeug?', answer: 'Um sicherzustellen, dass jeder <strong>uneingeschränkte Aufnahmewinkel</strong> hat, transportieren Foto-Safari-Fahrzeuge maximal <strong>4 Fotografen</strong> (im Vergleich zu 6 bei klassischen Safaris). Jeder Passagier erhält eine Fensterposition mit Zugang zum aufklappbaren Dach. Für ernstzunehmende Fotografen bieten wir private Fahrzeugoptionen für 1–2 Personen an.' },
+];
+
+const schema = [
+  touristAttraction({
+    name: 'Foto-Safari in Tansania',
+    description: 'Spezialisierte Fotografietouren für Wildtierfotografen. Fachkundige Positionierung, Goldene-Stunden-Pirschfahrten und professionelle Beratung in der Serengeti und am Ngorongoro.',
+    url: 'https://safaritanzania.info/de/safaris/foto-safari/',
+  }),
+  faqPage(faqItems),
+];
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=400&fit=crop&auto=format', alt: 'Löwen-Nahaufnahme im goldenen Serengeti-Licht' },
+  { src: 'https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&h=400&fit=crop&auto=format', alt: 'Leopard ruhend auf einem Akazienast in der Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=600&h=400&fit=crop&auto=format', alt: 'Zebraherde in der Savanne – beeindruckendes Muster' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'Elefantenherde in der Dämmerung – Goldene Stunde' },
+  { src: 'https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=400&fit=crop&auto=format', alt: 'Giraffensilhouette gegen einen orangefarbenen afrikanischen Sonnenuntergang' },
+  { src: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=400&fit=crop&auto=format', alt: 'Fotografen auf Safari im Foto-Safari-Fahrzeug in der Serengeti' },
+];
+---
+
+<BaseLayout
+  title="Foto-Safari in Tansania — Wildtierfotografie-Touren"
+  description="Spezialisierte Foto-Safari-Touren in Tansania. Fachkundige Fahrzeugpositionierung, Goldene-Stunden-Pirschfahrten, Kamerahalterungen und professionelle Beratung für beeindruckende Wildtierfotos."
+  lang={lang}
+  schema={schema}
+  breadcrumbs={[
+    { label: 'Safaris', href: '/de/safaris/' },
+    { label: 'Foto-Safari' },
+  ]}
+>
+  <Header slot="header" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--green">Für Fotografen</span>
+          <h1 class="hero__title">Foto-Safari in Tansania</h1>
+          <p class="hero__desc">Erstellen Sie magazinreife Wildtierbilder mit fachkundiger Positionierung, Goldene-Stunden-Pirschfahrten und professioneller Beratung. Jedes Detail ist auf das perfekte Bild ausgerichtet.</p>
+          <div class="hero__actions">
+            <a href="/de/preise/" class="btn btn--primary btn--lg">Preise 2026 ansehen</a>
+            <a href="/de/kontakt/" class="btn btn--outline btn--lg">Foto-Safari buchen</a>
+          </div>
+          <div class="stats-row">
+            <div class="stat"><strong>Max. 4</strong><span>Fotografen pro Fahrzeug</span></div>
+            <div class="stat"><strong>Goldene Stunde</strong><span>Priorisierte Pirschfahrten</span></div>
+            <div class="stat"><strong>Alle Stufen</strong><span>Anfänger bis Profi</span></div>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <img
+              src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=800&h=640&fit=crop&auto=format"
+              alt="Löwe im goldenen Morgenlicht – ideal für Wildtierfotografie in der Serengeti"
+              width="800" height="640" loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAS SIE BESONDERS MACHT -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Der Unterschied</span>
+        <h2>Warum eine Foto-Safari wählen</h2>
+        <p>Normale Safaris zeigen Ihnen Wildtiere. Foto-Safaris helfen Ihnen, diese in atemberaubenden Details einzufangen. Das unterscheidet unsere Fotografietouren.</p>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1" style="grid-template-columns:repeat(3,1fr)">
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M36 6H12L2 16l22 28 22-28L36 6zM24 37.3L7.2 18h33.6L24 37.3zM14.1 16l3.6-8h12.6l3.6 8H14.1z"/></svg>
+          </div>
+          <h3 class="service-card__title">Fachkundige Positionierung</h3>
+          <p class="service-card__desc">Guides positionieren Fahrzeuge mit der Sonne im Rücken, Tieren im Blickfeld und ungestörtem Hintergrund. Jeder Stopp ist auf das bestmögliche Bild ausgerichtet.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm0 36c-8.82 0-16-7.18-16-16S15.18 8 24 8s16 7.18 16 16-7.18 16-16 16zm1-26h-3v12l10.5 6.3 1.5-2.46-9-5.34V14z"/></svg>
+          </div>
+          <h3 class="service-card__title">Verlängerte Sichtungen</h3>
+          <p class="service-card__desc">Verbringen Sie 30–60 Minuten bei jeder Sichtung statt 5–10 Minuten. Warten Sie auf den perfekten Moment: ein Gähnen, ein Recken, Blickkontakt oder eine Interaktion zwischen Tieren.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M16 6l2.29 2.29-4.88 4.88-2.83-2.83L16 6zM2 22v-4h6v4H2zm14-5c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zm20-11h6v4h-6v-4z"/></svg>
+          </div>
+          <h3 class="service-card__title">Goldene Stunde bevorzugt</h3>
+          <p class="service-card__desc">Pirschfahrten werden rund um Sonnenauf- und Sonnenuntergang geplant, wenn warmes Licht dramatische Bilder erzeugt. Silhouetten, Gegenlicht und weiche goldene Töne verwandeln jeden Rahmen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUSRÜSTUNG & TIPPS -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">Ausrüstung &amp; Tipps</span>
+        <h2>Fotoausrüstung und Beratung</h2>
+        <p>Unsere Fahrzeuge und Guides sind ausgestattet, um Ihnen das Beste aus Ihrer Kamera herauszuholen, egal ob Sie mit einer professionellen Spiegelreflexkamera oder einem Smartphone fotografieren.</p>
+      </div>
+      <div class="card-grid card-grid--2 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=450&fit=crop&auto=format" alt="Foto-Safari-Fahrzeug mit Kamerahalterungen in der Serengeti" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Fahrzeugausstattung</h3>
+            <p>Unsere Foto-Safari-Fahrzeuge verfügen über Bohnensack-Stützen, abnehmbare Kamerahalterungen, Staubschutzhüllen für Ausrüstungstaschen, USB-Ladebuchsen und aufklappbare Dächer für 360-Grad-Aufnahmezugang. Jeder Fotograf erhält eine garantierte Fensterposition.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&h=450&fit=crop&auto=format" alt="Leoparden-Porträt mit perfekter Wildtierfotografie-Komposition" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Beratung vor Ort</h3>
+            <p>Ihr Guide bietet Echtzeit-Tipps zu Komposition, Belichtungseinstellungen und Fokusmethoden. Lernen Sie, das Tierverhalten für Actionaufnahmen vorauszusehen, Gegenlicht-Silhouetten zu meistern und intime Porträts mit weichen Hintergründen zu erstellen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BESTE MOTIVE -->
+  <section class="section section--green bg-green" style="position:relative;overflow:hidden">
+    <div style="position:absolute;bottom:0;left:-30px;opacity:.08;pointer-events:none;color:#D4A017;transform:rotate(180deg)">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Top-Motive</span>
+        <h2>Meistfotografierte Wildtiere</h2>
+        <p>Tansania bietet einige der fotogensten Wildtiere des Planeten. Das sind die Motive, die unsere Fotografen am häufigsten festhalten.</p>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1">
+        <div class="service-card">
+          <h3 class="service-card__title">Afrikanischer Löwe</h3>
+          <p class="service-card__desc">Goldene Mähnen, intensive Augen und dramatische Posen. Die über 3.000 Löwen der Serengeti bieten endlose Möglichkeiten für kraftvolle Porträts und Actionaufnahmen.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Leopard</h3>
+          <p class="service-card__desc">Das schwer zu sichtende Tier der Big Five. Ein Leopard über einem Akazienast zu fotografieren ist ein Traummoment für jeden Wildtierfotografen.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Große Migration</h3>
+          <p class="service-card__desc">Millionen von Gnus und Zebras beim Überqueren des Mara-Flusses. Dramatische Flussüberquerungen, staubige Stampeden und einmalige Aufnahmen.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Greifvögel</h3>
+          <p class="service-card__desc">Über 500 Vogelarten darunter Kampfadler, Sekretärvögel, Flieder-Schwanzracer und Flamingos. Tansania ist ein Paradies für Vogelfotografie.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOTOGALERIE -->
+  <section class="section">
+    <div class="container">
+      <PhotoGallery images={galleryImages} title="Foto-Safari Portfolio" />
+    </div>
+  </section>
+
+  <!-- TIKTOK -->
+  <SafariTikTok category="serengeti" lang="de" />
+
+  <!-- FAQ -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">FAQ</span>
+        <h2>Fragen zur Foto-Safari</h2>
+        <p>Häufige Fragen zu unseren auf Fotografie ausgerichteten Safari-Erlebnissen.</p>
+      </div>
+      <div class="faq-list animate-on-scroll delay-1">
+        {faqItems.map(item => (
+          <details>
+            <summary>{item.question}</summary>
+            <div class="faq-answer" set:html={item.answer} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2>Tansanias Wildtiere fotografisch festhalten</h2>
+        <p>Nehmen Sie an unserer Foto-Safari teil und kehren Sie mit Bildern heim, die die Geschichte von Afrikas eindrucksvollster Wildnis erzählen.</p>
+      </div>
+      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/de/preise/" class="btn btn--primary btn--lg">Preise 2026 ansehen</a>
+        <a href="/de/kontakt/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Foto-Safari buchen</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>

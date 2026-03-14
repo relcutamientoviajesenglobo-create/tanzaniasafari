@@ -1,0 +1,325 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import SafariTikTok from '../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../components/PhotoGallery.astro';
+
+const lang = 'de';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Safari Tanzania Pakete 2026',
+  description: 'Entdecken Sie unsere Safari-Pakete für Tansania 2026. Klassische, Premium und Grand Safari mit Vollpension, 4x4, Guides und Parkgebühren inklusive.',
+  url: 'https://safaritanzania.info/de/preise/',
+  brand: { '@type': 'Brand', name: 'Safari Tanzania' },
+  offers: [
+    {
+      '@type': 'Offer',
+      name: 'Klassische Safari',
+      price: '2450',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+      description: '5 Tage / 4 Nächte Safari in Tansanias Nationalparks',
+    },
+    {
+      '@type': 'Offer',
+      name: 'Premium Safari',
+      price: '3800',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+      description: '7 Tage / 6 Nächte Premium Safari mit Luxus-Unterkünften',
+    },
+    {
+      '@type': 'Offer',
+      name: 'Grand Safari',
+      price: '5200',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+      description: '10 Tage / 9 Nächte Ultimate Grand Safari durch ganz Tansania',
+    },
+  ],
+};
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&h=400&fit=crop&auto=format', alt: 'Safari 4x4 Fahrzeug mit Wildtieren in der Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=400&fit=crop&auto=format', alt: 'Heißluftballon bei Sonnenaufgang über der Serengeti — Premium Safari' },
+  { src: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=400&fit=crop&auto=format', alt: 'Löwenfamilie in der Serengeti — Wildtierbeobachtung' },
+  { src: 'https://images.unsplash.com/photo-1567608285969-48f170c1b1f8?w=600&h=400&fit=crop&auto=format', alt: 'Luxus-Safari-Zelt mit Blick auf die afrikanische Savanne' },
+  { src: 'https://images.unsplash.com/photo-1549366021-9f761d450615?w=600&h=400&fit=crop&auto=format', alt: 'Elefantenherde im Tarangire Nationalpark' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Tansanische Savanne bei Sonnenuntergang mit Akazienbäumen' },
+];
+---
+
+<BaseLayout
+  title="Safari Tanzania Preise 2026 — Tarife, Pakete & Buchungen"
+  description="Entdecken Sie unsere Safari-Pakete für Tansania 2026. Ab $2.450/Person mit Vollpension, 4x4 Fahrzeug, professionellen Guides und allen Parkgebühren. Jetzt Angebot anfordern!"
+  lang={lang}
+  schema={schema}
+  breadcrumbs={[{ label: 'Preise' }]}
+>
+  <Header slot="header" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero" style="position:relative;overflow:hidden">
+    <div style="position:absolute;top:-20px;right:-40px;opacity:.08;pointer-events:none;color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--amber">Saison 2026</span>
+          <h1 class="hero__title">Safari Tanzania Preise 2026</h1>
+          <p class="hero__desc">Transparente Preise ohne versteckte Kosten. Alle unsere Pakete beinhalten professionelle Guides, 4x4 Fahrzeuge, Vollpension, Parkgebühren und Flughafentransfer. Wählen Sie das Paket, das zu Ihrem Reisestil passt.</p>
+          <div class="hero__actions">
+            <a href="/de/kontakt/" class="btn btn--primary btn--lg">Angebot anfordern</a>
+            <a href="/de/anreise/" class="btn btn--outline btn--lg">Anreise planen</a>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <div class="hero__deco hero__deco--bl"></div>
+            <img
+              src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800&h=640&fit=crop&auto=format"
+              alt="Safari 4x4 Fahrzeug mit Elefanten in der Serengeti"
+              width="800" height="640" loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAKETE -->
+  <section class="section section--gray" style="position:relative;overflow:hidden">
+    <div style="position:absolute;top:40px;left:-30px;opacity:.05;pointer-events:none;color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">Unsere Pakete</span>
+        <h2>Safari-Pakete 2026</h2>
+        <p>Drei sorgfältig gestaltete Pakete für jeden Reisestil und jedes Budget. Alle Preise pro Person bei Doppelbelegung.</p>
+      </div>
+      <div class="card-grid card-grid--3 animate-on-scroll delay-1" style="align-items:stretch">
+
+        <!-- Klassische Safari -->
+        <div class="photo-card" style="cursor:default;display:flex;flex-direction:column">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&h=400&fit=crop&auto=format" alt="Klassische Safari — 4x4 in der Serengeti" width="600" height="400" loading="lazy" />
+          </div>
+          <div class="photo-card__body" style="flex:1;display:flex;flex-direction:column">
+            <span class="photo-card__tag">Beliebteste</span>
+            <h3 class="photo-card__title">Klassische Safari</h3>
+            <p style="color:var(--mc-text-muted);font-size:.95rem;margin-bottom:1rem">Das essenzielle Tansania-Erlebnis. Serengeti, Ngorongoro und Tarangire in einer unvergesslichen Reise.</p>
+            <div style="font-size:2rem;font-weight:800;color:var(--mc-green);margin:.5rem 0">$2.450 <span style="font-size:1rem;font-weight:400;color:var(--mc-text-muted)">/Person</span></div>
+            <p style="font-size:.85rem;color:var(--mc-text-muted);margin-bottom:1.25rem">5 Tage / 4 Nächte</p>
+            <ul style="list-style:none;padding:0;margin-bottom:1.5rem;display:flex;flex-direction:column;gap:.5rem;flex:1">
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Serengeti Nationalpark (2 Tage)</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Ngorongoro Krater</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Tarangire Nationalpark</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Standard-Lodge (4 Nächte)</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Vollpension inklusive</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> 4x4 mit Dachöffnung</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Erfahrener deutschsprachiger Guide</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Alle Parkgebühren</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Flughafentransfer KIA/JRO</li>
+            </ul>
+            <a href="/de/kontakt/" class="btn btn--primary" style="text-align:center">Jetzt buchen</a>
+          </div>
+        </div>
+
+        <!-- Premium Safari -->
+        <div class="photo-card" style="cursor:default;display:flex;flex-direction:column;border:2px solid var(--mc-green);position:relative">
+          <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--mc-green);color:white;padding:.3rem 1.25rem;border-radius:20px;font-size:.85rem;font-weight:700;white-space:nowrap;z-index:1">
+            Bestes Preis-Leistungs-Verhältnis
+          </div>
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=400&fit=crop&auto=format" alt="Premium Safari — Heißluftballon über der Serengeti" width="600" height="400" loading="lazy" />
+          </div>
+          <div class="photo-card__body" style="flex:1;display:flex;flex-direction:column">
+            <span class="photo-card__tag">Empfohlen</span>
+            <h3 class="photo-card__title">Premium Safari</h3>
+            <p style="color:var(--mc-text-muted);font-size:.95rem;margin-bottom:1rem">Das umfassendste Tansania-Erlebnis mit Heißluftballon, Premium-Unterkünften und exklusiven Morgenpirschfahrten.</p>
+            <div style="font-size:2rem;font-weight:800;color:var(--mc-green);margin:.5rem 0">$3.800 <span style="font-size:1rem;font-weight:400;color:var(--mc-text-muted)">/Person</span></div>
+            <p style="font-size:.85rem;color:var(--mc-text-muted);margin-bottom:1.25rem">7 Tage / 6 Nächte</p>
+            <ul style="list-style:none;padding:0;margin-bottom:1.5rem;display:flex;flex-direction:column;gap:.5rem;flex:1">
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Serengeti (3 Tage)</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Ngorongoro Krater & Highlands</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Tarangire & Lake Manyara</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">★</span> <strong>Heißluftballonfahrt über Serengeti</strong></li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Premium-Lodge (6 Nächte)</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Vollpension mit Champagnerfrühstück</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Privates 4x4 Fahrzeug</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Besuch eines Masai-Dorfes</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> VIP Flughafentransfer</li>
+            </ul>
+            <a href="/de/kontakt/" class="btn btn--primary" style="text-align:center">Jetzt buchen</a>
+          </div>
+        </div>
+
+        <!-- Grand Safari -->
+        <div class="photo-card" style="cursor:default;display:flex;flex-direction:column">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1567608285969-48f170c1b1f8?w=600&h=400&fit=crop&auto=format" alt="Grand Safari — Luxus Zeltcamp in der Serengeti" width="600" height="400" loading="lazy" />
+          </div>
+          <div class="photo-card__body" style="flex:1;display:flex;flex-direction:column">
+            <span class="photo-card__tag">Ultimativ</span>
+            <h3 class="photo-card__title">Grand Safari</h3>
+            <p style="color:var(--mc-text-muted);font-size:.95rem;margin-bottom:1rem">Das ultimative Tansania-Erlebnis für anspruchsvolle Reisende. Alle Parks, Luxus-Lodges und exklusive Erlebnisse in einer einzigartigen Reise.</p>
+            <div style="font-size:2rem;font-weight:800;color:var(--mc-green);margin:.5rem 0">$5.200 <span style="font-size:1rem;font-weight:400;color:var(--mc-text-muted)">/Person</span></div>
+            <p style="font-size:.85rem;color:var(--mc-text-muted);margin-bottom:1.25rem">10 Tage / 9 Nächte</p>
+            <ul style="list-style:none;padding:0;margin-bottom:1.5rem;display:flex;flex-direction:column;gap:.5rem;flex:1">
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Alle 4 Nationalparks</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Ngorongoro + Empakaai Krater</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">★</span> <strong>Private Heißluftballon-Fahrt</strong></li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Luxus-Lodge &amp; Glamping (9 Nächte)</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Privatkoch &amp; Gourmet-Menüs</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Exklusive Nachtpirschfahrten</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Waldelefant-Tracking Arusha</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> 24/7 VIP-Concierge-Service</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green);font-weight:700;flex-shrink:0">✓</span> Privater Transfer-Fahrer</li>
+            </ul>
+            <a href="/de/kontakt/" class="btn btn--primary" style="text-align:center">Jetzt buchen</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WAS INKLUSIVE IST -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">Immer inklusive</span>
+        <h2>Was alle Pakete beinhalten</h2>
+        <p>Kein Paket ohne diese Grundausstattung. Transparenz ist uns wichtig — diese Leistungen sind bei allen drei Paketen immer inklusive.</p>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1">
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M40 16H8L4 28v4h4v8h8v-8h16v8h8v-8h4v-4l-4-12zm-16-8a4 4 0 100 8 4 4 0 000-8z"/></svg>
+          </div>
+          <h3 class="service-card__title">4x4 Safari-Fahrzeug</h3>
+          <p class="service-card__desc">Geländegängige 4x4-Fahrzeuge mit Dachöffnung zum Fotografieren, Kühlbox, Erste-Hilfe-Ausstattung und Ladekabel für Kameras und Geräte.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm0 4c8.84 0 16 7.16 16 16S32.84 40 24 40 8 32.84 8 24 15.16 8 24 8zm-1 6v11.41l7.29 7.29 1.42-1.41-6.71-6.71V14h-2z"/></svg>
+          </div>
+          <h3 class="service-card__title">Alle Parkgebühren</h3>
+          <p class="service-card__desc">Eintritte in alle besuchten Nationalparks und Schutzgebiete, Konservierungsgebühren und lokale Abgaben sind vollständig inbegriffen. Keine Überraschungen.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-2 28l-8-8 1.41-1.41L22 29.17l12.59-12.59L36 18l-14 14z"/></svg>
+          </div>
+          <h3 class="service-card__title">Professionelle Guides</h3>
+          <p class="service-card__desc">Zertifizierte, lizenzierte Safari-Guides mit jahrelanger Erfahrung. Unsere Guides sprechen Englisch und können auf Deutsch kommunizieren. Tiefes Wissen über Tierverhalten und Ökologie.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 2C13.51 2 5 10.51 5 21c0 14.28 17.2 24.26 17.93 24.67.31.18.69.18 1 0C24.8 45.26 43 35.28 43 21 43 10.51 34.49 2 24 2zm0 27c-4.97 0-9-4.03-9-9s4.03-9 9-9 9 4.03 9 9-4.03 9-9 9z"/></svg>
+          </div>
+          <h3 class="service-card__title">Flughafentransfer</h3>
+          <p class="service-card__desc">Abholung und Rückgabe am Kilimanjaro International Airport (KIA/JRO) oder Arusha Airport. Pünktlich, zuverlässig, komfortabel.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREISINFORMATIONEN -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Wichtige Details</span>
+        <h2>Wichtige Preisinformationen</h2>
+      </div>
+      <div class="card-grid card-grid--2 animate-on-scroll delay-1" style="gap:2rem">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Kinder &amp; Familien</h3>
+            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.5rem;color:var(--mc-text-muted)">
+              <li>• Kinder unter 5 Jahren: kostenlos</li>
+              <li>• Kinder 5–12 Jahre: 50% Ermäßigung</li>
+              <li>• Jugendliche 13–17: 25% Ermäßigung</li>
+              <li>• Familienpakete auf Anfrage verfügbar</li>
+              <li>• Kinderfreundliche Aktivitäten inbegriffen</li>
+            </ul>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Saisonale Variationen</h3>
+            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.5rem;color:var(--mc-text-muted)">
+              <li>• <strong>Hauptsaison</strong> (Juli–Okt): Preise wie angegeben</li>
+              <li>• <strong>Nebensaison</strong> (Nov–März): bis 20% günstiger</li>
+              <li>• <strong>Grüne Saison</strong> (Apr–Jun): beste Preise, üppige Landschaft</li>
+              <li>• Große Migration: Juli–September Serengeti</li>
+            </ul>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Nicht enthalten</h3>
+            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.5rem;color:var(--mc-text-muted)">
+              <li>• Internationale Flüge nach Arusha/KIA</li>
+              <li>• Reiseversicherung (dringend empfohlen)</li>
+              <li>• Visum ($50 bei Einreise oder online)</li>
+              <li>• Persönliche Ausgaben &amp; Trinkgelder</li>
+              <li>• Aktivitäten außerhalb des Pakets</li>
+            </ul>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Zahlung &amp; Stornierung</h3>
+            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.5rem;color:var(--mc-text-muted)">
+              <li>• 30% Anzahlung bei Buchungsbestätigung</li>
+              <li>• Restbetrag 30 Tage vor Anreise</li>
+              <li>• Kostenlose Stornierung bis 60 Tage vorher</li>
+              <li>• Flexible Umbuchung möglich</li>
+              <li>• Zahlung per Überweisung oder Kreditkarte</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <PhotoGallery images={galleryImages} title="Safari Tanzania 2026 — Galerie" />
+
+  <!-- TIKTOK -->
+  <SafariTikTok category="general" lang="de" />
+
+  <!-- CTA -->
+  <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2>Bereit für Ihre Traumsafari?</h2>
+        <p>Fordern Sie noch heute Ihr individuelles Angebot an. Unser Team antwortet innerhalb von 24 Stunden mit einem maßgeschneiderten Reiseplan.</p>
+      </div>
+      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/de/kontakt/" class="btn btn--primary btn--lg">Angebot anfordern</a>
+        <a href="/de/nationalparks/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Nationalparks entdecken</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>
+
+<style>
+@media (max-width: 768px) {
+  .card-grid--2 { grid-template-columns: 1fr !important; }
+}
+</style>

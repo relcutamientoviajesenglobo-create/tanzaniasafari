@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import BlogCard from '../../../../components/blog/BlogCard.astro';
+import { getCollection } from 'astro:content';
+import { webPage } from '../../../../i18n/schema';
+
+const lang = 'fr';
+const title = 'Lodges & Camps — Hébergement dans le Serengeti';
+const description = 'Guides complets sur les lodges et camps de safari en Tanzanie : tentes de luxe, éco-lodges, campements dans le Serengeti, Ngorongoro et Tarangire.';
+
+const allPosts = await getCollection('blog');
+const posts = allPosts
+  .filter(post => post.slug.startsWith('fr-') && (post.data.silo === 'lodges-camps' || post.data.silo === 'hospedaje-lodges'))
+  .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+
+const breadcrumbs = [
+  { label: 'Blog', href: '/fr/blog/' },
+  { label: 'Lodges & Camps' },
+];
+
+const schema = [
+  webPage({
+    name: title,
+    description,
+    url: 'https://safaritanzania.info/fr/blog/lodges-camps/',
+  }),
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="/fr/blog/lodges-camps/"
+  schema={schema}
+  breadcrumbs={breadcrumbs}
+  lang={lang}
+>
+  <Header slot="header" lang={lang} />
+  <Footer slot="footer" lang={lang} />
+
+  <section class="hero" style="padding-bottom:2rem">
+    <div class="container">
+      <div style="text-align:center;max-width:700px;margin:0 auto">
+        <span class="chip chip--green">Catégorie Blog</span>
+        <h1 style="margin-top:.75rem">Lodges & Camps — Hébergement dans le Serengeti</h1>
+        <p>Des tentes de glamping sous les étoiles africaines aux lodges de luxe avec vue panoramique — trouvez l'hébergement idéal pour votre safari en Tanzanie.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--gray">
+    <div class="container">
+      {posts.length > 0 ? (
+        <>
+          <p style="text-align:center;margin-bottom:2.5rem;color:var(--mc-text-muted)">{posts.length} articles publiés</p>
+          <div class="card-grid card-grid--3" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+            {posts.map(post => (
+              <BlogCard
+                title={post.data.title}
+                description={post.data.description}
+                slug={post.slug.replace('fr-', '')}
+                image={post.data.image}
+                imageAlt={post.data.imageAlt}
+                author={post.data.author}
+                publishDate={post.data.publishDate}
+                readingTime={post.data.readingTime}
+                category={post.data.category}
+                lang={lang}
+              />
+            ))}
+          </div>
+        </>
+      ) : (
+        <div style="text-align:center;padding:4rem 0">
+          <span style="font-size:3rem;display:block;margin-bottom:1rem">🦁</span>
+          <h2 style="font-size:1.5rem;margin-bottom:.75rem">Articles à venir</h2>
+          <p style="max-width:400px;margin:0 auto">Nous préparons des articles détaillés. Revenez bientôt ou <a href="/fr/blog/" style="color:#3D6B2E;font-weight:700">parcourez tous les articles</a>.</p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <section class="section section--green">
+    <div class="container" style="text-align:center">
+      <h2 style="color:white;margin-bottom:.75rem">Prêt pour votre safari en Tanzanie ?</h2>
+      <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:520px;margin-left:auto;margin-right:auto">Dormez sous un ciel étoilé africain et réveillez-vous au son de la savane. Nous sélectionnons les meilleurs hébergements pour chaque budget.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/fr/prix/" class="btn btn--primary btn--lg">Voir les tarifs 2026</a>
+        <a href="/fr/contact/" class="btn btn--outline-white btn--lg" style="border-color:white;color:white">Nous contacter</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

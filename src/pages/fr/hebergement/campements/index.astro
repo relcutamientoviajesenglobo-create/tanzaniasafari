@@ -1,0 +1,167 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import SafariTikTok from '../../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../../components/PhotoGallery.astro';
+
+const lang = 'fr';
+const title = 'Campements Safari en Tanzanie — Expérience Authentique dans la Brousse';
+const description = 'Vivez l\'expérience authentique des campements safari sous tente en Tanzanie. Dormez sous la toile dans le Serengeti, le Ngorongoro et le Tarangire avec un luxe proche de la nature, des dîners en brousse et des rencontres animalières inoubliables.';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop&auto=format', alt: 'Campement de luxe sous tente au coucher du soleil avec des tentes en toile sous des acacias dans le Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&h=400&fit=crop&auto=format', alt: 'Campement mobile de migration avec des tentes vertes installées dans les plaines du Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=600&h=400&fit=crop&auto=format', alt: 'Campement permanent sous tente avec terrasse en bois et vue panoramique sur la brousse' },
+  { src: 'https://images.unsplash.com/photo-1510312305653-8ed496efae75?w=600&h=400&fit=crop&auto=format', alt: 'Campement fly sous la Voie lactée avec un éclairage minimal dans la nature sauvage' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Dîner en brousse au campement sous les étoiles en Tanzanie' },
+  { src: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=400&fit=crop&auto=format', alt: 'Game drive partant d\'un campement sous tente à l\'aube dans le Serengeti' },
+];
+
+const breadcrumbs = [
+  { label: 'Hébergement', href: '/fr/hebergement/' },
+  { label: 'Campements Safari' },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  description: description,
+  url: 'https://safaritanzania.info/fr/hebergement/campements/',
+};
+---
+
+<BaseLayout title={title} description={description} schema={schema} breadcrumbs={breadcrumbs} lang={lang}>
+  <Header slot="header" lang={lang} />
+  <Footer slot="footer" lang={lang} />
+
+  <!-- Héros -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <span class="chip chip--green">Expérience en brousse</span>
+        <h1>Campements Safari en Tanzanie</h1>
+        <p>Endormez-vous au son de la symphonie de la nuit africaine et réveillez-vous au chant des oiseaux à l'aube. Les campements sous tente de Tanzanie offrent une expérience safari authentique et immersive qui vous connecte directement à la nature sauvage tout en maintenant un confort réfléchi.</p>
+        <div class="hero__actions">
+          <a href="/fr/prix/" class="btn btn--primary btn--lg">Voir les tarifs 2026</a>
+          <a href="/fr/hebergement/lodges/" class="btn btn--outline btn--lg">Voir les lodges safari</a>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__photo-frame">
+          <div class="hero__deco hero__deco--tr"></div>
+          <div class="hero__deco hero__deco--bl"></div>
+          <img
+            src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop"
+            alt="Campement de luxe sous tente au coucher du soleil avec des tentes en toile sous des acacias dans le Serengeti"
+            width="600"
+            height="400"
+            loading="eager"
+            style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:inherit"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Types de campements -->
+  <section class="section section--gray">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:.75rem">Types de campements safari</h2>
+      <p style="text-align:center;max-width:620px;margin:0 auto 3rem">Des campements mobiles qui suivent la Grande Migration aux campements permanents avec tous les équipements, choisissez le niveau d'aventure qui vous convient.</p>
+
+      <div class="card-grid card-grid--3" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=400&h=300&fit=crop" alt="Campement sous tente mobile avec des tentes vertes dans le Serengeti" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Saisonnier</span>
+            <p class="photo-card__title">Campements mobiles de migration</p>
+            <p style="font-size:.9rem;color:var(--mc-text-muted)">Ces campements se déplacent tout au long de l'année pour suivre la migration des gnous à travers le Serengeti. Cadres intimistes avec 6 à 10 tentes et zones d'observation exclusives.</p>
+          </div>
+        </div>
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=400&h=300&fit=crop" alt="Campement de luxe permanent sous tente avec terrasses en bois" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Toute l'année</span>
+            <p class="photo-card__title">Campements permanents sous tente</p>
+            <p style="font-size:.9rem;color:var(--mc-text-muted)">Campements à emplacement fixe avec plateformes en bois surélevées, salles de bain attenantes et électricité. Tout le charme de la vie sous tente avec la fiabilité d'une infrastructure permanente.</p>
+          </div>
+        </div>
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1510312305653-8ed496efae75?w=400&h=300&fit=crop" alt="Campement fly avec installation minimale sous la Voie lactée" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Aventure</span>
+            <p class="photo-card__title">Campements fly et campements de brousse</p>
+            <p style="font-size:.9rem;color:var(--mc-text-muted)">Camping épuré pour le véritable aventurier. Installations légères dans des endroits reculés avec cuisinier de camp, guide et vues ininterrompues sur le ciel nocturne africain.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- L'expérience au campement -->
+  <section class="section">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:.75rem">La vie au campement</h2>
+      <p style="text-align:center;max-width:620px;margin:0 auto 3rem">La vie dans un campement sous tente suit le rythme de la brousse. Voici à quoi ressemble une journée type.</p>
+
+      <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem">
+        <div style="display:flex;gap:1rem;align-items:flex-start">
+          <span style="font-size:1.8rem;flex-shrink:0">🌅</span>
+          <div>
+            <h3 style="font-size:1.1rem;margin-bottom:.35rem">Game drive à l'aube</h3>
+            <p style="font-size:.92rem">Réveil à 5h30 avec un café chaud livré dans votre tente. Départ pour le game drive matinal quand les prédateurs sont les plus actifs et la lumière est magique.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;align-items:flex-start">
+          <span style="font-size:1.8rem;flex-shrink:0">☀️</span>
+          <div>
+            <h3 style="font-size:1.1rem;margin-bottom:.35rem">Repos en milieu de journée</h3>
+            <p style="font-size:.92rem">Retour pour un copieux brunch, puis détente pendant les heures les plus chaudes. Lisez un livre, faites une sieste aux sons de la nature ou profitez d'un hamac à l'ombre.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;align-items:flex-start">
+          <span style="font-size:1.8rem;flex-shrink:0">🌇</span>
+          <div>
+            <h3 style="font-size:1.1rem;margin-bottom:.35rem">Sundowner et soirée</h3>
+            <p style="font-size:.92rem">Game drive de l'après-midi suivi de cocktails sundowner surplombant les plaines. Retour au camp pour un dîner en brousse sous les étoiles, accompagné des sons de la savane.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;align-items:flex-start">
+          <span style="font-size:1.8rem;flex-shrink:0">🔥</span>
+          <div>
+            <h3 style="font-size:1.1rem;margin-bottom:.35rem">Histoires au coin du feu</h3>
+            <p style="font-size:.92rem">Terminez chaque soirée autour du feu de camp en partageant des histoires avec vos compagnons de voyage et vos guides. Le cadre idéal pour observer les étoiles filantes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <PhotoGallery images={galleryImages} title="Galerie photo — Campements sous tente en Tanzanie" />
+  <SafariTikTok category="lodges" lang="fr" />
+
+  <!-- CTA -->
+  <section class="section section--green">
+    <div class="container" style="text-align:center;position:relative">
+      <div style="position:absolute;top:-30px;right:0;opacity:.12;pointer-events:none;color:#D4A017">
+        <Fragment set:html={ACACIA_LARGE} />
+      </div>
+      <h2 style="color:white;margin-bottom:.75rem">Réservez votre aventure en campement</h2>
+      <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:520px;margin-left:auto;margin-right:auto">Vivez l'authentique brousse africaine dans nos campements sous tente soigneusement sélectionnés. Contactez-nous pour concevoir votre itinéraire safari idéal.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/fr/prix/" class="btn btn--primary btn--lg">Voir les tarifs 2026</a>
+        <a href="/fr/contact/" class="btn btn--outline-white btn--lg" style="border-color:white;color:white">Nous contacter</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

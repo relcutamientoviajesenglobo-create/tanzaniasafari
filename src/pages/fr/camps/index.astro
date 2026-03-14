@@ -1,0 +1,190 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { lodging } from '../../../i18n/schema';
+import SafariTikTok from '../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../components/PhotoGallery.astro';
+
+const lang = 'fr';
+const title = 'Camps Safari en Tanzanie — Dormir dans la Brousse Africaine';
+const description = 'Vivez l\'expérience unique des camps de safari en Tanzanie. Tentes confortables sous les étoiles africaines dans le Serengeti, Ngorongoro et Tarangire. Immersion totale en nature, pensión complète et guides experts.';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop&auto=format', alt: 'Camp de safari au coucher du soleil avec tentes en toile sous les acacias du Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1510312305653-8ed496efae75?w=600&h=400&fit=crop&auto=format', alt: 'Camp de nuit sous la Voie lactée dans la brousse tanzanienne' },
+  { src: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&h=400&fit=crop&auto=format', alt: 'Camp mobile de migration avec tentes vertes dans les plaines du Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=600&h=400&fit=crop&auto=format', alt: 'Camp permanent sous tente avec terrasse en bois dans la savane' },
+  { src: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&h=400&fit=crop&auto=format', alt: 'Vue depuis un camp safari sur les éléphants au point d\'eau dans le Tarangire' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'Game drive depuis un camp de migration au Serengeti en Tanzanie' },
+];
+
+const breadcrumbs = [
+  { label: 'Camps Safari' },
+];
+
+const schema = lodging('Campground', {
+  name: 'Camps Safari Tanzanie',
+  description,
+  url: 'https://safaritanzania.info/fr/camps/',
+});
+---
+
+<BaseLayout title={title} description={description} schema={schema} breadcrumbs={breadcrumbs} lang={lang} canonical="/fr/camps/">
+  <Header slot="header" lang={lang} />
+  <Footer slot="footer" lang={lang} />
+
+  <!-- Héros -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <span class="chip chip--green">Aventure authentique</span>
+        <h1>Camps Safari en Tanzanie</h1>
+        <p>S'endormir sous une voûte étoilée, entendre le rugissement des lions dans la nuit, se lever à l'aube avec les oiseaux — les camps de safari tanzaniens offrent une expérience de la brousse que nul mur de lodge ne peut rivaliser.</p>
+        <div class="hero__actions">
+          <a href="/fr/prix/" class="btn btn--primary btn--lg">Voir les tarifs 2026</a>
+          <a href="/fr/lodges/" class="btn btn--outline btn--lg">Voir les lodges</a>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__photo-frame">
+          <div class="hero__deco hero__deco--tr"></div>
+          <div class="hero__deco hero__deco--bl"></div>
+          <img
+            src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop&auto=format"
+            alt="Camp de safari sous tente au coucher du soleil dans le Serengeti en Tanzanie"
+            width="600"
+            height="480"
+            loading="eager"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pourquoi choisir un camp -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <span class="chip chip--amber">Pourquoi un camp ?</span>
+        <h2>L'expérience authentique de la brousse</h2>
+        <p>Les camps de safari représentent la forme la plus pure de l'aventure africaine — immergé dans la nature, sans barrières entre vous et la faune sauvage.</p>
+      </div>
+
+      <div class="service-cards" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+        <div class="service-card">
+          <span style="font-size:2.2rem">🌟</span>
+          <p class="service-card__title">Emplacements uniques</p>
+          <p class="service-card__desc">Les camps peuvent s'installer là où les lodges permanents ne peuvent pas, au cœur des zones de migration et dans les zones de faune les plus riches.</p>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">🎯</span>
+          <p class="service-card__title">Groupes intimistes</p>
+          <p class="service-card__desc">La plupart des camps accueillent 6 à 20 personnes maximum. Une attention personnalisée, moins de bruit et des game drives plus exclusifs dans des zones souvent interdites aux lodges.</p>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">🔭</span>
+          <p class="service-card__title">Astronomie africaine</p>
+          <p class="service-card__desc">Loin de toute pollution lumineuse, le ciel nocturne africain est d'une clarté stupéfiante. Observer la Voie lactée depuis votre tente est une expérience qui marque à vie.</p>
+        </div>
+        <div class="service-card">
+          <span style="font-size:2.2rem">💚</span>
+          <p class="service-card__title">Faible impact écologique</p>
+          <p class="service-card__desc">Les camps, surtout les mobiles, ont une empreinte environnementale minimale. Certains utilisent une énergie 100 % solaire et des matériaux biodégradables.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nos camps recommandés -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header">
+        <span class="chip chip--green">Sélection</span>
+        <h2>Nos camps recommandés</h2>
+        <p>Des camps soigneusement sélectionnés pour leur emplacement exceptionnel, leur confort et leur engagement pour la conservation.</p>
+      </div>
+
+      <div class="card-grid card-grid--3" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=400&h=300&fit=crop" alt="Camp mobile de migration dans le Serengeti" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Serengeti</span>
+            <p class="photo-card__title">Camp de migration du Serengeti</p>
+            <p style="font-size:.9rem;color:var(--mc-text-muted)">Camp mobile qui suit la Grande Migration. S'installe aux meilleurs endroits de l'année pour des observations de traversées de gués avec les crocodiles. Intimiste, 8 tentes seulement.</p>
+          </div>
+        </div>
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=400&h=300&fit=crop" alt="Camp permanent sous tente au bord du Ngorongoro" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Ngorongoro</span>
+            <p class="photo-card__title">Camp du Cratère Ngorongoro</p>
+            <p style="font-size:.9rem;color:var(--mc-text-muted)">Camp permanent sur le bord du cratère avec vue imprenable. Tentes sur plateformes en bois avec salle de bain attenante. Descente dans le cratère le matin pour observer les rhinocéros noirs.</p>
+          </div>
+        </div>
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400&h=300&fit=crop" alt="Camp sous tente dans le parc de Tarangire" width="400" height="300" loading="lazy">
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Tarangire</span>
+            <p class="photo-card__title">Camp de la Rivière Tarangire</p>
+            <p style="font-size:.9rem;color:var(--mc-text-muted)">Installé au bord de la rivière Tarangire avec des éléphants qui traversent régulièrement devant les tentes. Cadre exceptionnel pour la photographie animalière et les observations nocturnes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Infos pratiques -->
+  <section class="section">
+    <div class="container" style="max-width:800px">
+      <div class="section__header">
+        <span class="chip chip--amber">Pratique</span>
+        <h2>Informations pratiques sur les camps</h2>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:1.25rem">
+        <div style="background:#F5F0E8;border-radius:var(--radius-md);padding:1.5rem">
+          <h3 style="color:#2D4A22;margin-bottom:.5rem;font-size:1rem">Est-ce sûr de dormir dans un camp ?</h3>
+          <p style="font-size:.9rem;color:#5A6B52">Absolument. Tous nos camps partenaires respectent les protocoles de sécurité stricts. Des rangers armés patrouillent la nuit, les tentes sont solidement ancrées et les équipes expérimentées savent gérer toutes les situations. Des millions de visiteurs dorment en camp chaque année sans incident.</p>
+        </div>
+        <div style="background:#F5F0E8;border-radius:var(--radius-md);padding:1.5rem">
+          <h3 style="color:#2D4A22;margin-bottom:.5rem;font-size:1rem">Quel niveau de confort puis-je attendre ?</h3>
+          <p style="font-size:.9rem;color:#5A6B52">Les camps varient du « glamping » de luxe avec douche chaude et vrais lits aux camps d'aventure plus basiques. Nous sélectionnons des camps avec un minimum de confort : literie de qualité, repas chauds et eau courante. Nous vous aiderons à choisir le niveau adapté à vos attentes.</p>
+        </div>
+        <div style="background:#F5F0E8;border-radius:var(--radius-md);padding:1.5rem">
+          <h3 style="color:#2D4A22;margin-bottom:.5rem;font-size:1rem">Puis-je combiner camp et lodge dans un même voyage ?</h3>
+          <p style="font-size:.9rem;color:#5A6B52">Oui, c'est même une excellente façon de varier les expériences. Un itinéraire type : deux nuits en lodge luxe au Ngorongoro puis trois nuits en camp de migration au Serengeti. Nous personnalisons chaque voyage selon vos préférences.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <PhotoGallery images={galleryImages} title="Galerie photo — Camps safari en Tanzanie" />
+  <SafariTikTok category="lodges" lang="fr" />
+
+  <!-- CTA -->
+  <section class="section section--green">
+    <div class="container" style="text-align:center;position:relative">
+      <div style="position:absolute;top:-30px;right:0;opacity:.12;pointer-events:none;color:#D4A017">
+        <Fragment set:html={ACACIA_LARGE} />
+      </div>
+      <h2 style="color:white;margin-bottom:.75rem">Réservez votre camp safari</h2>
+      <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:520px;margin-left:auto;margin-right:auto">Dormez là où les lions rugissent et les éléphants boivent. Contactez-nous pour concevoir votre safari avec hébergement en camp — une expérience africaine inoubliable vous attend.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/fr/contact/" class="btn btn--amber btn--lg">Demander un devis</a>
+        <a href="/fr/prix/" class="btn btn--outline-white btn--lg">Voir les tarifs 2026</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

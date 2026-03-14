@@ -11,7 +11,7 @@ const description = 'Todo sobre alojamiento en Tanzania: mejores lodges de safar
 
 const allPosts = await getCollection('blog');
 const posts = allPosts
-  .filter(post => !post.slug.startsWith('en-') && post.data.silo === 'hospedaje-lodges')
+  .filter(post => !post.slug.startsWith('en-') && !post.slug.startsWith('de-') && !post.slug.startsWith('fr-') && post.data.silo === 'hospedaje-lodges')
   .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
 
 const breadcrumbs = [

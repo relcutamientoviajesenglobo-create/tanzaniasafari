@@ -3,8 +3,19 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import { touristAttraction, faqPage } from '../../../i18n/schema';
+import SafariTikTok from '../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../components/PhotoGallery.astro';
 
 const lang = 'en';
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&h=400&fit=crop&auto=format', alt: 'Masai warrior guide leading a walking safari through the Tanzanian savanna' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Vast savanna landscape on foot with animal tracks visible in the soft earth' },
+  { src: 'https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=400&fit=crop&auto=format', alt: 'Giraffe observed on foot during a guided bush walk in Tanzania' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'Elephant herd encountered at a safe distance during a morning bush walk' },
+  { src: 'https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=600&h=400&fit=crop&auto=format', alt: 'Zebra herd grazing near the trail on a walking safari in the Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=400&fit=crop&auto=format', alt: 'Bush walk participants learning animal tracking skills from a Masai guide' },
+];
 
 const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
 
@@ -14,14 +25,14 @@ const faqItems = [
   { question: 'How long do bush walks last?', answer: 'Bush walks typically last <strong>2 to 4 hours</strong>, usually conducted in the cooler morning hours (6:00-10:00 AM). Shorter walks of 1-2 hours are available for families and those with limited mobility. Multi-day walking safaris (3-5 days) are available for experienced hikers who want to traverse the wilderness on foot, camping at mobile tented camps.' },
   { question: 'What will I see on a bush walk?', answer: 'Bush walks focus on the smaller wonders of the bush that are missed from vehicles: <strong>animal tracks and dung</strong> identification, medicinal plants used by Masai healers, insect colonies, bird nests, reptiles and the intricate ecology of the savanna. You may also encounter larger animals like giraffes, zebras, antelopes and even elephants at a safe distance.' },
   { question: 'What should I wear on a bush walk?', answer: 'Wear <strong>sturdy closed-toe hiking shoes or boots</strong> (broken in before your trip), long trousers, a long-sleeved shirt in neutral colors (khaki, olive, tan), a wide-brimmed hat and sunglasses. Apply insect repellent and sunscreen (SPF 50+). Carry a small backpack with water (we provide bottles), and avoid perfume or cologne as it can attract insects and alert animals.' },
-  { question: 'What is the minimum age for bush walks?', answer: 'The minimum age for standard bush walks is typically <strong>12 years old</strong>, though this can vary by location and guide discretion. Some shorter, gentler walks in low-risk areas may accept children from 8 years old with parental supervision. For families with younger children, we recommend vehicle-based <a href="/en/activities/wildlife-watching/" style="color:#3D6B2E;font-weight:700">wildlife watching</a> which has no age restrictions.' },
+  { question: 'What is the minimum age for bush walks?', answer: 'The minimum age for standard bush walks is typically <strong>12 years old</strong>, though this can vary by location and guide discretion. Some shorter, gentler walks in low-risk areas may accept children from 8 years old with parental supervision. For families with younger children, we recommend vehicle-based <a href="/activities/wildlife-watching/" style="color:#3D6B2E;font-weight:700">wildlife watching</a> which has no age restrictions.' },
 ];
 
 const schema = [
   touristAttraction({
     name: 'Bush Walks in Tanzania — Walking Safaris with Masai Guides',
     description: 'Walking safaris with experienced Masai guides through the Tanzanian bush. Learn tracking, discover medicinal plants and experience Africa at ground level.',
-    url: 'https://safaritanzania.info/en/activities/bush-walks/',
+    url: 'https://safaritanzania.info/activities/bush-walks/',
   }),
   faqPage(faqItems),
 ];
@@ -33,7 +44,7 @@ const schema = [
   lang={lang}
   schema={schema}
   breadcrumbs={[
-    { label: 'Activities', href: '/en/activities/' },
+    { label: 'Activities', href: '/activities/' },
     { label: 'Bush Walks' },
   ]}
 >
@@ -51,8 +62,8 @@ const schema = [
           <h1 class="hero__title">Bush Walks with Masai Guides</h1>
           <p class="hero__desc">Step out of the vehicle and into the African wilderness. Walk through the savanna with experienced Masai warriors who share centuries of bush knowledge, tracking skills and cultural wisdom.</p>
           <div class="hero__actions">
-            <a href="/en/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
-            <a href="/en/contact/" class="btn btn--outline btn--lg">Book bush walk</a>
+            <a href="/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
+            <a href="/contact/" class="btn btn--outline btn--lg">Book bush walk</a>
           </div>
           <div class="stats-row">
             <div class="stat"><strong>2-4 hrs</strong><span>Walk duration</span></div>
@@ -177,7 +188,7 @@ const schema = [
         <p>Bush walks complement vehicle-based safaris perfectly. Add a morning walk to any multi-day safari itinerary.</p>
       </div>
       <div class="card-grid card-grid--3 animate-on-scroll delay-1">
-        <a href="/en/safaris/classic-safari/" class="photo-card">
+        <a href="/safaris/classic-safari/" class="photo-card">
           <div class="photo-card__img">
             <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=450&fit=crop&auto=format" alt="Classic safari vehicle in the Serengeti" width="600" height="450" loading="lazy" />
           </div>
@@ -187,7 +198,7 @@ const schema = [
             <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
           </div>
         </a>
-        <a href="/en/activities/wildlife-watching/" class="photo-card">
+        <a href="/activities/wildlife-watching/" class="photo-card">
           <div class="photo-card__img">
             <img src="https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=450&fit=crop&auto=format" alt="Wildebeest herd during the Great Migration" width="600" height="450" loading="lazy" />
           </div>
@@ -197,7 +208,7 @@ const schema = [
             <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
           </div>
         </a>
-        <a href="/en/activities/hot-air-balloon/" class="photo-card">
+        <a href="/activities/hot-air-balloon/" class="photo-card">
           <div class="photo-card__img">
             <img src="https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=450&fit=crop&auto=format" alt="Hot air balloon over the Serengeti at sunrise" width="600" height="450" loading="lazy" />
           </div>
@@ -230,6 +241,9 @@ const schema = [
     </div>
   </section>
 
+  <PhotoGallery images={galleryImages} title="Bush Walk Gallery" />
+  <SafariTikTok category="culture" lang="en" />
+
   <!-- CTA -->
   <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
     <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
@@ -241,8 +255,8 @@ const schema = [
         <p>Experience Tanzania at ground level with our expert Masai guides. An unforgettable connection to the wild.</p>
       </div>
       <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-        <a href="/en/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
-        <a href="/en/contact/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Book bush walk</a>
+        <a href="/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
+        <a href="/contact/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Book bush walk</a>
       </div>
     </div>
   </section>

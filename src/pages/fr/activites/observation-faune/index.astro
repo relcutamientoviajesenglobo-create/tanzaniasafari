@@ -1,0 +1,254 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import { touristAttraction, faqPage } from '../../../../i18n/schema';
+import SafariTikTok from '../../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../../components/PhotoGallery.astro';
+
+const lang = 'fr';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=400&fit=crop&auto=format', alt: 'Lion mâle à crinière dorée reposant dans les herbes du Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&h=400&fit=crop&auto=format', alt: 'Léopard allongé sur une branche dans le Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'Troupeau d\'éléphants avec des éléphanteaux dans la brousse tanzanienne' },
+  { src: 'https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=400&fit=crop&auto=format', alt: 'Gnous traversant la rivière Mara lors de la Grande Migration' },
+  { src: 'https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=600&h=400&fit=crop&auto=format', alt: 'Troupeau de zèbres au pâturage pendant la saison des migrations' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Paysage du Parc national du Serengeti avec des nuages dramatiques' },
+];
+
+const faqItems = [
+  { question: 'Qu\'est-ce que les Big Five et peut-on tous les voir en Tanzanie ?', answer: 'Les <strong>Big Five</strong> désignent les cinq animaux africains les plus emblématiques : <strong>lion, léopard, éléphant, buffle et rhinocéros</strong>. Oui, les cinq peuvent être vus en Tanzanie. Le Serengeti et le cratère du Ngorongoro comptent parmi les meilleurs endroits au monde pour les observer, le Ngorongoro offrant particulièrement de bonnes chances d\'apercevoir le rare rhinocéros noir en voie de disparition.' },
+  { question: 'Qu\'est-ce que la Grande Migration et quand a-t-elle lieu ?', answer: 'La Grande Migration est le mouvement annuel de plus de <strong>2 millions de gnous, zèbres et gazelles</strong> à travers l\'écosystème Serengeti-Mara. C\'est un événement permanent, mais les scènes les plus spectaculaires ont lieu de <strong>juillet à septembre</strong> lorsque d\'immenses troupeaux traversent les rivières Mara et Grumeti. La saison des mises bas de janvier-février dans le Serengeti méridional est tout aussi spectacular.' },
+  { question: 'Quelle est la meilleure période pour observer la faune ?', answer: 'La Tanzanie offre d\'excellentes observations animalières toute l\'année. La <strong>saison sèche (juin-octobre)</strong> concentre les animaux près des points d\'eau, les rendant plus faciles à repérer. La <strong>saison verte (novembre-mai)</strong> offre des paysages luxuriants, des migrations d\'oiseaux et la saison des mises bas des gnous. Chaque période présente des avantages uniques pour l\'observation de la faune.' },
+  { question: 'À quelle distance peut-on s\'approcher des animaux ?', answer: 'Nos guides respectent strictement les réglementations des parcs qui protègent à la fois la faune et les visiteurs. Les véhicules s\'approchent généralement à <strong>20-30 mètres</strong> de la plupart des animaux, ce qui est suffisamment proche pour d\'excellentes observations et de la photographie. Certains animaux comme les éléphants et les girafes peuvent s\'approcher encore plus d\'eux-mêmes. Nos guides lisent le langage corporel des animaux pour garantir des distances confortables.' },
+  { question: 'Faut-il des jumelles pour observer la faune ?', answer: 'Bien que nos guides repèrent les animaux avec une acuité visuelle remarquable, <strong>les jumelles sont vivement recommandées</strong> pour des observations détaillées, notamment pour les oiseaux et les troupeaux lointains. Nous fournissons des jumelles de qualité sur tous nos safaris, mais vous êtes les bienvenus avec les vôtres. Une grossissement de <strong>10x42</strong> est idéal pour les safaris, offrant un bon équilibre entre puissance et champ de vision.' },
+  { question: 'Quels oiseaux peut-on voir en Tanzanie ?', answer: 'La Tanzanie est un paradis pour les ornithologues avec plus de <strong>1 100 espèces recensées</strong>. Les points forts incluent les flamants du lac Natron, les aigles martiaux, les serpentaires, les rolliers à longs brins (l\'oiseau national non officiel de Tanzanie), les calaos, les martins-pêcheurs, les autruches et de nombreuses espèces endémiques rares. Nos guides sont des identificateurs d\'oiseaux habiles capables de repérer des espèces que la plupart des visiteurs manqueraient.' },
+];
+
+const schema = [
+  touristAttraction({
+    name: 'Observation de la Faune en Tanzanie — Big Five et Grande Migration',
+    description: 'Pistez les Big Five et assistez à la Grande Migration dans le Serengeti. Guides animaliers experts, meilleures positions d\'observation et rencontres inoubliables avec les animaux emblématiques d\'Afrique.',
+    url: 'https://safaritanzania.info/fr/activites/observation-faune/',
+  }),
+  faqPage(faqItems),
+];
+---
+
+<BaseLayout
+  title="Observation de la Faune en Tanzanie — Big Five et Grande Migration"
+  description="Pistez les Big Five et assistez à la Grande Migration dans le Serengeti et le Ngorongoro. Guides experts, meilleures positions d'observation et rencontres inoubliables avec lions, éléphants, léopards et plus encore."
+  lang={lang}
+  schema={schema}
+  breadcrumbs={[
+    { label: 'Activités', href: '/fr/activites/' },
+    { label: 'Observation de la faune' },
+  ]}
+>
+  <Header slot="header" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--green">Big Five &amp; Grande Migration</span>
+          <h1 class="hero__title">Observation de la faune en Tanzanie</h1>
+          <p class="hero__desc">Pistez les Big Five dans les plaines du Serengeti et assistez à la Grande Migration, l'un des spectacles naturels les plus saisissants du monde. Plus de 2 millions d'animaux, 1 100 espèces d'oiseaux et des guides experts qui font vivre tout cela.</p>
+          <div class="hero__actions">
+            <a href="/fr/prix/" class="btn btn--primary btn--lg">Voir les tarifs 2026</a>
+            <a href="/fr/contact/" class="btn btn--outline btn--lg">Planifier mon voyage faunique</a>
+          </div>
+          <div class="stats-row">
+            <div class="stat"><strong>Big Five</strong><span>Toutes espèces présentes</span></div>
+            <div class="stat"><strong>2 M+</strong><span>Animaux en migration</span></div>
+            <div class="stat"><strong>1 100+</strong><span>Espèces d'oiseaux</span></div>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <img
+              src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=800&h=640&fit=crop&auto=format"
+              alt="Troupeau d'éléphants traversant les vastes plaines du Serengeti en Tanzanie"
+              width="800" height="640" loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LES BIG FIVE -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Les Big Five</span>
+        <h2>Les animaux les plus emblématiques d'Afrique</h2>
+        <p>La Tanzanie est l'un des rares endroits au monde où les cinq grands animaux légendaires d'Afrique errent en liberté. Nos guides experts maximisent vos chances de voir chacun d'eux.</p>
+      </div>
+      <div class="card-grid card-grid--3 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=450&fit=crop&auto=format" alt="Lion d'Afrique mâle à crinière dorée reposant dans les herbes du Serengeti" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Lion d'Afrique</h3>
+            <p>Le Serengeti accueille plus de 3 000 lions, l'une des plus grandes populations d'Afrique. Observez la dynamique des troupes, les exhibitions territoriales et, si vous avez de la chance, une chasse en action.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&h=450&fit=crop&auto=format" alt="Léopard allongé sur une branche dans le Serengeti" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Léopard</h3>
+            <p>Le plus insaisissable des Big Five. Nos guides connaissent les arbres favoris et les territoires des léopards du Serengeti, vous donnant les meilleures chances d'observation.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=450&fit=crop&auto=format" alt="Troupeau d'éléphants avec des éléphanteaux dans la brousse tanzanienne" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Éléphant</h3>
+            <p>D'immenses troupeaux d'éléphants d'Afrique errent dans Tarangire et le Serengeti. Assistez à leurs liens sociaux complexes, aux rituels de bain de poussière et aux comportements protecteurs familiaux.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRANDE MIGRATION -->
+  <section class="section section--green bg-green" style="position:relative;overflow:hidden">
+    <div style="position:absolute;bottom:0;left:-30px;opacity:.08;pointer-events:none;color:#D4A017;transform:rotate(180deg)">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Merveille naturelle</span>
+        <h2>La Grande Migration</h2>
+        <p>Le plus grand mouvement terrestre d'animaux sur Terre. Plus de 2 millions de gnous, zèbres et gazelles traversent le Serengeti dans un cycle continu de vie, de mort et de renouveau.</p>
+      </div>
+      <div class="card-grid card-grid--2 animate-on-scroll delay-1">
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=450&fit=crop&auto=format" alt="Gnous traversant la rivière Mara lors de la Grande Migration" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Traversées de rivières (juil.-sept.)</h3>
+            <p>Les moments les plus dramatiques de la migration ont lieu lorsque d'immenses troupeaux plongent dans les rivières Mara et Grumeti infestées de crocodiles. Des milliers de gnous se bousculent, bondissent et nagent dans un spectacle de nature brute qui dépasse toute description.</p>
+          </div>
+        </div>
+        <div class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=600&h=450&fit=crop&auto=format" alt="Troupeau de zèbres au pâturage dans le Serengeti pendant la saison des migrations" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Saison des mises bas (janv.-févr.)</h3>
+            <p>Dans le Serengeti méridional, environ 500 000 petits naissent en quelques semaines. Les plaines herbeuses deviennent une nurserie de vie nouvelle, attirant les prédateurs et offrant des vues intimes sur la maternité dans la nature.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALENDRIER SAISONNIER -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">Guide saisonnier</span>
+        <h2>Quand visiter pour les meilleures observations</h2>
+        <p>La Tanzanie offre d'excellentes observations animalières toute l'année, mais chaque saison apporte ses points forts uniques.</p>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1" style="grid-template-columns:repeat(2,1fr)">
+        <div class="service-card">
+          <h3 class="service-card__title">Saison sèche (juin-oct.)</h3>
+          <p class="service-card__desc">Les animaux se concentrent près des points d'eau, la végétation s'éclaircit et la visibilité est excellente. Les traversées de la Grande Migration ont lieu. C'est la haute saison avec la plus forte densité d'observations animalières. Les températures matinales sont fraîches et agréables.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Saison verte (nov.-mai)</h3>
+          <p class="service-card__desc">Paysages verdoyants luxuriants, ciels dramatiques et saison des mises bas (janvier-février). Moins de touristes, prix plus bas et ornithologie exceptionnelle à l'arrivée des espèces migratrices. Les averses de l'après-midi perturbent rarement les game drives.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OÙ OBSERVER -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Meilleurs sites</span>
+        <h2>Où observer la faune sauvage</h2>
+        <p>Chaque parc et réserve de Tanzanie offre des expériences animalières et des écosystèmes distincts.</p>
+      </div>
+      <div class="card-grid card-grid--2 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=450&fit=crop&auto=format" alt="Paysage du Parc national du Serengeti avec des nuages dramatiques" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Parc national du Serengeti</h3>
+            <p>La plus grande et la plus célèbre zone sauvage de Tanzanie. Patrie de la Grande Migration, d'immenses groupes de lions, de guépards sur les plaines ouvertes et de plus de 500 espèces d'oiseaux sur 30 000 kilomètres carrés.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1745885979468-44a855f8a5fa?w=600&h=450&fit=crop&auto=format" alt="Vue panoramique du cratère du Ngorongoro depuis le bord" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">Cratère du Ngorongoro</h3>
+            <p>La plus grande caldeira intacte du monde avec la plus haute densité de faune d'Afrique. Excellent pour observer le rhinocéros noir, les lacs bordés de flamants, les mares d'hippopotames et de grands mâles éléphants dans un amphithéâtre naturel exceptionnel.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">FAQ</span>
+        <h2>Questions sur l'observation de la faune</h2>
+        <p>Questions fréquentes sur l'observation des animaux, les Big Five et la Grande Migration.</p>
+      </div>
+      <div class="faq-list animate-on-scroll delay-1">
+        {faqItems.map(item => (
+          <details>
+            <summary>{item.question}</summary>
+            <div class="faq-answer" set:html={item.answer} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <PhotoGallery images={galleryImages} title="Galerie photo — Faune tanzanienne" />
+  <SafariTikTok category="serengeti" lang="fr" />
+
+  <!-- CTA -->
+  <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2>Observez la faune tanzanienne</h2>
+        <p>Pistez les Big Five et la Grande Migration avec nos guides experts. Réservez votre safari d'observation de la faune dès aujourd'hui.</p>
+      </div>
+      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/fr/prix/" class="btn btn--primary btn--lg">Voir les tarifs 2026</a>
+        <a href="/fr/contact/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Planifier mon voyage</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>

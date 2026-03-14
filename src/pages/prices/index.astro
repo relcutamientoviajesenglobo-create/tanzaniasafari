@@ -2,9 +2,20 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import SafariTikTok from '../../components/SafariTikTok.astro';
+import PhotoGallery from '../../components/PhotoGallery.astro';
 
 const lang = 'en';
 const title = 'Safari Tanzania Prices 2026 — Rates, Packages & Bookings';
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=400&fit=crop&auto=format', alt: 'Safari vehicle on a game drive — what is included in a Tanzania safari package' },
+  { src: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=400&fit=crop&auto=format', alt: 'Lion encounter during a classic safari package in the Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=400&fit=crop&auto=format', alt: 'Hot air balloon flight included in the premium safari package' },
+  { src: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=600&h=400&fit=crop&auto=format', alt: 'Luxury safari lodge accommodation included in full-board packages' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'Elephant herd viewed during a multi-day safari experience in Tanzania' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Scenic Serengeti landscape — the backdrop for Tanzania safari adventures' },
+];
 const description = 'Updated 2026 prices for Tanzania safaris. Compare packages for the Serengeti, Ngorongoro Crater, and Tarangire. Transparent USD pricing with no hidden fees.';
 
 const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
@@ -18,7 +29,7 @@ const schema = {
   '@type': 'PriceSpecification',
   name: 'Safari Tanzania Prices 2026',
   description: description,
-  url: 'https://safaritanzania.info/en/prices/',
+  url: 'https://safaritanzania.info/prices/',
   priceCurrency: 'USD',
 };
 ---
@@ -35,7 +46,7 @@ const schema = {
         <h1>Safari Tanzania Prices</h1>
         <p>Transparent pricing for your African adventure. All packages include expert guides, park fees, full-board accommodation, and game-drive transportation. No hidden costs, no surprises.</p>
         <div class="hero__actions">
-          <a href="/en/contact/" class="btn btn--primary btn--lg">Request a Quote</a>
+          <a href="/contact/" class="btn btn--primary btn--lg">Request a Quote</a>
           <a href="#packages" class="btn btn--outline btn--lg">View Packages</a>
         </div>
       </div>
@@ -82,7 +93,7 @@ const schema = {
               <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green-mid);font-weight:700;flex-shrink:0">&#10003;</span> Airport transfers</li>
             </ul>
             <div style="margin-top:1.5rem;text-align:center">
-              <a href="/en/contact/" class="btn btn--primary" style="width:100%;justify-content:center">Book This Package</a>
+              <a href="/contact/" class="btn btn--primary" style="width:100%;justify-content:center">Book This Package</a>
             </div>
           </div>
         </div>
@@ -106,7 +117,7 @@ const schema = {
               <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green-mid);font-weight:700;flex-shrink:0">&#10003;</span> All park fees &amp; airport transfers</li>
             </ul>
             <div style="margin-top:1.5rem;text-align:center">
-              <a href="/en/contact/" class="btn btn--primary" style="width:100%;justify-content:center">Book This Package</a>
+              <a href="/contact/" class="btn btn--primary" style="width:100%;justify-content:center">Book This Package</a>
             </div>
           </div>
         </div>
@@ -130,7 +141,7 @@ const schema = {
               <li style="display:flex;gap:.5rem;align-items:flex-start"><span style="color:var(--mc-green-mid);font-weight:700;flex-shrink:0">&#10003;</span> All-inclusive with premium wine</li>
             </ul>
             <div style="margin-top:1.5rem;text-align:center">
-              <a href="/en/contact/" class="btn btn--primary" style="width:100%;justify-content:center">Book This Package</a>
+              <a href="/contact/" class="btn btn--primary" style="width:100%;justify-content:center">Book This Package</a>
             </div>
           </div>
         </div>
@@ -194,6 +205,9 @@ const schema = {
     </div>
   </section>
 
+  <PhotoGallery images={galleryImages} title="Safari Experience Gallery" />
+  <SafariTikTok category="general" lang="en" />
+
   <!-- CTA -->
   <section class="section section--green">
     <div class="container" style="text-align:center;position:relative">
@@ -203,8 +217,8 @@ const schema = {
       <h2 style="color:white;margin-bottom:.75rem">Ready to Book Your Safari?</h2>
       <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:520px;margin-left:auto;margin-right:auto">Contact us for a personalized quote or to customize any package. We respond within 24 hours with detailed itineraries.</p>
       <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-        <a href="/en/contact/" class="btn btn--primary btn--lg">Request a Quote</a>
-        <a href="/en/how-to-get-here/" class="btn btn--outline-white btn--lg" style="border-color:white;color:white">How to Get Here</a>
+        <a href="/contact/" class="btn btn--primary btn--lg">Request a Quote</a>
+        <a href="/how-to-get-here/" class="btn btn--outline-white btn--lg" style="border-color:white;color:white">How to Get Here</a>
       </div>
     </div>
   </section>

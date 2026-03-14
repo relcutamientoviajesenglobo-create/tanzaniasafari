@@ -1,0 +1,247 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import SafariTikTok from '../../../components/SafariTikTok.astro';
+import PhotoGallery from '../../../components/PhotoGallery.astro';
+import { touristAttraction, faqPage } from '../../../i18n/schema';
+
+const lang = 'de';
+
+const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
+
+const faqItems = [
+  { question: 'Welche Aktivitäten gibt es neben Pirschfahrten?', answer: 'Tansania bietet eine Vielzahl von Aktivitäten jenseits traditioneller Safaris: <a href="/de/aktivitaeten/wildtierbeobachtung/" style="color:#3D6B2E;font-weight:700">Wildtierbeobachtung</a> einschließlich der Großen Migration, <a href="/de/aktivitaeten/buschwanderungen/" style="color:#3D6B2E;font-weight:700">Buschwanderungen</a> mit Masai-Guides, <a href="/de/aktivitaeten/heissluftballon/" style="color:#3D6B2E;font-weight:700">Heißluftballon</a>-Fahrten über die Serengeti, Besuche in Masai-Dörfern, Vogelbeobachtung, Ausflüge zu Kraterseen und Sternenbeobachtungserlebnisse.' },
+  { question: 'Sind die Aktivitäten für alle Fitnesslevel geeignet?', answer: 'Die meisten Aktivitäten sind für verschiedene Fitnesslevel geeignet. <strong>Wildtierbeobachtung</strong> vom Fahrzeug aus erfordert keine körperliche Anstrengung. <strong>Buschwanderungen</strong> reichen von leichten Spaziergängen bis zu moderaten Wanderungen (2–4 Stunden). <strong>Ballonfahrten</strong> erfordern grundlegende Mobilität zum Einsteigen in den Korb. Unser Team empfiehlt die besten Aktivitäten für Ihr Fitnesslevel.' },
+  { question: 'Kann ich mehrere Aktivitäten auf einer Reise kombinieren?', answer: 'Absolut! Viele unserer Gäste kombinieren Pirschfahrten mit Buschwanderungen, einer Ballonfahrt und kulturellen Erlebnissen. Eine typische <strong>5-tägige Safari</strong> kann 2–3 verschiedene Aktivitäten neben traditionellen Pirschfahrten beinhalten. Kontaktieren Sie uns, um einen individuellen Reiseplan zu erstellen, der Ihre bevorzugten Aktivitäten zu den besten <a href="/de/preise/" style="color:#3D6B2E;font-weight:700">Preisen</a> enthält.' },
+  { question: 'Was soll ich für Outdoor-Aktivitäten tragen?', answer: 'Tragen Sie leichte, atmungsaktive Kleidung in <strong>neutralen Erdtönen</strong> (Khaki, Olivgrün, Braun, Beige). Vermeiden Sie hellweiße, blaue und schwarze Kleidung. Robuste geschlossene Schuhe sind für Buschwanderungen unerlässlich. Ein Hut, Sonnenbrille und Sonnenschutzmittel (LSF 50+) sind bei allen Outdoor-Aktivitäten notwendig. Schichten werden empfohlen, da Morgen kühl sein können.' },
+  { question: 'Sind Kinder bei allen Aktivitäten zugelassen?', answer: 'Die meisten Aktivitäten begrüßen Kinder mit einigen Altersbeschränkungen. <strong>Wildtierbeobachtung</strong> vom Fahrzeug aus hat keine Altersgrenze. <strong>Buschwanderungen</strong> erfordern in der Regel Kinder ab 12 Jahren. <strong>Heißluftballonfahrten</strong> haben ein Mindestalter von 7 Jahren. Kinder unter 5 Jahren sind bei den meisten fahrzeugbasierten Aktivitäten kostenlos. Besuchen Sie unsere <a href="/de/preise/" style="color:#3D6B2E;font-weight:700">Preisseite</a> für Familienpakete.' },
+];
+
+const schema = [
+  touristAttraction({
+    name: 'Aktivitäten in Tansania — Wildtierbeobachtung, Buschwanderungen, Ballon & mehr',
+    description: 'Entdecken Sie die besten Aktivitäten in Tansania jenseits traditioneller Safaris. Wildtierbeobachtung, Buschwanderungen mit Masai-Guides, Heißluftballon-Fahrten und mehr.',
+    url: 'https://safaritanzania.info/de/aktivitaeten/',
+  }),
+  faqPage(faqItems),
+];
+
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=400&fit=crop&auto=format', alt: 'Heißluftballon schwebt über der Serengeti-Savanne bei Sonnenaufgang' },
+  { src: 'https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&h=400&fit=crop&auto=format', alt: 'Masai-Guide führt eine Buschwanderung durch die tansanische Savanne' },
+  { src: 'https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=400&fit=crop&auto=format', alt: 'Gnuherde während der Großen Migration in der Serengeti' },
+  { src: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=400&fit=crop&auto=format', alt: 'Männlicher Löwe in der Serengeti – Wildtierbeobachtung' },
+  { src: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop&auto=format', alt: 'Elefanten am Wasserloch beim Sonnenuntergang in Tansania' },
+  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop&auto=format', alt: 'Serengeti-Savanne mit Akazienbäumen – Panoramablick' },
+];
+---
+
+<BaseLayout
+  title="Aktivitäten in Tansania — Wildtierbeobachtung, Buschwanderungen, Ballon & mehr"
+  description="Entdecken Sie außergewöhnliche Aktivitäten in Tansania jenseits von Pirschfahrten. Wildtierbeobachtung, Buschwanderungen mit Masai-Guides, Heißluftballon-Fahrten über die Serengeti und kulturelle Erlebnisse."
+  lang={lang}
+  schema={schema}
+  breadcrumbs={[{ label: 'Aktivitäten' }]}
+>
+  <Header slot="header" lang={lang} />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <span class="chip chip--green">Mehr als Pirschfahrten</span>
+          <h1 class="hero__title">Aktivitäten &amp; Erlebnisse in Tansania</h1>
+          <p class="hero__desc">Tansania bietet weit mehr als traditionelle Safaris. Wandern Sie durch den Busch mit Masai-Kriegern, schweben Sie bei Tagesanbruch über die Serengeti, verfolgen Sie die Große Migration und tauchen Sie in authentische afrikanische Kultur ein.</p>
+          <div class="hero__actions">
+            <a href="/de/preise/" class="btn btn--primary btn--lg">Preise 2026 ansehen</a>
+            <a href="/de/safaris/" class="btn btn--outline btn--lg">Safaris ansehen</a>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__photo-frame">
+            <div class="hero__deco hero__deco--tr"></div>
+            <img
+              src="https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=800&h=640&fit=crop&auto=format"
+              alt="Heißluftballon schwebt über der Serengeti-Savanne bei Sonnenaufgang"
+              width="800" height="640" loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AKTIVITÄTSKARTEN -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Wählen Sie Ihr Abenteuer</span>
+        <h2>Unsere empfohlenen Aktivitäten</h2>
+        <p>Jede Aktivität bietet eine einzigartige Perspektive auf Tansanias Wildtiere, Landschaften und Kultur. Kombinieren Sie sie nach Ihren Wünschen.</p>
+      </div>
+      <div class="card-grid card-grid--3 animate-on-scroll delay-1">
+        <a href="/de/aktivitaeten/wildtierbeobachtung/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=600&h=450&fit=crop&auto=format" alt="Gnuherde während der Großen Migration in der Serengeti" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Wildtiere</span>
+            <h3 class="photo-card__title">Wildtierbeobachtung</h3>
+            <p>Verfolgen Sie die Big Five, erleben Sie die Große Migration und beobachten Sie Afrikas ikonischste Tiere in ihrem natürlichen Lebensraum. Erfahrene Guides erklären das Tierverhalten und die Ökologie.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+        <a href="/de/aktivitaeten/buschwanderungen/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&h=450&fit=crop&auto=format" alt="Masai-Guide führt eine Safariwanderung durch den afrikanischen Busch" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Abenteuer</span>
+            <h3 class="photo-card__title">Buschwanderungen</h3>
+            <p>Verlassen Sie das Fahrzeug und wandern Sie durch die Savanne mit erfahrenen Masai-Guides. Lernen Sie Fährtensuche, entdecken Sie Heilpflanzen und verbinden Sie sich mit der Landschaft auf Bodenniveau.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+        <a href="/de/aktivitaeten/heissluftballon/" class="photo-card">
+          <div class="photo-card__img">
+            <img src="https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=450&fit=crop&auto=format" alt="Heißluftballon über dem Serengeti-Nationalpark bei Tagesanbruch" width="600" height="450" loading="lazy" />
+          </div>
+          <div class="photo-card__body">
+            <span class="photo-card__tag">Aus der Luft</span>
+            <h3 class="photo-card__title">Heißluftballon</h3>
+            <p>Schweben Sie bei Tagesanbruch über die Serengeti für eine atemberaubende Luftperspektive. Treiben Sie lautlos über Wildtierherden und landen Sie zu einem Champagner-Buschfrühstück.</p>
+            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEITERE ERLEBNISSE -->
+  <section class="section section--green bg-green" style="position:relative;overflow:hidden">
+    <div style="position:absolute;top:20px;right:-30px;opacity:.08;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--amber">Kultur &amp; Naturerlebnisse</span>
+        <h2>Weitere Möglichkeiten, Tansania zu erleben</h2>
+        <p>Ergänzen Sie Ihre Safari mit diesen authentischen Kultur- und Naturerlebnissen, die das Herz und die Seele Ostafrikas enthüllen.</p>
+      </div>
+      <div class="service-cards animate-on-scroll delay-1">
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm0 6c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6 2.69-6 6-6zm0 28.4c-5 0-9.27-2.88-11.34-7.07C15.07 28.55 20 27 24 27c3.99 0 8.93 1.55 11.34 4.33C33.27 35.52 29 38.4 24 38.4z"/></svg>
+          </div>
+          <h3 class="service-card__title">Besuch eines Masai-Dorfes</h3>
+          <p class="service-card__desc">Besuchen Sie ein authentisches Masai-Boma (Dorf) und lernen Sie ihre Traditionen, Perlenstickerei, Kriegerkultur und ihr harmonisches Verhältnis zur Wildnis kennen.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M18.85 10.39l1.06-3.54c.18-.63.76-1.06 1.42-1.06h5.34c.66 0 1.24.43 1.42 1.06l1.06 3.54 3.54 1.06c.63.18 1.06.76 1.06 1.42v5.34c0 .66-.43 1.24-1.06 1.42L29.15 20 28.09 23.54c-.18.63-.76 1.06-1.42 1.06H21.33c-.66 0-1.24-.43-1.42-1.06L18.85 20l-3.54-1.06c-.63-.18-1.06-.76-1.06-1.42v-5.34c0-.66.43-1.24 1.06-1.42l3.54-1.37z M24 28c-7.73 0-14 6.27-14 14h28c0-7.73-6.27-14-14-14z"/></svg>
+          </div>
+          <h3 class="service-card__title">Vogelbeobachtung</h3>
+          <p class="service-card__desc">Tansania beherbergt über 1.100 Vogelarten. Spezialisierte Vogelausflüge zielen auf Flamingo-Kolonien, Adler, Eisvögel, Nashornvögel und den prachtvollen Dreifarben-Glanzstar ab.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 2C13.51 2 5 10.51 5 21c0 14.28 17.2 24.26 17.93 24.67.31.18.69.18 1 0C24.8 45.26 43 35.28 43 21 43 10.51 34.49 2 24 2zm0 27c-4.97 0-9-4.03-9-9s4.03-9 9-9 9 4.03 9 9-4.03 9-9 9z"/></svg>
+          </div>
+          <h3 class="service-card__title">Kratersee-Ausflug</h3>
+          <p class="service-card__desc">Besuchen Sie den beeindruckenden Empakaai-Krater oder den Natron-See, um Flamingos, vulkanische Landschaften und dramatische Szenerien zu erleben, die nur wenige Touristen je sehen.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M14 36l12-4 12 4V8c0-1.1-.9-2-2-2H14c-1.1 0-2 .9-2 2v28zM38 6c1.1 0 2 .9 2 2v36l-16-6-16 6V8c0-1.1.9-2 2-2h28z"/></svg>
+          </div>
+          <h3 class="service-card__title">Sternenbeobachtung</h3>
+          <p class="service-card__desc">Weit entfernt von Stadtlichtern gehört Tansanias Nachthimmel zu den besten der Welt. Unsere Guides leiten Sternenbeobachtungssessions mit der Identifikation von Sternbildern, Planeten und der Milchstraße.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANUNG -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">Aktivitäten planen</span>
+        <h2>So fügen Sie Aktivitäten in Ihre Reise ein</h2>
+        <p>Aktivitäten können jedem Safari-Paket hinzugefügt werden. Hier erfahren Sie, wie Sie loslegen.</p>
+      </div>
+      <div class="card-grid card-grid--3 animate-on-scroll delay-1">
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">1. Safari auswählen</h3>
+            <p>Beginnen Sie mit einer <a href="/de/safaris/klassische-safari/" style="color:#3D6B2E;font-weight:700">klassischen</a>, <a href="/de/safaris/foto-safari/" style="color:#3D6B2E;font-weight:700">Foto-</a> oder <a href="/de/safaris/nacht-safari/" style="color:#3D6B2E;font-weight:700">Nacht-Safari</a> als Basiserlebnis. Aktivitäten werden als Ergänzungen zu Ihrem Kern-Safari-Reiseplan hinzugefügt.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">2. Aktivitäten wählen</h3>
+            <p>Wählen Sie aus Wildtierbeobachtung, Buschwanderungen, Ballonfahrten, Kulturbesuchen oder Vogelbeobachtung. Unser Team empfiehlt die beste Kombination basierend auf Ihren Interessen und Ihrem Zeitplan.</p>
+          </div>
+        </div>
+        <div class="photo-card" style="cursor:default">
+          <div class="photo-card__body">
+            <h3 class="photo-card__title">3. Kontakt aufnehmen</h3>
+            <p>Schreiben Sie uns über <a href="/de/kontakt/" style="color:#3D6B2E;font-weight:700">unser Kontaktformular</a> oder WhatsApp, und wir erstellen einen individuellen Reiseplan mit Ihren bevorzugten Aktivitäten zu den besten verfügbaren Preisen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section class="section">
+    <div class="container">
+      <PhotoGallery images={galleryImages} title="Fotogalerie: Aktivitäten in Tansania" />
+    </div>
+  </section>
+
+  <!-- TIKTOK -->
+  <SafariTikTok category="serengeti" lang="de" />
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <span class="chip chip--green">FAQ</span>
+        <h2>Fragen zu Aktivitäten beantwortet</h2>
+        <p>Häufige Fragen zu Aktivitäten und Erlebnissen in Tansania.</p>
+      </div>
+      <div class="faq-list animate-on-scroll delay-1">
+        {faqItems.map(item => (
+          <details>
+            <summary>{item.question}</summary>
+            <div class="faq-answer" set:html={item.answer} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green bg-green" style="text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
+      <Fragment set:html={ACACIA_LARGE} />
+    </div>
+    <div class="container">
+      <div class="section__header animate-on-scroll">
+        <h2>Bereit für das Abenteuer?</h2>
+        <p>Entdecken Sie Tansanias außergewöhnliche Aktivitäten und schaffen Sie Erinnerungen, die ein Leben lang dauern.</p>
+      </div>
+      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/de/preise/" class="btn btn--primary btn--lg">Preise 2026 ansehen</a>
+        <a href="/de/kontakt/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Reise planen</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>
