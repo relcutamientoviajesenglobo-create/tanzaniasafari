@@ -1,316 +1,153 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import VideoGallery from '../components/VideoGallery.astro';
-import { touristAttraction, faqPage } from '../i18n/schema';
-import { t } from '../i18n/utils';
-
-const lang = 'en';
-
-const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
-
-const faqItems = [
-  { question: 'When is the best time for a safari in Tanzania?', answer: 'The best time for safaris in Tanzania is during the dry season from June to October, when animals gather at water sources and are easier to spot. The Great Migration in the Serengeti typically occurs between July and September. However, the green season (November to May) offers lush landscapes, fewer crowds and lower prices.' },
-  { question: 'How much does a safari in Tanzania cost?', answer: 'A day safari starts from <strong>$150 USD per person</strong>. Multi-day safaris including accommodation start from <strong>$800 USD</strong>. Children under 5 enter <strong>free</strong>. Check our <a href="/en/prices/" style="color:#3D6B2E;font-weight:700">prices and packages page</a> for detailed information.' },
-  { question: 'Is Tanzania safe for tourists?', answer: 'Tanzania is one of the safest countries in East Africa for tourism. Safari operators follow strict safety guidelines. Our guides are experienced professionals who know the terrain and wildlife behavior. We recommend standard travel precautions such as staying hydrated, using sunscreen and following your guide\'s instructions at all times.' },
-  { question: 'What animals will I see on a Tanzania safari?', answer: 'Tanzania is home to the <strong>Big Five</strong> (lion, leopard, elephant, buffalo and rhino). You can also see giraffes, zebras, wildebeest, hippos, crocodiles, cheetahs and over 500 bird species. The Serengeti hosts the famous <a href="/en/activities/wildlife-watching/" style="color:#3D6B2E;font-weight:700">Great Migration</a> with over 2 million animals.' },
-  { question: 'How do I get to Tanzania for a safari?', answer: 'Most international visitors fly into Kilimanjaro International Airport (JRO) or Julius Nyerere International Airport in Dar es Salaam. From Arusha, safaris depart daily to the Serengeti, Ngorongoro and other parks. See our <a href="/en/how-to-get-here/" style="color:#3D6B2E;font-weight:700">how to get here guide</a> for detailed directions and transport options.' },
-  { question: 'What should I pack for a Tanzania safari?', answer: 'Essential items include lightweight clothing in neutral colors (khaki, olive, brown), a wide-brimmed hat, sunglasses, sunscreen (SPF 50+), binoculars, a camera with a zoom lens, comfortable walking shoes and a light jacket for early morning game drives. Avoid bright colors and blue clothing as they attract tsetse flies.' },
-];
-
-const schema = [
-  touristAttraction({
-    name: 'Safari Tanzania — Wildlife Safaris',
-    description: 'Experience the most spectacular safari adventure in Africa. Game drives in the Serengeti, Ngorongoro Crater and Tanzania national parks.',
-    url: 'https://safaritanzania.info/en/',
-  }),
-  faqPage(faqItems),
-];
+import HomepageLayout from '../layouts/HomepageLayout.astro';
 ---
 
-<BaseLayout
-  title="Safari Tanzania — Wildlife Safaris in the Serengeti & Ngorongoro 2026"
-  description="Experience the most spectacular safari adventure in Africa. Game drives in the Serengeti, Ngorongoro Crater, Big Five wildlife and the Great Migration. Book your 2026 Tanzania safari."
-  lang={lang}
-  schema={schema}
+<HomepageLayout
+  title="Safari Tanzania | Immersive 3D Wildlife Experience"
+  description="Discover Tanzania's breathtaking safaris through an immersive 3D experience. Explore the Serengeti, witness the Great Migration, and plan your African adventure."
+  lang="en"
 >
-  <Header slot="header" lang={lang} />
+  <!-- Video Background -->
+  <video class="bg-video" autoplay loop muted playsinline>
+    <source src="/media/homepage/safari-bg.mp4" type="video/mp4">
+  </video>
+  <div class="video-overlay"></div>
 
-  <!-- PRICE BANNER -->
-  <div class="price-banner">
-    <div class="container">
-      <div class="price-banner__inner">
-        <div class="price-banner__items">
-          <span class="price-banner__item">
-            <svg viewBox="0 0 20 20" width="14" height="14" fill="currentColor" aria-hidden="true"><circle cx="10" cy="10" r="8"/></svg>
-            <strong>{t('price.open', lang)}</strong> — {t('price.everyday', lang)}
-          </span>
-          <span class="price-banner__divider"></span>
-          <span class="price-banner__item">
-            {t('price.adult', lang)} <strong class="price-banner__price">from $150</strong>
-          </span>
-          <span class="price-banner__divider"></span>
-          <span class="price-banner__item">
-            Multi-day <strong class="price-banner__price">from $800</strong>
-          </span>
-          <span class="price-banner__divider"></span>
-          <span class="price-banner__item">
-            {t('price.free', lang)} <strong class="price-banner__price">{t('price.free.label', lang)}</strong>
-          </span>
-        </div>
-        <a href="/en/prices/" class="price-banner__cta">
-          {t('price.cta', lang)}
-          <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5 3 10 8 5 13"/></svg>
-        </a>
-      </div>
-    </div>
-  </div>
+  <!-- 3D Background Canvas -->
+  <canvas id="webgl-canvas"></canvas>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero__acacia hero__acacia--tr" style="color:#2D4A22">
-      <Fragment set:html={ACACIA_LARGE} />
-    </div>
-    <div class="hero__acacia hero__acacia--bl" style="color:#2D4A22">
-      <Fragment set:html={ACACIA_LARGE} />
-    </div>
-    <div class="container">
-      <div class="hero__inner">
-        <div class="hero__text">
-          <span class="chip chip--green">Serengeti &amp; Ngorongoro 2026</span>
-          <h1 class="hero__title">The most spectacular safari adventure in Africa</h1>
-          <p class="hero__desc">Discover the Serengeti plains, the Ngorongoro Crater and Tanzania's iconic wildlife. Expert guides, unforgettable sunsets and the Big Five await you.</p>
-          <div class="hero__actions">
-            <a href="/en/safaris/" class="btn btn--primary btn--lg">Explore safaris</a>
-            <a href="/en/prices/" class="btn btn--outline btn--lg">See prices 2026</a>
-          </div>
-          <div class="stats-row">
-            <div class="stat"><strong>16+</strong><span>National Parks</span></div>
-            <div class="stat"><strong>Big Five</strong><span>Lion, Leopard, Elephant</span></div>
-            <div class="stat"><strong>365</strong><span>Days Open</span></div>
-          </div>
-        </div>
-        <div class="hero__visual">
-          <div class="hero__photo-frame">
-            <div class="hero__deco hero__deco--tr"></div>
-            <img
-              src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&h=640&fit=crop&auto=format"
-              alt="Serengeti savanna landscape with acacia trees and golden sunset in Tanzania"
-              width="800" height="640" loading="eager"
-            />
-          </div>
+  <!-- UI Overlay -->
+  <main class="content">
+    <!-- Section 1: Hero -->
+    <section class="panel hero" id="section-hero">
+      <div class="glass-box init-anim">
+        <h1 class="glow-text">Wild Tanzania</h1>
+        <p>Scroll to discover the holographic wildlife of the African savannah.</p>
+        <div class="scroll-indicator">
+          <div class="mouse"></div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- WHAT AWAITS YOU -->
-  <section class="section">
-    <div class="container">
-      <div class="section__header animate-on-scroll">
-        <span class="chip chip--amber">Unforgettable Experiences</span>
-        <h2>What awaits you in Tanzania</h2>
-        <p>From the endless Serengeti plains to the world's largest volcanic caldera, Tanzania offers wildlife experiences found nowhere else on Earth.</p>
+    <!-- Section 2: Details -->
+    <section class="panel details" id="section-details">
+      <div class="glass-box left init-anim">
+        <h2 class="glow-text">Tanzania Safari</h2>
+        <p>As you delve deeper into the plains, the true essence of Africa comes alive. Experience the breathtaking landscapes, incredible wildlife, and unforgettable adventures that await you in Tanzania.</p>
       </div>
-      <div class="card-grid card-grid--3 animate-on-scroll delay-1">
-        <a href="/en/safaris/classic-safari/" class="photo-card">
-          <div class="photo-card__img">
-            <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&h=450&fit=crop&auto=format" alt="Safari vehicle on game drive in the Serengeti, Tanzania" width="600" height="450" loading="lazy" />
-          </div>
-          <div class="photo-card__body">
-            <span class="photo-card__tag">Most Popular</span>
-            <h3 class="photo-card__title">Classic Safari</h3>
-            <p>Game drives through the Serengeti and Ngorongoro Crater with expert guides. Spot the Big Five in their natural habitat.</p>
-            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
-          </div>
-        </a>
-        <a href="/en/safaris/photo-safari/" class="photo-card">
-          <div class="photo-card__img">
-            <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600&h=450&fit=crop&auto=format" alt="Lion resting on a rock in the Serengeti, Tanzania" width="600" height="450" loading="lazy" />
-          </div>
-          <div class="photo-card__body">
-            <span class="photo-card__tag">For Photographers</span>
-            <h3 class="photo-card__title">Photo Safari</h3>
-            <p>Specialized photography tours with optimal lighting, expert positioning and professional guidance for stunning wildlife shots.</p>
-            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
-          </div>
-        </a>
-        <a href="/en/safaris/night-safari/" class="photo-card">
-          <div class="photo-card__img">
-            <img src="https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&h=450&fit=crop&auto=format" alt="Leopard spotted during night safari in Tanzania" width="600" height="450" loading="lazy" />
-          </div>
-          <div class="photo-card__body">
-            <span class="photo-card__tag">Unique Experience</span>
-            <h3 class="photo-card__title">Night Safari</h3>
-            <p>Witness the savanna come alive after dark. Spot nocturnal predators, hear the calls of the wild and stargaze under African skies.</p>
-            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- WHY CHOOSE US — service cards on green bg -->
-  <section class="section section--green bg-green" style="position:relative;overflow:hidden">
-    <div style="position:absolute;top:20px;right:-30px;opacity:.1;pointer-events:none;color:#D4A017">
-      <Fragment set:html={ACACIA_LARGE} />
-    </div>
-    <div class="container">
-      <div class="section__header animate-on-scroll">
-        <span class="chip chip--amber">Why Choose Us</span>
-        <h2>Your safari, our expertise</h2>
-        <p>With decades of experience in Tanzanian wildlife tourism, we craft safaris that exceed expectations.</p>
-      </div>
-      <div class="service-cards animate-on-scroll delay-1">
-        <div class="service-card">
-          <div class="service-card__icon">
-            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-2 30l-10-10 2.83-2.83L22 28.34l13.17-13.17L38 18 22 34z"/></svg>
+    <!-- Section 2.5: TikTok Safari Grid -->
+    <section class="panel tiktok-section" id="section-tiktok">
+      <div class="glass-box full-width init-anim">
+        <h2 class="glow-text center-text">#Safari #Tanzania Vibes</h2>
+        <div class="tiktok-grid">
+          <div class="tiktok-card">
+            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@nasikiasafaris/video/7521758369460292869" data-video-id="7521758369460292869" style="max-width: 605px;min-width: 325px;"><section><a target="_blank" title="@nasikiasafaris" href="https://www.tiktok.com/@nasikiasafaris?refer=embed">@nasikiasafaris</a> Tanzania Safari <a target="_blank" title="♬ original sound" href="https://www.tiktok.com/music/original-sound-7521758369460292869?refer=embed">♬ original sound</a></section></blockquote>
           </div>
-          <h3 class="service-card__title">Expert Local Guides</h3>
-          <p class="service-card__desc">Certified Tanzanian guides with deep knowledge of wildlife behavior, ecosystems and the best viewing spots.</p>
-          <a href="/en/safaris/" class="btn">Explore safaris</a>
-        </div>
-        <div class="service-card">
-          <div class="service-card__icon">
-            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm0 36c-8.82 0-16-7.18-16-16S15.18 8 24 8s16 7.18 16 16-7.18 16-16 16zm1-26h-3v12l10.5 6.3 1.5-2.46-9-5.34V14z"/></svg>
+          <div class="tiktok-card">
+            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@zanzibardestination/video/7616776095198694676" data-video-id="7616776095198694676" style="max-width: 605px;min-width: 325px;"><section><a target="_blank" title="@zanzibardestination" href="https://www.tiktok.com/@zanzibardestination?refer=embed">@zanzibardestination</a> Tanzania Safari 2026 <a target="_blank" title="♬ original sound" href="https://www.tiktok.com/music/original-sound-7616776095198694676?refer=embed">♬ original sound</a></section></blockquote>
           </div>
-          <h3 class="service-card__title">Flexible Schedules</h3>
-          <p class="service-card__desc">Day trips, multi-day expeditions and custom itineraries tailored to your interests, pace and budget.</p>
-          <a href="/en/prices/" class="btn">See prices</a>
-        </div>
-        <div class="service-card">
-          <div class="service-card__icon">
-            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 2C13.51 2 5 10.51 5 21c0 14.28 17.2 24.26 17.93 24.67.31.18.69.18 1 0C24.8 45.26 43 35.28 43 21 43 10.51 34.49 2 24 2zm0 27c-4.97 0-9-4.03-9-9s4.03-9 9-9 9 4.03 9 9-4.03 9-9 9z"/></svg>
+          <div class="tiktok-card">
+            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@allysontaylorrrr/video/7614891117133270303" data-video-id="7614891117133270303" style="max-width: 605px;min-width: 325px;"><section><a target="_blank" title="@allysontaylorrrr" href="https://www.tiktok.com/@allysontaylorrrr?refer=embed">@allysontaylorrrr</a> Africa Travel <a target="_blank" title="♬ original sound" href="https://www.tiktok.com/music/original-sound-7614891117133270303?refer=embed">♬ original sound</a></section></blockquote>
           </div>
-          <h3 class="service-card__title">Premium Locations</h3>
-          <p class="service-card__desc">Access to the Serengeti, Ngorongoro, Tarangire, Lake Manyara and other world-renowned parks and reserves.</p>
-          <a href="/en/activities/" class="btn">View activities</a>
-        </div>
-        <div class="service-card">
-          <div class="service-card__icon">
-            <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm2 34h-4v-4h4v4zm4.13-15.49l-1.79 1.84C26.9 25.79 26 27 26 30h-4v-1c0-2.21.9-4.21 2.34-5.66l2.49-2.52C27.55 20.1 28 19.1 28 18c0-2.21-1.79-4-4-4s-4 1.79-4 4h-4c0-4.42 3.58-8 8-8s8 3.58 8 8c0 1.76-.71 3.35-1.87 4.51z"/></svg>
+          <div class="tiktok-card">
+            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@safarinomara/video/7475299968803147063" data-video-id="7475299968803147063" style="max-width: 605px;min-width: 325px;"><section><a target="_blank" title="@safarinomara" href="https://www.tiktok.com/@safarinomara?refer=embed">@safarinomara</a> Safari Magic <a target="_blank" title="♬ original sound" href="https://www.tiktok.com/music/original-sound-7475299968803147063?refer=embed">♬ original sound</a></section></blockquote>
           </div>
-          <h3 class="service-card__title">Safety First</h3>
-          <p class="service-card__desc">Licensed vehicles, satellite communication, first aid training and comprehensive insurance for complete peace of mind.</p>
-          <a href="/en/contact/" class="btn">Contact us</a>
+          <div class="tiktok-card">
+            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@tanzanianextlevelsafari/video/7608197353786363157" data-video-id="7608197353786363157" style="max-width: 605px;min-width: 325px;"><section><a target="_blank" title="@tanzanianextlevelsafari" href="https://www.tiktok.com/@tanzanianextlevelsafari?refer=embed">@tanzanianextlevelsafari</a> Tanzania Vibes <a target="_blank" title="♬ original sound" href="https://www.tiktok.com/music/original-sound-7608197353786363157?refer=embed">♬ original sound</a></section></blockquote>
+          </div>
+          <div class="tiktok-card">
+            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@oa1403/video/7615655140003024150" data-video-id="7615655140003024150" style="max-width: 605px;min-width: 325px;"><section><a target="_blank" title="@oa1403" href="https://www.tiktok.com/@oa1403?refer=embed">@oa1403</a> Serengeti Vibes <a target="_blank" title="♬ original sound" href="https://www.tiktok.com/music/original-sound-7615655140003024150?refer=embed">♬ original sound</a></section></blockquote>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+      <script is:inline async src="https://www.tiktok.com/embed.js"></script>
+    </section>
 
-  <!-- ACTIVITIES SECTION -->
-  <section class="section section--gray">
-    <div class="container">
-      <div class="section__header animate-on-scroll">
-        <span class="chip chip--green">Beyond the Safari</span>
-        <h2>Activities &amp; experiences</h2>
-        <p>Tanzania offers far more than traditional game drives. Walk with Masai warriors, float over the Serengeti in a hot air balloon or track the Great Migration on foot.</p>
+    <!-- Section 3: Immersion -->
+    <section class="panel immersion" id="section-immersion">
+      <div class="glass-box right init-anim">
+        <h2 class="glow-text">The Migration</h2>
+        <p>The boundary between reality and digital construct fades over the Great Migration. Behold the ultimate synthesis of light and sacred geometry.</p>
       </div>
-      <div class="card-grid card-grid--3 animate-on-scroll delay-1">
-        <a href="/en/activities/wildlife-watching/" class="photo-card">
-          <div class="photo-card__img">
-            <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=450&fit=crop&auto=format" alt="Elephant herd walking across the Serengeti plains" width="600" height="450" loading="lazy" />
-          </div>
-          <div class="photo-card__body">
-            <span class="photo-card__tag">Wildlife</span>
-            <h3 class="photo-card__title">Wildlife Watching</h3>
-            <p>Track the Big Five and witness the Great Migration across the Serengeti ecosystem.</p>
-            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
-          </div>
-        </a>
-        <a href="/en/activities/bush-walks/" class="photo-card">
-          <div class="photo-card__img">
-            <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&h=450&fit=crop&auto=format" alt="Masai guide leading a bush walk through the savanna" width="600" height="450" loading="lazy" />
-          </div>
-          <div class="photo-card__body">
-            <span class="photo-card__tag">Adventure</span>
-            <h3 class="photo-card__title">Bush Walks</h3>
-            <p>Walking safaris guided by Masai warriors through pristine wilderness and open savanna.</p>
-            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
-          </div>
-        </a>
-        <a href="/en/activities/hot-air-balloon/" class="photo-card">
-          <div class="photo-card__img">
-            <img src="https://images.unsplash.com/photo-1504598318550-17eba1008a68?w=600&h=450&fit=crop&auto=format" alt="Hot air balloon floating over the Serengeti at sunrise" width="600" height="450" loading="lazy" />
-          </div>
-          <div class="photo-card__body">
-            <span class="photo-card__tag">Aerial</span>
-            <h3 class="photo-card__title">Hot Air Balloon</h3>
-            <p>Soar over the Serengeti at dawn and witness the savanna from a breathtaking aerial perspective.</p>
-            <span class="photo-card__arrow"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 4 13 10 7 16"/></svg></span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- PHOTO GALLERY -->
-  <section class="section">
-    <div class="container">
-      <div class="section__header animate-on-scroll">
-        <span class="chip chip--amber">Gallery</span>
-        <h2>Tanzania in pictures</h2>
-        <p>A glimpse of the unforgettable landscapes and wildlife encounters that await you on your Tanzanian safari.</p>
-      </div>
-      <div class="photo-gallery animate-on-scroll delay-1">
-        <div class="photo-gallery__item photo-gallery__item--tall">
-          <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=500&h=700&fit=crop&auto=format" alt="Giraffe walking through the African savanna at sunset" width="500" height="700" loading="lazy" />
-        </div>
-        <div class="photo-gallery__item">
-          <img src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=500&h=375&fit=crop&auto=format" alt="Zebras grazing in the Serengeti National Park" width="500" height="375" loading="lazy" />
-        </div>
-        <div class="photo-gallery__item">
-          <img src="https://images.unsplash.com/photo-1560440976-a8a309ea5837?w=500&h=375&fit=crop&auto=format" alt="Wildebeest crossing during the Great Migration in the Serengeti" width="500" height="375" loading="lazy" />
-        </div>
-        <div class="photo-gallery__item">
-          <img src="https://images.unsplash.com/photo-1745885979468-44a855f8a5fa?w=500&h=375&fit=crop&auto=format" alt="Ngorongoro Crater panoramic view with wildlife" width="500" height="375" loading="lazy" />
-        </div>
-        <div class="photo-gallery__item">
-          <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=500&h=375&fit=crop&auto=format" alt="Majestic lion in the golden grasslands of Tanzania" width="500" height="375" loading="lazy" />
+    <!-- Section 4: Pricing -->
+    <section class="panel pricing-section" id="section-pricing">
+      <div class="glass-box full-width init-anim">
+        <h2 class="glow-text center-text">Physical Tanzania Expeditions</h2>
+        <div class="pricing-cards">
+          <div class="price-card">
+            <img src="/media/homepage/safari_classic.jpg" alt="Classic Safari Expedition" class="price-img" loading="lazy">
+            <h3>Classic Safari</h3>
+            <p class="price-desc">The essential adventure. Explore the Serengeti in our fully equipped 4x4 vehicles.</p>
+            <div class="price">$1,299</div>
+            <ul>
+              <li>✓ 3 Days Safari (Serengeti &amp; Ngorongoro)</li>
+              <li>✓ Standard Lodge Accommodation</li>
+              <li>✓ All Meals Included</li>
+              <li>✓ Roundtrip Transfers from Arusha</li>
+              <li>✓ Certified Bilingual Guide</li>
+            </ul>
+            <button class="neon-btn">Book Trip</button>
+          </div>
+          <div class="price-card featured">
+            <img src="/media/homepage/safari_balloon.jpg" alt="Hot Air Balloon Safari" class="price-img" loading="lazy">
+            <h3>Serengeti Adventure</h3>
+            <p class="price-desc">Our most popular package. Feel the African breeze from above at dawn.</p>
+            <div class="price">$2,499</div>
+            <ul>
+              <li>★ 5 Days Extensive Safari</li>
+              <li>★ <strong>Hot Air Balloon Flight over Serengeti</strong></li>
+              <li>★ Premium Glamping Accommodation</li>
+              <li>★ Champagne Breakfast in the Savannah</li>
+              <li>★ VIP Airport Transfers</li>
+              <li>★ Exclusive Night Safaris</li>
+            </ul>
+            <button class="neon-btn">Most Popular</button>
+          </div>
+          <div class="price-card">
+            <img src="/media/homepage/safari_luxury.jpg" alt="VIP Luxury Safari" class="price-img" loading="lazy">
+            <h3>Kilimanjaro VIP Luxury</h3>
+            <p class="price-desc">The ultimate luxury experience. Untamed nature combined with 5-star comfort.</p>
+            <div class="price">$4,999</div>
+            <ul>
+              <li>👑 7 Days (Serengeti, Tarangire, Ngorongoro)</li>
+              <li>👑 Private Hot Air Balloon Flight</li>
+              <li>👑 5-Star Lodging with Infinity Pool</li>
+              <li>👑 Private Chef &amp; Gourmet Meals</li>
+              <li>👑 Exclusive Private 4x4 Vehicle &amp; Guide</li>
+              <li>👑 24/7 VIP Concierge Service</li>
+            </ul>
+            <button class="neon-btn">Go VIP</button>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- VIDEO GALLERY -->
-  <VideoGallery videoIds={['elefantes-caminando','leon-retrato','jirafa-comiendo','jirafa-cebras-estampida','guepardos-bebedero','rinoceronte-pastando']} lang={lang} title="Safari Tanzania Videos" columns={3} />
+    <!-- Section: Cerveza Safari -->
+    <section class="panel beer-section-white" id="section-beer">
+      <div class="beer-content-wrapper">
+        <h2 class="dark-text center-text">Refresh Your Adventure</h2>
+        <div class="beer-container" id="beer-container">
+          <video id="beer-video" class="native-scrub-video" src="/media/homepage/video_fondo_negro.mp4" muted playsinline preload="auto"></video>
+        </div>
+        <p class="dark-text center-text mt-4">Discover the true taste of the savannah with <strong>Cerveza Safari</strong>. Authentic African blend.</p>
+      </div>
+    </section>
 
-  <!-- FAQ -->
-  <section class="section section--gray">
-    <div class="container">
-      <div class="section__header animate-on-scroll">
-        <span class="chip chip--green">FAQ</span>
-        <h2>Frequently asked questions</h2>
-        <p>Everything you need to know before booking your Tanzania safari adventure.</p>
+    <!-- Section 5: Conclusion -->
+    <section class="panel conclusion" id="section-conclusion">
+      <div class="glass-box init-anim">
+        <h2 class="glow-text">Awaken Africa</h2>
+        <p>A new frontier of immersive Tanzanian wildlife exploration.</p>
       </div>
-      <div class="faq-list animate-on-scroll delay-1">
-        {faqItems.map(item => (
-          <details>
-            <summary>{item.question}</summary>
-            <div class="faq-answer" set:html={item.answer} />
-          </details>
-        ))}
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- FINAL CTA -->
-  <section class="section section--green bg-green" style="position:relative;overflow:hidden">
-    <div style="position:absolute;top:0;right:0;opacity:.1;pointer-events:none;color:#D4A017">
-      <Fragment set:html={ACACIA_LARGE} />
-    </div>
-    <div class="container" style="text-align:center">
-      <div class="section__header animate-on-scroll">
-        <h2>Ready for your African adventure?</h2>
-        <p>Book your 2026 Tanzania safari today. Expert guides, incredible wildlife and memories that last a lifetime.</p>
-      </div>
-      <div class="animate-on-scroll delay-1" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-        <a href="/en/prices/" class="btn btn--primary btn--lg">See prices 2026</a>
-        <a href="/en/contact/" class="btn btn--outline btn--lg" style="border-color:white;color:white">Contact us</a>
-      </div>
-    </div>
-  </section>
-
-  <Footer slot="footer" lang={lang} />
-</BaseLayout>
+  <!-- Three.js module -->
+  <script>
+    import('../scripts/homepage-3d.ts');
+  </script>
+</HomepageLayout>
