@@ -4,63 +4,127 @@ export function getNavItems(lang: Lang) {
   if (lang === 'en') {
     return [
       {
-        label: 'Safaris', href: '/en/safaris/',
+        label: 'Safaris', href: '/safaris/',
         children: [
-          { label: '🦁 Classic Safari',     href: '/en/safaris/classic-safari/' },
-          { label: '📸 Photo Safari',        href: '/en/safaris/photo-safari/' },
-          { label: '🌙 Night Safari',        href: '/en/safaris/night-safari/' },
+          { label: '🦁 Classic Safari',     href: '/safaris/classic-safari/' },
+          { label: '📸 Photo Safari',        href: '/safaris/photo-safari/' },
+          { label: '🌙 Night Safari',        href: '/safaris/night-safari/' },
         ]
       },
       {
-        label: 'Activities', href: '/en/activities/',
+        label: 'Activities', href: '/activities/',
         children: [
-          { label: '🐘 Wildlife Watching',      href: '/en/activities/wildlife-watching/' },
-          { label: '🥾 Bush Walks',              href: '/en/activities/bush-walks/' },
-          { label: '🎈 Hot Air Balloon',         href: '/en/activities/hot-air-balloon/' },
-          { label: '📷 Safari Photography',      href: '/en/activities/safari-photography/' },
+          { label: '🐘 Wildlife Watching',      href: '/activities/wildlife-watching/' },
+          { label: '🥾 Bush Walks',              href: '/activities/bush-walks/' },
+          { label: '🎈 Hot Air Balloon',         href: '/activities/hot-air-balloon/' },
+          { label: '📷 Safari Photography',      href: '/activities/safari-photography/' },
         ]
       },
       {
-        label: 'Lodging', href: '/en/lodging/',
+        label: 'Lodging', href: '/lodging/',
         children: [
-          { label: '🏨 Safari Lodges',  href: '/en/lodging/safari-lodges/' },
-          { label: '⛺ Tented Camps',    href: '/en/lodging/tented-camps/' },
+          { label: '🏨 Safari Lodges',  href: '/lodging/safari-lodges/' },
+          { label: '⛺ Tented Camps',    href: '/lodging/tented-camps/' },
         ]
       },
-      { label: 'Prices',          href: '/en/prices/' },
-      { label: 'How to Get Here', href: '/en/how-to-get-here/' },
-      { label: 'Blog',            href: '/en/blog/' },
+      { label: 'Prices',          href: '/prices/' },
+      { label: 'How to Get Here', href: '/how-to-get-here/' },
+      { label: 'Blog',            href: '/blog/' },
     ];
   }
 
-  // Spanish (default)
+  if (lang === 'de') {
+    return [
+      {
+        label: 'Safaris', href: '/de/safaris/',
+        children: [
+          { label: '🦁 Klassische Safari',  href: '/de/safaris/klassische-safari/' },
+          { label: '📸 Foto-Safari',         href: '/de/safaris/foto-safari/' },
+          { label: '🌙 Nacht-Safari',        href: '/de/safaris/nacht-safari/' },
+        ]
+      },
+      {
+        label: 'Aktivitäten', href: '/de/aktivitaeten/',
+        children: [
+          { label: '🐘 Wildtierbeobachtung',    href: '/de/aktivitaeten/wildtierbeobachtung/' },
+          { label: '🥾 Buschwanderungen',         href: '/de/aktivitaeten/buschwanderungen/' },
+          { label: '🎈 Heißluftballon',           href: '/de/aktivitaeten/heissluftballon/' },
+          { label: '📷 Safari-Fotografie',        href: '/de/aktivitaeten/safari-fotografie/' },
+        ]
+      },
+      {
+        label: 'Unterkunft', href: '/de/unterkunft/',
+        children: [
+          { label: '🏨 Safari Lodges',  href: '/de/unterkunft/lodges/' },
+          { label: '⛺ Camps',           href: '/de/unterkunft/camps/' },
+        ]
+      },
+      { label: 'Preise',    href: '/de/preise/' },
+      { label: 'Anreise',   href: '/de/anreise/' },
+      { label: 'Blog',      href: '/de/blog/' },
+    ];
+  }
+
+  if (lang === 'fr') {
+    return [
+      {
+        label: 'Safaris', href: '/fr/safaris/',
+        children: [
+          { label: '🦁 Safari Classique',   href: '/fr/safaris/safari-classique/' },
+          { label: '📸 Safari Photo',        href: '/fr/safaris/safari-photo/' },
+          { label: '🌙 Safari Nocturne',     href: '/fr/safaris/safari-nocturne/' },
+        ]
+      },
+      {
+        label: 'Activités', href: '/fr/activites/',
+        children: [
+          { label: '🐘 Observation de la Faune',  href: '/fr/activites/observation-faune/' },
+          { label: '🥾 Marches en Brousse',         href: '/fr/activites/marches-brousse/' },
+          { label: '🎈 Montgolfière',               href: '/fr/activites/montgolfiere/' },
+          { label: '📷 Photographie Safari',        href: '/fr/activites/photographie-safari/' },
+        ]
+      },
+      {
+        label: 'Hébergement', href: '/fr/hebergement/',
+        children: [
+          { label: '🏨 Lodges',       href: '/fr/hebergement/lodges/' },
+          { label: '⛺ Campements',    href: '/fr/hebergement/campements/' },
+        ]
+      },
+      { label: 'Prix',            href: '/fr/prix/' },
+      { label: 'Comment Venir',   href: '/fr/comment-venir/' },
+      { label: 'Blog',            href: '/fr/blog/' },
+    ];
+  }
+
+  // Spanish (default fallback)
   return [
     {
-      label: 'Safaris', href: '/safaris/',
+      label: 'Safaris', href: '/es/safaris/',
       children: [
-        { label: '🦁 Safari Clásico',       href: '/safaris/safari-clasico/' },
-        { label: '📸 Safari Fotográfico',    href: '/safaris/safari-fotografico/' },
-        { label: '🌙 Safari Nocturno',       href: '/safaris/safari-nocturno/' },
+        { label: '🦁 Safari Clásico',       href: '/es/safaris/safari-clasico/' },
+        { label: '📸 Safari Fotográfico',    href: '/es/safaris/safari-fotografico/' },
+        { label: '🌙 Safari Nocturno',       href: '/es/safaris/safari-nocturno/' },
       ]
     },
     {
-      label: 'Actividades', href: '/actividades/',
+      label: 'Actividades', href: '/es/actividades/',
       children: [
-        { label: '🐘 Avistamiento de Fauna',  href: '/actividades/avistamiento-fauna/' },
-        { label: '🥾 Caminatas Bush',          href: '/actividades/caminatas-bush/' },
-        { label: '🎈 Globo Aerostático',       href: '/actividades/globo-aerostatico/' },
-        { label: '📷 Fotografía Safari',       href: '/actividades/fotografia-safari/' },
+        { label: '🐘 Avistamiento de Fauna',  href: '/es/actividades/avistamiento-fauna/' },
+        { label: '🥾 Caminatas Bush',          href: '/es/actividades/caminatas-bush/' },
+        { label: '🎈 Globo Aerostático',       href: '/es/actividades/globo-aerostatico/' },
+        { label: '📷 Fotografía Safari',       href: '/es/actividades/fotografia-safari/' },
       ]
     },
     {
-      label: 'Hospedaje', href: '/hospedaje/',
+      label: 'Hospedaje', href: '/es/hospedaje/',
       children: [
-        { label: '🏨 Safari Lodges',    href: '/hospedaje/lodges/' },
-        { label: '⛺ Campamentos',       href: '/hospedaje/campamentos/' },
+        { label: '🏨 Safari Lodges',    href: '/es/hospedaje/lodges/' },
+        { label: '⛺ Campamentos',       href: '/es/hospedaje/campamentos/' },
       ]
     },
-    { label: 'Precios',       href: '/precios/' },
-    { label: 'Cómo Llegar',   href: '/como-llegar/' },
-    { label: 'Blog',           href: '/blog/' },
+    { label: 'Precios',       href: '/es/precios/' },
+    { label: 'Cómo Llegar',   href: '/es/como-llegar/' },
+    { label: 'Blog',           href: '/es/blog/' },
   ];
 }
