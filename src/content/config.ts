@@ -14,18 +14,21 @@ const blog = defineCollection({
     image: z.string(),
     imageAlt: z.string(),
     silo: z.enum([
-      'safaris-tanzania',
-      'actividades-aventura',
-      'hospedaje-lodges',
-      'guias-viaje',
-      'cultura-masai',
+      // EN silos
+      'tanzania-safaris', 'adventure-activities', 'lodges-camps', 'travel-guides', 'masai-culture',
+      // ES silos
+      'safaris-tanzania', 'actividades-aventura', 'hospedaje-lodges', 'guias-viaje', 'cultura-masai',
+      // DE silos
+      'tansania-safaris', 'abenteuer-aktivitaeten', 'reisefuehrer', 'masai-kultur',
+      // FR silos
+      'safaris-tanzanie', 'activites-aventure', 'lodges-campements', 'guides-voyage', 'culture-masai-fr',
     ]),
     relatedPosts: z.array(z.string()).optional(),
     faqSchema: z
       .array(z.object({ q: z.string(), a: z.string() }))
       .optional(),
     readingTime: z.number().optional(),
-    lang: z.enum(['es', 'en']).default('es'),
+    lang: z.enum(['en', 'es', 'de', 'fr']).default('en'),
   }),
 });
 
