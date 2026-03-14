@@ -23,7 +23,7 @@ const {
   breadcrumbs,
 } = Astro.props;
 
-const lang: Lang = Astro.props.lang || 'es';
+const lang: Lang = Astro.props.lang || 'en';
 const langConfig = languages[lang];
 const hreflangs = getHreflangs(Astro.url.pathname, lang);
 
@@ -39,9 +39,11 @@ const schemaArr = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
   <title>{title}</title>
   <meta name="description" content={description}>
   <link rel="canonical" href={canonicalUrl}>
-  <link rel="alternate" hreflang="es" href={`${siteUrl}${hreflangs.es}`} />
   <link rel="alternate" hreflang="en" href={`${siteUrl}${hreflangs.en}`} />
-  <link rel="alternate" hreflang="x-default" href={`${siteUrl}${hreflangs.es}`} />
+  <link rel="alternate" hreflang="es" href={`${siteUrl}${hreflangs.es}`} />
+  <link rel="alternate" hreflang="de" href={`${siteUrl}${hreflangs.de}`} />
+  <link rel="alternate" hreflang="fr" href={`${siteUrl}${hreflangs.fr}`} />
+  <link rel="alternate" hreflang="x-default" href={`${siteUrl}${hreflangs.en}`} />
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content={canonicalUrl}>
