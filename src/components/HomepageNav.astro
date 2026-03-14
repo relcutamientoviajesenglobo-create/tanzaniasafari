@@ -1,0 +1,134 @@
+---
+import type { Lang } from '../i18n/config';
+import { languages } from '../i18n/config';
+import { t } from '../i18n/utils';
+import { getAlternatePath } from '../i18n/routes';
+
+interface Props {
+  lang?: Lang;
+}
+
+const lang: Lang = Astro.props.lang || 'en';
+---
+
+<nav class="hp-nav" id="hp-nav" aria-label="Main navigation">
+  <div class="hp-nav__inner">
+    <a href={lang === 'en' ? '/' : `/${lang}/`} class="hp-nav__logo" aria-label="Safari Tanzania Home">
+      Safari Tanzania
+    </a>
+    <div class="hp-nav__links">
+      <a href={getAlternatePath('/safaris/', lang)}>{t('nav.safaris', lang)}</a>
+      <a href={getAlternatePath('/prices/', lang)}>{t('nav.prices', lang)}</a>
+      <a href={getAlternatePath('/contact/', lang)}>{t('nav.contact', lang)}</a>
+      <div class="hp-nav__lang">
+        {Object.entries(languages).map(([code, config]) => (
+          <a
+            href={code === 'en' ? '/' : `/${code}/`}
+            class:list={['hp-nav__lang-item', { active: code === lang }]}
+          >
+            {code.toUpperCase()}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .hp-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1rem 5%;
+    transition: all 0.4s ease;
+  }
+  .hp-nav.scrolled {
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .hp-nav__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .hp-nav__logo {
+    font-family: 'African', sans-serif;
+    font-size: 1.5rem;
+    color: #fff;
+    text-decoration: none;
+    opacity: 0.6;
+    transition: opacity 0.3s, text-shadow 0.3s;
+    text-shadow: 0 0 10px rgba(255, 170, 0, 0.3);
+  }
+  .hp-nav.scrolled .hp-nav__logo {
+    opacity: 1;
+    text-shadow: 0 0 15px rgba(255, 170, 0, 0.6);
+  }
+  .hp-nav__links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+  .hp-nav__links a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.3s, text-shadow 0.3s;
+  }
+  .hp-nav.scrolled .hp-nav__links a {
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .hp-nav__links a:hover {
+    color: #ffaa00;
+    text-shadow: 0 0 10px rgba(255, 170, 0, 0.5);
+  }
+  .hp-nav__lang {
+    display: flex;
+    gap: 0.5rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    padding-left: 1.5rem;
+  }
+  .hp-nav__lang-item {
+    font-size: 0.75rem !important;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid transparent;
+  }
+  .hp-nav__lang-item.active {
+    border-color: rgba(255, 170, 0, 0.5);
+    color: #ffaa00 !important;
+  }
+  @media (max-width: 768px) {
+    .hp-nav__links { gap: 1rem; }
+    .hp-nav__links a { font-size: 0.75rem; }
+    .hp-nav__lang { padding-left: 0.75rem; }
+  }
+</style>
+
+<script>
+  const nav = document.getElementById('hp-nav');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        if (window.scrollY > 50) {
+          nav?.classList.add('scrolled');
+        } else {
+          nav?.classList.remove('scrolled');
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+</script>
