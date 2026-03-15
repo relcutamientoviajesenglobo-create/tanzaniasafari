@@ -64,8 +64,31 @@ body {
     width: 100vw;
     height: 100vh;
     object-fit: cover;
+    object-position: center center;
     z-index: -3;
     pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .bg-video {
+        object-position: 35% center;
+        height: 100svh;
+    }
+}
+
+@media (max-width: 480px) {
+    .bg-video {
+        object-position: 30% center;
+        height: 100svh;
+        width: 100svw;
+    }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+    .bg-video {
+        object-position: center center;
+        height: 100svh;
+    }
 }
 
 .video-overlay {
@@ -77,6 +100,19 @@ body {
     background: rgba(5, 5, 5, 0.75);
     z-index: -2;
     pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .video-overlay {
+        height: 100svh;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-overlay {
+        height: 100svh;
+        width: 100svw;
+    }
 }
 
 ::-webkit-scrollbar {
