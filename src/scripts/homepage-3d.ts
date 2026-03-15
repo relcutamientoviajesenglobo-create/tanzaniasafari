@@ -27,13 +27,14 @@ const scrollVids = [
     document.getElementById('scroll-vid-3') as HTMLVideoElement | null,
 ];
 
-// Preload all scroll videos
+// Preload all scroll videos — start at end (reversed playback)
 scrollVids.forEach(v => {
     if (v) {
         v.muted = true;
         v.playsInline = true;
-        v.currentTime = 0;
+        v.preload = 'auto';
         v.load();
+        v.addEventListener('loadeddata', () => { v.currentTime = v.duration - 0.1; }, { once: true });
     }
 });
 
@@ -322,7 +323,7 @@ const tl = gsap.timeline({
         trigger: ".content",
         start: "top top",
         end: "bottom bottom",
-        scrub: 1.5
+        scrub: 2
     }
 });
 
@@ -371,16 +372,17 @@ scrollSections.forEach(section => {
         vid!.currentTime = dur - 0.1;
 
         // Scrub video REVERSED: starts at end, scrolls to beginning
+        // High scrub value = buttery smooth like Apple (less jitter, more interpolation)
         gsap.fromTo(vid,
             { currentTime: Math.max(0.1, dur - 0.1) },
             {
                 currentTime: 0.1,
-                ease: "none",
+                ease: "power1.inOut",
                 scrollTrigger: {
                     trigger: section,
-                    start: "top 120%",
-                    end: "bottom -20%",
-                    scrub: 0.3,
+                    start: "top 150%",
+                    end: "bottom -50%",
+                    scrub: 2,
                 }
             }
         );
@@ -388,8 +390,8 @@ scrollSections.forEach(section => {
         // Show/hide video + crossfade
         ScrollTrigger.create({
             trigger: section,
-            start: "top 80%",
-            end: "bottom 20%",
+            start: "top 90%",
+            end: "bottom 10%",
             onEnter: () => {
                 scrollVids.forEach((v, i) => {
                     if (i === idx) v?.classList.add('active');
