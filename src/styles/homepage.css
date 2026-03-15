@@ -296,6 +296,15 @@ p {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.tiktok-card blockquote.tiktok-embed {
+    min-width: 0 !important;
+    max-width: 100% !important;
+}
+
+.tiktok-card iframe {
+    max-width: 100% !important;
+}
+
 .tiktok-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(0, 255, 170, 0.2);
@@ -497,28 +506,7 @@ p.dark-text {
     display: block;
 }
 
-@media (max-width: 768px) {
-    .beer-container {
-        min-height: 400px;
-    }
-    .native-scrub-video {
-        height: 60vh;
-        max-height: none;
-        width: 130%;
-        margin-left: -15%;
-        object-fit: contain;
-    }
-}
-
 @media (max-width: 480px) {
-    .beer-container {
-        min-height: 350px;
-    }
-    .native-scrub-video {
-        height: 55vh;
-        width: 150%;
-        margin-left: -25%;
-    }
     .dark-text {
         font-size: 2rem;
     }
@@ -580,11 +568,22 @@ p.dark-text {
     .tiktok-grid {
         grid-template-columns: 1fr;
         gap: 30px;
-        padding: 0 1rem;
+        padding: 0;
     }
     .tiktok-card {
-        max-width: 400px;
+        width: 100%;
+        max-width: 100%;
         margin: 0 auto;
+        overflow: hidden;
+    }
+    .tiktok-card blockquote.tiktok-embed {
+        min-width: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+    .tiktok-card iframe {
+        max-width: 100% !important;
+        width: 100% !important;
     }
     .price-card.featured {
         transform: scale(1);
