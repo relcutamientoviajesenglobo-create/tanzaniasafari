@@ -496,6 +496,33 @@ p.dark-text {
     display: block;
 }
 
+@media (max-width: 768px) {
+    .beer-container {
+        min-height: 400px;
+    }
+    .native-scrub-video {
+        height: 60vh;
+        max-height: none;
+        width: 130%;
+        margin-left: -15%;
+        object-fit: contain;
+    }
+}
+
+@media (max-width: 480px) {
+    .beer-container {
+        min-height: 350px;
+    }
+    .native-scrub-video {
+        height: 55vh;
+        width: 150%;
+        margin-left: -25%;
+    }
+    .dark-text {
+        font-size: 2rem;
+    }
+}
+
 .mt-4 {
     margin-top: 2rem;
 }
