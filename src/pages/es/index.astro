@@ -8,9 +8,9 @@ import HomepageLayout from '../../layouts/HomepageLayout.astro';
   lang="es"
 >
   <!-- Video Background -->
-  <video class="bg-video" autoplay loop muted playsinline>
-    <source src="/media/homepage/safari-bg.mp4" type="video/mp4">
-  </video>
+  <video class="bg-video scroll-vid active" id="scroll-vid-1" muted playsinline preload="auto" src="/media/homepage/scroll-video-1.mp4"></video>
+  <video class="bg-video scroll-vid" id="scroll-vid-2" muted playsinline preload="auto" src="/media/homepage/scroll-video-2.mp4"></video>
+  <video class="bg-video scroll-vid" id="scroll-vid-3" muted playsinline preload="auto" src="/media/homepage/scroll-video-3.mp4"></video>
   <div class="video-overlay"></div>
 
   <!-- 3D Background Canvas -->
@@ -19,7 +19,7 @@ import HomepageLayout from '../../layouts/HomepageLayout.astro';
   <!-- UI Overlay -->
   <main class="content">
     <!-- Section 1: Hero -->
-    <section class="panel hero" id="section-hero">
+    <section class="panel hero" id="section-hero" data-scroll-video="1">
       <div class="glass-box init-anim">
         <h1 class="glow-text">Tanzania Salvaje</h1>
         <p>Desplázate para descubrir la vida salvaje holográfica de la sabana africana.</p>
@@ -30,7 +30,7 @@ import HomepageLayout from '../../layouts/HomepageLayout.astro';
     </section>
 
     <!-- Section 2: Details -->
-    <section class="panel details" id="section-details">
+    <section class="panel details" id="section-details" data-scroll-video="2">
       <div class="glass-box left init-anim">
         <h2 class="glow-text">Tanzania Safari</h2>
         <p>A medida que te adentras en las llanuras, la verdadera esencia de África cobra vida. Experimenta los paisajes impresionantes, la increíble vida salvaje y las aventuras inolvidables que te esperan en Tanzania.</p>
@@ -75,7 +75,7 @@ import HomepageLayout from '../../layouts/HomepageLayout.astro';
     </section>
 
     <!-- Section 3: Immersion -->
-    <section class="panel immersion" id="section-immersion">
+    <section class="panel immersion" id="section-immersion" data-scroll-video="3">
       <div class="glass-box right init-anim">
         <h2 class="glow-text">La Migración</h2>
         <p>La frontera entre la realidad y lo digital se desvanece durante la Gran Migración. Contempla la síntesis definitiva de luz y geometría sagrada.</p>

@@ -20,20 +20,41 @@ renderer.toneMapping = THREE.ReinhardToneMapping;
 
 const scene = new THREE.Scene();
 
-const video = document.querySelector('.bg-video') as HTMLVideoElement | null;
-if (video) {
-    video.muted = true;
-    video.playsInline = true;
-    const playVideo = () => {
-        video.play().catch(e => console.log("Autoplay prevented:", e));
-    };
-    playVideo();
+// Scroll-scrub video system (Apple-style)
+const scrollVids = [
+    document.getElementById('scroll-vid-1') as HTMLVideoElement | null,
+    document.getElementById('scroll-vid-2') as HTMLVideoElement | null,
+    document.getElementById('scroll-vid-3') as HTMLVideoElement | null,
+];
 
-    const videoTexture = new THREE.VideoTexture(video);
+// Preload all scroll videos
+scrollVids.forEach(v => {
+    if (v) {
+        v.muted = true;
+        v.playsInline = true;
+        v.currentTime = 0;
+        v.load();
+    }
+});
+
+// Use the first active video as scene background
+const activeVid = scrollVids[0];
+if (activeVid) {
+    const videoTexture = new THREE.VideoTexture(activeVid);
     videoTexture.colorSpace = THREE.SRGBColorSpace;
     videoTexture.minFilter = THREE.LinearFilter;
     videoTexture.magFilter = THREE.LinearFilter;
     scene.background = videoTexture;
+
+    // Update texture source when active video changes
+    let currentBgIndex = 0;
+    (window as any).__switchBgVideo = (idx: number) => {
+        if (idx !== currentBgIndex && scrollVids[idx]) {
+            videoTexture.image = scrollVids[idx]!;
+            videoTexture.needsUpdate = true;
+            currentBgIndex = idx;
+        }
+    };
 }
 
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.1);
@@ -335,6 +356,58 @@ gsap.to((giraffeCloud.material as THREE.ShaderMaterial).uniforms.uOpacity, {
 gsap.to((bloomPass as any).tintColor, {
     r: 0.8, g: 0.0, b: 1.0,
     scrollTrigger: { trigger: "#section-pricing", start: "top bottom", end: "top center", scrub: 1 }
+});
+
+// ── Scroll-scrub video per section (Apple-style) ──
+const scrollSections = document.querySelectorAll('[data-scroll-video]');
+scrollSections.forEach(section => {
+    const idx = parseInt((section as HTMLElement).dataset.scrollVideo || '1') - 1;
+    const vid = scrollVids[idx];
+    if (!vid) return;
+
+    function setupScrub() {
+        const dur = isNaN(vid!.duration) ? 5.0 : vid!.duration;
+        vid!.currentTime = 0;
+
+        // Scrub video with scroll
+        gsap.to(vid, {
+            currentTime: Math.max(0.1, dur - 0.1),
+            ease: "none",
+            scrollTrigger: {
+                trigger: section,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 0.5,
+            }
+        });
+
+        // Show/hide video + crossfade
+        ScrollTrigger.create({
+            trigger: section,
+            start: "top 60%",
+            end: "bottom 40%",
+            onEnter: () => {
+                scrollVids.forEach((v, i) => {
+                    if (i === idx) v?.classList.add('active');
+                    else v?.classList.remove('active');
+                });
+                if ((window as any).__switchBgVideo) (window as any).__switchBgVideo(idx);
+            },
+            onEnterBack: () => {
+                scrollVids.forEach((v, i) => {
+                    if (i === idx) v?.classList.add('active');
+                    else v?.classList.remove('active');
+                });
+                if ((window as any).__switchBgVideo) (window as any).__switchBgVideo(idx);
+            },
+        });
+    }
+
+    if (vid.readyState >= 1) {
+        setupScrub();
+    } else {
+        vid.addEventListener('loadedmetadata', setupScrub);
+    }
 });
 
 const beerVideo = document.getElementById('beer-video') as HTMLVideoElement | null;
