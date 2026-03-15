@@ -367,25 +367,29 @@ scrollSections.forEach(section => {
 
     function setupScrub() {
         const dur = isNaN(vid!.duration) ? 5.0 : vid!.duration;
-        vid!.currentTime = 0;
+        // Start from end of video (reversed) so there's visible content immediately
+        vid!.currentTime = dur - 0.1;
 
-        // Scrub video with scroll
-        gsap.to(vid, {
-            currentTime: Math.max(0.1, dur - 0.1),
-            ease: "none",
-            scrollTrigger: {
-                trigger: section,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: 0.5,
+        // Scrub video REVERSED: starts at end, scrolls to beginning
+        gsap.fromTo(vid,
+            { currentTime: Math.max(0.1, dur - 0.1) },
+            {
+                currentTime: 0.1,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 120%",
+                    end: "bottom -20%",
+                    scrub: 0.3,
+                }
             }
-        });
+        );
 
         // Show/hide video + crossfade
         ScrollTrigger.create({
             trigger: section,
-            start: "top 60%",
-            end: "bottom 40%",
+            start: "top 80%",
+            end: "bottom 20%",
             onEnter: () => {
                 scrollVids.forEach((v, i) => {
                     if (i === idx) v?.classList.add('active');
