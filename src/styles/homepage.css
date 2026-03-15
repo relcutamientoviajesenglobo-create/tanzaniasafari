@@ -498,9 +498,30 @@ p.dark-text {
     display: block;
 }
 
+@media (max-width: 768px) {
+    .beer-section-white {
+        padding: 6rem 0;
+    }
+    .beer-container {
+        min-height: 400px;
+    }
+    .native-scrub-video {
+        transform: scale(1.4) translateZ(0);
+    }
+}
+
 @media (max-width: 480px) {
     .dark-text {
         font-size: 2rem;
+    }
+    .beer-section-white {
+        padding: 4rem 0;
+    }
+    .beer-container {
+        min-height: 350px;
+    }
+    .native-scrub-video {
+        transform: scale(1.6) translateZ(0);
     }
 }
 
