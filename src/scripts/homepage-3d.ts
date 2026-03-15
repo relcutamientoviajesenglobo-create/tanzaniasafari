@@ -342,8 +342,12 @@ const beerVideo = document.getElementById('beer-video') as HTMLVideoElement | nu
 if (beerVideo) {
     function setupVideoScrubbing() {
         const dur = isNaN(beerVideo!.duration) ? 10.0 : beerVideo!.duration;
-        gsap.to(beerVideo, {
-            currentTime: Math.max(0.1, dur - 0.1),
+        // Start at end of video, scrub backwards to show front label at finish
+        beerVideo!.currentTime = dur - 0.1;
+        gsap.fromTo(beerVideo, {
+            currentTime: Math.max(0.1, dur - 0.1)
+        }, {
+            currentTime: 0.1,
             ease: "none",
             scrollTrigger: {
                 trigger: "#section-beer",
