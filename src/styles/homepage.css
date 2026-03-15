@@ -443,6 +443,12 @@ p {
     color: #111111;
     position: relative;
     z-index: 10;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.beer-section-white.visible {
+    opacity: 1;
 }
 
 .beer-content-wrapper {

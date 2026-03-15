@@ -338,6 +338,20 @@ gsap.to((bloomPass as any).tintColor, {
 });
 
 const beerVideo = document.getElementById('beer-video') as HTMLVideoElement | null;
+const beerSection = document.getElementById('section-beer') as HTMLElement | null;
+
+// Reveal beer section only when it enters viewport (avoids white flash)
+if (beerSection) {
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                beerSection.classList.add('visible');
+                revealObserver.unobserve(beerSection);
+            }
+        });
+    }, { rootMargin: '0px 0px -50px 0px', threshold: 0.01 });
+    revealObserver.observe(beerSection);
+}
 
 if (beerVideo) {
     function setupVideoScrubbing() {
