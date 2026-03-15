@@ -481,6 +481,7 @@ p.dark-text {
     position: relative;
     z-index: 20;
     min-height: 550px;
+    overflow: hidden;
 }
 
 .native-scrub-video {
