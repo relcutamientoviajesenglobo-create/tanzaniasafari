@@ -1,7 +1,7 @@
-# Safari Tanzania — safaritanzania.info (Full)
+# Tanzania Safari — tanzaniasafari.info (Full)
 
 ## About
-Safari Tanzania is a bilingual (Spanish/English) tourism website dedicated to safari experiences in Tanzania, East Africa. Located in the Arusha region, Tanzania is home to some of the world's most spectacular wildlife and natural landscapes, including the Serengeti National Park, Ngorongoro Crater, and Mount Kilimanjaro.
+Tanzania Safari is a bilingual (Spanish/English) tourism website dedicated to safari experiences in Tanzania, East Africa. Located in the Arusha region, Tanzania is home to some of the world's most spectacular wildlife and natural landscapes, including the Serengeti National Park, Ngorongoro Crater, and Mount Kilimanjaro.
 
 ## Site Structure
 
@@ -31,6 +31,6 @@ Safari Tanzania is a bilingual (Spanish/English) tourism website dedicated to sa
 Complete English mirror of all Spanish pages.
 
 ## Contact
-- Website: https://safaritanzania.info
-- Email: info@safaritanzania.info
+- Website: https://tanzaniasafari.info
+- Email: info@tanzaniasafari.info
 - Location: Arusha, Tanzania

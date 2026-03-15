@@ -13,7 +13,7 @@ const description = 'Alles über Safaris in Tansania: beste Nationalparks, Route
 
 const allPosts = await getCollection('blog');
 const posts = allPosts
-  .filter(post => post.slug.startsWith('de-') && (post.data.silo === 'safaris-tanzania' || post.data.silo === 'safaris-tansania'))
+  .filter(post => post.slug.startsWith('de-') && (post.data.silo === 'safaris-tanzania' || post.data.silo === 'safaris-tansania' || post.data.silo === 'tansania-safaris'))
   .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
 
 const breadcrumbs = [
@@ -25,7 +25,7 @@ const schema = [
   webPage({
     name: title,
     description,
-    url: 'https://safaritanzania.info/de/blog/safari-tansania/',
+    url: 'https://tanzaniasafari.info/de/blog/safari-tansania/',
   }),
 ];
 ---

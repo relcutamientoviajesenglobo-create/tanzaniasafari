@@ -17,7 +17,7 @@ export interface Props {
 const { title, description } = Astro.props;
 const lang: Lang = Astro.props.lang || 'en';
 const langConfig = languages[lang];
-const siteUrl = 'https://safaritanzania.info';
+const siteUrl = 'https://tanzaniasafari.info';
 const hreflangs = getHreflangs(Astro.url.pathname, lang);
 const canonicalUrl = `${siteUrl}${Astro.url.pathname}`;
 
@@ -25,17 +25,17 @@ const schema = [
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "Safari Tanzania",
+    "name": "Tanzania Safari",
     "url": siteUrl,
     "inLanguage": langConfig.locale,
   },
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Safari Tanzania",
+    "name": "Tanzania Safari",
     "url": siteUrl,
     "telephone": "+255753000000",
-    "email": "info@safaritanzania.info",
+    "email": "info@tanzaniasafari.info",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Arusha",
@@ -62,7 +62,7 @@ const schema = [
   <meta property="og:title" content={title}>
   <meta property="og:description" content={description}>
   <meta property="og:locale" content={langConfig.ogLocale}>
-  <meta property="og:site_name" content="Safari Tanzania">
+  <meta property="og:site_name" content="Tanzania Safari">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content={title}>
   <meta name="twitter:description" content={description}>

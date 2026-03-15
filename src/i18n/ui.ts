@@ -40,7 +40,7 @@ export const ui: Record<string, Record<string, string>> = {
     'footer.col2.hospedaje': 'Hospedaje',
     'footer.col2.blog': 'Blog y Guías',
     'footer.col2.contacto': 'Contacto',
-    'footer.legal': '©2026 Safari Tanzania — Arusha, Tanzania, África Oriental',
+    'footer.legal': '©2026 Tanzania Safari — Arusha, Tanzania, África Oriental',
     'footer.privacy': 'Privacidad',
     'footer.terms': 'Términos',
 
@@ -121,7 +121,7 @@ export const ui: Record<string, Record<string, string>> = {
     'footer.col2.hospedaje': 'Lodging',
     'footer.col2.blog': 'Blog & Guides',
     'footer.col2.contacto': 'Contact',
-    'footer.legal': '©2026 Safari Tanzania — Arusha, Tanzania, East Africa',
+    'footer.legal': '©2026 Tanzania Safari — Arusha, Tanzania, East Africa',
     'footer.privacy': 'Privacy',
     'footer.terms': 'Terms',
 
@@ -202,7 +202,7 @@ export const ui: Record<string, Record<string, string>> = {
     'footer.col2.hospedaje': 'Unterkunft',
     'footer.col2.blog': 'Blog & Reiseführer',
     'footer.col2.contacto': 'Kontakt',
-    'footer.legal': '©2026 Safari Tanzania — Arusha, Tansania, Ostafrika',
+    'footer.legal': '©2026 Tanzania Safari — Arusha, Tansania, Ostafrika',
     'footer.privacy': 'Datenschutz',
     'footer.terms': 'AGB',
 
@@ -283,7 +283,7 @@ export const ui: Record<string, Record<string, string>> = {
     'footer.col2.hospedaje': 'Hébergement',
     'footer.col2.blog': 'Blog & Guides',
     'footer.col2.contacto': 'Contact',
-    'footer.legal': '©2026 Safari Tanzania — Arusha, Tanzanie, Afrique de l\'Est',
+    'footer.legal': '©2026 Tanzania Safari — Arusha, Tanzanie, Afrique de l\'Est',
     'footer.privacy': 'Confidentialité',
     'footer.terms': 'Conditions',
 

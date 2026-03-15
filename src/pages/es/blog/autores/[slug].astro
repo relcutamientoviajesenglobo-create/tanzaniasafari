@@ -22,7 +22,7 @@ const authorPosts = allPosts
   .filter(p => !p.slug.startsWith('en-') && !p.slug.startsWith('de-') && !p.slug.startsWith('fr-') && p.data.authorSlug === author.id)
   .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
 
-const title = `${author.data.name} — Autor en Safari Tanzania`;
+const title = `${author.data.name} — Autor en Tanzania Safari`;
 const description = author.data.bio;
 
 const breadcrumbs = [
@@ -35,7 +35,7 @@ const schema = [
   webPage({
     name: title,
     description,
-    url: `https://safaritanzania.info/blog/autores/${author.id}/`,
+    url: `https://tanzaniasafari.info/blog/autores/${author.id}/`,
   }),
 ];
 ---
@@ -105,7 +105,7 @@ const schema = [
             <BlogCard
               title={post.data.title}
               description={post.data.description}
-              slug={post.slug}
+              slug={post.slug.replace(/^es-/, '')}
               image={post.data.image}
               imageAlt={post.data.imageAlt}
               author={post.data.author}

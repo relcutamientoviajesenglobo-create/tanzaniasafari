@@ -1,11 +1,11 @@
-// src/i18n/schema.ts — Reusable Schema.org JSON-LD helpers for Safari Tanzania
+// src/i18n/schema.ts — Reusable Schema.org JSON-LD helpers for Tanzania Safari
 
-const siteUrl = 'https://safaritanzania.info';
+const siteUrl = 'https://tanzaniasafari.info';
 
 export const business = {
-  name: 'Safari Tanzania',
+  name: 'Tanzania Safari',
   telephone: '+255753000000',
-  email: 'info@safaritanzania.info',
+  email: 'info@tanzaniasafari.info',
   url: siteUrl,
   address: {
     '@type': 'PostalAddress' as const,

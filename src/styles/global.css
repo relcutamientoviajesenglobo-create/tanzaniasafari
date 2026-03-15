@@ -1,5 +1,5 @@
 /* =============================================
-   SAFARI TANZANIA — Design System MC
+   TANZANIA SAFARI — Design System MC
    Fuentes idénticas a mariecurie.org.uk
    ============================================= */
 
@@ -1773,19 +1773,22 @@ body.menu-open {
   font-weight: 800;
   font-size: 1.5rem;
   color: var(--mc-green);
-  margin-top: 2.5rem;
+  margin-top: 3rem;
   margin-bottom: 1rem;
+  padding-top: .5rem;
   line-height: 1.2;
   scroll-margin-top: 100px;
+  letter-spacing: -0.01em;
 }
 .blog-prose h3 {
   font-family: var(--font-head);
   font-weight: 800;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   color: var(--mc-green);
-  margin-top: 1.75rem;
+  margin-top: 2.25rem;
   margin-bottom: .75rem;
   line-height: 1.25;
+  letter-spacing: -0.01em;
 }
 .blog-prose p {
   margin-bottom: 1.25rem;
@@ -1844,6 +1847,146 @@ body.menu-open {
 .blog-prose input[type="checkbox"] {
   margin-right: .5rem;
   accent-color: var(--mc-green-mid);
+}
+
+/* --- Blog Prose: Blockquote / Pro Tip Callouts --- */
+.blog-prose blockquote {
+  border-left: 4px solid var(--mc-green-mid);
+  background: linear-gradient(135deg, rgba(45, 74, 34, 0.05) 0%, rgba(61, 107, 46, 0.08) 100%);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 1.15rem 1.5rem;
+  margin: 1.75rem 0;
+  font-size: .95rem;
+  color: var(--mc-text);
+  position: relative;
+}
+.blog-prose blockquote p {
+  margin-bottom: .5rem;
+}
+.blog-prose blockquote p:last-child {
+  margin-bottom: 0;
+}
+.blog-prose blockquote strong {
+  color: var(--mc-green-mid);
+}
+
+/* --- Blog Prose: Section separators (h2 top border) --- */
+.blog-prose h2 + p {
+  margin-top: 0;
+}
+.blog-prose h2:not(:first-child)::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--mc-green-mid), var(--mc-amber));
+  border-radius: 2px;
+  margin-bottom: .75rem;
+}
+
+/* --- Blog Featured Card --- */
+.blog-featured-card {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 0;
+  background: var(--mc-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--mc-border);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 2.5rem;
+}
+.blog-featured-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+.blog-featured-card__img {
+  position: relative;
+  overflow: hidden;
+  min-height: 300px;
+}
+.blog-featured-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+  transition: transform 0.4s ease;
+}
+.blog-featured-card:hover .blog-featured-card__img img {
+  transform: scale(1.04);
+}
+.blog-featured-card__body {
+  padding: 2rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.blog-featured-card__chip {
+  display: inline-block;
+  padding: .3rem .75rem;
+  font-size: .75rem;
+  font-weight: 700;
+  color: var(--mc-green-mid);
+  background: rgba(61, 107, 46, .1);
+  border-radius: var(--radius-pill);
+  width: fit-content;
+  margin-bottom: .75rem;
+}
+.blog-featured-card__title {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  color: var(--mc-green);
+  margin-bottom: .75rem;
+}
+.blog-featured-card__desc {
+  font-size: .95rem;
+  color: var(--mc-text-muted);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+.blog-featured-card__meta {
+  font-size: .8rem;
+  color: var(--mc-text-muted);
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  flex-wrap: wrap;
+}
+@media (max-width: 768px) {
+  .blog-featured-card {
+    grid-template-columns: 1fr;
+  }
+  .blog-featured-card__img {
+    min-height: 200px;
+    max-height: 250px;
+  }
+  .blog-featured-card__body {
+    padding: 1.25rem 1.5rem;
+  }
+  .blog-featured-card__title {
+    font-size: 1.3rem;
+  }
+}
+
+/* --- Blog Card hover improvements --- */
+.blog-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.blog-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card-hover);
+}
+.blog-card:hover .photo-card__img img {
+  transform: scale(1.05);
+}
+.photo-card__img img {
+  transition: transform 0.4s ease;
 }
 
 /* --- Blog Tags --- */

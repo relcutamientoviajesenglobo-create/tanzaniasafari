@@ -27,7 +27,7 @@ const lang: Lang = Astro.props.lang || 'en';
 const langConfig = languages[lang];
 const hreflangs = getHreflangs(Astro.url.pathname, lang);
 
-const siteUrl = 'https://safaritanzania.info';
+const siteUrl = 'https://tanzaniasafari.info';
 const canonicalUrl = canonical ? `${siteUrl}${canonical}` : `${siteUrl}${Astro.url.pathname}`;
 const schemaArr = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 ---
@@ -51,7 +51,7 @@ const schemaArr = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
   <meta property="og:description" content={description}>
   <meta property="og:image" content={`${siteUrl}${ogImage}`}>
   <meta property="og:locale" content={langConfig.ogLocale}>
-  <meta property="og:site_name" content="Safari Tanzania">
+  <meta property="og:site_name" content="Tanzania Safari">
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content={title}>

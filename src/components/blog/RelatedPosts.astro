@@ -52,7 +52,7 @@ if (related.length < limit) {
         <BlogCard
           title={post.data.title}
           description={post.data.description}
-          slug={post.slug}
+          slug={post.slug.replace(/^(en|es|de|fr)-/, '')}
           image={post.data.image}
           imageAlt={post.data.imageAlt}
           author={post.data.author}

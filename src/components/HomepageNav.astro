@@ -13,8 +13,8 @@ const lang: Lang = Astro.props.lang || 'en';
 
 <nav class="hp-nav" id="hp-nav" aria-label="Main navigation">
   <div class="hp-nav__inner">
-    <a href={lang === 'en' ? '/' : `/${lang}/`} class="hp-nav__logo" aria-label="Safari Tanzania Home">
-      Safari Tanzania
+    <a href={lang === 'en' ? '/' : `/${lang}/`} class="hp-nav__logo" aria-label="Tanzania Safari Home">
+      Tanzania Safari
     </a>
     <div class="hp-nav__links">
       <a href={getAlternatePath('/safaris/', lang)}>{t('nav.safaris', lang)}</a>

@@ -12,7 +12,7 @@ const description = 'Plongez dans la culture MasaÃ¯ : traditions ancestrales, cÃ
 
 const allPosts = await getCollection('blog');
 const posts = allPosts
-  .filter(post => post.slug.startsWith('fr-') && (post.data.silo === 'masai-culture' || post.data.silo === 'cultura-masai' || post.data.silo === 'culture-masai'))
+  .filter(post => post.slug.startsWith('fr-') && (post.data.silo === 'masai-culture' || post.data.silo === 'cultura-masai' || post.data.silo === 'culture-masai' || post.data.silo === 'culture-masai-fr'))
   .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
 
 const breadcrumbs = [
@@ -24,7 +24,7 @@ const schema = [
   webPage({
     name: title,
     description,
-    url: 'https://safaritanzania.info/fr/blog/culture-masai/',
+    url: 'https://tanzaniasafari.info/fr/blog/culture-masai/',
   }),
 ];
 ---

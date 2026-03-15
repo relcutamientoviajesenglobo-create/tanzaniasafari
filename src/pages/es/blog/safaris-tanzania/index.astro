@@ -23,7 +23,7 @@ const schema = [
   webPage({
     name: title,
     description,
-    url: 'https://safaritanzania.info/blog/safaris-tanzania/',
+    url: 'https://tanzaniasafari.info/blog/safaris-tanzania/',
   }),
 ];
 ---
@@ -52,7 +52,7 @@ const schema = [
             <BlogCard
               title={post.data.title}
               description={post.data.description}
-              slug={post.slug}
+              slug={post.slug.replace(/^es-/, '')}
               image={post.data.image}
               imageAlt={post.data.imageAlt}
               author={post.data.author}

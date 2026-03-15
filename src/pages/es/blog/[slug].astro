@@ -7,7 +7,7 @@ export async function getStaticPaths() {
   return posts
     .filter(post => !post.slug.startsWith('en-') && !post.slug.startsWith('de-') && !post.slug.startsWith('fr-'))
     .map(post => ({
-      params: { slug: post.slug },
+      params: { slug: post.slug.replace(/^es-/, '') },
       props: { post },
     }));
 }
@@ -19,7 +19,7 @@ const { Content, headings } = await post.render();
 <BlogPostLayout
   frontmatter={post.data}
   headings={headings}
-  slug={post.slug}
+  slug={post.slug.replace(/^es-/, '')}
   lang="es"
 >
   <Content />

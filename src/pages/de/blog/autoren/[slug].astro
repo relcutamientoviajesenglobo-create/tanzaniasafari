@@ -24,7 +24,7 @@ const authorPosts = allPosts
   .filter(p => p.slug.startsWith('de-') && p.data.authorSlug === author.id)
   .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
 
-const title = `${author.data.name} — Autor bei Safari Tanzania`;
+const title = `${author.data.name} — Autor bei Tanzania Safari`;
 const description = author.data.bio;
 
 const breadcrumbs = [
@@ -37,7 +37,7 @@ const schema = [
   webPage({
     name: title,
     description,
-    url: `https://safaritanzania.info/de/blog/autoren/${author.id}/`,
+    url: `https://tanzaniasafari.info/de/blog/autoren/${author.id}/`,
   }),
 ];
 ---

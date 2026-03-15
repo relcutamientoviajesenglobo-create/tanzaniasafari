@@ -13,7 +13,7 @@ const description = 'Entdecken Sie Abenteuer-Aktivitäten in Tansania: Heißluft
 
 const allPosts = await getCollection('blog');
 const posts = allPosts
-  .filter(post => post.slug.startsWith('de-') && (post.data.silo === 'actividades-aventura' || post.data.silo === 'adventure-activities'))
+  .filter(post => post.slug.startsWith('de-') && (post.data.silo === 'actividades-aventura' || post.data.silo === 'adventure-activities' || post.data.silo === 'abenteuer-aktivitaeten'))
   .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
 
 const breadcrumbs = [
@@ -25,7 +25,7 @@ const schema = [
   webPage({
     name: title,
     description,
-    url: 'https://safaritanzania.info/de/blog/abenteuer-aktivitaeten/',
+    url: 'https://tanzaniasafari.info/de/blog/abenteuer-aktivitaeten/',
   }),
 ];
 ---

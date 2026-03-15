@@ -7,7 +7,7 @@ const blog = defineCollection({
     description: z.string(),
     publishDate: z.date(),
     updatedDate: z.date().optional(),
-    author: z.string().default('Equipo Safari Tanzania'),
+    author: z.string().default('Equipo Tanzania Safari'),
     authorSlug: z.string().default('equipo-safari'),
     category: z.enum(['guias', 'naturaleza', 'actividades', 'hospedaje', 'cultura', 'consejos']),
     tags: z.array(z.string()),

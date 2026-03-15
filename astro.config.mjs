@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://safaritanzania.info',
+  site: 'https://tanzaniasafari.info',
   integrations: [
     sitemap({
       changefreq: 'weekly',

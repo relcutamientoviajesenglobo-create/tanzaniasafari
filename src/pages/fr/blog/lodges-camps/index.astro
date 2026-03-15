@@ -12,7 +12,7 @@ const description = 'Guides complets sur les lodges et camps de safari en Tanzan
 
 const allPosts = await getCollection('blog');
 const posts = allPosts
-  .filter(post => post.slug.startsWith('fr-') && (post.data.silo === 'lodges-camps' || post.data.silo === 'hospedaje-lodges'))
+  .filter(post => post.slug.startsWith('fr-') && (post.data.silo === 'lodges-camps' || post.data.silo === 'hospedaje-lodges' || post.data.silo === 'lodges-campements'))
   .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
 
 const breadcrumbs = [
@@ -24,7 +24,7 @@ const schema = [
   webPage({
     name: title,
     description,
-    url: 'https://safaritanzania.info/fr/blog/lodges-camps/',
+    url: 'https://tanzaniasafari.info/fr/blog/lodges-camps/',
   }),
 ];
 ---

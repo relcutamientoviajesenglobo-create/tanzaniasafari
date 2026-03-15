@@ -3,10 +3,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import BlogCard from '../../components/blog/BlogCard.astro';
+import BlogSearch from '../../components/blog/BlogSearch.astro';
+import SafariTikTok from '../../components/SafariTikTok.astro';
 import { getCollection } from 'astro:content';
+import { languages } from '../../i18n/config';
 
 const lang = 'en';
-const title = 'Safari Tanzania Blog — Guides, Tips & Travel Stories';
+const title = 'Tanzania Safari Blog — Guides, Tips & Travel Stories';
 const description = 'Explore our blog for Tanzania safari guides, wildlife photography tips, travel planning advice, Masai culture insights, and accommodation reviews.';
 
 // Filter English posts (starting with 'en-')
@@ -22,6 +25,15 @@ const breadcrumbs = [
 ];
 
 // Silo categories for navigation
+const searchPosts = posts.map(post => ({
+  title: post.data.title,
+  description: post.data.description,
+  slug: post.slug.replace(/^(en|es|de|fr)-/, ''),
+  image: post.data.image,
+  category: post.data.category,
+  tags: post.data.tags,
+}));
+
 const silos = [
   { label: 'Tanzania Safaris', href: '/blog/tanzania-safaris/' },
   { label: 'Adventure Activities', href: '/blog/adventure-activities/' },
@@ -40,7 +52,7 @@ const silos = [
     <div class="container">
       <div style="text-align:center;max-width:700px;margin:0 auto">
         <span class="chip chip--green">Blog</span>
-        <h1 style="margin-top:.75rem">Safari Tanzania Blog</h1>
+        <h1 style="margin-top:.75rem">Tanzania Safari Blog</h1>
         <p style="margin-bottom:1.5rem">Guides, tips, and stories from the African bush. Everything you need to plan the perfect Tanzania safari, from wildlife photography to Masai cultural experiences.</p>
       </div>
     </div>
@@ -57,28 +69,66 @@ const silos = [
     </div>
   </section>
 
+  <!-- Search -->
+  <section style="padding:0 0 2rem">
+    <div class="container">
+      <BlogSearch posts={searchPosts} lang={lang} />
+    </div>
+  </section>
+
   <!-- Blog Posts -->
   <section class="section section--gray">
     <div class="container">
       {posts.length > 0 ? (
         <>
-          <p style="text-align:center;margin-bottom:2.5rem;color:var(--mc-text-muted)">{posts.length} articles published</p>
-          <div class="card-grid card-grid--3" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
-            {posts.map(post => (
-              <BlogCard
-                title={post.data.title}
-                description={post.data.description}
-                slug={post.slug.replace('en-', '')}
-                image={post.data.image}
-                imageAlt={post.data.imageAlt}
-                author={post.data.author}
-                publishDate={post.data.publishDate}
-                readingTime={post.data.readingTime}
-                category={post.data.category}
-                lang={lang}
-              />
-            ))}
-          </div>
+          <p style="text-align:center;margin-bottom:2.5rem;color:var(--mc-text-muted)">{posts.length} articles across {silos.length} categories</p>
+
+          {/* Featured post — first post displayed as a large card */}
+          {posts.length > 0 && (
+            <a href={`/blog/${posts[0].slug.replace('en-', '')}/`} class="blog-featured-card">
+              <div class="blog-featured-card__img">
+                <img src={posts[0].data.image} alt={posts[0].data.imageAlt} width="700" height="400" loading="eager" />
+              </div>
+              <div class="blog-featured-card__body">
+                <span class="blog-featured-card__chip">{posts[0].data.category}</span>
+                <h2 class="blog-featured-card__title">{posts[0].data.title}</h2>
+                <p class="blog-featured-card__desc">{posts[0].data.description}</p>
+                <div class="blog-featured-card__meta">
+                  <span>{posts[0].data.author}</span>
+                  <span style="opacity:.4">·</span>
+                  <time datetime={posts[0].data.publishDate instanceof Date ? posts[0].data.publishDate.toISOString().split('T')[0] : String(posts[0].data.publishDate)}>
+                    {posts[0].data.publishDate.toLocaleDateString(languages[lang].dateLocale, { year: 'numeric', month: 'long', day: 'numeric' })}
+                  </time>
+                  {posts[0].data.readingTime && (
+                    <>
+                      <span style="opacity:.4">·</span>
+                      <span>{posts[0].data.readingTime} min read</span>
+                    </>
+                  )}
+                </div>
+              </div>
+            </a>
+          )}
+
+          {/* Remaining posts as regular cards */}
+          {posts.length > 1 && (
+            <div class="card-grid card-grid--3" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+              {posts.slice(1).map(post => (
+                <BlogCard
+                  title={post.data.title}
+                  description={post.data.description}
+                  slug={post.slug.replace('en-', '')}
+                  image={post.data.image}
+                  imageAlt={post.data.imageAlt}
+                  author={post.data.author}
+                  publishDate={post.data.publishDate}
+                  readingTime={post.data.readingTime}
+                  category={post.data.category}
+                  lang={lang}
+                />
+              ))}
+            </div>
+          )}
         </>
       ) : (
         <div style="text-align:center;padding:4rem 0">
@@ -89,6 +139,9 @@ const silos = [
       )}
     </div>
   </section>
+
+  <!-- Safari TikTok -->
+  <SafariTikTok category="general" lang={lang} />
 
   <!-- CTA -->
   <section class="section section--green">

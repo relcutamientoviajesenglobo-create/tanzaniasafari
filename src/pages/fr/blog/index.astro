@@ -4,10 +4,11 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import BlogCard from '../../../components/blog/BlogCard.astro';
+import BlogSearch from '../../../components/blog/BlogSearch.astro';
 import { webPage } from '../../../i18n/schema';
 
 const lang = 'fr';
-const title = 'Blog Safari Tanzania — Guides, Conseils & Culture Africaine';
+const title = 'Blog Tanzania Safari — Guides, Conseils & Culture Africaine';
 const description = 'Articles sur les safaris en Tanzanie : guides de voyage, conseils de photographie, culture Masaï, meilleurs parcs nationaux et tout ce dont vous avez besoin pour votre aventure africaine.';
 
 const ACACIA_LARGE = `<svg viewBox="0 0 200 160" width="200" height="160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="93" y="90" width="14" height="60" rx="4" fill="currentColor" opacity="0.7"/><ellipse cx="100" cy="75" rx="65" ry="38" fill="currentColor"/><ellipse cx="100" cy="70" rx="50" ry="28" fill="currentColor" opacity="0.5"/><ellipse cx="70" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><ellipse cx="130" cy="80" rx="30" ry="22" fill="currentColor" opacity="0.6"/><circle cx="170" cy="25" r="16" fill="currentColor" opacity="0.3"/></svg>`;
@@ -21,6 +22,15 @@ const posts = allPosts
   .filter(post => post.slug.startsWith('fr-'))
   .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
 
+const searchPosts = posts.map(post => ({
+  title: post.data.title,
+  description: post.data.description,
+  slug: post.slug.replace(/^(en|es|de|fr)-/, ''),
+  image: post.data.image,
+  category: post.data.category,
+  tags: post.data.tags,
+}));
+
 const silos = [
   { slug: 'safaris-tanzanie', label: 'Safaris Tanzanie', href: '/fr/blog/safaris-tanzanie/' },
   { slug: 'activites-aventure', label: 'Activités & Aventure', href: '/fr/blog/activites-aventure/' },
@@ -33,7 +43,7 @@ const schema = [
   webPage({
     name: title,
     description,
-    url: 'https://safaritanzania.info/fr/blog/',
+    url: 'https://tanzaniasafari.info/fr/blog/',
   }),
 ];
 ---
@@ -57,7 +67,7 @@ const schema = [
     <div class="container hero__inner">
       <div class="hero__text">
         <span class="chip chip--green">Blog</span>
-        <h1 class="hero__title">Blog Safari Tanzania</h1>
+        <h1 class="hero__title">Blog Tanzania Safari</h1>
         <p class="hero__desc">Guides de voyage, conseils de safari, photographie animalière, culture Masaï et tout ce que vous devez savoir pour votre aventure en Afrique.</p>
       </div>
       <div class="hero__visual">
@@ -90,12 +100,19 @@ const schema = [
     </div>
   </section>
 
+  <!-- RECHERCHE -->
+  <section style="padding:0 0 2rem">
+    <div class="container">
+      <BlogSearch posts={searchPosts} lang={lang} />
+    </div>
+  </section>
+
   <!-- TOUS LES ARTICLES -->
   <section class="section">
     <div class="container">
       <div class="section__header">
         <h2>Tous les Articles</h2>
-        <p>{posts.length} {posts.length === 1 ? 'article' : 'articles'} publiés</p>
+        <p>{posts.length} {posts.length === 1 ? 'article' : 'articles'} dans {silos.length} catégories</p>
       </div>
 
       {posts.length > 0 ? (
