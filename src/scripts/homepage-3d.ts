@@ -12,41 +12,29 @@ const canvas = document.querySelector('#webgl-canvas') as HTMLCanvasElement;
 const renderer = new THREE.WebGLRenderer({
     canvas,
     antialias: !isMobile,
-    alpha: true,
     powerPreference: "high-performance"
 });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(isMobile ? 1.0 : Math.min(window.devicePixelRatio, 0.75));
-renderer.setClearColor(0x000000, 0);
 renderer.toneMapping = THREE.ReinhardToneMapping;
 
 const scene = new THREE.Scene();
 
-// Scroll-scrub video system (Apple-style)
-const scrollVids = [
-    document.getElementById('scroll-vid-1') as HTMLVideoElement | null,
-    document.getElementById('scroll-vid-2') as HTMLVideoElement | null,
-    document.getElementById('scroll-vid-3') as HTMLVideoElement | null,
-];
+const video = document.querySelector('.bg-video') as HTMLVideoElement | null;
+if (video) {
+    video.muted = true;
+    video.playsInline = true;
+    const playVideo = () => {
+        video.play().catch(e => console.log("Autoplay prevented:", e));
+    };
+    playVideo();
 
-// Preload all scroll videos — paused, start at end (reversed playback)
-scrollVids.forEach(v => {
-    if (v) {
-        v.muted = true;
-        v.playsInline = true;
-        v.preload = 'auto';
-        v.pause();
-        v.load();
-        v.addEventListener('loadeddata', () => {
-            v.pause();
-            v.currentTime = v.duration - 0.1;
-        }, { once: true });
-    }
-});
-
-// No VideoTexture — videos are CSS-layered behind the canvas
-// Make canvas transparent so CSS videos show through
-scene.background = null;
+    const videoTexture = new THREE.VideoTexture(video);
+    videoTexture.colorSpace = THREE.SRGBColorSpace;
+    videoTexture.minFilter = THREE.LinearFilter;
+    videoTexture.magFilter = THREE.LinearFilter;
+    scene.background = videoTexture;
+}
 
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.1);
 scene.add(ambientLight);
@@ -347,72 +335,6 @@ gsap.to((giraffeCloud.material as THREE.ShaderMaterial).uniforms.uOpacity, {
 gsap.to((bloomPass as any).tintColor, {
     r: 0.8, g: 0.0, b: 1.0,
     scrollTrigger: { trigger: "#section-pricing", start: "top bottom", end: "top center", scrub: 1 }
-});
-
-// ── Scroll-scrub video per section (Apple-style) ──
-// Wait for ALL videos to be ready, then set up all scrubs at once
-function setupAllVideoScrubs() {
-    const scrollSections = document.querySelectorAll('[data-scroll-video]');
-    scrollSections.forEach(section => {
-        const idx = parseInt((section as HTMLElement).dataset.scrollVideo || '1') - 1;
-        const vid = scrollVids[idx];
-        if (!vid) return;
-
-        const dur = isNaN(vid.duration) ? 5.0 : vid.duration;
-        // Start from end of video (reversed)
-        vid.currentTime = dur - 0.1;
-
-        // Scrub video REVERSED with scroll
-        // progress 0→1 maps to video end→start (reversed)
-        ScrollTrigger.create({
-            trigger: section,
-            start: "top bottom",
-            end: "bottom top",
-            onUpdate: (self) => {
-                const targetTime = dur * (1 - self.progress);
-                vid.currentTime = Math.max(0.05, Math.min(targetTime, dur - 0.05));
-            }
-        });
-
-        // Show/hide video + crossfade
-        ScrollTrigger.create({
-            trigger: section,
-            start: "top 85%",
-            end: "bottom 15%",
-            onEnter: () => {
-                scrollVids.forEach((v, i) => {
-                    if (i === idx) v?.classList.add('active');
-                    else v?.classList.remove('active');
-                });
-                if ((window as any).__switchBgVideo) (window as any).__switchBgVideo(idx);
-            },
-            onEnterBack: () => {
-                scrollVids.forEach((v, i) => {
-                    if (i === idx) v?.classList.add('active');
-                    else v?.classList.remove('active');
-                });
-                if ((window as any).__switchBgVideo) (window as any).__switchBgVideo(idx);
-            },
-        });
-    });
-}
-
-// Ensure all videos are loaded before setting up scrubs
-let videosReady = 0;
-const totalVids = scrollVids.filter(Boolean).length;
-scrollVids.forEach(v => {
-    if (!v) return;
-    const onReady = () => {
-        videosReady++;
-        if (videosReady >= totalVids) {
-            setupAllVideoScrubs();
-        }
-    };
-    if (v.readyState >= 2) {
-        onReady();
-    } else {
-        v.addEventListener('loadeddata', onReady, { once: true });
-    }
 });
 
 const beerVideo = document.getElementById('beer-video') as HTMLVideoElement | null;

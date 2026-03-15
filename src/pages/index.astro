@@ -7,10 +7,10 @@ import HomepageLayout from '../layouts/HomepageLayout.astro';
   description="Discover Tanzania's breathtaking safaris through an immersive 3D experience. Explore the Serengeti, witness the Great Migration, and plan your African adventure."
   lang="en"
 >
-  <!-- Scroll-Scrub Video Backgrounds (Apple-style) -->
-  <video class="bg-video scroll-vid active" id="scroll-vid-1" muted playsinline preload="auto" src="/media/homepage/scroll-video-1.mp4"></video>
-  <video class="bg-video scroll-vid" id="scroll-vid-2" muted playsinline preload="auto" src="/media/homepage/scroll-video-2.mp4"></video>
-  <video class="bg-video scroll-vid" id="scroll-vid-3" muted playsinline preload="auto" src="/media/homepage/scroll-video-3.mp4"></video>
+  <!-- Video Background -->
+  <video class="bg-video" autoplay loop muted playsinline>
+    <source src="/media/homepage/safari-bg.mp4" type="video/mp4">
+  </video>
   <div class="video-overlay"></div>
 
   <!-- 3D Background Canvas -->
@@ -19,7 +19,7 @@ import HomepageLayout from '../layouts/HomepageLayout.astro';
   <!-- UI Overlay -->
   <main class="content">
     <!-- Section 1: Hero -->
-    <section class="panel hero" id="section-hero" data-scroll-video="1">
+    <section class="panel hero" id="section-hero">
       <div class="glass-box init-anim">
         <h1 class="glow-text">Wild Tanzania</h1>
         <p>Scroll to discover the holographic wildlife of the African savannah.</p>
@@ -30,7 +30,7 @@ import HomepageLayout from '../layouts/HomepageLayout.astro';
     </section>
 
     <!-- Section 2: Details -->
-    <section class="panel details" id="section-details" data-scroll-video="2">
+    <section class="panel details" id="section-details">
       <div class="glass-box left init-anim">
         <h2 class="glow-text">Tanzania Safari</h2>
         <p>As you delve deeper into the plains, the true essence of Africa comes alive. Experience the breathtaking landscapes, incredible wildlife, and unforgettable adventures that await you in Tanzania.</p>
@@ -75,7 +75,7 @@ import HomepageLayout from '../layouts/HomepageLayout.astro';
     </section>
 
     <!-- Section 3: Immersion -->
-    <section class="panel immersion" id="section-immersion" data-scroll-video="3">
+    <section class="panel immersion" id="section-immersion">
       <div class="glass-box right init-anim">
         <h2 class="glow-text">The Migration</h2>
         <p>The boundary between reality and digital construct fades over the Great Migration. Behold the ultimate synthesis of light and sacred geometry.</p>
