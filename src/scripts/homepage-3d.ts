@@ -12,6 +12,7 @@ const canvas = document.querySelector('#webgl-canvas') as HTMLCanvasElement;
 const renderer = new THREE.WebGLRenderer({
     canvas,
     antialias: !isMobile,
+    alpha: true,
     powerPreference: "high-performance"
 });
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -27,36 +28,24 @@ const scrollVids = [
     document.getElementById('scroll-vid-3') as HTMLVideoElement | null,
 ];
 
-// Preload all scroll videos — start at end (reversed playback)
+// Preload all scroll videos — paused, start at end (reversed playback)
 scrollVids.forEach(v => {
     if (v) {
         v.muted = true;
         v.playsInline = true;
         v.preload = 'auto';
+        v.pause();
         v.load();
-        v.addEventListener('loadeddata', () => { v.currentTime = v.duration - 0.1; }, { once: true });
+        v.addEventListener('loadeddata', () => {
+            v.pause();
+            v.currentTime = v.duration - 0.1;
+        }, { once: true });
     }
 });
 
-// Use the first active video as scene background
-const activeVid = scrollVids[0];
-if (activeVid) {
-    const videoTexture = new THREE.VideoTexture(activeVid);
-    videoTexture.colorSpace = THREE.SRGBColorSpace;
-    videoTexture.minFilter = THREE.LinearFilter;
-    videoTexture.magFilter = THREE.LinearFilter;
-    scene.background = videoTexture;
-
-    // Update texture source when active video changes
-    let currentBgIndex = 0;
-    (window as any).__switchBgVideo = (idx: number) => {
-        if (idx !== currentBgIndex && scrollVids[idx]) {
-            videoTexture.image = scrollVids[idx]!;
-            videoTexture.needsUpdate = true;
-            currentBgIndex = idx;
-        }
-    };
-}
+// No VideoTexture — videos are CSS-layered behind the canvas
+// Make canvas transparent so CSS videos show through
+scene.background = null;
 
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.1);
 scene.add(ambientLight);
@@ -372,14 +361,13 @@ function setupAllVideoScrubs() {
         // Start from end of video (reversed)
         vid.currentTime = dur - 0.1;
 
-        // Scrub video REVERSED with scroll — use onUpdate for reliable seeking
+        // Scrub video REVERSED with scroll
+        // progress 0→1 maps to video end→start (reversed)
         ScrollTrigger.create({
             trigger: section,
-            start: "top 150%",
-            end: "bottom -50%",
-            scrub: true,
+            start: "top bottom",
+            end: "bottom top",
             onUpdate: (self) => {
-                // progress 0→1 maps to video end→start (reversed)
                 const targetTime = dur * (1 - self.progress);
                 vid.currentTime = Math.max(0.05, Math.min(targetTime, dur - 0.05));
             }
@@ -388,8 +376,8 @@ function setupAllVideoScrubs() {
         // Show/hide video + crossfade
         ScrollTrigger.create({
             trigger: section,
-            start: "top 90%",
-            end: "bottom 10%",
+            start: "top 85%",
+            end: "bottom 15%",
             onEnter: () => {
                 scrollVids.forEach((v, i) => {
                     if (i === idx) v?.classList.add('active');
