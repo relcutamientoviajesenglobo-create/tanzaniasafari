@@ -360,32 +360,30 @@ gsap.to((bloomPass as any).tintColor, {
 });
 
 // ── Scroll-scrub video per section (Apple-style) ──
-const scrollSections = document.querySelectorAll('[data-scroll-video]');
-scrollSections.forEach(section => {
-    const idx = parseInt((section as HTMLElement).dataset.scrollVideo || '1') - 1;
-    const vid = scrollVids[idx];
-    if (!vid) return;
+// Wait for ALL videos to be ready, then set up all scrubs at once
+function setupAllVideoScrubs() {
+    const scrollSections = document.querySelectorAll('[data-scroll-video]');
+    scrollSections.forEach(section => {
+        const idx = parseInt((section as HTMLElement).dataset.scrollVideo || '1') - 1;
+        const vid = scrollVids[idx];
+        if (!vid) return;
 
-    function setupScrub() {
-        const dur = isNaN(vid!.duration) ? 5.0 : vid!.duration;
-        // Start from end of video (reversed) so there's visible content immediately
-        vid!.currentTime = dur - 0.1;
+        const dur = isNaN(vid.duration) ? 5.0 : vid.duration;
+        // Start from end of video (reversed)
+        vid.currentTime = dur - 0.1;
 
-        // Scrub video REVERSED: starts at end, scrolls to beginning
-        // High scrub value = buttery smooth like Apple (less jitter, more interpolation)
-        gsap.fromTo(vid,
-            { currentTime: Math.max(0.1, dur - 0.1) },
-            {
-                currentTime: 0.1,
-                ease: "power1.inOut",
-                scrollTrigger: {
-                    trigger: section,
-                    start: "top 150%",
-                    end: "bottom -50%",
-                    scrub: 2,
-                }
+        // Scrub video REVERSED with scroll — use onUpdate for reliable seeking
+        ScrollTrigger.create({
+            trigger: section,
+            start: "top 150%",
+            end: "bottom -50%",
+            scrub: true,
+            onUpdate: (self) => {
+                // progress 0→1 maps to video end→start (reversed)
+                const targetTime = dur * (1 - self.progress);
+                vid.currentTime = Math.max(0.05, Math.min(targetTime, dur - 0.05));
             }
-        );
+        });
 
         // Show/hide video + crossfade
         ScrollTrigger.create({
@@ -407,12 +405,24 @@ scrollSections.forEach(section => {
                 if ((window as any).__switchBgVideo) (window as any).__switchBgVideo(idx);
             },
         });
-    }
+    });
+}
 
-    if (vid.readyState >= 1) {
-        setupScrub();
+// Ensure all videos are loaded before setting up scrubs
+let videosReady = 0;
+const totalVids = scrollVids.filter(Boolean).length;
+scrollVids.forEach(v => {
+    if (!v) return;
+    const onReady = () => {
+        videosReady++;
+        if (videosReady >= totalVids) {
+            setupAllVideoScrubs();
+        }
+    };
+    if (v.readyState >= 2) {
+        onReady();
     } else {
-        vid.addEventListener('loadedmetadata', setupScrub);
+        v.addEventListener('loadeddata', onReady, { once: true });
     }
 });
 
