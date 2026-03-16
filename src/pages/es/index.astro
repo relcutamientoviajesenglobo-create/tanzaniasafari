@@ -9,7 +9,7 @@ import HomepageLayout from '../../layouts/HomepageLayout.astro';
 >
   <!-- Video Background -->
   <video class="bg-video" autoplay loop muted playsinline>
-    <source src="/media/homepage/safari-bg.mp4" type="video/mp4">
+    <source src="/media/homepage/fondo-safari-principal.mp4" type="video/mp4">
   </video>
   <div class="video-overlay"></div>
 
@@ -29,8 +29,12 @@ import HomepageLayout from '../../layouts/HomepageLayout.astro';
       </div>
     </section>
 
-    <!-- Section 2: Details -->
-    <section class="panel details" id="section-details">
+    <!-- Section 2: Details con video de fondo secundario -->
+    <section class="panel details has-section-bg" id="section-details">
+      <video class="section-bg-video" autoplay loop muted playsinline>
+        <source src="/media/homepage/fondo-safari-secundario.mp4" type="video/mp4">
+      </video>
+      <div class="section-bg-overlay"></div>
       <div class="glass-box left init-anim">
         <h2 class="glow-text">Tanzania Safari</h2>
         <p>A medida que te adentras en las llanuras, la verdadera esencia de África cobra vida. Experimenta los paisajes impresionantes, la increíble vida salvaje y las aventuras inolvidables que te esperan en Tanzania.</p>
@@ -74,8 +78,10 @@ import HomepageLayout from '../../layouts/HomepageLayout.astro';
       <script is:inline async src="https://www.tiktok.com/embed.js"></script>
     </section>
 
-    <!-- Section 3: Immersion -->
-    <section class="panel immersion" id="section-immersion">
+    <!-- Section 3: Immersion con imagen de fondo safari -->
+    <section class="panel immersion has-section-bg" id="section-immersion">
+      <img class="section-bg-img" src="/media/homepage/safari-africa-we-fly.webp" alt="" loading="lazy">
+      <div class="section-bg-overlay"></div>
       <div class="glass-box right init-anim">
         <h2 class="glow-text">La Migración</h2>
         <p>La frontera entre la realidad y lo digital se desvanece durante la Gran Migración. Contempla la síntesis definitiva de luz y geometría sagrada.</p>
