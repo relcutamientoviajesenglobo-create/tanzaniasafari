@@ -24,11 +24,7 @@ const video = document.querySelector('.bg-video') as HTMLVideoElement | null;
 if (video) {
     video.muted = true;
     video.playsInline = true;
-    const playVideo = () => {
-        video.play().catch(e => console.log("Autoplay prevented:", e));
-    };
-    playVideo();
-
+    // Video is scroll-scrubbed, not autoplayed
     const videoTexture = new THREE.VideoTexture(video);
     videoTexture.colorSpace = THREE.SRGBColorSpace;
     videoTexture.minFilter = THREE.LinearFilter;
@@ -336,6 +332,45 @@ gsap.to((bloomPass as any).tintColor, {
     r: 0.8, g: 0.0, b: 1.0,
     scrollTrigger: { trigger: "#section-pricing", start: "top bottom", end: "top center", scrub: 1 }
 });
+
+// Global Apple-Style Background Video Scroll-Scrubbing
+const bgVideo = document.getElementById('bg-video') as HTMLVideoElement | null;
+
+if (bgVideo) {
+    function setupBgVideoScrubbing() {
+        const dur = isNaN(bgVideo!.duration) ? 10.0 : bgVideo!.duration;
+
+        gsap.to(bgVideo, {
+            currentTime: Math.max(0.1, dur - 0.1),
+            ease: "none",
+            scrollTrigger: {
+                trigger: "body",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 1.0
+            }
+        });
+
+        ScrollTrigger.refresh();
+
+        window.addEventListener('load', () => ScrollTrigger.refresh());
+
+        let refreshCount = 0;
+        const refreshInterval = setInterval(() => {
+            ScrollTrigger.refresh();
+            refreshCount++;
+            if (refreshCount > 10) clearInterval(refreshInterval);
+        }, 500);
+    }
+
+    if (bgVideo.readyState >= 1) {
+        setupBgVideoScrubbing();
+    } else {
+        bgVideo.addEventListener('loadedmetadata', setupBgVideoScrubbing);
+    }
+
+    bgVideo.load();
+}
 
 const beerVideo = document.getElementById('beer-video') as HTMLVideoElement | null;
 const beerSection = document.getElementById('section-beer') as HTMLElement | null;
